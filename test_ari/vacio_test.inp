@@ -1,0 +1,54 @@
+[ T i t l e ]
+prueba simple con hidrogeno
+
+[ P a r a m e t e r s ]
+ icntl    =           0
+ maxcas   =          20
+ maxbch   =          10
+
+[ S o u r c e ]
+   s-type =   1
+     proj =  proton
+      dir =   1.0
+       r0 =   0.
+       z0 = -15.
+       z1 = -15.
+       e0 =   50.
+
+[ M a t e r i a l ]
+mat[1]    1H 1
+
+[ S u r f a c e ]
+  10  so      5.
+ 999  so     50.
+
+[ C e l l ]
+ 100     1 -0.07  -10
+1000     0  10 -999
+1001    -1  999
+
+[ T - T r a c k ]
+     mesh =  xyz
+   x-type =    2
+       nx =   80
+     xmin =  -10.
+     xmax =   10.
+   y-type =    1
+       ny =    1
+            -1.0  1.0
+   z-type =    2
+       nz =   80
+     zmin =  -20.
+     zmax =   20.
+     part =  all
+   e-type =    1
+       ne =    1
+            0.0  1000.0
+     unit =    1
+     axis =   xz
+     file = track_hidrogeno.out
+    title = Trayectoria en hidrogeno
+    gshow =    3
+   epsout =    1
+
+[ E n d ]
