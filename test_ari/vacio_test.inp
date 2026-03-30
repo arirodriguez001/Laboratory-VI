@@ -3,8 +3,8 @@ prueba simple con hidrogeno
 
 [ P a r a m e t e r s ]
  icntl    =           0
- maxcas   =          20
- maxbch   =          10
+ maxcas   =          1000    # cantidad de partículas por batch
+ maxbch   =          10      # cuantas veces repito el experimento
 
 [ S o u r c e ]
    s-type =   1
@@ -30,14 +30,14 @@ mat[1]    1H 1
 [ T - T r a c k ]
      mesh =  xyz
    x-type =    2
-       nx =   80
+       nx =   200
      xmin =  -10.
      xmax =   10.
    y-type =    1
        ny =    1
             -1.0  1.0
    z-type =    2
-       nz =   80
+       nz =   200
      zmin =  -20.
      zmax =   20.
      part =  all
