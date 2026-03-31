@@ -1,0 +1,71 @@
+[ T i t l e ]
+onion geometry
+
+[ P a r a m e t e r s ]
+ icntl    =          11     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+      dir =   1.0           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       z0 =   0.            # minimum position of z-axis [cm]
+       z1 =   0.            # maximum position of z-axis [cm]
+       e0 =   150.          # energy of beam [MeV/u]
+
+[ M a t e r i a l ]
+mat[1]    H 2  O 1
+mat[2]    H 2  O 1
+mat[3]    H 2  O 1
+mat[4]    H 2  O 1
+mat[5]    H 2  O 1
+
+[ S u r f a c e ]
+  11  so       5.
+  12  so      10.
+  13  so      15.
+  14  so      20.
+  15  so      25.
+
+[ C e l l ]
+ 101     1 -1.         -11
+ 102     2 -1.         -12 #101
+ 103     3 -1.         -13 #101 #102
+ 104     4 -1.         -14 #101 #102 #103
+ 105     5 -1.         -15 #101 #102 #103 #104
+ 106    -1              15
+
+[ C e l l ] off
+ 101     1 -1.               -11
+ 102     2 -1.          11   -12
+ 103     3 -1.          12   -13
+ 104     4 -1.          13   -14
+ 105     5 -1.          14   -15
+ 106     6 -1.          15
+
+[ T - 3Dshow ]
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+      box =    1            # (D=0) number of boxes
+      box     0.     0.  0.
+              100.   0.  0.
+              0.   100.  0.  100.
+       x0 =  0.             # (D=0.0) x-coordinate of the origin
+       y0 =  0.             # (D=0.0) y-coordinate of the origin
+       z0 =  10.            # (D=0.0) z-coordinate of the origin
+    e-the =   70.           # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =   20.           # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =   80.           # (D=w-dst*10) eye point distance from origin
+    l-the =   20.           # (D=e-the) light point theta from z-axis
+    l-phi =    0.           # (D=e-phi) light point phi from x-axis
+    l-dst =  100.           # (D=e-dst) light point distance from origin
+    w-wdt =   50.           # (D=100) width of window (cm)
+    w-hgt =   50.           # (D=100) hight of window (cm)
+    w-dst =   25.           # (D=200) window distance from origin
+   heaven =   z             # (D=y) direction to heaven
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+    resol =    1            # (D=1) resolution of 3dshow
+     file = 3dshow001.out   # file name of output
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ E n d ]
