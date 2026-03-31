@@ -2,7 +2,7 @@
 minimized input file for lecture
 
 [ P a r a m e t e r s ]
- icntl    =           0     # 0 es para ver la simulacion, 8 para ver la forma 
+ icntl    =           8     # 0 es para ver la simulacion, 8 para ver la forma 
  maxcas   =          50     # (D=10) number of particles per one batch
  maxbch   =          200     # (D=10) number of batches
  
