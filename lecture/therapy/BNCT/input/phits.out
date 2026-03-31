@@ -1,0 +1,498 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  3.330                   |
+          |                       developed by                      |
+          |                                                         |
+          |  Tatsuhiko SATO, Yosuke IWAMOTO, Shintaro HASHIMOTO,    |
+          |    Tatsuhiko OGAWA, Takuya FURUTA, Shinichiro ABE,      |
+          |    Takeshi KAI, Norihiro MATSUDA, Yusuke MATSUYA,       |
+          |      Yuho HIRATA, Takuya SEKIKAWA, Pi-En TSAI,          |
+          |                Hunter RATLIFF (JAEA),                   |
+          |                                                         |
+          |  Hiroshi IWASE, Yasuhito SAKAKI, Kenta SUGIHARA (KEK),  |
+          |                                                         |
+          |           Nobuhiro SHIGYO (Kyushu University),          |
+          |                                                         |
+          |      Lembit SIHVER (Technische Universitat Wien), and   |
+          |                                                         |
+          |                     Koji NIITA (RIST)                   |
+          |                                                         |
+          |                 Last Revised  2023-08-31                |
+          |_________________________________________________________|
+
+                   ____________ [ Job Title ] __________ 
+                  |                                     |
+                  |  Sample input for BNCT calculation  |
+                  |_____________________________________|
+
+                        Starting Date = 2025-05-16
+                        Starting Time = 17h 59m 58
+
+>>> Input Echo >>>=============================================================
+
+[ Title ]
+Sample input for BNCT calculation
+
+[ Parameters ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ ireschk  =           1     # (D=0) Restart, 0:Check consistency, 1:No check
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+
+[ Source ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # cylindrical source
+     proj =  neutron        # kind of incident particle         
+       e0 =  1.00000E-02    # energy of beam [MeV/n]
+       r0 =   10.000        # radius [cm]
+       r1 =   0.0000        # minimum radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ Material ]
+MAT[ 1 ] 
+            H        -1.0100000E-01
+            C        -1.1100000E-01
+            N        -2.6000000E-02
+            O        -7.6200000E-01
+          10B        -2.0000000E-05
+mt1      lwtr.20t  
+MAT[ 2001 ] 
+            H         1.0000000E+00
+MAT[ 2002 ] 
+            N         1.0000000E+00
+MAT[ 2003 ] 
+          10B         1.0000000E+00
+
+[ Cell ]
+ 1           1 -1.0000000E+00  1 -2 -10 
+ 98          0                 #1 -999 
+ 99         -1                 999 
+
+[ Surface ]
+ 1             pz    0.0000000E+00
+ 2             pz    1.0000000E+01
+ 10            cz    1.0000000E+01
+ 999           so    1.0000000E+02
+
+[ anatally ]
+
+[ T-Track ]
+    title = [t-track] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =       z            # axis of output
+     file = photon.out      # file name of output for the above axis
+     part =  photon   
+# kf/name :  22       
+  multiplier = all          # number of material group
+     part =  photon   
+# kf/name :  22       
+     emax =    20.000    
+      mat                 mset1  
+      all ( 1.53336E-11 1 -5 -6 )
+    angel = ymin(1.0e-17) ymax(1.0e-14)
+    y-txt = Dose [Gy/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+[ T-Track ]
+    title = [t-track] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =       z            # axis of output
+     file = hydro.out       # file name of output for the above axis
+     part =  neutron  
+# kf/name :  2112     
+  multiplier = all          # number of material group
+     part =  neutron  
+# kf/name :  2112     
+     emax =    20.000    
+      mat                   mset1  
+      all ( 9.66792E-12 2001 1 -4 )
+    angel = ymin(1.0e-17) ymax(1.0e-14)
+    y-txt = Dose [Gy/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+[ T-Track ]
+    title = [t-track] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =       z            # axis of output
+     file = nitro.out       # file name of output for the above axis
+     part =  neutron  
+# kf/name :  2112     
+  multiplier = all          # number of material group
+     part =  neutron  
+# kf/name :  2112     
+     emax =    20.000    
+      mat                   mset1  
+      all ( 1.79077E-13 2002 1 -4 )
+    angel = ymin(1.0e-17) ymax(1.0e-14)
+    y-txt = Dose [Gy/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+[ T-Track ]
+    title = [t-track] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =       z            # axis of output
+     file = boron.out       # file name of output for the above axis
+     part =  neutron  
+# kf/name :  2112     
+  multiplier = all          # number of material group
+     part =  neutron  
+# kf/name :  2112     
+     emax =    20.000    
+      mat                   mset1  
+      all ( 1.92696E-16 2003 1 -4 )
+    angel = ymin(1.0e-17) ymax(1.0e-14)
+    y-txt = Dose [Gy/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+[ T-Deposit ]
+    title = [t-deposit] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+     unit =    0            # unit is [Gy/source]
+   letmat =    0            # (D=0) mat ID for LET, 0:real mat, <0: electron for H2O
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+  deposit =    0            # (D=0) 0-> total deposit dist, 1-> each process
+     axis =     z           # axis of output
+     file = dose.out        # file name of output for the above axis
+     part = ( neutron    photon   ) 
+# kf/name : ( 2112       22       ) 
+    angel = ymin(1.0e-17) ymax(1.0e-14)
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          16 (  0)           0 (  0)          16 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =        2
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =        1
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for low energy>>>
+*    low energy material =     2484
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =      168
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of bank memory >>>
+*            bank memory =     2511
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of total memory >>>
+*      used total memory =     5001
+*     total memory: mdas = 80000000
+*                percent =     0.01 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =           1000.
+ bitrseed = 0100001010011000001011101100011110011000110110100110010000000000
+          cpu time =   0.285 s.
+
+-------------------------------------------------------------------------------
+bat[       2] ncas =           2000.
+ bitrseed = 0101000011000111010110101100111000100101101011010111101101011101
+          cpu time =   0.371 s.
+
+-------------------------------------------------------------------------------
+bat[       3] ncas =           3000.
+ bitrseed = 0101100011011011110001100101110111100110110100101110100101001100
+          cpu time =   0.395 s.
+
+-------------------------------------------------------------------------------
+bat[       4] ncas =           4000.
+ bitrseed = 0111101111011110101110001110111000001110000010010001000010100001
+          cpu time =   0.371 s.
+
+-------------------------------------------------------------------------------
+bat[       5] ncas =           5000.
+ bitrseed = 1000101001001101001010000000111010011100000001000110000001000000
+          cpu time =   0.383 s.
+
+-------------------------------------------------------------------------------
+bat[       6] ncas =           6000.
+ bitrseed = 1101111111001101100001000101010101010011110110101000101010011110
+          cpu time =   0.348 s.
+
+-------------------------------------------------------------------------------
+bat[       7] ncas =           7000.
+ bitrseed = 1001000011100101101101101011000010001010100000111001111101111011
+          cpu time =   0.328 s.
+
+-------------------------------------------------------------------------------
+bat[       8] ncas =           8000.
+ bitrseed = 1001011010111010111011011110110001001010000110111001011110011110
+          cpu time =   0.348 s.
+
+-------------------------------------------------------------------------------
+bat[       9] ncas =           9000.
+ bitrseed = 1101001111101111111101001001110111010001010011111101010010001001
+          cpu time =   0.312 s.
+
+-------------------------------------------------------------------------------
+bat[      10] ncas =          10000.
+ bitrseed = 1011100001101001100100111110100001000001010100101110010000011100
+          cpu time =   0.324 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3             10.   : end of a batch                  
+        4          10000.   : source                          
+        5              0.   : detection of geometry error/warn
+        6              0.   : recovery from geometry warning  
+        7              0.   : termination by geometry error   
+        8            746.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10          22305.   : geometry boundary crossing      
+       11              0.   : termination by energy cut-off   
+       12          12305.   : termination by escape or leakage
+       13              2.   : reaction : (n,x) type           
+       14         526845.   : reaction : (n,n'x) type         
+       15              0.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ List of transport particles (not including source)
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+     photon         22          0.0         0       0
+
+-------------------------------------------------------------------------------
+ prod. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     photon             3060.     1.8556508E+03     1.8556508E-01
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron            9254.     7.9529952E+03     7.9529952E-01
+     photon             3051.     1.8493150E+03     1.8493150E-01
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+        1000          10           0    1.0000000E+00    1.0000000000000E+04
+
+-------------------------------------------------------------------------------
+ Geometry error summary
+-------------------------------------------------------------------------------
+ Number of lost particles     =     0 / nlost =       10
+ Number of geometry recovering =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ initial random seed:
+   bitrseed = 0100001010011000001011101100011110011000110110100110010000000000
+ next initial random seed:
+   bitrseed = 0111011010010100011001101100101001110100011011011011110011011010
+
+-------------------------------------------------------------------------------
+ job termination date : 2025/05/16
+                 time :   18:00:03
+
+-------------------------------------------------------------------------------
+    CPU time and number of event called in PHITS
+-------------------------------------------------------------------------------
+
+                             sec
+total cpu time =            4.85
+
+
+                           count
+      analysis =         571467.  : data processing
+         nevap =              0.  : evaporation
+        dexgam =              0.  : de-excitation
+         nreac =         526847.  : atomic and nuclear reactions
+         dklos =              0.  : particle decay
+         hydro =              0.  : nucleon-nucleon scattering
+        n-data =         525231.  : neutron data library
+        h-data =              0.  : p, d, a data library
+        p-data =           1616.  : photon data library
+        e-data =              0.  : electron data library
+        p-egs5 =              0.  : photon interaction with EGS5
+        e-egs5 =              0.  : electron interaction with EGS5
+      e-tsmode =              0.  : electron track structure mode
+    ion-tsmode =              0.  : ion track structure mode
+     photonucl =              0.  : photo-nuclear reaction
+ photonucl lib =              0.  : photo-nuclear reaction with library
+       mu-reac =              0.  : muon-induced nuclear reaction
+       mu-brem =              0.  : muon-induced bremsstrahlung
+       mu-pprd =              0.  : muon-induced pair production
+        mu-cap =              0.  : muon capture in nucleus
+         elast =              0.  : elastic scattering
+         ncasc =              0.  : nuclear reaction model
+
+       bertini =              0.  : Bertini model
+        isobar =              0.  : isobar model
+           JAM =              0.  : JAM model
+           QMD =              0.  : JQMD model
+        JAMQMD =              0.  : JAMQMD model
+          INCL =              0.  : INCL model
+        INCELF =              0.  : INCELF model
+     frag data =              0.  : user defined cross section
+       SCINFUL =              0.  : SCINFUL mode
+
+>>> Citation Request >>>=======================================================
+
+ This execution uses model(s) that must be explicitly cited in addition to
+ the PHITS original document: T.Sato et al., J.Nucl.Sci.Technol.55, 684-690 (2018).
+ Please refer the following document(s) in your publication using this result
+
+ The KUROTAMA model:
+    K. Iida, A. Kohama, and K. Oyamatsu, J. Phys. Soc. Japan 76, 044201 (2007).
+
+ END 

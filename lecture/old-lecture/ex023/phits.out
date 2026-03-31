@@ -1,0 +1,340 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+   ____________________________ [ Job Title ] __________________________ 
+  |                                                                     |
+  |  Sample Input for [t-sed] and [t-let] Tallies without nuclear data  |
+  |_____________________________________________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 39m 02
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+Sample Input for [t-sed] and [t-let] Tallies without nuclear data
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ rseed    = 170490721894713.# (D=0.0) 0:original, <0:from time, >0:this value
+ nlost    =         100     # (D=10) Lost part: allowance of CG and GG errors
+ maxcas   =         100     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(1)  = 0.100000000     # (D=1.0) cut-off energy of proton (MeV)
+ emin(15) = 0.100000000     # (D=1.d9) cut-off energy of deuteron (MeV)
+ emin(16) = 0.100000000     # (D=1.d9) cut-off energy of triton (MeV)
+ emin(17) = 0.100000000     # (D=1.d9) cut-off energy of 3He (MeV)
+ emin(18) = 0.100000000     # (D=1.d9) cut-off energy of Alpha (MeV)
+ emin(19) = 0.100000000     # (D=1.d9) cut-off energy of Nucleus (MeV)
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =  12C            # kind of incident nucleus          
+       e0 =   10.000        # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+           1H         6.0820000E-02
+            C         5.5700000E-03
+          14N         1.1180000E-03
+          16O         2.8680000E-02
+MAT[ 5 ] 
+           1H         6.8934070E-02
+          16O         3.4467040E-02
+
+[ C e l l ]
+ 1          1 -1.0000000E+00  1 -2 -3 
+ 12         0                 #1 -600 
+ 13        -1                 600 
+
+[ S u r f a c e ]
+ 1            pz     0.0000000E+00
+ 2            pz     1.0000000E-03
+ 3            cz     1.0000000E+00
+ 600          so     1.0100000E+02
+
+[ T - L E T ]
+    title = [t-let] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+   l-type =    3            # l-mesh is log given by lmin, lmax and nl
+     lmin =  1.0000000E-02  # minimum value of l-mesh points
+     lmax =   10000.00      # maximum value of l-mesh points
+#    ldel =  7.6752836E-02  # mesh width of l-mesh points
+       nl =  180            # number of l-mesh points
+#    data = ( l(i), i = 1, nl + 1 )
+#           1.00000E-02  1.07978E-02  1.16591E-02  1.25893E-02  1.35936E-02
+#           1.46780E-02  1.58489E-02  1.71133E-02  1.84785E-02  1.99526E-02
+#           2.15443E-02  2.32631E-02  2.51189E-02  2.71227E-02  2.92864E-02
+#           3.16228E-02  3.41455E-02  3.68695E-02  3.98107E-02  4.29866E-02
+#           4.64159E-02  5.01187E-02  5.41170E-02  5.84341E-02  6.30957E-02
+#           6.81292E-02  7.35642E-02  7.94328E-02  8.57696E-02  9.26119E-02
+#           1.00000E-01  1.07978E-01  1.16591E-01  1.25893E-01  1.35936E-01
+#           1.46780E-01  1.58489E-01  1.71133E-01  1.84785E-01  1.99526E-01
+#           2.15443E-01  2.32631E-01  2.51189E-01  2.71227E-01  2.92864E-01
+#           3.16228E-01  3.41455E-01  3.68695E-01  3.98107E-01  4.29866E-01
+#           4.64159E-01  5.01187E-01  5.41170E-01  5.84341E-01  6.30957E-01
+#           6.81292E-01  7.35642E-01  7.94328E-01  8.57696E-01  9.26119E-01
+#           1.00000E+00  1.07978E+00  1.16591E+00  1.25893E+00  1.35936E+00
+#           1.46780E+00  1.58489E+00  1.71133E+00  1.84785E+00  1.99526E+00
+#           2.15443E+00  2.32631E+00  2.51189E+00  2.71227E+00  2.92864E+00
+#           3.16228E+00  3.41455E+00  3.68695E+00  3.98107E+00  4.29866E+00
+#           4.64159E+00  5.01187E+00  5.41170E+00  5.84341E+00  6.30957E+00
+#           6.81292E+00  7.35642E+00  7.94328E+00  8.57696E+00  9.26119E+00
+#           1.00000E+01  1.07978E+01  1.16591E+01  1.25893E+01  1.35936E+01
+#           1.46780E+01  1.58489E+01  1.71133E+01  1.84785E+01  1.99526E+01
+#           2.15443E+01  2.32631E+01  2.51189E+01  2.71227E+01  2.92864E+01
+#           3.16228E+01  3.41455E+01  3.68695E+01  3.98107E+01  4.29866E+01
+#           4.64159E+01  5.01187E+01  5.41170E+01  5.84341E+01  6.30957E+01
+#           6.81292E+01  7.35642E+01  7.94328E+01  8.57696E+01  9.26119E+01
+#           1.00000E+02  1.07978E+02  1.16591E+02  1.25893E+02  1.35936E+02
+#           1.46780E+02  1.58489E+02  1.71133E+02  1.84785E+02  1.99526E+02
+#           2.15443E+02  2.32631E+02  2.51189E+02  2.71227E+02  2.92864E+02
+#           3.16228E+02  3.41455E+02  3.68695E+02  3.98107E+02  4.29866E+02
+#           4.64159E+02  5.01187E+02  5.41170E+02  5.84341E+02  6.30957E+02
+#           6.81292E+02  7.35642E+02  7.94328E+02  8.57696E+02  9.26119E+02
+#           1.00000E+03  1.07978E+03  1.16591E+03  1.25893E+03  1.35936E+03
+#           1.46780E+03  1.58489E+03  1.71133E+03  1.84785E+03  1.99526E+03
+#           2.15443E+03  2.32631E+03  2.51189E+03  2.71227E+03  2.92864E+03
+#           3.16228E+03  3.41455E+03  3.68695E+03  3.98107E+03  4.29866E+03
+#           4.64159E+03  5.01187E+03  5.41170E+03  5.84341E+03  6.30957E+03
+#           6.81292E+03  7.35642E+03  7.94328E+03  8.57696E+03  9.26119E+03
+#           1.00000E+04
+     unit =    2            # unit is [MeV/(keV/um)/source]
+   letmat =    5            # (D=0) material id for LET, 0: real material
+ material =  all            # (D=all) number of specific material
+     axis =  let            # axis of output
+     file = let.out         # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         543 (  0)         183 (  0)         726 (  0)
+
+[ T - S E D ]
+    title = [t-sed] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+  se-type =    3            # se-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-02  # minimum value of e-mesh points
+     emax =   10000.00      # maximum value of e-mesh points
+#    edel =  7.6752836E-02  # mesh width of e-mesh points
+       ne =  180            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-02  1.07978E-02  1.16591E-02  1.25893E-02  1.35936E-02
+#           1.46780E-02  1.58489E-02  1.71133E-02  1.84785E-02  1.99526E-02
+#           2.15443E-02  2.32631E-02  2.51189E-02  2.71227E-02  2.92864E-02
+#           3.16228E-02  3.41455E-02  3.68695E-02  3.98107E-02  4.29866E-02
+#           4.64159E-02  5.01187E-02  5.41170E-02  5.84341E-02  6.30957E-02
+#           6.81292E-02  7.35642E-02  7.94328E-02  8.57696E-02  9.26119E-02
+#           1.00000E-01  1.07978E-01  1.16591E-01  1.25893E-01  1.35936E-01
+#           1.46780E-01  1.58489E-01  1.71133E-01  1.84785E-01  1.99526E-01
+#           2.15443E-01  2.32631E-01  2.51189E-01  2.71227E-01  2.92864E-01
+#           3.16228E-01  3.41455E-01  3.68695E-01  3.98107E-01  4.29866E-01
+#           4.64159E-01  5.01187E-01  5.41170E-01  5.84341E-01  6.30957E-01
+#           6.81292E-01  7.35642E-01  7.94328E-01  8.57696E-01  9.26119E-01
+#           1.00000E+00  1.07978E+00  1.16591E+00  1.25893E+00  1.35936E+00
+#           1.46780E+00  1.58489E+00  1.71133E+00  1.84785E+00  1.99526E+00
+#           2.15443E+00  2.32631E+00  2.51189E+00  2.71227E+00  2.92864E+00
+#           3.16228E+00  3.41455E+00  3.68695E+00  3.98107E+00  4.29866E+00
+#           4.64159E+00  5.01187E+00  5.41170E+00  5.84341E+00  6.30957E+00
+#           6.81292E+00  7.35642E+00  7.94328E+00  8.57696E+00  9.26119E+00
+#           1.00000E+01  1.07978E+01  1.16591E+01  1.25893E+01  1.35936E+01
+#           1.46780E+01  1.58489E+01  1.71133E+01  1.84785E+01  1.99526E+01
+#           2.15443E+01  2.32631E+01  2.51189E+01  2.71227E+01  2.92864E+01
+#           3.16228E+01  3.41455E+01  3.68695E+01  3.98107E+01  4.29866E+01
+#           4.64159E+01  5.01187E+01  5.41170E+01  5.84341E+01  6.30957E+01
+#           6.81292E+01  7.35642E+01  7.94328E+01  8.57696E+01  9.26119E+01
+#           1.00000E+02  1.07978E+02  1.16591E+02  1.25893E+02  1.35936E+02
+#           1.46780E+02  1.58489E+02  1.71133E+02  1.84785E+02  1.99526E+02
+#           2.15443E+02  2.32631E+02  2.51189E+02  2.71227E+02  2.92864E+02
+#           3.16228E+02  3.41455E+02  3.68695E+02  3.98107E+02  4.29866E+02
+#           4.64159E+02  5.01187E+02  5.41170E+02  5.84341E+02  6.30957E+02
+#           6.81292E+02  7.35642E+02  7.94328E+02  8.57696E+02  9.26119E+02
+#           1.00000E+03  1.07978E+03  1.16591E+03  1.25893E+03  1.35936E+03
+#           1.46780E+03  1.58489E+03  1.71133E+03  1.84785E+03  1.99526E+03
+#           2.15443E+03  2.32631E+03  2.51189E+03  2.71227E+03  2.92864E+03
+#           3.16228E+03  3.41455E+03  3.68695E+03  3.98107E+03  4.29866E+03
+#           4.64159E+03  5.01187E+03  5.41170E+03  5.84341E+03  6.30957E+03
+#           6.81292E+03  7.35642E+03  7.94328E+03  8.57696E+03  9.26119E+03
+#           1.00000E+04
+  se-unit =    2            # se-unit is [keV/um]
+     unit =    2            # unit is [MeV/z/source)]
+    cdiam = 0.6000000       # (D=1.0) diameter of SE cell [um]
+   letmat =    5            # (D=0) material id for LET, 0: real material
+ material =  all            # (D=all) number of specific material
+     axis =  sed            # axis of output
+     file = ydist.out       # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         543 (  0)         183 (  0)         726 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      152
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =     6980
+*     total memory: mdas = 20000000
+*                percent =     0.03 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =     1086
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =      705
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of total memory >>>
+*      used total memory =   356423
+*     total memory: mdas = 20000000
+*                percent =     1.78 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =            100. : rijk    = 170490721894713.
+       low neutron =              0. : ncall/s =  7.080000000E+00
+          cpu time =   0.077 s.
+
+-------------------------------------------------------------------------------
+bat[       2] ncas =            200. : rijk    = 254308730046409.
+       low neutron =              0. : ncall/s =  7.580000000E+00
+          cpu time =   0.047 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3              2.   : end of a batch                  
+        4            200.   : source                          
+        5              0.   : detection of geometry error     
+        6              0.   : recovery of geometry error      
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10            400.   : geometry boundary crossing      
+       11              0.   : termination by energy cut-off   
+       12            200.   : termination by escape or leakage
+       13              0.   : reaction : (n,x) type           
+       14              0.   : reaction : (n,n'x) type         
+       15              0.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     nucleus             200.     2.0000000E+02     1.0000000E+00
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+         100           2           0    1.0000000E+00    2.0000000000000E+02
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost part in CG    =     0 / nlost =      100
+ Number of CG region errors   =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ next initial random number = 141055916713817.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:39:03
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =         0.59       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00            803.
+         nevap =         0.00         0.00              0.
+         nreac =         0.00         0.00              0.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00              0.
+         elast =         0.00         0.00              0.
+         ncasc =         0.00         0.00              0.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00              0.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+ END 

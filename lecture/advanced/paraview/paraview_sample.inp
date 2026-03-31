@@ -1,0 +1,101 @@
+[ T i t l e ] 
+ minimized input file for sample of ParaView   $sample
+
+[ P a r a m e t e r s ]
+ icntl    =         0   # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =      5e+5   # (D=10) number of particles per one batch
+ maxbch   =         2   # (D=10) number of batches
+ file(6)  = phits.out   # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  s-type =   4          # mono-energetic axial source
+     proj =  photon     # kind of incident particle         
+      dir =   1         # z-direction of beam [cosine]
+       r0 =   0.1       # radius [cm]
+       z0 =   0         # minimum position of z-axis [cm]
+       z1 =   0         # maximum position of z-axis [cm]
+       e0 =   0.04      # energy of beam [MeV/u]
+       dom=   8
+
+[ M a t e r i a l ]
+
+ mat[1]  # Air (1.20e-3 g/cm3)
+          N  8  O 2
+ mat[2]  Fe 1
+ mat[3]  # Water
+          H 2  O 1    
+
+[ S u r f a c e ]
+ 1 rpp -5   5  -5   5   -4   9   $ X-ray generator air 
+ 2 rpp -1   1  -1   1    9   10  $ collimetor air 
+ 3 rpp -6   6  -6   6   -5   10  $ X-ray generator
+ 4 rpp -12 12 -12 12 35 50       $ water phantom
+ 99 rpp -20 20 -20 20 -5 50      $ room
+
+[ C e l l ]
+ 1 1 -1.20e-3  -1                $ X-ray generator air 
+ 2 1 -1.20e-3  -2                $ collimetor air 
+ 3 2 -7.87     -3   #1 #2        $ X-ray generator 
+ 4 3 -1        -4                $ water phatom
+ 99 1 -1.20e-3 -99  #1 #2 #3 #4  $ room
+ 100 -1 99 
+
+[ T - T r a c k ] 
+     part = photon
+     mesh =  xyz            # mesh type is xyz scoring mesh
+    x-type =   2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  40             # number of x-mesh points
+     xmin = -20             # minimum value of x-mesh points
+     xmax =  20             # maximum value of x-mesh points
+    y-type =   2            # x-mesh is linear given by xmin, xmax and nx
+       ny =  40             # number of x-mesh points
+     ymin = -20             # minimum value of x-mesh points
+     ymax =  20             # maximum value of x-mesh points
+    z-type =   2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  55             # number of z-mesh points
+     zmin =  -5             # minimum value of z-mesh points
+     zmax =  50             # maximum value of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            1.0E-2  1.0E-1
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =   xz            # axis of output
+     file = track-xz.out       # file name of output for the above axis
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   vtkout = 1
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - T r a c k ] 
+     part = photon
+     mesh =  xyz            # mesh type is xyz scoring mesh
+    x-type =   2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  40             # number of x-mesh points
+     xmin = -20             # minimum value of x-mesh points
+     xmax =  20             # maximum value of x-mesh points
+    y-type =   2            # x-mesh is linear given by xmin, xmax and nx
+       ny =  40             # number of x-mesh points
+     ymin = -20             # minimum value of x-mesh points
+     ymax =  20             # maximum value of x-mesh points
+    z-type =   2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  55             # number of z-mesh points
+     zmin =  -5             # minimum value of z-mesh points
+     zmax =  50             # maximum value of z-mesh points
+   t-type = 2               # t-mesh is linear given by tmin, tmax and nt
+      nt  = 5               # number of t-mesh points
+    tmin  = 0               # minimum value (ns) of t-mesh points
+    tmax  = 3               # maximum value (ns) of t-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            1.0E-2  1.0E-1
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =   xz            # axis of output
+     file = track-xz-time.out       # file name of output for the above axis
+   epsout =    0            # (D=0) generate eps file by ANGEL
+   vtkout = 1
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ E n d ]

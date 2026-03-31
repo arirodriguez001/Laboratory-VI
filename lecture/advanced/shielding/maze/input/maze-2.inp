@@ -1,0 +1,183 @@
+[ Title ]
+gamma-ray streaming in concrete maze structures
+
+[ Parameters ]
+ icntl    =           5     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =      100000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+
+$ Maze information
+ set:c1[50]   $ thickness of concrete
+ set:c2[230]  $ distance between P1 and source
+ set:c3[200]  $ height
+ set:c4[100]  $ width
+ set:c5[15]   $ radius of detector
+ set:c6[150]  $ length between P0 and P1 (1st leg)
+ set:c7[300]  $ length between P1 and P2 (2nd leg)
+
+[ Source ]
+   s-type =   1             # axial source with energy spectrum
+     proj =  photon         # kind of incident particle         
+       r0 =   0.0           # radius [cm]
+       z0 =  -200.001+c2           # minimum position of z-axis [cm]
+       z1 =  -200.001+c2           # maximum position of z-axis [cm]
+       x0  =  200
+       y0 =   0.0
+      dir =   all           # z-direction of beam [cosine]
+   e-type =  28             # RI source
+       ni =   1             # number of registered nuclide
+                            #  data = ( nuclide(i), activity(i), i = 1, ni )
+    Ir-192    200e9         # (Bq)
+                            # ->  2.59000E+11 (Bq), half life:  73.82700000 (day)
+     norm =   0             # (D=0) normalization factor =0:(/sec) =1:(/source)
+							
+[ Material ]
+$   Concrete   2.302 g/cm^3, taken from ANL-5800 Type 02-a
+$   Note: 2.302 g/cm^3 is US standard. There is no Japanese standard value,
+$   but 2.1 g/cm^3 is usually used for shielding calculation
+m1       H     -0.023       
+         C     -0.0023
+         O     -1.22
+         Na    -0.0368
+         Mg    -0.005
+         Al    -0.078
+         Si    -0.775
+         K     -0.0299
+         Ca    -0.1
+         Fe    -0.032
+
+$   Air at ground level  1.21e-3 g/cm^3
+m2        N   4.0586E-05
+          O   1.0800E-05
+         Ar   2.4255E-07
+
+[ Mat Name Color ]
+   mat        name     size          color   # HSB color value
+     0        void     1.00      lightgray   # { -0.800  1.000  1.000 }
+     1    Concrete     1.00           gray   # { -0.600  1.000  1.000 }
+     2         Air     1.00     pastelblue   # {  0.250  0.400  1.000 }
+
+[Surface] 
+   1   rpp -500/2       200+c4/2     -c3/2    c3/2    -700/2   -200+c6
+   2   rpp -500/2-c1    200+c4/2+c1  -c3/2-c1 c3/2+c1 -700/2   -200+c6
+   3   rpp -500/2       200-c4/2  -c3/2    c3/2    -200+c4/2   -200+c6
+   4   rpp  200-c7+c4/2       200+c4/2     -c3/2    c3/2    -700/2    -200-c4/2
+   5   rpp -500/2      200-c7-c4/2 -c3/2    c3/2    -700/2    -200+c4/2
+   6   rpp -500/2-c1    200+c4/2+c1  -c3/2-c1 -c3/2   -200+c6 100
+
+   7   rpp  -500/2-c1    200+c4/2+c1  -c3/2-c1 -c3/2  -700/2-100 -700/2
+   8   rpp -500/2-c1    200+c4/2+c1  -c3/2-c1 c3/2+c1  -700/2-100      100
+
+   11  s   200     0  -200     c5
+   12  s   200-c7  0  -200     c5
+   13  s   200-c7  0  -200-150 c5
+
+   99  so  1000
+
+[Cell] 
+   1   1 -2.302          1 -2 
+   2   1 -2.302         -3 
+   3   1 -2.302         -4 
+   4   1 -2.302         -5 
+   5   1 -2.302         -6
+   6   1 -2.302         -7
+   11  2 -1.21e-3    -11
+   12  2 -1.21e-3    -12
+   13  2 -1.21e-3    -13
+
+   99   2 -1.21e-3   -8 #1 #2 #3 #4 #5 #6 #11 #12 #13
+   999   -1        8
+
+[volume]
+reg vol
+11  4/3*pi*c5**3
+12  4/3*pi*c5**3
+13  4/3*pi*c5**3
+
+[T-Track] 
+  title =  photon distributions
+    mesh = xyz
+  x-type = 2
+    xmin = -500/2
+    xmax =  200+c4/2+c1
+      nx = 200
+  z-type = 2 
+    zmin = -700/2-100
+    zmax =  100
+      nz = 200
+  y-type = 2
+    ymin = -c3/2-c1
+    ymax =  c3/2+c1
+      ny =   1
+  e-type = 2
+    emin = 0
+    emax =  100
+      ne = 1
+  axis = xz
+  file = xz-track.out
+  part = photon
+  unit = 1
+  z-txt = Effective dose rate($\mu$Sv/h)
+multiplier =all
+emax = 1000
+$  (pSv/sec) -> (uSv/h)
+mat mset1 
+all ( 3600*1e-6 -202 ) 
+
+$  2D-type =  7   # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+  gshow =    1   # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+  epsout = 1     # automatically generate eps plot 
+
+[T-Track] 
+  title =  ene spe at p1
+    mesh = reg
+     reg = 11
+  e-type = 2
+    emin = 0
+    emax =  1
+      ne = 100
+  axis = eng
+  file = p1-ene.out
+  part = photon
+  unit = 1
+  epsout = 1     # automatically generate eps plot 
+  
+[T-Track] 
+  title =  dose rate at p1, p2, p3
+    mesh = reg
+    reg = 11 12 13
+  e-type = 2
+    emin = 0
+    emax =  100
+      ne = 1
+  axis = reg
+  file = dose-track.out
+  part = photon
+  unit = 1
+multiplier =all
+emax = 1000
+$  (pSv/sec) -> (uSv/h)
+mat mset1 
+all ( 3600*1e-6 -202 ) 
+
+[ T-point ] off
+point = 3 # number of point detectors
+non x y z r0
+1 200     0  -200 1.0
+2 200-c7  0  -200 1.0
+3 200-c7  0  -200-150 1.0
+  e-type = 2
+    emin = 0
+    emax =  100
+      ne = 1
+  axis = eng
+  file = dose-point.out
+  part = photon
+  unit = 1
+multiplier =all
+emax = 1000
+$  (pSv/sec) -> (uSv/h)
+mat mset1 
+all ( 3600*1e-6 -202 ) 
+
+[End]

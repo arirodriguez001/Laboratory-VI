@@ -1,0 +1,82 @@
+[ T i t l e ]
+input file for lecture about [parameters] section
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+$ istdev   =          -1     # (D=0) 0:Auto, 1,2:Batch or History variance, <0:Restart mode
+ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EGS
+$ emin(12) = 0.001000000     # (D=1.d9) cut-off energy of electron (MeV)
+$ emin(13) = 0.001000000     # (D=1.d9) cut-off energy of positron (MeV)
+
+set: c1[25]
+
+[ S o u r c e ]
+  totfact =   1e6*(2*c1)**2*3600           # (D=1.0) global factor
+   s-type =   2             # mono-energetic rectangular-solid source
+     proj =  neutron         # kind of incident particle         
+       e0 =   10.00        # energy of beam [MeV]
+       x0 =  -c1            # minimum position of x-axis [cm]
+       x1 =   c1            # maximum position of x-axis [cm]
+       y0 =  -c1            # minimum position of y-axis [cm]
+       y1 =   c1            # maximum position of y-axis [cm]
+       z0 =  -30.000        # minimum position of z-axis [cm]
+       z1 =  -30.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+ 
+infl: {onion.inp}[1-33]
+infl: {volume.out}
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  140            # number of x-mesh points
+     xmin =  -35.           # minimum value of x-mesh points
+     xmax =   35.           # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -35.0  35.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  140            # number of z-mesh points
+     zmin =  -35.           # minimum value of z-mesh points
+     zmax =   35.           # maximum value of z-mesh points
+     part =  proton electron positron photon
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.  200.
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = track_xz.out  # file name of output for the above axis
+    title = Check source direction using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - V o l u m e ]
+     mesh =  reg            # mesh type is region-wise
+      reg = 101 102 103 104 105
+     file = volume.out      # file name of output for [volume]
+   s-type =    2            # 1: Sphere source, 2: Rectangular source
+       x0 = -c1             #  x-min of rectangular
+       x1 =  c1             #  x-max of rectangular
+       y0 = -c1             #  y-min of rectangular
+       y1 =  c1             #  y-max of rectangular
+       z0 = -c1             #  z-min of rectangular
+       z1 =  c1             #  z-max of rectangular
+   stdcut = 0.01            # (D=-1) threshold value of STD cutoff
+
+[ T - Deposit ]
+    title = Deposition energy in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 101 102 103 104 105
+     unit =    0            # unit is [Gy/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =   reg           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  neutron proton
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ E n d ]

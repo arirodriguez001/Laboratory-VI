@@ -1,0 +1,119 @@
+[ T i t l e ]
+Sample input for dose calculation for photon therapy
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) photonuclear GDR, 1:analog, -1:implicit itall
+ e-mode   =           1     # (D=0) 0: Normal, 1: Event generator mode
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=xdirs) nuclear data input file name
+ file(14) = c:/phits/data/trxcrd.dat # (D=trxcrd.dat) photon data input file name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  electron       # kind of incident nucleus          
+       e0 =   20.00         # energy of beam [MeV/u]
+       r0 =   0.1000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # ICRU soft tissue
+           1H         6.0820000E-02
+          12C         5.5700000E-03
+          14N         1.1180000E-03
+          16O         2.8680000E-02
+
+MAT[ 2 ]   # X-ray generator 
+         184W         1.0
+
+MAT[ 3 ]   # Pb collimator 
+         208Pb        1.0
+
+[ C e l l ]
+ 1          2 -17.6 1 -2 -11   $ X-ray generator
+ 2          1 -1.0  3 -4 -12   $ Phantom
+ 3          3 -11.34  5 -6  11 -12   $ Pb collimator
+98          0      #1 #2 #3 -999  $ Void
+99         -1             999  $ Outer region
+
+[ S u r f a c e ]
+ 1            pz     0.0
+ 2            pz     1.0
+ 3            pz     5.0
+ 4            pz    15.0
+ 5            pz     2.0
+ 6            pz     4.0
+ 11           cz     1.0
+ 12           cz     5.0
+ 999          so   100.0
+
+[ T - H e a t ]
+    title = Heat in xyz mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   5.000000      # maximum value of r-mesh points
+       nr =    5            # number of r-mesh points
+$   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+$     ymin =  -5.000000      # minimum value of y-mesh points
+$     ymax =   5.000000      # maximum value of y-mesh points
+$       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   5.000000      # minimum value of z-mesh points
+     zmax =   15.00000      # maximum value of z-mesh points
+       nz =    5            # number of z-mesh points
+     unit =    0            # unit is [Gy/source]
+   factor = 1.0e-3*300*0.01/(1.6*1e-19)
+    y-txt = Absorbed Dose [Gy]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =    r            # axis of output
+     file = heat.out        # file name of output for the above axis
+ material =  all            # (D=all) number of specific material
+   output = heat            # only heat is written
+ electron =    1            # (D=0) 0-> photon library, 1-> electron ionization
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -5.000000      # minimum value of x-mesh points
+     xmax =   5.000000      # maximum value of x-mesh points
+       nx =    1            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -5.000000      # minimum value of y-mesh points
+     ymax =   5.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   -2.00000      # minimum value of z-mesh points
+     zmax =   16.00000      # maximum value of z-mesh points
+       nz =   18            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   eng           # axis of output
+     file = track.out       # file name of output for the above axis
+     part = electron photon neutron
+   e-type =    3            # e-mesh is given by the below data
+       ne =  100            # number of e-mesh points
+     emin =  0.001
+     emax =  100.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[END]

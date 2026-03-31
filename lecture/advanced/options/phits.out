@@ -1,0 +1,319 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  3.250                   |
+          |                       developed by                      |
+          |                                                         |
+          |                     Koji NIITA (RIST),                  |
+          |                                                         |
+          |  Tatsuhiko SATO, Yosuke IWAMOTO, Shintaro HASHIMOTO,    |
+          |    Tatsuhiko OGAWA, Takuya FURUTA, Shinichiro ABE,      |
+          |    Takeshi KAI, Norihiro MATSUDA, Yusuke MATSUYA,       |
+          |       Hunter RATLIFF, Lan YAO, Pi-En TSAI (JAEA),       |
+          |                                                         |
+          |            Hiroshi IWASE, Yasuhito SAKAKI (KEK),        |
+          |                                                         |
+          |           Nobuhiro SHIGYO (Kyushu University), and      |
+          |                                                         |
+          |        Lembit SIHVER (Technische Universitat Wien)      |
+          |                                                         |
+          |                 Last Revised  2021-07-02                |
+          |_________________________________________________________|
+
+                 _____________ [ Job Title ] ____________ 
+                |                                        |
+                |  input file for lecture about options  |
+                |________________________________________|
+
+                        Starting Date = 2021-07-20
+                        Starting Time = 00h 48m 45
+
+>>> Input Echo >>>=============================================================
+
+[ Title ]
+input file for lecture about options
+
+[ Parameters ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ file(1)  = c:/phits        # (D=PhitsPath) PHITS install folder name
+
+[ Source ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # cylindrical source
+     proj =  proton         # kind of incident particle         
+       e0 =   200.00        # energy of beam [MeV/n]
+       r0 =   2.5000        # radius [cm]
+       r1 =   0.0000        # minimum radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -10.000        # minimum position of z-axis [cm]
+       z1 =  -10.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ Material ]
+MAT[ 1 ] 
+            H         2.0000000E+00
+            O         1.0000000E+00
+
+[ Cell ]
+ 100        -1                 10 
+ 101         1 -1.0000000E+00  -11 12 -13  trcl=1 
+ 102         1 -1.0000000E+00  -11 12 -13  trcl=2 
+ 103         1 -1.0000000E+00  -11 12 -13  trcl=3 
+ 110         0                 -10 #101 #102 #103 
+
+[ Surface ]
+ 10            so    5.0000000E+02
+ 11            cz    5.0000000E+00
+ 12            pz    2.0000000E+01
+ 13            pz    2.5000000E+01
+
+[ Transform ]
+*tr1           0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00 -4.5000000E+01  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00    2
+*tr2           0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00  4.5000000E+01  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00    2
+*tr3           0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00  9.0000000E+01  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00
+               0.0000000E+00  0.0000000E+00  0.0000000E+00    2
+
+[ Mat Name Color ]
+   mat     name     size          color   # HSB color value
+     0     Void     1.00      lightgray   # { -0.800  1.000  1.000 }
+     1    Water     1.00     pastelblue   # {  0.250  0.400  1.000 }
+
+[ T-Track ]
+    title = Track Detection using [T-track] tally
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+#    xdel =  0.5000000      # mesh width of x-mesh points
+       nx =    100          # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -2.50000E+01 -2.45000E+01 -2.40000E+01 -2.35000E+01 -2.30000E+01
+#          -2.25000E+01 -2.20000E+01 -2.15000E+01 -2.10000E+01 -2.05000E+01
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01
+   y-type =    1            # y-mesh is given by the below data
+       ny =      1          # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+           -5.00000E+00  5.00000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -20.00000      # minimum value of z-mesh points
+     zmax =   80.00000      # maximum value of z-mesh points
+#    zdel =  0.5000000      # mesh width of z-mesh points
+       nz =    200          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01  2.55000E+01  2.60000E+01  2.65000E+01  2.70000E+01
+#           2.75000E+01  2.80000E+01  2.85000E+01  2.90000E+01  2.95000E+01
+#           3.00000E+01  3.05000E+01  3.10000E+01  3.15000E+01  3.20000E+01
+#           3.25000E+01  3.30000E+01  3.35000E+01  3.40000E+01  3.45000E+01
+#           3.50000E+01  3.55000E+01  3.60000E+01  3.65000E+01  3.70000E+01
+#           3.75000E+01  3.80000E+01  3.85000E+01  3.90000E+01  3.95000E+01
+#           4.00000E+01  4.05000E+01  4.10000E+01  4.15000E+01  4.20000E+01
+#           4.25000E+01  4.30000E+01  4.35000E+01  4.40000E+01  4.45000E+01
+#           4.50000E+01  4.55000E+01  4.60000E+01  4.65000E+01  4.70000E+01
+#           4.75000E+01  4.80000E+01  4.85000E+01  4.90000E+01  4.95000E+01
+#           5.00000E+01  5.05000E+01  5.10000E+01  5.15000E+01  5.20000E+01
+#           5.25000E+01  5.30000E+01  5.35000E+01  5.40000E+01  5.45000E+01
+#           5.50000E+01  5.55000E+01  5.60000E+01  5.65000E+01  5.70000E+01
+#           5.75000E+01  5.80000E+01  5.85000E+01  5.90000E+01  5.95000E+01
+#           6.00000E+01  6.05000E+01  6.10000E+01  6.15000E+01  6.20000E+01
+#           6.25000E+01  6.30000E+01  6.35000E+01  6.40000E+01  6.45000E+01
+#           6.50000E+01  6.55000E+01  6.60000E+01  6.65000E+01  6.70000E+01
+#           6.75000E+01  6.80000E+01  6.85000E+01  6.90000E+01  6.95000E+01
+#           7.00000E+01  7.05000E+01  7.10000E+01  7.15000E+01  7.20000E+01
+#           7.25000E+01  7.30000E+01  7.35000E+01  7.40000E+01  7.45000E+01
+#           7.50000E+01  7.55000E+01  7.60000E+01  7.65000E+01  7.70000E+01
+#           7.75000E+01  7.80000E+01  7.85000E+01  7.90000E+01  7.95000E+01
+#           8.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  5.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =      xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat 5:bmp style
+    resol =    1            # (D=1) resolution of gshow or rshow
+    width = 0.5000000       # (D=0.5) width of lines for gshow or rshow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         310 (  0)           0 (  0)         310 (  0)
+
+[ T-Track ]
+    title = Track Detection using [T-track] tally
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+#    xdel =  0.5000000      # mesh width of x-mesh points
+       nx =    100          # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -2.50000E+01 -2.45000E+01 -2.40000E+01 -2.35000E+01 -2.30000E+01
+#          -2.25000E+01 -2.20000E+01 -2.15000E+01 -2.10000E+01 -2.05000E+01
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -25.00000      # minimum value of y-mesh points
+     ymax =   25.00000      # maximum value of y-mesh points
+#    ydel =  0.5000000      # mesh width of y-mesh points
+       ny =    100          # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -2.50000E+01 -2.45000E+01 -2.40000E+01 -2.35000E+01 -2.30000E+01
+#          -2.25000E+01 -2.20000E+01 -2.15000E+01 -2.10000E+01 -2.05000E+01
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01
+   z-type =    1            # z-mesh is given by the below data
+       nz =      1          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+           -5.00000E+00  5.00000E+00
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  5.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =      xy            # axis of output
+     file = track_xy.out    # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat 5:bmp style
+    resol =    1            # (D=1) resolution of gshow or rshow
+    width = 0.5000000       # (D=0.5) width of lines for gshow or rshow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         210 (  0)           0 (  0)         210 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      384
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =      168
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for low energy>>>
+*    low energy material =      958
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =      520
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of bank memory >>>
+*            bank memory =     1339
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of other memory >>>
+*           other memory =     1632
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of total memory >>>
+*      used total memory =     5001
+*     total memory: mdas = 80000000
+*                percent =     0.01 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+ job termination date : 2021/07/20
+                 time :   00:48:45
+
+ END 

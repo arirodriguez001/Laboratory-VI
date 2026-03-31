@@ -1,0 +1,630 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 38m 13
+
+>>> Input Echo >>>=============================================================
+
+[ P a r a m e t e r s ]
+ icntl    =           5     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =      100000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ emin(2)  = 1.000000000E-08 # (D=1.0) cut-off energy of neutron (MeV)
+ file(6)  = phits2.out      # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  totfact =   3.0000        # (D=1.0) global factor
+
+ <Source> =   9.7200        # weight of this sub-source
+   s-type =   4             # axial source with energy spectrum
+     proj =  proton         # kind of incident particle         
+       r0 =   5.0000        # radius [cm]
+       r1 =   4.0000        # minimum radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   2.0000        # minimum position of z-axis [cm]
+       z1 =   29.000        # maximum position of z-axis [cm]
+      dir =   0.0000        # z-direction of beam [cosine]
+   e-type =   6             # Functional energy distribution
+     f(x) = x**(1.5)*exp(-x/c10)
+      eg1 =  1.00000E-06    # minimum cutoff energy [MeV]
+      eg2 =  1.00000E-03    # maximum cutoff energy [MeV]
+       nm = -200            # number of energy mesh
+                            # nm>0: lin, nm<0: log mesh and interpolation
+   p-type =   0             # generate weight type, 0:equal, 1: given by data
+
+ <Source> =   1.0000        # weight of this sub-source
+   s-type =   4             # axial source with energy spectrum
+     proj =  photon         # kind of incident particle         
+       r0 =   5.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   1.0000        # minimum position of z-axis [cm]
+       z1 =   2.0000        # maximum position of z-axis [cm]
+      dir =  -1.0000        # z-direction of beam [cosine]
+   e-type =   5             # Functional energy distribution
+     f(x) = exp(-(x-c10)**2/2/c20**2)
+      eg1 =  1.00000E-03    # minimum cutoff energy [MeV]
+      eg2 =  0.50000        # maximum cutoff energy [MeV]
+       nm =  200            # number of energy mesh
+                            # nm>0: lin, nm<0: log mesh and interpolation
+
+ <Source> =   1.0000        # weight of this sub-source
+   s-type =   4             # axial source with energy spectrum
+     proj =  neutron        # kind of incident particle         
+       r0 =   5.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   29.000        # minimum position of z-axis [cm]
+       z1 =   30.000        # maximum position of z-axis [cm]
+      dir =  data           # z-direction of beam by below data
+   a-type =   5             # Functional angular distribution by cosine
+     g(x) = exp(-(x-1)**2/0.3**2)
+      ag1 =   0.0000        # minimum cutoff cosine
+      ag2 =   1.0000        # maximum cutoff cosine
+       nn =  200            # number of cosine mesh
+                            # nn>0: lin, nn<0: log mesh and interpolation
+   e-type =   6             # Functional energy distribution
+     f(x) = c10/c20*exp(-sqrt(x*(x+1876))/c10)*(x+938)/sqrt(x*(x+1876))
+      eg1 =  1.00000E-02    # minimum cutoff energy [MeV]
+      eg2 =   1000.0        # maximum cutoff energy [MeV]
+       nm = -200            # number of energy mesh
+                            # nm>0: lin, nm<0: log mesh and interpolation
+   p-type =   0             # generate weight type, 0:equal, 1: given by data
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+           Cu        -8.9600000E+00
+MAT[ 2 ] 
+         63Cu        -6.1900000E+00
+
+[ C e l l ]
+ 1          0                 2 -3 -1 
+ 5         -1                 -2 : 3 : 1 
+
+[ S u r f a c e ]
+ 1            cz     1.0000000E+03
+ 2            pz    -1.0000000E+01
+ 3            pz     5.0000000E+01
+
+[ T - P r o d u c t ]
+    title = [t-product] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   500.0000      # maximum value of r-mesh points
+#    rdel =   500.0000      # mesh width of r-mesh points
+       nr =    1            # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  5.00000E+02
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   50.00000      # maximum value of z-mesh points
+#    zdel =   50.00000      # mesh width of z-mesh points
+       nz =    1            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E+01
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-06  # minimum value of e-mesh points
+     emax =   1000.000      # maximum value of e-mesh points
+#    edel =  0.1036163      # mesh width of e-mesh points
+       ne =  200            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-06  1.10917E-06  1.23027E-06  1.36458E-06  1.51356E-06
+#           1.67880E-06  1.86209E-06  2.06538E-06  2.29087E-06  2.54097E-06
+#           2.81838E-06  3.12608E-06  3.46737E-06  3.84592E-06  4.26580E-06
+#           4.73151E-06  5.24807E-06  5.82103E-06  6.45654E-06  7.16143E-06
+#           7.94328E-06  8.81049E-06  9.77237E-06  1.08393E-05  1.20226E-05
+#           1.33352E-05  1.47911E-05  1.64059E-05  1.81970E-05  2.01837E-05
+#           2.23872E-05  2.48313E-05  2.75423E-05  3.05492E-05  3.38844E-05
+#           3.75837E-05  4.16869E-05  4.62381E-05  5.12861E-05  5.68853E-05
+#           6.30957E-05  6.99842E-05  7.76247E-05  8.60994E-05  9.54993E-05
+#           1.05925E-04  1.17490E-04  1.30317E-04  1.44544E-04  1.60325E-04
+#           1.77828E-04  1.97242E-04  2.18776E-04  2.42661E-04  2.69153E-04
+#           2.98538E-04  3.31131E-04  3.67282E-04  4.07380E-04  4.51856E-04
+#           5.01187E-04  5.55904E-04  6.16595E-04  6.83912E-04  7.58578E-04
+#           8.41395E-04  9.33254E-04  1.03514E-03  1.14815E-03  1.27350E-03
+#           1.41254E-03  1.56675E-03  1.73780E-03  1.92752E-03  2.13796E-03
+#           2.37137E-03  2.63027E-03  2.91743E-03  3.23594E-03  3.58922E-03
+#           3.98107E-03  4.41570E-03  4.89779E-03  5.43250E-03  6.02560E-03
+#           6.68344E-03  7.41310E-03  8.22243E-03  9.12011E-03  1.01158E-02
+#           1.12202E-02  1.24451E-02  1.38038E-02  1.53109E-02  1.69824E-02
+#           1.88365E-02  2.08930E-02  2.31739E-02  2.57040E-02  2.85102E-02
+#           3.16228E-02  3.50752E-02  3.89045E-02  4.31519E-02  4.78630E-02
+#           5.30884E-02  5.88844E-02  6.53131E-02  7.24436E-02  8.03526E-02
+#           8.91251E-02  9.88553E-02  1.09648E-01  1.21619E-01  1.34896E-01
+#           1.49624E-01  1.65959E-01  1.84077E-01  2.04174E-01  2.26464E-01
+#           2.51189E-01  2.78612E-01  3.09030E-01  3.42768E-01  3.80189E-01
+#           4.21697E-01  4.67735E-01  5.18800E-01  5.75440E-01  6.38263E-01
+#           7.07946E-01  7.85236E-01  8.70964E-01  9.66051E-01  1.07152E+00
+#           1.18850E+00  1.31826E+00  1.46218E+00  1.62181E+00  1.79887E+00
+#           1.99526E+00  2.21309E+00  2.45471E+00  2.72270E+00  3.01995E+00
+#           3.34965E+00  3.71535E+00  4.12098E+00  4.57088E+00  5.06991E+00
+#           5.62341E+00  6.23735E+00  6.91831E+00  7.67361E+00  8.51138E+00
+#           9.44061E+00  1.04713E+01  1.16145E+01  1.28825E+01  1.42889E+01
+#           1.58489E+01  1.75792E+01  1.94984E+01  2.16272E+01  2.39883E+01
+#           2.66073E+01  2.95121E+01  3.27341E+01  3.63078E+01  4.02717E+01
+#           4.46684E+01  4.95450E+01  5.49541E+01  6.09537E+01  6.76083E+01
+#           7.49894E+01  8.31764E+01  9.22571E+01  1.02329E+02  1.13501E+02
+#           1.25893E+02  1.39637E+02  1.54882E+02  1.71791E+02  1.90546E+02
+#           2.11349E+02  2.34423E+02  2.60016E+02  2.88403E+02  3.19890E+02
+#           3.54813E+02  3.93550E+02  4.36516E+02  4.84172E+02  5.37032E+02
+#           5.95662E+02  6.60693E+02  7.32825E+02  8.12831E+02  9.01571E+02
+#           1.00000E+03
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =    1            # unit is [1/source]
+     axis =  eng            # axis of output
+     file = source1.dat     # file name of output for the above axis
+   output = source          # (D=nuclear) source distribution
+     part =  proton     photon     neutron  
+# kf/name :  2212       22         2112     
+    angel = ymin(1.e-6)
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :        1409 (  0)         202 (  0)        1611 (  0)
+
+[ T - P r o d u c t ]
+    title = [t-product] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -7.000000      # minimum value of x-mesh points
+     xmax =   7.000000      # maximum value of x-mesh points
+#    xdel =  0.2800000      # mesh width of x-mesh points
+       nx =   50            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -7.00000E+00 -6.72000E+00 -6.44000E+00 -6.16000E+00 -5.88000E+00
+#          -5.60000E+00 -5.32000E+00 -5.04000E+00 -4.76000E+00 -4.48000E+00
+#          -4.20000E+00 -3.92000E+00 -3.64000E+00 -3.36000E+00 -3.08000E+00
+#          -2.80000E+00 -2.52000E+00 -2.24000E+00 -1.96000E+00 -1.68000E+00
+#          -1.40000E+00 -1.12000E+00 -8.40000E-01 -5.60000E-01 -2.80000E-01
+#           8.88178E-16  2.80000E-01  5.60000E-01  8.40000E-01  1.12000E+00
+#           1.40000E+00  1.68000E+00  1.96000E+00  2.24000E+00  2.52000E+00
+#           2.80000E+00  3.08000E+00  3.36000E+00  3.64000E+00  3.92000E+00
+#           4.20000E+00  4.48000E+00  4.76000E+00  5.04000E+00  5.32000E+00
+#           5.60000E+00  5.88000E+00  6.16000E+00  6.44000E+00  6.72000E+00
+#           7.00000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin = -0.1000000      # minimum value of y-mesh points
+     ymax =  0.1000000      # maximum value of y-mesh points
+#    ydel =  0.2000000      # mesh width of y-mesh points
+       ny =    1            # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -1.00000E-01  1.00000E-01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -2.000000      # minimum value of z-mesh points
+     zmax =   35.00000      # maximum value of z-mesh points
+#    zdel =  0.5000000      # mesh width of z-mesh points
+       nz =   74            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#          -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01  0.00000E+00
+#           5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00  2.50000E+00
+#           3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00  5.00000E+00
+#           5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00  7.50000E+00
+#           8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00  1.00000E+01
+#           1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01  1.25000E+01
+#           1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01  1.50000E+01
+#           1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01  1.75000E+01
+#           1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01  2.00000E+01
+#           2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01  2.25000E+01
+#           2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01  2.50000E+01
+#           2.55000E+01  2.60000E+01  2.65000E+01  2.70000E+01  2.75000E+01
+#           2.80000E+01  2.85000E+01  2.90000E+01  2.95000E+01  3.00000E+01
+#           3.05000E+01  3.10000E+01  3.15000E+01  3.20000E+01  3.25000E+01
+#           3.30000E+01  3.35000E+01  3.40000E+01  3.45000E+01  3.50000E+01
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =  1.0000000E-06  # minimum value of e-mesh points
+     emax =   3000.000      # maximum value of e-mesh points
+#    edel =   3000.000      # mesh width of e-mesh points
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-06  3.00000E+03
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =    2            # unit is [1/cm^3/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = source2.dat     # file name of output for the above axis
+   output = source          # (D=nuclear) source distribution
+     part =  all      
+# kf/name :  0        
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :        7534 (  0)        3828 (  0)       11362 (  0)
+
+[ T - P r o d u c t ]
+    title = [t-product] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -7.000000      # minimum value of x-mesh points
+     xmax =   7.000000      # maximum value of x-mesh points
+#    xdel =  0.1400000      # mesh width of x-mesh points
+       nx =  100            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -7.00000E+00 -6.86000E+00 -6.72000E+00 -6.58000E+00 -6.44000E+00
+#          -6.30000E+00 -6.16000E+00 -6.02000E+00 -5.88000E+00 -5.74000E+00
+#          -5.60000E+00 -5.46000E+00 -5.32000E+00 -5.18000E+00 -5.04000E+00
+#          -4.90000E+00 -4.76000E+00 -4.62000E+00 -4.48000E+00 -4.34000E+00
+#          -4.20000E+00 -4.06000E+00 -3.92000E+00 -3.78000E+00 -3.64000E+00
+#          -3.50000E+00 -3.36000E+00 -3.22000E+00 -3.08000E+00 -2.94000E+00
+#          -2.80000E+00 -2.66000E+00 -2.52000E+00 -2.38000E+00 -2.24000E+00
+#          -2.10000E+00 -1.96000E+00 -1.82000E+00 -1.68000E+00 -1.54000E+00
+#          -1.40000E+00 -1.26000E+00 -1.12000E+00 -9.80000E-01 -8.40000E-01
+#          -7.00000E-01 -5.60000E-01 -4.20000E-01 -2.80000E-01 -1.40000E-01
+#           8.88178E-16  1.40000E-01  2.80000E-01  4.20000E-01  5.60000E-01
+#           7.00000E-01  8.40000E-01  9.80000E-01  1.12000E+00  1.26000E+00
+#           1.40000E+00  1.54000E+00  1.68000E+00  1.82000E+00  1.96000E+00
+#           2.10000E+00  2.24000E+00  2.38000E+00  2.52000E+00  2.66000E+00
+#           2.80000E+00  2.94000E+00  3.08000E+00  3.22000E+00  3.36000E+00
+#           3.50000E+00  3.64000E+00  3.78000E+00  3.92000E+00  4.06000E+00
+#           4.20000E+00  4.34000E+00  4.48000E+00  4.62000E+00  4.76000E+00
+#           4.90000E+00  5.04000E+00  5.18000E+00  5.32000E+00  5.46000E+00
+#           5.60000E+00  5.74000E+00  5.88000E+00  6.02000E+00  6.16000E+00
+#           6.30000E+00  6.44000E+00  6.58000E+00  6.72000E+00  6.86000E+00
+#           7.00000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -7.000000      # minimum value of y-mesh points
+     ymax =   7.000000      # maximum value of y-mesh points
+#    ydel =  0.1400000      # mesh width of y-mesh points
+       ny =  100            # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -7.00000E+00 -6.86000E+00 -6.72000E+00 -6.58000E+00 -6.44000E+00
+#          -6.30000E+00 -6.16000E+00 -6.02000E+00 -5.88000E+00 -5.74000E+00
+#          -5.60000E+00 -5.46000E+00 -5.32000E+00 -5.18000E+00 -5.04000E+00
+#          -4.90000E+00 -4.76000E+00 -4.62000E+00 -4.48000E+00 -4.34000E+00
+#          -4.20000E+00 -4.06000E+00 -3.92000E+00 -3.78000E+00 -3.64000E+00
+#          -3.50000E+00 -3.36000E+00 -3.22000E+00 -3.08000E+00 -2.94000E+00
+#          -2.80000E+00 -2.66000E+00 -2.52000E+00 -2.38000E+00 -2.24000E+00
+#          -2.10000E+00 -1.96000E+00 -1.82000E+00 -1.68000E+00 -1.54000E+00
+#          -1.40000E+00 -1.26000E+00 -1.12000E+00 -9.80000E-01 -8.40000E-01
+#          -7.00000E-01 -5.60000E-01 -4.20000E-01 -2.80000E-01 -1.40000E-01
+#           8.88178E-16  1.40000E-01  2.80000E-01  4.20000E-01  5.60000E-01
+#           7.00000E-01  8.40000E-01  9.80000E-01  1.12000E+00  1.26000E+00
+#           1.40000E+00  1.54000E+00  1.68000E+00  1.82000E+00  1.96000E+00
+#           2.10000E+00  2.24000E+00  2.38000E+00  2.52000E+00  2.66000E+00
+#           2.80000E+00  2.94000E+00  3.08000E+00  3.22000E+00  3.36000E+00
+#           3.50000E+00  3.64000E+00  3.78000E+00  3.92000E+00  4.06000E+00
+#           4.20000E+00  4.34000E+00  4.48000E+00  4.62000E+00  4.76000E+00
+#           4.90000E+00  5.04000E+00  5.18000E+00  5.32000E+00  5.46000E+00
+#           5.60000E+00  5.74000E+00  5.88000E+00  6.02000E+00  6.16000E+00
+#           6.30000E+00  6.44000E+00  6.58000E+00  6.72000E+00  6.86000E+00
+#           7.00000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   1.000000      # minimum value of z-mesh points
+     zmax =   2.000000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =    1            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           1.00000E+00  2.00000E+00
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =  1.0000000E-06  # minimum value of e-mesh points
+     emax =   3000.000      # maximum value of e-mesh points
+#    edel =   3000.000      # mesh width of e-mesh points
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-06  3.00000E+03
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =    2            # unit is [1/cm^3/source]
+     axis =   xy            # axis of output
+     file = source3.dat     # file name of output for the above axis
+   output = source          # (D=nuclear) source distribution
+     part =  all      
+# kf/name :  0        
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :       20210 (  0)       10204 (  0)       30414 (  0)
+
+[ T - P r o d u c t ]
+    title = [t-product] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -7.000000      # minimum value of x-mesh points
+     xmax =   7.000000      # maximum value of x-mesh points
+#    xdel =  0.1400000      # mesh width of x-mesh points
+       nx =  100            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -7.00000E+00 -6.86000E+00 -6.72000E+00 -6.58000E+00 -6.44000E+00
+#          -6.30000E+00 -6.16000E+00 -6.02000E+00 -5.88000E+00 -5.74000E+00
+#          -5.60000E+00 -5.46000E+00 -5.32000E+00 -5.18000E+00 -5.04000E+00
+#          -4.90000E+00 -4.76000E+00 -4.62000E+00 -4.48000E+00 -4.34000E+00
+#          -4.20000E+00 -4.06000E+00 -3.92000E+00 -3.78000E+00 -3.64000E+00
+#          -3.50000E+00 -3.36000E+00 -3.22000E+00 -3.08000E+00 -2.94000E+00
+#          -2.80000E+00 -2.66000E+00 -2.52000E+00 -2.38000E+00 -2.24000E+00
+#          -2.10000E+00 -1.96000E+00 -1.82000E+00 -1.68000E+00 -1.54000E+00
+#          -1.40000E+00 -1.26000E+00 -1.12000E+00 -9.80000E-01 -8.40000E-01
+#          -7.00000E-01 -5.60000E-01 -4.20000E-01 -2.80000E-01 -1.40000E-01
+#           8.88178E-16  1.40000E-01  2.80000E-01  4.20000E-01  5.60000E-01
+#           7.00000E-01  8.40000E-01  9.80000E-01  1.12000E+00  1.26000E+00
+#           1.40000E+00  1.54000E+00  1.68000E+00  1.82000E+00  1.96000E+00
+#           2.10000E+00  2.24000E+00  2.38000E+00  2.52000E+00  2.66000E+00
+#           2.80000E+00  2.94000E+00  3.08000E+00  3.22000E+00  3.36000E+00
+#           3.50000E+00  3.64000E+00  3.78000E+00  3.92000E+00  4.06000E+00
+#           4.20000E+00  4.34000E+00  4.48000E+00  4.62000E+00  4.76000E+00
+#           4.90000E+00  5.04000E+00  5.18000E+00  5.32000E+00  5.46000E+00
+#           5.60000E+00  5.74000E+00  5.88000E+00  6.02000E+00  6.16000E+00
+#           6.30000E+00  6.44000E+00  6.58000E+00  6.72000E+00  6.86000E+00
+#           7.00000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -7.000000      # minimum value of y-mesh points
+     ymax =   7.000000      # maximum value of y-mesh points
+#    ydel =  0.1400000      # mesh width of y-mesh points
+       ny =  100            # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -7.00000E+00 -6.86000E+00 -6.72000E+00 -6.58000E+00 -6.44000E+00
+#          -6.30000E+00 -6.16000E+00 -6.02000E+00 -5.88000E+00 -5.74000E+00
+#          -5.60000E+00 -5.46000E+00 -5.32000E+00 -5.18000E+00 -5.04000E+00
+#          -4.90000E+00 -4.76000E+00 -4.62000E+00 -4.48000E+00 -4.34000E+00
+#          -4.20000E+00 -4.06000E+00 -3.92000E+00 -3.78000E+00 -3.64000E+00
+#          -3.50000E+00 -3.36000E+00 -3.22000E+00 -3.08000E+00 -2.94000E+00
+#          -2.80000E+00 -2.66000E+00 -2.52000E+00 -2.38000E+00 -2.24000E+00
+#          -2.10000E+00 -1.96000E+00 -1.82000E+00 -1.68000E+00 -1.54000E+00
+#          -1.40000E+00 -1.26000E+00 -1.12000E+00 -9.80000E-01 -8.40000E-01
+#          -7.00000E-01 -5.60000E-01 -4.20000E-01 -2.80000E-01 -1.40000E-01
+#           8.88178E-16  1.40000E-01  2.80000E-01  4.20000E-01  5.60000E-01
+#           7.00000E-01  8.40000E-01  9.80000E-01  1.12000E+00  1.26000E+00
+#           1.40000E+00  1.54000E+00  1.68000E+00  1.82000E+00  1.96000E+00
+#           2.10000E+00  2.24000E+00  2.38000E+00  2.52000E+00  2.66000E+00
+#           2.80000E+00  2.94000E+00  3.08000E+00  3.22000E+00  3.36000E+00
+#           3.50000E+00  3.64000E+00  3.78000E+00  3.92000E+00  4.06000E+00
+#           4.20000E+00  4.34000E+00  4.48000E+00  4.62000E+00  4.76000E+00
+#           4.90000E+00  5.04000E+00  5.18000E+00  5.32000E+00  5.46000E+00
+#           5.60000E+00  5.74000E+00  5.88000E+00  6.02000E+00  6.16000E+00
+#           6.30000E+00  6.44000E+00  6.58000E+00  6.72000E+00  6.86000E+00
+#           7.00000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   14.00000      # minimum value of z-mesh points
+     zmax =   15.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =    1            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           1.40000E+01  1.50000E+01
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =  1.0000000E-06  # minimum value of e-mesh points
+     emax =   3000.000      # maximum value of e-mesh points
+#    edel =   3000.000      # mesh width of e-mesh points
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-06  3.00000E+03
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =    2            # unit is [1/cm^3/source]
+     axis =   xy            # axis of output
+     file = source4.dat     # file name of output for the above axis
+   output = source          # (D=nuclear) source distribution
+     part =  all      
+# kf/name :  0        
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :       20210 (  0)       10204 (  0)       30414 (  0)
+
+[ T - P r o d u c t ]
+    title = [t-product] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   500.0000      # maximum value of r-mesh points
+#    rdel =   500.0000      # mesh width of r-mesh points
+       nr =    1            # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  5.00000E+02
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   50.00000      # maximum value of z-mesh points
+#    zdel =   50.00000      # mesh width of z-mesh points
+       nz =    1            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E+01
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-06  # minimum value of e-mesh points
+     emax =   1000.000      # maximum value of e-mesh points
+#    edel =   20.72327      # mesh width of e-mesh points
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-06  1.00000E+03
+   a-type =    2            # a-mesh is linear given by amin, amax and na
+     amin =   0.000000      # minimum value of a-mesh points
+     amax =   1.000000      # maximum value of a-mesh points
+#    adel =  1.0000000E-02  # mesh width of a-mesh points
+       na =  100            # number of a-mesh points
+#    data = ( a(i), i = 1, na + 1 )
+#           0.00000E+00  1.00000E-02  2.00000E-02  3.00000E-02  4.00000E-02
+#           5.00000E-02  6.00000E-02  7.00000E-02  8.00000E-02  9.00000E-02
+#           1.00000E-01  1.10000E-01  1.20000E-01  1.30000E-01  1.40000E-01
+#           1.50000E-01  1.60000E-01  1.70000E-01  1.80000E-01  1.90000E-01
+#           2.00000E-01  2.10000E-01  2.20000E-01  2.30000E-01  2.40000E-01
+#           2.50000E-01  2.60000E-01  2.70000E-01  2.80000E-01  2.90000E-01
+#           3.00000E-01  3.10000E-01  3.20000E-01  3.30000E-01  3.40000E-01
+#           3.50000E-01  3.60000E-01  3.70000E-01  3.80000E-01  3.90000E-01
+#           4.00000E-01  4.10000E-01  4.20000E-01  4.30000E-01  4.40000E-01
+#           4.50000E-01  4.60000E-01  4.70000E-01  4.80000E-01  4.90000E-01
+#           5.00000E-01  5.10000E-01  5.20000E-01  5.30000E-01  5.40000E-01
+#           5.50000E-01  5.60000E-01  5.70000E-01  5.80000E-01  5.90000E-01
+#           6.00000E-01  6.10000E-01  6.20000E-01  6.30000E-01  6.40000E-01
+#           6.50000E-01  6.60000E-01  6.70000E-01  6.80000E-01  6.90000E-01
+#           7.00000E-01  7.10000E-01  7.20000E-01  7.30000E-01  7.40000E-01
+#           7.50000E-01  7.60000E-01  7.70000E-01  7.80000E-01  7.90000E-01
+#           8.00000E-01  8.10000E-01  8.20000E-01  8.30000E-01  8.40000E-01
+#           8.50000E-01  8.60000E-01  8.70000E-01  8.80000E-01  8.90000E-01
+#           9.00000E-01  9.10000E-01  9.20000E-01  9.30000E-01  9.40000E-01
+#           9.50000E-01  9.60000E-01  9.70000E-01  9.80000E-01  9.90000E-01
+#           1.00000E+00
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =   21            # unit is [1/SR/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =  cos            # axis of output
+     file = source5.dat     # file name of output for the above axis
+   output = source          # (D=nuclear) source distribution
+     part =  proton     photon     neutron  
+# kf/name :  2212       22         2112     
+    angel = ylin
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         709 (  0)         102 (  0)         811 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      130
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =     6938
+*     total memory: mdas = 20000000
+*                percent =     0.03 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =    50072
+*     total memory: mdas = 20000000
+*                percent =     0.25 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =     5369
+*     total memory: mdas = 20000000
+*                percent =     0.03 %
+
+<<< Report of total memory >>>
+*      used total memory =   410009
+*     total memory: mdas = 20000000
+*                percent =     2.05 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =         100000. : rijk    =   6647299061401.
+       low neutron =              0. : ncall/s =  9.359800000E+00
+          cpu time =   0.546 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3              1.   : end of a batch                  
+        4         100000.   : source                          
+        5              0.   : detection of geometry error     
+        6              0.   : recovery of geometry error      
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10              0.   : geometry boundary crossing      
+       11          91475.   : termination by energy cut-off   
+       12           8525.   : termination by escape or leakage
+       13              0.   : reaction : (n,x) type           
+       14              0.   : reaction : (n,n'x) type         
+       15              0.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+
+-------------------------------------------------------------------------------
+ stop. particles.    number        weight        weight per source
+-------------------------------------------------------------------------------
+     proton            82950.     8.2375078E+04     2.4843437E+00
+     photon             8525.     8.5250000E+03     2.5710483E-01
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron            8525.     8.5729667E+03     2.5855145E-01
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+      100000           1           0    3.3157682E-01    3.3157681559561E+04
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost part in CG    =     0 / nlost =       10
+ Number of CG region errors   =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ next initial random number = 261566935209241.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:38:16
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =         2.97       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00         200002.
+         nevap =         0.00         0.00              0.
+         nreac =         0.00         0.00              0.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00              0.
+         elast =         0.00         0.00              0.
+         ncasc =         0.00         0.00              0.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00              0.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+ END 

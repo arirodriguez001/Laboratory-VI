@@ -1,0 +1,218 @@
+[Title]
+Neutron dose rate from 400MeV proton incident reaction on Cu
+
+[Parameters]
+ icntl    =           0    # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        5000    # (D=10) number of particles per one batch
+ maxbch   =          10    # (D=10) number of batches
+ maxbnk   =     1000000    # (D=10000) maximum bank memory length
+ dmax(1)  =  200.0         # (D=emin(1)) data max. energy of proton (MeV)
+ dmax(2)  =  200.0         # (D=20.0) data max. energy of neutron (MeV)
+ infl: {WWG.out}          # output file from [t-WWG]
+
+ set:c1[10]   $ thickness of Cu target
+ set:c2[50]  $ thickness of concrete shield
+ set:c3[15]  $ radius of ditector
+ 
+[ S o u r c e ] off
+   totfact = 250e3/400e6/1.602e-19  $ convert (/source) to (/sec)
+   s-type =   1             # axial source with energy spectrum
+     proj =  proton         # kind of incident particle         
+       r0 =   0.5           # radius [cm]
+       z0 =  -100           # minimum position of z-axis [cm]
+       z1 =  -100           # maximum position of z-axis [cm]
+       x0  =    0
+       y0 =   0.0
+      dir =   1           # z-direction of beam [cosine]
+         e0 = 400
+
+[ S o u r c e ]
+s-type =  17
+file =  cross_neutron_dmp.out
+    idmpmode = 1
+dump =   -11
+    1  2  3  4  5  6  7  8  9 18 19
+
+[Material]
+$   Concrete   2.302 g/cm^3, taken from ANL-5800 Type 02-a
+$   Note: 2.302 g/cm^3 is US standard. 
+
+m1       H     -0.023       
+         C     -0.0023
+         O     -1.22
+         Na    -0.0368
+         Mg    -0.005
+         Al    -0.078
+         Si    -0.775
+         K     -0.0299
+         Ca    -0.1
+         Fe    -0.032
+
+$   Air at ground level  1.21e-3 g/cm^3
+m2        N   4.0586E-05
+          O   1.0800E-05
+         Ar   2.4255E-07
+
+m3  Cu    1.0
+
+[ Mat Name Color ]
+    mat   name      color
+     1    Concrete    gray
+     2    Air         pastelblue
+     3    Copper      red
+
+[Surface] 
+   1   rpp  -c1/2   c1/2     -c1/2    c1/2    -c1/2 c1/2
+   2   cz    c1/2 
+   3   pz   -c1/2
+   4   pz   -200
+   5   rpp  -200 200  -100     100    -200 200
+   6   rpp  -200 200   100     100+c2 -200 200
+   7   rpp  -200 200  -100-c2 -100    -200 200
+
+  11   s    0 100+c2+c3 0 c3
+
+   99  so  1000
+
+[Cell] 
+   1    3 -8.90          -1  
+   2    0          -2 4  -3
+   3    2 -1.21e-3 -5 #1 #2
+   4    1 -2.302   -6 
+$   4   -1     -6 
+   5    1 -2.302   -7
+  11    2 -1.21e-3 -11
+
+   99   2 -1.21e-3   -99  #1 #2 #3 #4 #5 #11
+   999   -1           99
+
+[volume]
+reg vol
+11   4/3*pi*c3*c3*c3
+
+[T-Track] 
+  title =  neutron distributions
+    mesh = xyz
+  y-type = 2
+    ymin = -150
+    ymax =  200+c2+50
+      ny = 200
+  z-type = 2 
+    zmin = -200
+    zmax =  200
+      nz = 200
+  x-type = 2
+    xmin = -10
+    xmax =  10
+      nx =   1
+  e-type = 2
+    emin = 0
+    emax =  1000
+      ne = 1
+  axis = yz
+  file = yz-track.out
+  part = neutron photon proton
+  unit = 1
+  gshow =    3   # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+  epsout = 1     # automatically generate eps plot 
+  z-txt = Effective dose rate(Sv/sec)
+multiplier =all
+emax = 1000
+$  (pSv/sec) (Sv/sec)
+mat mset1 
+all ( 1e-12 -202 ) 
+
+   
+[T-Track] 
+  title =  energy spectrum at detector
+    mesh = reg
+     reg = 11
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   400.0           # maximum value of e-mesh points
+       ne =   100            # number of e-mesh points
+  axis = eng
+  file = detector-ene.out
+  part = neutron
+  unit = 1
+   epsout = 1
+
+[T-Track] 
+  title =  dose rate at detector
+    mesh = reg
+    reg = 11 
+  e-type = 2
+    emin = 0
+    emax =  1000
+      ne = 1
+  axis = reg
+  file = dose-detector.out
+  part = neutron
+  unit = 1
+multiplier =all
+emax = 1000
+$  (pSv/sec) (Sv/sec)
+mat mset1 
+all ( 1e-12 -202 ) 
+
+
+[ T - C r o s s ] off
+    title = dump file generation
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+      non     r-from  r-to       area
+        1      3      4      400*400    
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   400.0           # maximum value of e-mesh points
+       ne =   100            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  eng            # axis of output
+     file = cross_neutron.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part =  neutron   
+   epsout =    0            # (D=0) generate eps file by ANGEL
+
+   dump =   -11
+1  2  3  4  5  6  7  8  9 18 19
+
+[ T - C r o s s ] off
+    title = Energy distribution in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+      non     r-from  r-to       area
+        1      3      4      400*400   
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   400.0           # maximum value of e-mesh points
+       ne =   100            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  eng            # axis of output
+     file = cross_eng.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part =  neutron   
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   
+[ T - WWG ]
+   mesh = xyz               # mesh type is region-wise
+     y-type = 2
+    ymin =  100
+    ymax =  100+c2+2*c3
+      ny = 5
+  z-type = 2 
+    zmin = -200
+    zmax =  200
+      nz = 5
+  x-type = 2
+    xmin = -200
+    xmax =  200
+      nx =   5
+   part = neutron
+   e-type = 1               # e-mesh is given by the below data
+       ne = 2               # number of e-mesh points
+     0    0.01   1e5
+   axis   =  wwg            # axis of output
+    file  =  WWG.out       # file name of output for the above axis
+
+[end]
+

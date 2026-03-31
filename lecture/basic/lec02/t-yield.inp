@@ -1,0 +1,46 @@
+[ T i t l e ]
+sample input file of t-yield
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+      dir =   1.0           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       z0 =   0.            # minimum position of z-axis [cm]
+       z1 =   0.            # maximum position of z-axis [cm]
+       e0 =   150.          # energy of beam [MeV/u]
+
+[ M a t e r i a l ]
+mat[1]    H 2  O 1     $ 1.0 g/cm3
+
+[ S u r f a c e ]
+  10  so     10.
+
+[ C e l l ]
+ 100     1 -1.               -10 
+ 101    -1              10
+
+[ T - Y i e l d ]
+    title = Production yield of isotopes in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 100
+  special =    0            # (D=0) number of repeated nuclear reactions
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+  nucleus =  all            # (D=all) number of detected nucleus
+     unit =    1            # unit is [1/source]
+     axis = chart           # axis of output
+     file = yield.out   # file name of output for the above axis
+     info =    0            # 0-> no, 1-> write magic number and stable nuclei
+     part =  all      
+   output = product         # (D=product) normal yeild
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ E n d ]

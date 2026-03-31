@@ -1,0 +1,107 @@
+{
+  "TAB_0": {
+    "buttonBar": {
+      "arrowEnabled": false,
+      "cameraInfo": {
+        "focalPoint": [
+          0,
+          0,
+          0
+        ],
+        "position": [
+          0,
+          150,
+          0
+        ],
+        "viewUp": [
+          1,
+          0,
+          0
+        ]
+      },
+      "cellPickerEnabled": true,
+      "gridEnabled": true,
+      "legendEnabled": false,
+      "markers": []
+    },
+    "cellPane": {
+      "displayedCells": []
+    },
+    "geomviewerSettings": {
+      "memSafetyFactor": 90,
+      "numPoints": 10000,
+      "region": [
+        -50,
+        50,
+        -50,
+        50,
+        -50,
+        50
+      ],
+      "smoothingFactor": 0.40000000000000002,
+      "xyzPlane": [
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "pos": 0,
+          "visible": false
+        },
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 0,
+            "1": 1,
+            "2": 0
+          },
+          "pos": 0,
+          "visible": false
+        },
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "pos": 0,
+          "visible": false
+        }
+      ]
+    }
+  },
+  "cwd": "C:\/phits\/lecture\/advanced\/sourceA\/input\/prueba",
+  "guiConfig": {
+    "bgColor3D": {
+      "a": 1,
+      "b": 102,
+      "g": 77,
+      "r": 51
+    },
+    "clearStateFile": false,
+    "cssName": "",
+    "cuiconfig": {
+      "colorRatio": -999,
+      "colormap": {},
+      "mode": "auto",
+      "noXs": true,
+      "numThreads": 8,
+      "timeoutBB": 5000,
+      "verbose": false,
+      "warnPhitsCompat": false,
+      "xsdir": ""
+    },
+    "gridColor3D": {
+      "a": 1,
+      "b": 255,
+      "g": 255,
+      "r": 255
+    },
+    "langName": "",
+    "restoreState": true
+  },
+  "version": "2022.09.13"
+}

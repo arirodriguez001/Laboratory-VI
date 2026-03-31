@@ -1,0 +1,77 @@
+[ T i t l e ]
+Initial PHITS input file for homework
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+   s-type =   1          # mono-energetic axial source
+     proj =  proton      # kind of incident particle         
+       e0 =   290.0      # energy of beam [MeV/u]
+       r0 =   2.5        # radius [cm]
+       z0 =  -10.0        # minimum position of z-axis [cm]
+       z1 =  -10.0        # maximum position of z-axis [cm]
+      dir =   1.0        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+mat[1]    H 2  O 1
+
+[ S u r f a c e ]
+  10  cz      10.
+ 101  pz       0.
+ 102  pz      50.
+ 999  so     500.
+
+[ C e l l ]
+  1     1 -1.0  -10  101  -102
+ 100    0      -999  #1
+ 101   -1       999
+
+[ T - T R A C K ] 
+    title = Track Detection using [T-track] tally
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -20.00000      # minimum value of x-mesh points
+     xmax =   20.00000      # maximum value of x-mesh points
+       nx =  200            # number of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+         -5.0  5.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -20.00000      # minimum value of z-mesh points
+     zmax =   70.00000      # maximum value of z-mesh points
+       nz =  200            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  10000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = xz_track.out    # file name of output for the above axis
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+     part = proton neutron
+
+[ T - D e p o s i t ]
+    title = Deposit energy in water phantom
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    1            # r-mesh is given by the below data
+       nr =    2            # number of r-mesh points
+            0.0  2.5  10.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -10.000000      # minimum value of z-mesh points
+     zmax =   60.00000      # maximum value of z-mesh points
+       nz =   100            # number of z-mesh points
+     unit =    0            # unit is [Gy/source]
+   output =  dose           # total deposit energy
+     axis =     z           # axis of output
+     file = deposit.out     # file name of output for the above axis
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    angel = ymin(1.0e-14) ymax(1.0e-10)
+[ E n d ]
+

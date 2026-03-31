@@ -1,0 +1,71 @@
+[ T i t l e ]
+Test Calculation for Example (15)
+
+[ P a r a m e t e r s ]
+ icntl   = 8
+ maxcas  = 100
+ maxbch  = 10
+ file(6) = phits.out
+   imout = 2
+   icput = 1
+
+[ S o u r c e ] 
+ s-type =   1     
+   proj =   proton
+     e0 =   500.0
+     z0 =   0.0
+     z1 =   0.0
+     r0 =   0.0
+    dir =   1.0000
+
+[ M a t e r i a l ] 
+infl: {mat01.dat} [3-23]
+
+set: c1[5] c2[10] c3[15]
+set: c4[5] c5[55]
+
+[surface]  
+  1   cz     c1
+  2   cz     c2
+  3   cz     c3
+  4   cz    20.0
+  5   pz     0.0
+  6   pz    c4
+  7   pz    c4+5
+  8   pz    c4+10
+  9   pz    c5
+ 10   pz    60.0
+
+[cell] 
+  1   1   3.9279695E-02   6  -9 -1
+  2   2   3.2932810E-02   7  -9  1 -2
+  3   3   8.4759130E-02   8  -9  2 -3
+  4   4   5.4744000E-05   5 -10 -4 #1 #2 #3 
+  5  -1                  -5 : 10 :  4 
+
+[ T - track ]
+     mesh = xyz
+   x-type =  1
+       nx =  1
+       -20.0 20.0
+   y-type =  2
+       ny =  80
+     ymin = -20
+     ymax =  20
+   z-type =  2
+       nz =  120
+     zmin =  0
+     zmax =  60
+   e-type =  1
+       ne =  1
+       0.0 1000.0
+     unit = 1
+     axis = yz
+     file = yz-show1.dat
+    gshow = 3
+   epsout = 1
+    resol = 1
+     part = proton neutron
+
+
+[END]

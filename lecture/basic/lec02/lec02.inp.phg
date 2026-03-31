@@ -1,0 +1,121 @@
+{
+  "TAB_0": {
+    "buttonBar": {
+      "arrowEnabled": false,
+      "cameraInfo": {
+        "focalPoint": [
+          0,
+          0,
+          24.999999999755719
+        ],
+        "position": [
+          76.433961510065316,
+          73.909183277300727,
+          -6.7970096130969688
+        ],
+        "viewUp": [
+          0.69262488409938872,
+          -0.72120724092382726,
+          -0.011440522949125287
+        ]
+      },
+      "cellPickerEnabled": true,
+      "gridEnabled": true,
+      "legendEnabled": false,
+      "markers": []
+    },
+    "cellPane": {
+      "displayedCells": [
+        "101"
+      ]
+    },
+    "geomviewerSettings": {
+      "memSafetyFactor": 90,
+      "numPoints": 10000,
+      "region": [
+        -10,
+        10,
+        -10,
+        10,
+        0,
+        50
+      ],
+      "smoothingFactor": 0.40000000000000002,
+      "xyzPlane": [
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 1,
+            "1": 0,
+            "2": 0
+          },
+          "pos": 0,
+          "visible": false
+        },
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 0,
+            "1": 1,
+            "2": 0
+          },
+          "pos": 0,
+          "visible": false
+        },
+        {
+          "cutting": 0,
+          "normal": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "pos": 0,
+          "visible": false
+        }
+      ]
+    }
+  },
+  "cwd": "C:\/phits\/lecture\/basic\/lec02",
+  "guiConfig": {
+    "bgColor3D": {
+      "a": 1,
+      "b": 102,
+      "g": 77,
+      "r": 51
+    },
+    "clearStateFile": false,
+    "cssName": "",
+    "cuiconfig": {
+      "colorRatio": -999,
+      "colormap": {
+        "1": {
+          "aliasName": "Water",
+          "color": {
+            "a": 1,
+            "b": 255,
+            "g": 179,
+            "r": 153
+          },
+          "materialName": "1",
+          "printSize": 1
+        }
+      },
+      "mode": "auto",
+      "noXs": true,
+      "numThreads": 8,
+      "timeoutBB": 5000,
+      "verbose": false,
+      "warnPhitsCompat": false,
+      "xsdir": ""
+    },
+    "gridColor3D": {
+      "a": 1,
+      "b": 255,
+      "g": 255,
+      "r": 255
+    },
+    "langName": "",
+    "restoreState": true
+  },
+  "version": "2022.09.13"
+}

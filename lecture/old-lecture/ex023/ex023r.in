@@ -1,0 +1,96 @@
+[ T i t l e ]
+Sample Input for [t-sed] and [t-let] Tallies
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ rseed    = 170490721894713.# (D=0.0) 0:original, <0:from time, >0:this value
+ nlost    =         100     # (D=10) Lost part: allowance of CG and GG errors
+ maxcas   =         100     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(1)  = 0.100000000     # (D=1.0) cut-off energy of proton (MeV)
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 0.001000000     # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 0.001000000     # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 0.001000000     # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  100000.000     # (D=emin(14)) data max. energy of photon (MeV)
+ emin(15) = 0.100000000     # (D=1.d9) cut-off energy of deuteron (MeV)
+ emin(16) = 0.100000000     # (D=1.d9) cut-off energy of triton (MeV)
+ emin(17) = 0.100000000     # (D=1.d9) cut-off energy of 3He (MeV)
+ emin(18) = 0.100000000     # (D=1.d9) cut-off energy of Alpha (MeV)
+ emin(19) = 0.100000000     # (D=1.d9) cut-off energy of Nucleus (MeV)
+ igamma   =           1     # (D=0) photon emission from residual nuclei
+ ieleh    =           1     # (D=0) electron above dmax(12), 1: e=dmax(12)
+ emcpf    =  100000.000     # (D=100) upper limit of photons (MeV)
+ emcnf    =  20.0000000     # (D=0) analog vs implicit capture (MeV)
+ e-mode   =           1     # (D=0) 0: Normal, 1: Event generator mode
+ file(6)  = phits.out_ex023r  # (D=phits.out) general output file name
+ file(7) = c:/phits/data/xsdir.jnd
+ file(14) = c:/phits/data/trxcrd.dat
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+       r0 =       0.        # radius [cm]
+       x0 =       0.        # (D=0.0) center position of x-axis [cm]
+       y0 =       0.        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+     proj =  12C            # kind of incident nucleus          
+       e0 =   10.000        # energy of beam [MeV/n]
+
+[ Material ]
+c     ---- no.  1 ICRU sphere
+M1  1001  6.082e-2
+    6000  5.570e-3
+    7014  1.118e-3
+    8016  2.868e-2
+c     ---- no.  5 material water for LET calculation
+m5        1001  6.893407e-2
+          8016  3.446704e-2
+
+[ Surface ]
+1      pz 0.0
+2      pz 0.001
+3      cz 1.0
+600    so 101
+
+[ Cell ]
+1    1  -1.00   1 -2 -3
+12   0          #1 -600  
+13  -1          600
+
+
+[ T-LET ]
+     mesh = reg
+     reg = 1
+   l-type =  3
+       nl =  180
+     lmin =  1.0e-2
+     lmax =  1.0e4
+     unit = 2
+     axis = let
+     file = letr.out
+   epsout = 1
+    letmat = 5
+
+[ T-SED ]
+   mesh = reg
+   reg = 1
+   letmat = 5
+   cdiam = 0.6
+   se-type = 3
+ ne = 180
+ emin = 1.0e-2
+ emax = 1.0e4
+   epsout = 1
+ se-unit = 2
+ unit = 2
+ file = ydistr.out
+ axis = sed
+
+[END]
+

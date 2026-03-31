@@ -1,0 +1,148 @@
+[ T i t l e ]
+Input file for lecture about use of Phase Space File
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) 0: no, 1: consider photo-nuclear reaction
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=c:/phits/data/xsdir.jnd) nuclear data input file name
+ file(20) = c:/phits/XS/egs # (D=c:/phits/XS/egs) EGS library data folder name
+
+[ S o u r c e ]
+set:c1[69184770]  $ ORIG_HISTORIES
+set:c2[9414373]   $ PARTICLES
+  totfact =  c2/c1          # (D=1.0) global factor
+   s-type =  17             # external source with PHITS dump file
+     file =  dmp-PHITS.out  # file name of dump file            
+     dump =   -9            # number of dumped data <0: ascii, >0: binary
+                1   2   3   4   5   6   7   8   9
+
+[ S o u r c e ] off
+set:c1[69184770]  $ ORIG_HISTORIES
+set:c2[9414373]   $ PARTICLES
+  totfact =  c2/c1          # (D=1.0) global factor
+   s-type =  5             # external source with PHITS dump file
+     e-type = 20
+     file =  cross_eng.out
+     proj = photon
+     dir = 1.0
+     z0 = 70.0
+     z1 = 70.0
+     x0 = -0.5
+     x1 =  0.5
+     y0 = -0.5
+     y1 =  0.5
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Water
+           1H         2.0000000E+00
+          16O         1.0000000E+00
+
+MAT[ 2 ]   # Air (1.20e-3 g/cm3)
+          14N         8.0000000E+00
+          16O         2.0000000E+00
+
+[ Mat Name Color ]
+   mat                name     size            color   # HSB color value
+     0                void     1.00        lightgray   # { -0.800  1.000  1.000 }
+     1               Water     1.00       pastelblue   # {  0.250  0.400  1.000 }
+     2                 Air     1.00       pastelcyan   # {  0.400  0.400  1.000 }
+
+[ C e l l ]
+ 1          1 -1.0       -1      $ Water phantom
+ 998        2 -1.20e-3  -999 #1  $ Air
+ 999       -1            999     $ Outer region
+
+[ S u r f a c e ]
+ 999          so  1000.0
+ 1            rpp  -20 20  -20 20  90 130
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+       nx =   50            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -25.00000      # minimum value of y-mesh points
+     ymax =   25.00000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =  130.00000      # maximum value of z-mesh points
+       nz =  130            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  photon     electron
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - C r o s s ] off
+    title = energy spectrum
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -0.500000      # minimum value of x-mesh points
+     xmax =   0.500000      # maximum value of x-mesh points
+       nx =    1            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -0.500000      # minimum value of y-mesh points
+     ymax =   0.500000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    1            # e-mesh is given by the below data
+       nz =    1            # number of e-mesh points
+               70.0  90.0
+   e-type =    2            # e-mesh is log given by emin, emax and ne
+     emin =    0.00000      # minimum value of e-mesh points
+     emax =    7.00000      # maximum value of e-mesh points
+       ne =   70            # number of e-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =  eng            # axis of output
+     file = cross_eng.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part =  photon
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    angel = ylin
+
+[ T - Deposit ] off
+    title = xy-distribution of dose
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+       nx =   50            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -25.00000      # minimum value of y-mesh points
+     ymax =   25.00000      # maximum value of y-mesh points
+       ny =   50            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   95.00000      # minimum value of z-mesh points
+     zmax =  105.00000      # maximum value of z-mesh points
+       nz =    1            # number of z-mesh points
+     unit =    1            # unit is [MeV/cm^3/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =    xy           # axis of output
+     file = deposit_xy.out  # file name of output for the above axis
+     part =  all      
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[END]

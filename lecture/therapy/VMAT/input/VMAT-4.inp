@@ -1,0 +1,265 @@
+ file = VMAT.inp
+[ T i t l e ]
+Input file for lecture about VMAT therapy
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       10000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) photonuclear GDR, 1:analog, -1:implicit itall
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=xdirs) nuclear data input file name
+
+[ S o u r c e ]
+set:c1[15000000]  $ ORIG_HISTORIES
+set:c2[116341772]   $ PARTICLES
+  totfact =  c2/c1          # (D=1.0) global factor
+   s-type =  17             # external source with PHITS dump file
+       z0 =  -54.0          # z-coordinate [cm]
+     trcl =    3            # transform ID
+     file =  dmp-PHITS-iX.out  # file name of dump file            
+     dump =   -9            # number of dumped data <0: ascii, >0: binary
+                1   2   3   4   5   6   7   8   9
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Water
+           1H         2.0000000E+00
+          16O         1.0000000E+00
+
+MAT[ 2 ]   # Air (1.20e-3 g/cm3)
+          14N         8.0000000E+00
+          16O         2.0000000E+00
+
+MAT[ 3 ]   # Collimator (17g/cm3, from AAPM report 72, TG-50)
+         184W        -9.0500000E+01
+         58Ni        -6.5000000E+00
+         56Fe        -3.0000000E+00
+
+[ Mat Name Color ]
+   mat                name     size            color   # HSB color value
+     0                void     1.00        lightgray   # { -0.800  1.000  1.000 }
+     1               Water     1.00       pastelblue   # {  0.250  0.400  1.000 }
+     2                 Air     1.00       pastelcyan   # {  0.400  0.400  1.000 }
+     3          Collimator     1.00          magenta   # {  0.067  1.000  1.000 }
+
+[ C e l l ]
+$ Main space
+ 999       -1            999  $ Outer region
+ 1          1 -1.0   1 -2 -3 trcl=1  $ Water phantom
+ 2          0       11 -12 -13 fill=2 trcl=3  $ Collimator in main space
+ 998        2 -1.20e-3  -999 #1 #2  $ Air in main space
+$ Universe 2
+ 901        0       -901 fill=1 trcl=2 u=2  $ Collimator in universe 2
+ 900        2 -1.20e-3  -999 #901 u=2  $ Air in universe 2
+$ Universe 1
+ 1000       2 -1.20e-3  -999  $ Air in universe 1
+infl: {RemovedCell.inp}
+     #2001 #2002
+     u=1
+infl: {cell.inp}
+ 2001       3 -11.34  -501 u=1
+ 2002       3 -11.34  -502 u=1
+
+[ S u r f a c e ]
+ 999          so  1000.0
+ 1            pz   -15.0
+ 2            pz    15.0
+ 3            cz    15.0
+set: c1[100/100]   $ Scaling factor
+set: c2[20]   $ width of leaves [cm]
+set: c3[10]   $ depth of leaves [cm]
+set: c4[0.125]   $ thickness of inner leaves [cm]
+set: c5[0.25]   $ thickness of outer leaves [cm]
+set: c6[32]   $ Number of inner leaves
+set: c7[28]   $ Number of outer leaves
+set: c8[-(c4*c6+c5*c7)/2]   $ y-coordinate of the first leaf [cm]
+set: c9[-50]   $ z-coordinate of multi-leaf collimator
+set: c10[3.0]   $ width of bar [cm]
+ 11           pz   c9-2e-5
+ 12           pz   c9+c3+2e-5
+ 13           cz   c2*2*1.5
+ 901          rpp  -c2*2 c2*2  c8-c10-1e-5 -c8+c10+1e-5  c9-1e-5 c9+c3+1e-5
+infl: {surfacex.inp}
+infl: {surfacey.inp}
+infl: {surfacez.inp}
+ 501          rpp  -c2 c2  c8-c10 c8  c9 c9+c3
+ 502          rpp  -c2 c2  -c8 -c8+c10  c9 c9+c3
+
+[ T r a n s f o r m ]
+$ trcl=1: displacement of phantom
+set: c11[0.21] $ x-coordinate of iso-center
+set: c12[1.46] $ y-coordinate of iso-center
+set: c13[-18.96] $ z-coordinate of iso-center
+tr1   c11   c12   c13
+      1.00000   0.00000   0.00000
+      0.00000   1.00000   0.00000
+      0.00000   0.00000   1.00000
+      1
+
+$ trcl=2: rotation of collimator
+infl: {trans-C.inp}
+set: c20[0] 
+set: c30[0] 
+tr2   0 0 0
+      cos(c10/180*pi)*cos(c20/180*pi)
+      sin(c10/180*pi)*cos(c30/180*pi)+cos(c10/180*pi)*sin(c20/180*pi)*sin(c30/180*pi)
+      sin(c10/180*pi)*sin(c30/180*pi)-cos(c10/180*pi)*sin(c20/180*pi)*cos(c30/180*pi)
+     -sin(c10/180*pi)*cos(c20/180*pi)
+      cos(c10/180*pi)*cos(c30/180*pi)-sin(c10/180*pi)*sin(c20/180*pi)*sin(c30/180*pi)
+      cos(c10/180*pi)*sin(c30/180*pi)+sin(c10/180*pi)*sin(c20/180*pi)*cos(c30/180*pi)
+      sin(c20/180*pi)
+     -cos(c20/180*pi)*sin(c30/180*pi)
+      cos(c20/180*pi)*cos(c30/180*pi)
+      1
+
+$ trcl=3: rotation of gantry
+infl: {trans-G.inp}
+tr3   c11 c12 c13
+      cos(c10/180*pi)
+      sin(c10/180*pi)
+      0
+      0
+      0
+      -1
+      -sin(c10/180*pi)
+      cos(c10/180*pi)
+      0
+      1
+
+[ T - 3Dshow ]
+    title = Geometry check using [T-3dshow]
+     file = 3dshow.out      # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                2
+       x0 =    0.0          # (D=0.0) x-coordinate of the origin
+       y0 =    0.0          # (D=0.0) y-coordinate of the origin
+       z0 =  -20.0          # (D=0.0) z-coordinate of the origin
+    e-the =  120            # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  240            # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  300            # (D=w-dst*10) eye point distance from origin
+    l-the =  150            # (D=e-the) light point theta from z-axis
+    l-phi =    0            # (D=e-phi) light point phi from x-axis
+    l-dst =  100            # (D=e-dst) light point distance from origin
+    w-wdt =   60            # (D=100) width of window (cm)
+    w-hgt =   50            # (D=100) hight of window (cm)
+    w-dst =  150            # (D=200) window distance from origin
+   heaven =  -z             # (D=y) direction to heaven
+    resol =    3            # (D=1) resolution of 3dshow
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -100.0000      # minimum value of x-mesh points
+     xmax =   100.0000      # maximum value of x-mesh points
+       nx =  200            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -100.0000      # minimum value of y-mesh points
+     ymax =   100.0000      # maximum value of y-mesh points
+       ny =  200            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -50.00000      # minimum value of z-mesh points
+     zmax =   50.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xy            # axis of output
+     file = track_xy.out    # file name of output for the above axis
+     part =  photon
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -100.0000      # minimum value of x-mesh points
+     xmax =   100.0000      # maximum value of x-mesh points
+       nx =  200            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -50.00000      # minimum value of y-mesh points
+     ymax =   50.00000      # maximum value of y-mesh points
+       ny =   10            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -100.0000      # minimum value of z-mesh points
+     zmax =   100.0000      # maximum value of z-mesh points
+       nz =  200            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  photon
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -15.00000      # minimum value of x-mesh points
+     xmax =   15.00000      # maximum value of x-mesh points
+       nx =  300            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -15.00000      # minimum value of y-mesh points
+     ymax =   15.00000      # maximum value of y-mesh points
+       ny =  300            # number of y-mesh points
+   z-type =    1            # e-mesh is given by the below data
+       nz =    1            # number of z-mesh points
+             -50.0  -40.0
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xy            # axis of output
+     file = track_collimator.out    # file name of output for the above axis
+     part =  photon
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+     trcl =    3            # transform ID
+
+[ T - Deposit ]
+    title = Energy deposition in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -15.00000      # minimum value of x-mesh points
+     xmax =   15.00000      # maximum value of x-mesh points
+       nx =  150            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -15.00000      # minimum value of y-mesh points
+     ymax =   15.00000      # maximum value of y-mesh points
+       ny =  150            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -15.00000      # minimum value of z-mesh points
+     zmax =   15.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+     unit =    0            # unit is [Gy/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =    xy           # axis of output
+     file = deposit_target.out     # file name of output for the above axis
+     part =  all      
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+     trcl =    1            # transform ID
+infl: {sumtally.inp}
+
+[END]

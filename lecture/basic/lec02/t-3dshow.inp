@@ -1,0 +1,53 @@
+[ T i t l e ]
+sample input file of t-3dshow
+
+[ P a r a m e t e r s ]
+ icntl    =          11     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+      dir =   1.0           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       z0 =   0.            # minimum position of z-axis [cm]
+       z1 =   0.            # maximum position of z-axis [cm]
+       e0 =   150.          # energy of beam [MeV/u]
+
+[ M a t e r i a l ]
+mat[1]    H 2  O 1     $ 1.0 g/cm3
+
+[ S u r f a c e ]
+  10  so     10.
+
+[ C e l l ]
+ 100     1 -1.               -10 
+ 101    -1              10
+
+[ T - 3Dshow ]
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+       x0 =  0.             # (D=0.0) x-coordinate of the origin
+       y0 =  0.             # (D=0.0) y-coordinate of the origin
+       z0 =  20.            # (D=0.0) z-coordinate of the origin
+    e-the =   90.           # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =    0.           # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  120.           # (D=w-dst*10) eye point distance from origin
+    l-the =   90.           # (D=e-the) light point theta from z-axis
+    l-phi =    0.           # (D=e-phi) light point phi from x-axis
+    l-dst =  100.           # (D=e-dst) light point distance from origin
+    w-wdt =   50.           # (D=100) width of window (cm)
+    w-hgt =   50.           # (D=100) hight of window (cm)
+    w-dst =   30.           # (D=200) window distance from origin
+   heaven =   y             # (D=y) direction to heaven
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+    resol =    1            # (D=1) resolution of 3dshow
+     file = 3dshow.out      # file name of output
+    title = Check geometry using [T-3dshow] tally
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ E n d ]
+

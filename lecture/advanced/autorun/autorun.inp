@@ -1,0 +1,5 @@
+file=phits.inp  $ PHITS input file name
+set:c1          $ Variable parameter
+c-type=1        $ 1: data point, 2: linear, 3: log interpolation
+nc=3            $ Number of data points
+2.0  2.3  2.8

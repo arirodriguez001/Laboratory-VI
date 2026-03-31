@@ -1,0 +1,9 @@
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # spherical (shell) source
+       r1 =   c1      # radius of source sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  25       # Cosmic-ray source
+    icenv =   0       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+ solarmod =  150.0000  # Solar activity W-index
+    rigid =   0.0000  # Cut-off rigidity in GV

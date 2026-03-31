@@ -1,0 +1,108 @@
+[ T i t l e ]
+input file for lecture about source
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        10000     # (D=10) number of particles per one batch
+ maxbch   =            5     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EGS, =2:EGS(HE)
+ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode Ver.1, 2: Ver.2
+
+[ S o u r c e ]
+  totfact =   1.0           # (D=1.0) global factor
+   iscorr = 0               # (D=0) Correlated source option
+ <source> = 1.0
+   s-type =   1             # axial source with energy spectrum
+     proj =  photon         # kind of incident particle         
+       r0 =   0.0           # radius [cm]
+       z0 =   0.0           # minimum position of z-axis [cm]
+       z1 =   0.0           # maximum position of z-axis [cm]
+      dir =   all           # z-direction of beam [cosine]
+   e-type =  28             # RI source
+       ni =   1             # number of registered nuclide
+    Co-60   1.0e3           # (Bq)
+
+[ M a t e r i a l ]
+mat[1]    Na 1.0  I 1.0
+
+[ S u r f a c e ]
+set:c1[5.08] $ thickness & diameter of detector
+   1  cz      c1/2.0
+  11  pz     -1.0-c1
+  12  pz     -1.0
+  13  pz      1.0
+  14  pz      1.0+c1
+  99  so     500.
+
+[ C e l l ]
+   1     1 -3.67    -1   11  -12   $ Detector 1
+   2     1 -3.67    -1   13  -14   $ Detector 2
+ 100     0         -99   #1  #2   $ void
+ 101    -1          99            $ outer region
+
+[ T - T r a c k ]
+    title = Track Detection in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  100            # number of x-mesh points
+     xmin =  -5.           # minimum value of x-mesh points
+     xmax =   5.           # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -5.0  5.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  100            # number of z-mesh points
+     zmin =  -10.           # minimum value of z-mesh points
+     zmax =   10.           # maximum value of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  5000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  all
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - Deposit ]
+    title = Energy deposition in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =  1
+     unit =    3            # unit is [MeV/cm^3/source]
+   output =  deposit           # total deposit energy
+    y-txt = Number [1/sec]
+     axis =   eng           # axis of output
+  e-type = 2
+     ne = 300
+   emin = 0.0
+   emax = 3.0
+  dresol = 0.01
+  dfano = 0.001
+     file = deposit.out     # file name of output for the above axis
+     part =  all      
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - Deposit2 ] off
+    title = Energy deposition in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =  1 2
+  e1-type =    2            # e-mesh is log given by emin, emax and ne
+       ne =  150            # number of e-mesh points
+    emin  =  0.0  # minimum value of e-mesh points
+    emax  =  3.0      # maximum value of e-mesh points
+  dresol1 = 0.01
+   dfano1 = 0.001
+  e2-type =    2            # e-mesh is log given by emin, emax and ne
+       ne =  150            # number of e-mesh points
+    emin  =  0.0  # minimum value of e-mesh points
+    emax  =  3.0      # maximum value of e-mesh points
+  dresol2 = 0.01
+   dfano2 = 0.001
+     unit =    1
+     axis =    e12           # axis of output
+     file = deposit2.out     # file name of output for the above axis
+     part =  all      
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ E n d ]

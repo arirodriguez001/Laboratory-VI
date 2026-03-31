@@ -1,0 +1,133 @@
+$OMP=0
+[ title ]
+ Counter test
+
+[ parameters ]
+ icntl    = 0
+
+ maxcas   = 100000
+ maxbch   = 10
+
+file(6)  = phits.out
+
+[ source ]
+   s-type =   2             # 
+     proj = neutron         # kind of incident particle         
+       x0 =   -2.2
+       x1 =    2.2
+       y0 =   -2
+       y1 =    2
+       z0 =  -2             # minimum position of z-axis [cm]
+       z1 =  -2
+       e0 = 1.0
+      dir = 1.0        # z-direction of beam [cosine]
+      
+[ material ]
+  m1  Fe 1.0
+
+[ surface ]
+  10  rpp   0  1 -2 2 0  1
+  11  rpp   0  1 -2 2 1.5  2.5
+  12  rpp   1  2 -2 2 3  4
+  99  so  100
+
+[ cell ]
+  1  0   -99  #2 #3 #4
+  2  1  -7.87  -10
+  3  1  -7.87  -11
+  4  1  -7.87  -12
+100 -1    99
+
+[ counter ] 
+  counter = 1
+  part = all
+  reg in  out     coll  ref
+  2   1     0       0     0
+  3   1     0       0     0
+  4   1     0       0     0
+
+  counter = 2
+  part = all
+  reg in  out     coll  ref
+  2   0     0       1     0
+  3   0     0       5     0
+
+[ t-track ]
+     mesh =   xyz
+   x-type =    2
+       nx =  120
+     xmin =  -0.2
+     xmax =   2.2
+   y-type =    2
+       ny =    1
+     ymin =  -2.
+     ymax =   2.
+   z-type =    2
+       nz =  240
+     zmin =   -0.2
+     zmax =   4.2
+   e-type =    2
+       ne =    1
+     emin =   0.0
+     emax =   20
+     unit =    1
+     axis =   xz
+     file = track_nocounter.out
+     part = all
+    gshow =    3
+   epsout =    1
+    angel = cmin(4e-2) cmax(7e-2)
+
+[ t-track ]
+     mesh =   xyz
+   x-type =    2
+       nx =  120
+     xmin =  -0.2
+     xmax =   2.2
+   y-type =    2
+       ny =    1
+     ymin =  -2.
+     ymax =   2.
+   z-type =    2
+       nz =  240
+     zmin =   -0.2
+     zmax =   4.2
+   e-type =    2
+       ne =    1
+     emin =   0.0
+     emax =   20
+     unit =    1
+     axis =   xz
+     file = track_ctmin.out
+     part = all
+    gshow =    3
+   epsout =    1
+    angel = cmin(1e-4) cmax(1e-2)
+   ctmin(2) =  5
+
+[ t-track ]
+     mesh =   xyz
+   x-type =    2
+       nx =  120
+     xmin =  -0.2
+     xmax =   2.2
+   y-type =    2
+       ny =    1
+     ymin =  -2.
+     ymax =   2.
+   z-type =    2
+       nz =  240
+     zmin =   -0.2
+     zmax =   4.2
+   e-type =    2
+       ne =    1
+     emin =   0.0
+     emax =   20
+     unit =    1
+     axis =   xz
+     file = track_chmin.out
+     part = all
+    gshow =    3
+   epsout =    1
+    angel = cmin(1e-4) cmax(1e-2)
+   chmin(1) =  3

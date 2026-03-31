@@ -1,0 +1,82 @@
+[ T i t l e ]
+Sample input for dose calculation for photon therapy
+
+[ P a r a m e t e r s ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =   proton        # kind of incident nucleus          
+       e0 =   10.000        # energy of beam [MeV/u]
+       r0 =   0.1000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Beam pipe
+           Al         1.0
+
+[ C e l l ]
+98          0            -999     $ Void
+99         -1             999     $ Outer region
+
+[ S u r f a c e ]
+ 999          so  1000.0
+
+[ T - D e p o s i t ]
+    title = Deposit in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin = -50.000000      # minimum value of x-mesh points
+     xmax =  50.000000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin = -50.000000      # minimum value of y-mesh points
+     ymax =  50.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -20.00000      # minimum value of z-mesh points
+     zmax =  180.00000      # maximum value of z-mesh points
+       nz =  200            # number of z-mesh points
+     unit =    0            # unit is [Gy/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = deposit.out     # file name of output for the above axis
+ material =  all            # (D=all) number of specific material
+   output = dose            # only heat is written
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin = -50.000000      # minimum value of x-mesh points
+     xmax =  50.000000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin = -50.000000      # minimum value of y-mesh points
+     ymax =  50.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -20.00000      # minimum value of z-mesh points
+     zmax =  180.00000      # maximum value of z-mesh points
+       nz =  200            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track.out       # file name of output for the above axis
+     part = proton neutron 
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+[END]
+

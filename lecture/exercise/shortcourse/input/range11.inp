@@ -1,0 +1,83 @@
+[ T i t l e ]
+Sample input for range calculation
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EGS
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  photon       # kind of incident nucleus          
+       e0 =   0.662         # source energy in MeV/n
+       r0 =   0.0100        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+mat[1]   Pb 1.0
+
+[ S u r f a c e ]
+set: c1[4.4]  $ Thickness of Target (cm)
+ 1   pz     0.0
+ 2   pz      c1
+ 3   pz   100.0
+ 11  cz      c1
+ 999 so   200.0
+
+[ C e l l ]
+100   1 -11.34   1 -2 -11 $ Target
+101   0        2 -3 -11 $ Void
+1000  0   #100 #101 -999 $ Void
+1001 -1              999 $ Outer region
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -c1            # minimum value of x-mesh points
+     xmax =   c1            # maximum value of x-mesh points
+       nx =   50            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -c1            # minimum value of y-mesh points
+     ymax =   c1            # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.0           # minimum value of z-mesh points
+     zmax =   c1*2          # maximum value of z-mesh points
+       nz =   90            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track.out       # file name of output for the above axis
+     part = photon electron alpha neutron
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[T-Cross]
+    title = [t-cross] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+      non     r-from r-to     area
+        1     100    101       1.0
+   e-type =    2            # e-mesh is log given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   3.0           # maximum value of e-mesh points
+       ne =   30            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  eng            # axis of output
+     file = cross.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part =  photon electron alpha neutron
+   epsout =    2            # (D=0) generate eps file by ANGEL
+
+[END]
+

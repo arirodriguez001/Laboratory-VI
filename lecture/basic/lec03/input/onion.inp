@@ -1,0 +1,40 @@
+[ M a t e r i a l ]
+mat[1]    Au 1      $ 19.32 g/cm3
+mat[2]    H 2  O 1  $ 1.0 g/cm3
+mat[3]    CU 1      $ 8.93 g/cm3
+mat[4]    H 2  O 1  $ 1.0 g/cm3
+mat[5]    C 2  H 4  $ 0.9 g/cm3
+mat[6]    N 8  O 2  $ 1.20e-3 g/cm3
+
+[ Mat Name Color ]
+    mat   name      color
+     1    Gold      orangeyellow
+     2    Water     pastelblue
+     3    Copper    darkred
+     4    Water     pastelblue
+     5    C2H4      gray
+     6    Air       pastelcyan
+
+[ S u r f a c e ]
+  10  so     500.
+  11  so       5.
+  12  so      10.
+  13  so      15.
+  14  so      20.
+  15  so      25.
+
+[ C e l l ]
+set:%OuterVoid%[-1]
+set:%Gold%[1  -19.32]
+set:%water%[2  -1.0]
+set:%Copper%[3  -8.93]
+set:%PE%[5  -0.9]
+set:%Air%[6  -1.20e-3]
+
+ 100  %OuterVoid%  10
+ 101  %Gold%      -11
+ 102  %water%      11   -12
+ 103  %Copper%     12   -13
+ 104  %water%      13   -14
+ 105  %PE%         14   -15
+ 106  %Air%        15   -10

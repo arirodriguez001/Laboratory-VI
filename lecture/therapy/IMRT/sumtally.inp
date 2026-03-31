@@ -1,0 +1,8 @@
+sumtally start 
+isumtally = 2 
+nfile = 2 
+deposit_xy-1.out 3.0
+deposit_xy-9.out 1.0
+sfile = result.out 
+sumfactor = 1.0 
+sumtally end 

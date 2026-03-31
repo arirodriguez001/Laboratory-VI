@@ -1,0 +1,428 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+                   ____________ [ Job Title ] __________ 
+                  |                                     |
+                  |  Test Calculation for Example (16)  |
+                  |_____________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 15m 20
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+Test Calculation for Example (16)
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =         500     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+       e0 =   500.00        # energy of beam [MeV/u]
+       r0 =   4.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   20.000        # minimum position of z-axis [cm]
+       z1 =   20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+        196Hg         5.9595000E-05
+        198Hg         3.9611000E-03
+        199Hg         6.7025000E-03
+        200Hg         9.1776000E-03
+        201Hg         5.2364000E-03
+        202Hg         1.1863000E-02
+        204Hg         2.2795000E-03
+MAT[ 2 ] 
+        204Pb         4.6801000E-04
+        206Pb         7.9430000E-03
+        207Pb         7.2838000E-03
+        208Pb         1.7238000E-02
+MAT[ 3 ] 
+         54Fe         4.9161000E-03
+         56Fe         7.7741000E-02
+         57Fe         1.8647000E-03
+         58Fe         2.3733000E-04
+MAT[ 4 ] 
+          14N         4.6801000E-05
+          16O         7.9430000E-06
+
+[ C e l l ]
+ 1          1  3.9279695E-02  6 -9 -1 
+ 2          2  3.2932810E-02  7 -9 1 -2 
+ 3          3  8.4759130E-02  8 -9 2 -3 
+ 4          4  5.4744000E-05  5 -10 -4 #1 #2 #3 
+ 5         -1                 -5 : 10 : 4 
+
+[ S u r f a c e ]
+ 1            cz     5.0000000E+00
+ 2            cz     1.0000000E+01
+ 3            cz     1.5000000E+01
+ 4            cz     2.0000000E+01
+ 5            pz     0.0000000E+00
+ 6            pz     5.0000000E+00
+ 7            pz     1.0000000E+01
+ 8            pz     1.5000000E+01
+ 9            pz     5.5000000E+01
+ 10           pz     6.0000000E+01
+
+[ T - C r o s s ]
+    title = [t-cross] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+      non     r-in  r-out    area
+        1     1     2      1.000000    
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  reg            # axis of output
+     file = cdump.dat       # file name of dumped data
+#    file = cdump.dat.cfg   # file name of dumped data summary
+   output = o-curr          # surface crossing omni current
+     part =  all      
+# kf/name :  0        
+     dump =   -9            # (D=0) number of dumped data, <0: ascii, >0: binary
+                1   8   9   2   3   4   5   6   7
+# dump data    kf   e  wt   x   y   z   u   v   w
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          17 (  0)           3 (  0)          20 (  0)
+
+[ T - T r a c k ]
+    title = [t-track] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    1            # x-mesh is given by the below data
+       nx =    1            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+           -1.00000E+00  1.00000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -20.00000      # minimum value of y-mesh points
+     ymax =   20.00000      # maximum value of y-mesh points
+#    ydel =  0.5000000      # mesh width of y-mesh points
+       ny =   80            # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   60.00000      # maximum value of z-mesh points
+#    zdel =  0.5000000      # mesh width of z-mesh points
+       nz =  120            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01  2.55000E+01  2.60000E+01  2.65000E+01  2.70000E+01
+#           2.75000E+01  2.80000E+01  2.85000E+01  2.90000E+01  2.95000E+01
+#           3.00000E+01  3.05000E+01  3.10000E+01  3.15000E+01  3.20000E+01
+#           3.25000E+01  3.30000E+01  3.35000E+01  3.40000E+01  3.45000E+01
+#           3.50000E+01  3.55000E+01  3.60000E+01  3.65000E+01  3.70000E+01
+#           3.75000E+01  3.80000E+01  3.85000E+01  3.90000E+01  3.95000E+01
+#           4.00000E+01  4.05000E+01  4.10000E+01  4.15000E+01  4.20000E+01
+#           4.25000E+01  4.30000E+01  4.35000E+01  4.40000E+01  4.45000E+01
+#           4.50000E+01  4.55000E+01  4.60000E+01  4.65000E+01  4.70000E+01
+#           4.75000E+01  4.80000E+01  4.85000E+01  4.90000E+01  4.95000E+01
+#           5.00000E+01  5.05000E+01  5.10000E+01  5.15000E+01  5.20000E+01
+#           5.25000E+01  5.30000E+01  5.35000E+01  5.40000E+01  5.45000E+01
+#           5.50000E+01  5.55000E+01  5.60000E+01  5.65000E+01  5.70000E+01
+#           5.75000E+01  5.80000E+01  5.85000E+01  5.90000E+01  5.95000E+01
+#           6.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   yz            # axis of output
+     file = yz-t01.dat      # file name of output for the above axis
+     part =  neutron    proton   
+# kf/name :  2112       2212     
+    angel = cmin(1.e-4) cmax(1.e-1)
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+    resol =    1            # (D=1) resolution of gshow or rshow
+    width = 0.5000000       # (D=0.5) width of lines for gshow or rshow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :       38608 (  0)        9803 (  0)       48411 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      256
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =    11992
+*     total memory: mdas = 20000000
+*                percent =     0.06 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =    38625
+*     total memory: mdas = 20000000
+*                percent =     0.19 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =     1265
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of total memory >>>
+*      used total memory =   399638
+*     total memory: mdas = 20000000
+*                percent =     2.00 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =            500. : rijk    =   6647299061401.
+       low neutron =           3606. : ncall/s =  3.844985000E+04
+          cpu time =   3.640 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3              1.   : end of a batch                  
+        4            500.   : source                          
+        5              0.   : detection of geometry error     
+        6              0.   : recovery of geometry error      
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10           4447.   : geometry boundary crossing      
+       11            998.   : termination by energy cut-off   
+       12            827.   : termination by escape or leakage
+       13           2677.   : reaction : (n,x) type           
+       14           6529.   : reaction : (n,n'x) type         
+       15            311.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ Region-wise total number of collisions for High energy and HI per source
+-------------------------------------------------------------------------------
+ Region    Hydrogen       Decay     Elastic   Non-Elast   Heavy Ion    Hi-Total
+      1  0.0000E+00  4.4000E-02  3.6900E+00  5.4720E+00  0.0000E+00  9.2060E+00
+      2  0.0000E+00  0.0000E+00  2.0900E+00  3.4760E+00  0.0000E+00  5.5660E+00
+      3  0.0000E+00  0.0000E+00  1.2620E+00  2.3720E+00  0.0000E+00  3.6340E+00
+      4  0.0000E+00  0.0000E+00  0.0000E+00  6.0000E-03  0.0000E+00  6.0000E-03
+  Total  0.0000E+00  4.4000E-02  7.0420E+00  1.1326E+01  0.0000E+00  1.8412E+01
+
+-------------------------------------------------------------------------------
+ Medium-wise total number of collisions for High energy and HI per source
+-------------------------------------------------------------------------------
+ Medium    Hydrogen       Decay     Elastic   Non-Elast   Heavy Ion    Hi-Total
+      1  0.0000E+00  4.4000E-02  3.6900E+00  5.4720E+00  0.0000E+00  9.2060E+00
+      2  0.0000E+00  0.0000E+00  2.0900E+00  3.4760E+00  0.0000E+00  5.5660E+00
+      3  0.0000E+00  0.0000E+00  1.2620E+00  2.3720E+00  0.0000E+00  3.6340E+00
+      4  0.0000E+00  0.0000E+00  0.0000E+00  6.0000E-03  0.0000E+00  6.0000E-03
+  Total  0.0000E+00  4.4000E-02  7.0420E+00  1.1326E+01  0.0000E+00  1.8412E+01
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+     proton       2212        938.3         1       1
+     neutron      2112        939.6         0       1
+     pion+         211        139.6         1       0
+     pion0         111        135.0         0       0
+     pion-        -211        139.6        -1       0
+     muon+         -13        105.7         1       0
+     positron      -11          0.5         1       0
+     photon         22          0.0         0       0
+     deuteron  1000002       1875.6         1       2
+     triton    1000003       2808.9         1       3
+     3he       2000003       2808.4         2       3
+     alpha     2000004       3727.4         2       4
+
+     nu_ebar       -12          0.0         0       0
+     nu_mu          14          0.0         0       0
+
+-------------------------------------------------------------------------------
+ prod. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron           12877.     1.2877000E+04     2.5754000E+01
+     proton             1212.     1.2120000E+03     2.4240000E+00
+     alpha                92.     9.2000000E+01     1.8400000E-01
+     deuteron             45.     4.5000000E+01     9.0000000E-02
+     other                24.     2.4000000E+01     4.8000000E-02
+     triton               17.     1.7000000E+01     3.4000000E-02
+     photon               12.     1.2000000E+01     2.4000000E-02
+     pion+                 8.     8.0000000E+00     1.6000000E-02
+     positron              8.     8.0000000E+00     1.6000000E-02
+     muon+                 8.     8.0000000E+00     1.6000000E-02
+     pion0                 6.     6.0000000E+00     1.2000000E-02
+     fission               5.     5.0000000E+00     1.0000000E-02
+     pion-                 2.     2.0000000E+00     4.0000000E-03
+     3he                   2.     2.0000000E+00     4.0000000E-03
+
+-------------------------------------------------------------------------------
+ the other kind of produced particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14            16       0.0         0       0
+     nu_ebar       -12             8       0.0         0       0
+
+-------------------------------------------------------------------------------
+ particle decays       number        weight        weight per source
+-------------------------------------------------------------------------------
+     pion+                 8.     8.0000000E+00     1.6000000E-02
+     muon+                 8.     8.0000000E+00     1.6000000E-02
+     pion0                 6.     6.0000000E+00     1.2000000E-02
+
+-------------------------------------------------------------------------------
+ stop. particles.    number        weight        weight per source
+-------------------------------------------------------------------------------
+     nucleus            9190.     9.1900000E+03     1.8380000E+01
+     neutron            3606.     3.6060000E+03     7.2120000E+00
+     proton              998.     9.9800000E+02     1.9960000E+00
+     alpha                92.     9.2000000E+01     1.8400000E-01
+     deuteron             45.     4.5000000E+01     9.0000000E-02
+     triton               17.     1.7000000E+01     3.4000000E-02
+     photon               12.     1.2000000E+01     2.4000000E-02
+     positron              8.     8.0000000E+00     1.6000000E-02
+     3he                   2.     2.0000000E+00     4.0000000E-03
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron             802.     8.0200000E+02     1.6040000E+00
+     other                24.     2.4000000E+01     4.8000000E-02
+     proton                1.     1.0000000E+00     2.0000000E-03
+
+-------------------------------------------------------------------------------
+ the other kind of leakage particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14            16       0.0         0       0
+     nu_ebar       -12             8       0.0         0       0
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+         500           1           0    1.0000000E+00    5.0000000000000E+02
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost part in CG    =     0 / nlost =       10
+ Number of CG region errors   =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ next initial random number = 189127897317225.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:15:27
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =         6.92       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00          16291.
+         nevap =         0.00         0.00           9184.
+         nreac =         0.00         0.00           9211.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00             22.
+         elast =         0.00         0.00           3521.
+         ncasc =         0.00         0.00          15974.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00          15974.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+   === incident particle into bert =====
+
+        proton =                      4.27            682.
+       neutron =                     95.70          15287.
+          pi + =                      0.01              1.
+          pi - =                      0.03              4.
+     -----------------------------------------------------
+          total                                     15974.
+           real                                      5663.
+
+ END 

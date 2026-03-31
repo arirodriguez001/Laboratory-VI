@@ -1,0 +1,71 @@
+[ T i t l e ]
+Sample input for detector response calculation using isotropic source
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       10000     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+
+[ S o u r c e ]
+set: c3[10.0]  $ Radius of source sphere (cm)
+   s-type =   9             # mono-energetic axial source
+     proj =  neutron        # kind of incident nucleus          
+       e0 =   35.00         # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       r1 =  c3             # radius of sphere [cm]
+       r2 =  c3             # radius of source circle [cm]
+      dir =  iso            # inner direction with uniform dis. by analog
+  totfact =  pi*c3**2       # (D=1.0) global factor
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+           H        1.213
+           C       1.000
+MAT[ 2 ] 
+           Al      1.000
+
+[ C e l l ]
+ 1          1 -0.874   2 -3 -11
+ 2          2 -2.700   1 -4 -12  #1
+ 98          0        #(1 -4 -12) -999 
+ 99         -1          999
+
+[ S u r f a c e ]
+set: c1[2.0*2.54]  $ Detector radius (cm)
+set: c2[0.1]       $ Cover thickness (cm)
+ 1            pz     -c1-c2
+ 2            pz     -c1
+ 3            pz      c1
+ 4            pz      c1+c2
+11            cz      c1
+12            cz      c1+c2
+ 999          so     1.0000000E+02
+
+[ T-Deposit ]
+    title = Energy Deposition for each cell
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+     unit =    3            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = deposit         # deposit enerygy distribution
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.000000      # minimum value of e-mesh points
+     emax =   40.00000      # maximum value of e-mesh points
+       ne =  200            # number of e-mesh points
+     axis =   eng           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  all      
+   y-txt  = Response [cm^2]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
+    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+
+[END]
+

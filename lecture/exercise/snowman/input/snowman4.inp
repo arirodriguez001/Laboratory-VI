@@ -1,0 +1,88 @@
+[ T i t l e ]
+Sample input for snowman irradiation
+
+[ P a r a m e t e r s ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        2000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EGS
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =   proton        # kind of incident nucleus          
+       e0 =   100.00        # energy of beam [MeV/u]
+       r0 =   1.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -100.000       # minimum position of z-axis [cm]
+       z1 =  -100.000       # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ]   $ Water
+           H       2.0
+           O       1.0
+MAT[ 2 ]   $ Al
+           Al      1.0
+
+[ S u r f a c e ]
+   1   so     5.0
+   2   so    20.0
+   3   sz   -25.0 15.0
+  11   cz    10.0
+  21   pz   -40.0
+  22   pz   -36.0
+ 999   so   200.0
+
+[ C e l l ]
+ 1   1 -1.0  -1          $ Target
+ 2   1 -1.0  -2  1       $ Big ball
+ 3   1 -1.0  -3  2   #4  $ Small ball
+ 4   2 -2.7  -11 21 -22  $ Al plate
+98   0       #all  -999  $ Void
+99  -1              999  $ Outer region
+
+[ V o l u m e ]
+ 1     4.0/3.0*pi*5.0**3
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -30.0           # minimum value of x-mesh points
+     xmax =   30.0           # maximum value of x-mesh points
+       nx =   60            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -30.0           # minimum value of y-mesh points
+     ymax =   30.0           # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -60.0           # minimum value of z-mesh points
+     zmax =   30.0           # maximum value of z-mesh points
+       nz =   90            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track.out       # file name of output for the above axis
+     part = proton neutron
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - Deposit ]
+    title = Energy deposition in reg mesh
+     mesh =  reg            # mesh type is xyz scoring mesh
+      reg =    1
+     unit =    0            # unit is [Gy/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =   reg           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  all      
+
+[END]
+

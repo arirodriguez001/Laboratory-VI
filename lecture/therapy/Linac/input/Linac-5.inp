@@ -1,0 +1,211 @@
+[ T i t l e ]
+Input file for lecture about modeling of linac and evaluation of activation
+
+[ P a r a m e t e r s ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) 0: no, 1: consider photo-nuclear reaction
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=xdirs) nuclear data input file name
+ file(20) = c:/phits/XS/egs # (D=/phits/XS/egs) EGS data folder name
+$  must option for DCHAIN 
+ jmout    =           1     # (D=0) Density echo, 0:input, 1:number density
+ file(21) = c:/phits/dchain-sp/data # (D=c:/phits/dchain-sp/data) dchain data folder name
+ e-mode   =           0     # (D=0) Event generator mode is not recommended for DCHAIN calculation
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  electron       # kind of incident nucleus          
+       e0 =   15.000        # energy of beam [MeV/u]
+       r0 =   0.1000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -130.00        # minimum position of z-axis [cm]
+       z1 =  -130.00        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Water
+           1H         2.0000000E+00
+          16O         1.0000000E+00
+
+MAT[ 2 ]   # Air (1.20e-3 g/cm3)
+          14N         8.0000000E+00
+          16O         2.0000000E+00
+
+MAT[ 3 ]   # Gold target Au (19.3 g/cm3)
+         197Au        1.0000000E+02
+
+MAT[ 4 ]   # Copper target Cu (8.92 g/cm3)
+         63Cu         6.9170000E+01
+         65Cu         3.0830000E+01
+
+MAT[ 5 ]   # Collimator (17g/cm3, from AAPM report 72, TG-50)
+         184W        -9.0500000E+01
+         58Ni        -6.5000000E+00
+         56Fe        -3.0000000E+00
+
+MAT[ 6 ]   # Flattening filter (8.92 g/cm3)
+         63Cu         6.9170000E+01
+         65Cu         3.0830000E+01
+
+[ Mat Name Color ]
+   mat                name     size            color   # HSB color value
+     0                void     1.00        lightgray   # { -0.800  1.000  1.000 }
+     1               Water     1.00       pastelblue   # {  0.250  0.400  1.000 }
+     2                 Air     1.00       pastelcyan   # {  0.400  0.400  1.000 }
+     3          GoldTarget     1.00         matblack   # { -0.200  1.000  1.000 }
+     4        CopperTarget     1.00     orangeyellow   # {  0.867  1.000  1.000 }
+     5          Collimator     1.00          magenta   # {  0.067  1.000  1.000 }
+     6    FlatteningFilter     1.00        darkgreen   # {  0.600  1.000  0.500 }
+
+[ C e l l ]
+ 1          1 -1.0  1 -2 3 -4 5 -6  $ Water phantom
+ 2          2 -1.20e-3  #1 -999 #11 #21 #31 #41    $ Air
+ 11         3 -19.3  11 -12 -13     $ Au for X-ray generator 
+ 21         5 -17.0  21 -22 23 -24  $ secondary collimator
+ 31         5 -17.0  31 -32 33 -34  $ Primary collimator
+ 41         6 -8.92  -41            $ Flattening filter
+ 999       -1             999       $ Outer region
+
+[ S u r f a c e ]
+ 1            px   -15.0
+ 2            px    15.0
+ 3            py   -15.0
+ 4            py    15.0
+ 5            pz   -15.0
+ 6            pz    15.0
+ 11           pz  -115.0      $ X-ray generator
+ 12           pz  -115.0+0.2  $ X-ray generator
+ 13           cz   0.55       $ X-ray generator
+ 21           pz   -95.0      $ secondary collimator
+ 22           pz   -95.0+6.0  $ secondary collimator
+ 23           cz   10.0       $ secondary collimator
+ 24           cz   20.0       $ secondary collimator
+ 31           pz  -115.0+2.0  $ Primary collimator
+ 32           pz  -115.0+7.5  $ Primary collimator
+ 33           trc  0.0 0.0 (-115.0+7.5)  0.0 0.0 -5.5 2.5 1.0  $ Primary collimator
+ 34           cz   10.5       $ Primary collimator
+ 41           trc  0.0 0.0 (-115.0+11.5)  0.0 0.0 -1.5 3.5 1e-10  $ Flattening filter
+ 999          so   500.0
+
+[ V o l u m e ] off
+$  must section for DCHAIN 
+ reg   vol
+ 11    0.55**2*pi*0.2
+ 21    (20**2-10**2)*pi*6
+ 31    10.5**2*pi*5.5 - (2.5**2*pi*9.17-1.0**2*pi*3.67)
+ 41    3.5**2*pi*1.5/3
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -30.00000      # minimum value of x-mesh points
+     xmax =   30.00000      # maximum value of x-mesh points
+       nx =   60            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -5.000000      # minimum value of y-mesh points
+     ymax =   5.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -130.0000      # minimum value of z-mesh points
+     zmax =   20.00000      # maximum value of z-mesh points
+       nz =  150            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part = electron photon neutron
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -5.00000      # minimum value of x-mesh points
+     xmax =   5.00000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -5.000000      # minimum value of y-mesh points
+     ymax =   5.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -120.0000      # minimum value of z-mesh points
+     zmax =  -110.0000      # maximum value of z-mesh points
+       nz =  100            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz-target.out    # file name of output for the above axis
+     part = electron photon neutron
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - 3Dshow ]
+    title = Geometry check using [T-3dshow]
+     file = 3dshow.out      # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                2
+       x0 =    0.0          # (D=0.0) x-coordinate of the origin
+       y0 =    0.0          # (D=0.0) y-coordinate of the origin
+       z0 =  -50.0          # (D=0.0) z-coordinate of the origin
+    e-the =  150            # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  160            # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  400            # (D=w-dst*10) eye point distance from origin
+    l-the =  150            # (D=e-the) light point theta from z-axis
+    l-phi =    0            # (D=e-phi) light point phi from x-axis
+    l-dst =  100            # (D=e-dst) light point distance from origin
+    w-wdt =   60            # (D=100) width of window (cm)
+    w-hgt =   50            # (D=100) hight of window (cm)
+    w-dst =  150            # (D=200) window distance from origin
+   heaven =   y             # (D=y) direction to heaven
+    resol =    3            # (D=1) resolution of 3dshow
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - D C H A I N ] off
+$  must section for DCHAIN 
+    title = X-ray generated by 15MeV electron 
+     mesh =  reg               # mesh type is region-wise
+$      reg =  11 21 31 41
+      reg =  11
+     file = dchain_e15MeV.out  # file name of dchain-sp input file
+  timeevo =    2               # time evolution
+    6.0 m  1.0
+    50.0 m 0.0
+  outtime =    7               # output time
+    1.0 m
+    3.0 m
+    6.0 m
+   10.0 m
+   20.0 m
+   30.0 m
+   40.0 m
+$ beam current (nA)
+set:c1[100.0]
+$ beam power (source/sec) 
+set:c2[ c1 * 1.0e-9 / (1.602177e-19) ]
+   amp = c2                 # (D=1.0) Source Intensity(source/sec)
+
+[END]

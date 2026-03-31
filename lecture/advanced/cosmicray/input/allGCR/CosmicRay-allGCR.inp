@@ -1,0 +1,194 @@
+[ T i t l e ]
+Sample input file for cosmic-ray transport simulation
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        100000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode Ver.1, 2: Ver.2
+ irqmd    =           1     # (D=0) 0: JQMD legacy version, 1: JQMD-2.0
+ negs     =           2     # (D=-1) =-1:original, =0:No, =1:EGS
+ mdbatima =        3000     # (D=500) max database size of ATIMA
+ maxbnk   =      100000     # (D=10000) maximum bank memory length
+ iMeVperU =           1     # (D=0) 0:[MeV] or 1:[MeV/u] is unit of tally output
+ emin(12) =  1.00000000     # (D=1.e+9) cut-off energy of electron (MeV)
+ emin(13) =  1.00000000     # (D=1.e+9) cut-off energy of positron (MeV)
+ esmax    =  100000000.     # (D=1.0e6) max energy/u for charged particle range
+
+[ S o u r c e ]
+set:c1[200.0]  $ Source radius
+
+  totfact =  -pi*c1**2       # (D=1.0) global factor
+ infl:{source.inp}
+      proj =  proton      # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  alpha       # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  7Li         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  9Be         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  11B         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  12C         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  14N         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  16O         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  19F         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  20Ne        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  23Na        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  24Mg        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  27Al        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  28Si        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  31P         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  32S         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  35Cl        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  40Ar        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  39K         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  40Ca        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  45Sc        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  48Ti        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  51V         # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  52Cr        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  55Mn        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  56Fe        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  59Co        # kind of incident nucleus 
+ infl:{source.inp}
+      proj =  59Ni        # kind of incident nucleus 
+
+[ M a t e r i a l ]
+MAT[ 1 ]  $ Al
+           Al 1.0
+
+MAT[ 2 ]  $ Ground
+           Si 1.0  O 2.0
+
+[ C e l l ]
+ 1   0      -1
+ 2   0       1  -2
+ 3   0       2 -99
+ 99 -1          99
+
+[ S u r f a c e ]
+ 1  so  100.
+ 2  so  110.
+99  so  c1+0.1  
+
+[ T - T r a c k ]
+    title = Track Detection in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1 3
+   volume 
+      reg  vol
+        1  4.0/3.0*pi*100**3
+        3  4.0/3.0*pi*(c1**3-110**3)
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+       ne =   120            # number of e-mesh points
+     emin =   1.000000      # minimum value of e-mesh points
+     emax =   1.0e6      # maximum value of e-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng            # axis of output
+     file = track_reg.out  # file name of output for the above axis
+     part =  proton alpha fe
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+ y-txt    = Flux [1/cm^2/(MeV/n)/sec]
+
+[ T - C r o s s ]
+    title = Energy distribution in r-z mesh
+     mesh =  r-z            # mesh type is xyz scoring mesh
+   r-type =    1            # y-mesh is given by the below data
+       nr =    1            # number of y-mesh points
+            0.0 c1
+   z-type =    1            # z-mesh is linear given by zmin, zmax and nz
+       nz =    0            # number of z-mesh points
+            0.0
+   e-type =    2            # e-mesh is log given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   1.0e10           # maximum value of e-mesh points
+       ne =   1            # number of e-mesh points
+   a-type =    2            # e-mesh is log given by emin, emax and ne
+     amin =  -1.0           # minimum value of e-mesh points
+     amax =   1.0           # maximum value of e-mesh points
+       na =   20            # number of e-mesh points
+     unit =    4            # unit is [1/cm^2/sr/source]
+     axis =  cos            # axis of output
+   output = a-flux            # surface crossing flux
+     file = cross.out   # file name of output for the above axis
+     part =  proton alpha fe
+   epsout =    2            # (D=0) generate eps file by ANGEL
+ y-txt    = Flux [1/cm^2/sr)/sec]
+
+[ T - T r a c k ]
+    title = Cosmic-ray flux
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # In the case of rotating figure, x & z data should be replaced by each other
+     xmin =  -c1            # minimum value of x-mesh points
+     xmax =   c1            # maximum value of x-mesh points
+       nx =   100           # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -10            # minimum value of y-mesh points
+     ymax =   10            # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # In the case of rotating figure, x & z data should be replaced by each other
+     zmin =  -c1            # minimum value of z-mesh points
+     zmax =   c1            # maximum value of z-mesh points
+       nz =   100           # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz.out       # file name of output for the above axis
+     part = all
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1e10
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+    z-txt = Flux [/cm2/sec]
+$ Rotating figure by 90 degree
+     trcl = 0 0 0 0 0 1 0 1 0 1 0 0
+    x-txt = x [cm]
+    y-txt = z [cm]
+
+[ T - T r a c k ] off
+    title = Track Detection in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1 3
+   volume 
+      reg  vol
+        1  4.0/3.0*pi*100**3
+        3  4.0/3.0*pi*(c1**3-110**3)
+   e-type =    1            # e-mesh is log given by emin, emax and ne
+       ne =    1            # number of e-mesh points
+       0.0  1.0e10
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   reg           # axis of output
+     file = track_dose.out  # file name of output for the above axis
+     part =  all proton neutron
+ multiplier = all
+   mat   mset1
+   all  (1.0e-6*24*3600  -211 )      # -211 is for effective dose equivalent for male
+ y-txt    = Dose equivalent [uSv/day]
+
+[END]
+

@@ -1,0 +1,127 @@
+[ T i t l e ]  
+Sample input for calculating production yield using forced collisions
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        5000     # (D=10) number of particles per one batch
+ maxbch   =           5     # (D=10) number of batches
+ wc2(1)   = 1.0E-12 # weight cutoff of proton
+ wc2(18)  = 1.0E-12 # weight cutoff of Alpha
+ wc2(19)  = 1.0E-12 # weight cutoff of Nucleus
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ] 
+  totfact =   1.0000      # (D=1.0) global factor
+   s-type =   1           # mono-energetic axial source
+     proj =  proton       # kind of incident particle         
+       e0 =   100.00      # energy of beam [MeV]
+       r0 =  0.100        # radius [cm]
+       x0 =   0.0000      # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000      # (D=0.0) center position of y-axis [cm]
+       z0 =  -1.000       # minimum position of z-axis [cm]
+       z1 =  -1.000       # maximum position of z-axis [cm]
+      dir =   1.0000      # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+          Si         1.0000000E+00
+
+set: c1[0.001]   $ thickness of target
+set: c2[2.33]    $ target density g/cm^2
+set: c3[c1*c2/28*6.02e23] $ target density particles/cm^2
+set: c4[2.0]     $ radius of detector
+set: c5[4.0]     $ distance from target to detector
+set: c10[45]     $ angle of detector
+
+[ S u r f a c e ]
+   1  cz  0.5
+   2  cz  c4
+  11  pz  0.0
+  12  pz  c1
+  13  pz  c5
+  14  pz  c5+1.0
+  99  so  100.0
+     
+[ C e l l ]
+ 1   1 -c2  -1  11 -12
+ 2   0      -2  13 -14  trcl=1
+100  0 -99 #all
+101 -1  99
+ 
+[ T r a n s f o r m ]
+*tr1   0.0 0.0 0.0   0.0 0.0 0.0  2 c10  0 0.0  0 0.0  3
+
+[ Forced Collisions ]
+   part = proton  
+   reg     fcl
+     1    -1.0
+
+[ T - P r o d u c t ]
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-03  # minimum value of e-mesh points
+     emax =   100.0000      # maximum value of e-mesh points
+       ne =   50            # number of e-mesh points
+   a-type =   -1            # a-mesh is given by the below data
+       na =    1            # number of a-mesh points
+      c10-atan(c4/c5)/pi*180  c10+atan(c4/c5)/pi*180
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+     unit =   23            # unit is [1/MeV/SR/source]
+     axis =  eng            # axis of output
+     file = product.out     # file name of output for the above axis
+   output = nuclear         # (D=nuclear) products from all reactions
+     part = proton  alpha   Si
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    factor = 1/c3*1.0E27
+    y-txt = d^2\sigma/dE/d\Omega (mb/sr/MeV)
+    angel = ymax(40) ymin(1e-3) ylog xlog
+
+[ T - C r o s s ]
+    title = [t-cross] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+    r-from r-to       area
+       100    2   pi*c4**2
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =   1e-3      # minimum value of e-mesh points
+     emax =   100.0000      # maximum value of e-mesh points
+       ne =   50            # number of e-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =  eng            # axis of output
+     file = cross.out       # file name of output for the above axis
+   output = current            # surface crossing flux
+     part = proton alpha Si
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   factor = c5**2/c3*1.0E27
+    y-txt = d^2\sigma/dE/d\Omega (mb/sr/MeV)
+    angel = ymax(40) ymin(1e-3) ylog xlog
+
+[ T - T r a c k ]
+    title = Track Detection using [T-track] tally
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -10.00000      # minimum value of x-mesh points
+     xmax =   10.00000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -5.0  5.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -10.00000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+       nz =  200            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  5000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = track-xz.out    # file name of output for the above axis
+     part = proton  alpha  Si   
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[END]
+
+ 

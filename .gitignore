@@ -1,0 +1,19 @@
+# Ignorar TODO
+*
+
+# Permitir estas carpetas
+!ejemplos_con_sebas/
+!ejemplos_con_sebas/**
+
+!lecture/
+!lecture/**
+
+!simulaciones/
+!simulaciones/**
+
+!test_ari/
+!test_ari/**
+
+# Permitir archivos importantes
+!.gitignore
+!README.md

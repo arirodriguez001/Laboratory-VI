@@ -1,0 +1,105 @@
+[ T i t l e ]
+example 012        -Double Differential Cross-section (DDX)- sample input
+                    Norihiro MATSUDA    02 JULY 2010
+
+[ P a r a m e t e r s ]  
+ icntl    =      0
+ maxcas   = 500000
+ maxbch   =     40
+ emin(2)  =      1.0
+ dmax(2)  =     20.0
+ itall    =      1
+ imout    =      2
+ icput    =      1
+ iggcm    =      1
+ file(6)  =   phits.out
+ file(7)  =   C:\phits\data\xsdir.jnd
+ e-mode   =      0  
+
+[ S o u r c e ]
+   s-type =   1
+     proj =   proton
+       e0 =   1.2e+03
+       z0 =  -1.01
+       z1 =  -1.01
+       r0 =   0.0
+     dir  =   1.0
+
+[ M a t e r i a l ]
+mat[26]  54Fe      5.845     $ iron: 7.87 g cm^-3
+         56Fe     91.754
+         57Fe      2.119
+         58Fe      0.282
+mat[1]   14N      78         $ air
+         16O      21
+
+[ C e l l ]
+  20    26  -7.87     5001 -6001                   -8001  $ Target
+ 100     1  -0.001205                  -9200
+                    #(5001 -6001                   -8001)
+ 501     1  -0.001205        -86  9200 -9201
+ 502     1  -0.001205   86   -85  9200 -9201              $ Detector
+ 503     1  -0.001205   85   -56  9200 -9201
+ 504     1  -0.001205   56   -55  9200 -9201              $ Detector
+ 505     1  -0.001205   55   -41  9200 -9201
+ 506     1  -0.001205   41   -40  9200 -9201              $ Detector
+ 507     1  -0.001205   40   -26  9200 -9201
+ 508     1  -0.001205   26   -25  9200 -9201              $ Detector
+ 509     1  -0.001205   25   -11  9200 -9201
+ 510     1  -0.001205   11   -10  9200 -9201              $ Detector
+ 511     1  -0.001205   10        9200 -9201
+ 999    -1                       9201                    $ Outer void
+
+[ S u r f a c e ]
+c  == Z-axis ==
+5001  pz      -1.5
+6001  pz       1.5
+
+set:  c5[16./2.]       $ radius of the detector (16 cm)
+set:  c99[350.0]       $ distance from the target
+set:  c10[10]          $ angle of the estimater
+set:  c25[25]          $ angle of the estimater
+set:  c40[40]          $ angle of the estimater
+set:  c55[55]          $ angle of the estimater
+set:  c85[85]          $ angle of the estimater
+
+  10   pz      c99*cos((c10-(atan(c5/c99)*180/pi))*pi/180.)
+  11   pz      c99*cos((c10+(atan(c5/c99)*180/pi))*pi/180.)
+  25   pz      c99*cos((c25-(atan(c5/c99)*180/pi))*pi/180.)
+  26   pz      c99*cos((c25+(atan(c5/c99)*180/pi))*pi/180.)
+  40   pz      c99*cos((c40-(atan(c5/c99)*180/pi))*pi/180.)
+  41   pz      c99*cos((c40+(atan(c5/c99)*180/pi))*pi/180.)
+  55   pz      c99*cos((c55-(atan(c5/c99)*180/pi))*pi/180.)
+  56   pz      c99*cos((c55+(atan(c5/c99)*180/pi))*pi/180.)
+  85   pz      c99*cos((c85-(atan(c5/c99)*180/pi))*pi/180.)
+  86   pz      c99*cos((c85+(atan(c5/c99)*180/pi))*pi/180.)
+
+c  == cylinder ==
+8001  cz       1.5
+c  == sphere ==
+9200  so       c99
+9201  so       c99+0.1
+
+[ T - C R O S S ]  
+   mesh =  reg
+    reg =    5
+   r-in    r-out      area
+    100     502       2*pi*c99*(3.8464021E+01-2.2529068E+01)
+    100     504       2*pi*c99*(2.0725084E+02-1.9414783E+02)
+    100     506       2*pi*c99*(2.7318650E+02-2.6290459E+02)
+    100     508       2*pi*c99*(3.2050496E+02-3.1374483E+02)
+    100     510       2*pi*c99*(3.4598153E+02-3.4320389E+02)
+   part =  neutron
+ e-type =    3
+     ne =   80
+   emin =    1.
+   emax =    1.e+04
+   unit =    2
+   axis =  eng
+   file =  flux_neutron.dat
+ output =  flux  
+ epsout =    1
+
+[ E n d ]
+
+

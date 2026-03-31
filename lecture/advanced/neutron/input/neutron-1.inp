@@ -1,0 +1,231 @@
+[ title ]
+ Benchmark test of neutron transport in curved guide line with supermirror
+
+[ parameters ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       50000     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ itall    =           1
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ nucdata  =           1     # (D=1) 0: do not use, 1: use normal nuclear data
+
+[ cell ]
+ 100 -1  (-101:105:202)
+
+$        pz   pz   rpp  rpp
+ 101  0  101 -102      -202
+
+ 102  0  102 -103      -201
+ 103  0  103 -104      -201
+ 104  0  104 -105      -201
+
+ 105  0  102 -105  201 -202
+
+[ surface ]
+ 101 pz -100
+ 102 pz  200
+ 103 pz  500
+ 104 pz  5000
+ 105 pz  5100
+
+ 201 rpp -2.5 2.5  -2.5 2.5  -200 5200
+ 202 rpp -5.0 5.0  -5.0 5.0  -200 5200
+
+
+[ material ]
+$ glass SiO2 d=-2.2(g/cm3)
+m1
+ Si 1
+ O  2
+
+[ mat time change ] off
+ mat   time   change
+  2    3.e4     0
+
+[ mat name color ]
+$ mat name   color
+  1   Glass  orangeyellow
+
+[ Super Mirror ] off
+   r-in    r-out    mm    r0    qc    am    wm
+   ****    ****    ****  ****  ****  ****  ****    
+
+[ source ]
+   s-type =   2             # rectangular-solid source
+     proj =  neutron        # kind of incident particle         
+       x0 =  -2.5000        # minimum position of x-axis [cm]
+       x1 =   2.5000        # maximum position of x-axis [cm]
+       y0 =  -2.5000        # minimum position of y-axis [cm]
+       y1 =   2.5000        # maximum position of y-axis [cm]
+       z0 =   0.0000        # minimum position of z-axis [cm]
+       z1 =   0.0000        # maximum position of z-axis [cm]
+      dir =   1.0           # z-direction of beam [cosine]
+       e0 =  2.00000E-10    # energy of beam [MeV/u]
+
+[ t-track ] 
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -40.00000      # minimum value of x-mesh points
+     xmax =   20.00000      # maximum value of x-mesh points
+       nx =   60            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -2.500000      # minimum value of y-mesh points
+     ymax =   2.500000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -100.0000      # minimum value of z-mesh points
+     zmax =   5500.000      # maximum value of z-mesh points
+       nz =  280            # number of z-mesh points
+     part = neutron
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+            0.0  1.0E+06
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =   xz            # axis of output
+     file = track.dat       # file name of output for the above axis
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+    angel = form(0.3) afac(0.8)
+
+
+[ T - C r o s s ] off
+    title = Duct current in r-z mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # y-mesh is given by the below data
+       nx =    1            # number of y-mesh points
+     xmin =  -40.0
+     xmax =    2.5
+   y-type =    2            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+     ymin =   -2.5
+     ymax =    2.5
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  *********      # minimum value of z-mesh points
+     zmax =  *********      # maximum value of z-mesh points
+       nz =  *********      # number of z-mesh points
+   e-type =    1            # e-mesh is is given by the data below 
+       ne =    1            # number of e-mesh points
+            0.0  1.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  *********      # axis of output
+     file = cross-z.out     # file name of output for the above axis
+   output = current         # surface crossing flux
+     part =  *********
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - C r o s s ] off
+    title = Energy spectrum in r-z mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # y-mesh is given by the below data
+       nx =    1            # number of y-mesh points
+     xmin =  -40.0
+     xmax =    2.5
+   y-type =    2            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+     ymin =   -2.5
+     ymax =    2.5
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  700.00000      # minimum value of z-mesh points
+     zmax =  750.00000      # maximum value of z-mesh points
+       nz =    1            # number of z-mesh points
+   e-type =    3            # z-mesh is linear given by zmin, zmax and nz
+     emin =  1.e-7          # minimum value of z-mesh points
+     emax =  1.e0           # maximum value of z-mesh points
+       ne =  100            # number of z-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng           # axis of output
+     file = cross-eng.out   # file name of output for the above axis
+   output = current         # surface crossing flux
+     part =  neutron
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+
+[ cell ] off
+ 100 -1  (-101:106:-201:202:-301:302)
+
+$             pz   pz   py   py   px   px
+ 101  0       101 -102  201 -202  301 -302
+ 102  0       102 -103  201 -202  301 -302 (-212:213:-312:313)
+ 103  0       102 -103  212 -213  312 -313
+
+$straight
+ 111  0       103 -104  201 -202  301 -302 (-211:214:-311:314) 
+ 112  1 -2.2  103 -104  211 -214  311 -314 (-212:213:-312:313)
+ 113  0       103 -104  212 -213  312 -313 (-121:122)
+
+$curved
+ 121  0       104 -105  201 -202  301 -302 (-211:214:-321:324)
+
+ 122  1 -2.2  104 -111  211 -214  321 -324 (-212:213:-322:323)
+ 123  0       104 -111  212 -213  322 -323
+
+ 124  1 -2.2  111 -112  211 -214  321 -324 (-212:213:-322:323)
+ 125  0       111 -112  212 -213  322 -323
+
+ 126  1 -2.2  112 -113  211 -214  321 -324 (-212:213:-322:323)
+ 127  0       112 -113  212 -213  322 -323
+
+ 128  1 -2.2  113 -114  211 -214  321 -324 (-212:213:-322:323)
+ 129  0       113 -114  212 -213  322 -323
+
+ 130  1 -2.2  114 -105  211 -214  321 -324 (-212:213:-322:323)
+ 131  0       114 -105  212 -213  322 -323
+
+$
+ 141  0       105 -106  201 -202  301 -302
+
+$T0 chopper
+$             
+ 201  0       121 -122  212 -213  312 -313
+
+[ surface ] off
+ 101 pz -100
+ 102 pz  200
+ 103 pz  500
+ 104 pz  750
+ 105 pz  5000
+ 106 pz  5500
+
+ 111 pz  1000
+ 112 pz  2000
+ 113 pz  3000
+ 114 pz  4000
+
+ 121 pz  710
+ 122 pz  740
+
+ 201 py  -10.0 
+ 202 py   10.0 
+
+ 211 py  -3.0 
+ 212 py  -2.5 
+ 213 py   2.5 
+ 214 py   3.0 
+
+ 301 px  -100
+ 302 px   100
+
+ 311 px  -3.0
+ 312 px  -2.5
+ 313 px   2.5
+ 314 px   3.0
+
+ 321 c/y -400000  750  400000-3.0
+ 322 c/y -400000  750  400000-2.5
+ 323 c/y -400000  750  400000+2.5
+ 324 c/y -400000  750  400000+3.0
+
+[ super mirror] off
+ r-in r-out mm r0    qc      am   wm
+ 113  112   3  0.99  0.0217  3.0  0.003
+ 123  122   3  0.99  0.0217  3.0  0.003
+ 125  124   3  0.99  0.0217  3.0  0.003
+ 127  126   3  0.99  0.0217  3.0  0.003
+ 129  128   3  0.99  0.0217  3.0  0.003
+ 131  130   3  0.99  0.0217  3.0  0.003
+
+
+[ end ]
+

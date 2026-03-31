@@ -1,0 +1,33 @@
+c  Ridge Filter Area
+set: c1[-50.0] $ Z position of ridge filter
+ 100          px   -10.0
+ 101          px    10.0
+ 102          py   -10.0
+ 103          py    10.0
+ 104          pz    c1
+ 105          pz    c1+5.0 
+ 106          pz    c1+0.05 $ 0.05 cm for the maximum step size in Ridge filter
+$  Each Ridge Filter Width
+  200         px     0.00
+  201         px     0.20
+  202         px     0.30
+  203         px     0.40
+  204         px     0.55
+  205         px     0.70
+  206         px     0.85
+  207         px     1.00
+  208         px     1.20
+  209         px     1.35
+  210         px     1.50
+  211         px     1.65
+  212         px     1.80
+  213         px     1.90
+  214         px     2.00
+$  Each Ridge Filter Depth
+  301         pz    c1+5.0-0.5
+  302         pz    c1+5.0-1.0
+  303         pz    c1+5.0-1.5
+  304         pz    c1+5.0-2.0
+  305         pz    c1+5.0-2.5
+  306         pz    c1+5.0-3.0
+  307         pz    c1+5.0-3.5

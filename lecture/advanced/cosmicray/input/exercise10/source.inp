@@ -1,0 +1,12 @@
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # mono-energetic axial source
+       r1 =   c1      # radius of sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  25       # Cosmic-ray source
+  icenv =   0     
+ solarmod =   150.00
+ $ rigid =   10.0000
+ $ glat = 41
+ $ glong = -74
+ $ alti = 0.0

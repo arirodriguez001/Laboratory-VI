@@ -1,0 +1,132 @@
+ file = beam2.inp
+
+[ Title ]
+Beam setting 2
+
+[ Parameters ]
+   icntl  = 0
+   maxcas = 5000
+   maxbch = 2
+  file(6) = phits.out
+
+$ Optimized for Photon Therapy
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) photonuclear GDR, 1:analog, -1:implicit itall
+$ Library data paths for file(7) & file(14)
+ infl:{libpath.inp}
+
+[ Transform ]
+
+set: c91[    -0.5    ] $ isocenter x
+set: c92[     6.5    ] $ isocenter y
+set: c93[    -9.0    ] $ isocenter z
+set: c94[     100.0  ] $ beam distance 
+set: c95[     9.0    ] $ irradiation field x length
+set: c96[     8.0    ] $ irradiation field z length
+set: c97[     0.0    ] $ gantory angle
+set: c98[cos(c97/180*pi) ] $ cos
+set: c99[sin(c97/180*pi) ] $ sin
+
+tr600       c91*(1-c98)+c92*c99 -c91*c99+c92*(1-c98) 0
+            c98 -c99  0
+            c99  c98  0
+     	    0    0    1
+     	    1
+
+[ Source ]
+
+   trcl = 600
+ s-type = 5
+     x0 =  c91
+     x1 =  c91
+     y0 =  c92-c94
+     y1 =  c92-c94
+     z0 =  c93
+     z1 =  c93
+    dir =  0.0
+    phi =  90
+    dom = asin(7.0/c94)*180.0/pi
+   proj =  photon
+ e-type = 1
+     ne = 28
+ infl:{spectrum.inp}
+
+[ Surface ]
+$ Outer region
+   99 so 500
+$ Colimator 1 inside
+   90 rpp c91-0.1*c95 c91+0.1*c95 c92-0.9*c94 c92-0.8*c94 c93-0.1*c96 c93+0.1*c96
+$ Colimator 1 outside
+   91 rpp c91-0.5*c95 c91+0.5*c95 c92-0.9*c94 c92-0.8*c94 c93-0.5*c96 c93+0.5*c96
+$ Colimator 2 inside
+   92 600 rpp c91-0.1*c95 c91+0.1*c95 c92-0.9*c94 c92-0.8*c94 c93-0.1*c96 c93+0.1*c96
+$ Colimator 2 outside
+   93 600 rpp c91-0.5*c95 c91+0.5*c95 c92-0.9*c94 c92-0.8*c94 c93-0.5*c96 c93+0.5*c96
+
+[ Cell ]
+$ Main space
+   98  0        -99 #90 #92        $ Void
+   90 -1         90 -91            $ Void colimator 1
+   92 -1         92 -93            $ Void colimator 2 
+   99 -1         99                $ Outer region
+
+[ Material ]
+ MAT[10] $ Pb 11.34 g/cm3
+   208Pb  -11.34
+  
+[ T-track ]
+ title  = [t-track: icntl=0]
+ file   = track-yz-1.out
+ mesh   = xyz
+ x-type = 2
+ nx     =  1
+ xmin   = c91-20
+ xmax   = c91+20
+ y-type = 2
+ ny     =  100
+ ymin   = c92-110
+ ymax   = c92+110
+ z-type = 2
+ nz     =  40
+ zmin   = c93-20
+ zmax   = c93+20
+ e-type = 2
+ ne     = 1
+ emin   = 0.0
+ emax   = 1000
+ axis   = yz
+ gshow  = 1
+ epsout = 1
+
+[ T-track ]
+ title  = [t-track: icntl=0]
+ file   = track-xz-1.out
+ mesh   = xyz
+ x-type = 2
+ nx     =  40
+ xmin   = c91-10
+ xmax   = c91+10
+ y-type = 2
+ ny     =    1
+ ymin   = c92-0.1
+ ymax   = c92+0.1
+ z-type = 2
+ nz     =  40
+ zmin   = c93-10
+ zmax   = c93+10
+ e-type = 2
+ ne     = 1
+ emin   = 0.0
+ emax   = 1000
+ axis   = xz
+ epsout = 1
+
+[ End ]

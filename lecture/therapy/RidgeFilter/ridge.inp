@@ -1,0 +1,155 @@
+[ T i t l e ]
+Sample input for Ridge Filter
+
+[ P a r a m e t e r s ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        5000     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ delt0    = 1.000000000E-02 # (D=0.1) flight mesh for spread and magfield (cm)
+ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode
+ nedisp   =           1     # (D=0) 0: no, 1: with e straggling, 10: ATIMA
+ nspred   =           2     # (D=0) 0:no, 1:original, 2:Lynch(Moliere), 10:ATIMA
+ ascat1   =  13.6000000     # (D=13.6) S2 parameter in Lynch formula for nspred = 2
+ ascat2   = 8.800000000E-02 # (D=0.088) e parameter in Lynch formula for nspred = 2
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  proton            # kind of incident nucleus          
+       e0 =   200.00        # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -101.000        # minimum position of z-axis [cm]
+       z1 =  -101.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+            H        -1.1111100E-01
+            O        -8.8888900E-01
+MAT[ 2 ] $ Ridge Filter
+           Al  1.0
+
+MAT[ 3 ] $ Scatterer
+           W         1.0000000E+00
+
+MAT[ 4 ] $ Air
+           N  0.80
+           O  0.20
+
+[ M a t  N a m e  C o l o r ]
+    mat   name      color
+     1    Water     pastelblue
+     2    Aluminum  green
+     3    Tungsten  red
+     4    Air       lightgray
+
+[ C e l l ]
+infl: {ridge-cell.inp} $ Surfaces for Ridge Filter
+$infl: {ridge-cell-proton.inp} $ Surfaces for Ridge Filter
+ 1  3 -19.6   1 -2 -11                   $ Scatterer
+ 2  2 -2.7    3 -4  11 -12               $ Collimator
+ 3  1 -1.0    5 -6 -11                   $ Target
+ 4  0         100 -101 102 -103 104 -105 fill=1002 $ Location of Ridge Fileter
+98  4 -1.21e-3     #1 #2 #3 #4  -999     $ Air
+99 -1         999                        $ Outer region
+
+[ S u r f a c e ]
+infl: {ridge-surface.inp} $ Surfaces for Ridge Filter
+$ Scatterer (Tungsten)
+ 1           pz   -100.0
+ 2           pz   -100.0+0.1
+$ Collimator (Black Hole)
+ 3           pz   -20.0
+ 4           pz   -10.0
+$ Target (Water)
+ 5            pz     0.0
+ 6            pz    30.0
+
+ 11           cz    10.0
+ 12           cz    30.0
+
+ 999          so   500.0
+
+[ T - Deposit ]
+    title = depth-dose distribution
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   1.000000      # maximum value of r-mesh points
+       nr =    1            # number of r-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   30.00000      # maximum value of z-mesh points
+       nz =   60            # number of z-mesh points
+     unit =    2            # unit is [MeV/source)]
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =     z           # axis of output
+     file = dose.out        # file name of output for the above axis
+     part =  all      
+   epsout =    1
+   angel = ymin(1e-1) ymax(1e-0)
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -20.00000      # minimum value of x-mesh points
+     xmax =   20.00000      # maximum value of x-mesh points
+       nx =   40            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -20.000000      # minimum value of y-mesh points
+     ymax =   20.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -110.000      # minimum value of z-mesh points
+     zmax =   40.0000      # maximum value of z-mesh points
+       nz =   150            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track-whole.out       # file name of output for the above axis
+     part = proton neutron
+    e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    resol =    2
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =    0.00000      # minimum value of x-mesh points
+     xmax =    2.00000      # maximum value of x-mesh points
+       nx =   40            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -10.000000      # minimum value of y-mesh points
+     ymax =   10.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  c1-1.0         # minimum value of z-mesh points
+     zmax =  c1+6.0         # maximum value of z-mesh points
+       nz =   100            # number of z-mesh points
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track-ridge.out       # file name of output for the above axis
+     part = proton neutron
+    e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+    resol =    2
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[END]
+

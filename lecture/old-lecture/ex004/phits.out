@@ -1,0 +1,373 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+             _________________ [ Job Title ] ________________ 
+            |                                                |
+            |  example 004        -Bragg Peak- sample input  |
+            |________________________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 02m 14
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+example 004        -Bragg Peak- sample input
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ nwsors   =           1     # (D=0) # of source written in output
+ maxcas   =         200     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ esmin    = 1.000000000E-06 # (D=0.001) min energy for charged particle range 
+ emin(1)  = 1.000000000E-03 # (D=1.0) cut-off energy of proton (MeV)
+ emin(2)  =  1.00000000     # (D=1.0) cut-off energy of neutron (MeV)
+ emin(15) = 1.000000000E-06 # (D=1.d9) cut-off energy of deuteron (MeV)
+ emin(16) = 1.000000000E-06 # (D=1.d9) cut-off energy of triton (MeV)
+ emin(17) = 1.000000000E-06 # (D=1.d9) cut-off energy of 3He (MeV)
+ emin(18) = 1.000000000E-06 # (D=1.d9) cut-off energy of Alpha (MeV)
+ emin(19) = 1.000000000E-06 # (D=1.d9) cut-off energy of Nucleus (MeV)
+ nedisp   =           1     # (D=0) 0: no, 1: with e straggling, 10: ATIMA
+ nspred   =           2     # (D=0) 0:no, 1:orig. 2:first Moliere, 10: ATIMA
+ itstep   =           1     # (D=0) 0: no, 1: tally by a step in mag and strg
+ itall    =           1     # (D=0) 0:no tally at batch, 1:same, 2:different
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =  12C            # kind of incident nucleus          
+       e0 =   290.00        # energy of beam [MeV/u]
+       r0 =   2.5000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -10.000        # minimum position of z-axis [cm]
+       z1 =  -10.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+           1H         2.0000000E+00
+          16O         1.0000000E+00
+
+[ C e l l ]
+ 10         1 -1.0000000E+00  6001 -6002 -8001 
+ 100        1 -1.0000000E+00  6000 -6050 -8010
+                              #( 6001 -6002 -8001 ) 
+ 200        0                 5020 -6060 -8040
+                              #( 6000 -6050 -8010 ) 
+ 999       -1                 -5020 : 6060 : 8040 
+
+[ S u r f a c e ]
+ 5020         pz    -2.0000000E+01
+ 6000         pz     0.0000000E+00
+ 6001         pz     1.0000000E+01
+ 6002         pz     1.1000000E+01
+ 6050         pz     5.0000000E+01
+ 6060         pz     6.0000000E+01
+ 8001         cz     1.5000000E+00
+ 8010         cz     1.0000000E+01
+ 8040         cz     4.0000000E+01
+
+[ Mat Name Color ]
+   mat     name     size          color   # HSB color value
+     0     void     1.00      lightgray   # { -0.800  1.000  1.000 }
+     1    Water     1.00     pastelcyan   # {  0.400  0.400  1.000 }
+
+[ T - H e a t ]
+    title = [t-heat] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   1.500000      # maximum value of r-mesh points
+#    rdel =   1.500000      # mesh width of r-mesh points
+       nr =    1            # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.50000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   20.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =   20            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01  1.10000E+01  1.20000E+01  1.30000E+01  1.40000E+01
+#           1.50000E+01  1.60000E+01  1.70000E+01  1.80000E+01  1.90000E+01
+#           2.00000E+01
+     unit =    1            # unit is [MeV/cm^3/source]
+     axis =    z            # axis of output
+     file = dep000.out      # file name of output for the above axis
+ material =  all            # (D=all) number of specific material
+   output = heat            # only heat is written
+ electron =    0            # (D=0) 0-> photon library, 1-> electron ionization
+    angel = ylin form(0.7)
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          69 (  0)          45 (  0)         114 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      216
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =     4503
+*     total memory: mdas = 20000000
+*                percent =     0.02 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =       69
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =      705
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of total memory >>>
+*      used total memory =   352993
+*     total memory: mdas = 20000000
+*                percent =     1.76 %
+*                ---------------------
+
+***** source information upto   1 histories *****
+  no ityp    reg  mat    energy      x           y           z           u           v           w           wt
+   1   19    200    0  3.4800E+03 -2.1514E+00 -1.5341E-01 -1.0000E+01  0.0000E+00  0.0000E+00  1.0000E+00  1.0000E+00
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =            200. : rijk    =   6647299061401.
+       low neutron =             52. : ncall/s =  5.759375000E+03
+          cpu time =   8.718 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3              1.   : end of a batch                  
+        4            200.   : source                          
+        5              0.   : detection of geometry error     
+        6              0.   : recovery of geometry error      
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10           1172.   : geometry boundary crossing      
+       11           1663.   : termination by energy cut-off   
+       12            614.   : termination by escape or leakage
+       13            183.   : reaction : (n,x) type           
+       14            560.   : reaction : (n,n'x) type         
+       15           7038.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ Region-wise total number of collisions for High energy and HI per source
+-------------------------------------------------------------------------------
+ Region    Hydrogen       Decay     Elastic   Non-Elast   Heavy Ion    Hi-Total
+     10  0.0000E+00  0.0000E+00  0.0000E+00  2.5000E-02  1.0000E-02  3.5000E-02
+    100  6.7500E-01  2.0000E-02  1.0850E+00  1.9100E+00  8.6500E-01  4.5550E+00
+  Total  6.7500E-01  2.0000E-02  1.0850E+00  1.9350E+00  8.7500E-01  4.5900E+00
+
+-------------------------------------------------------------------------------
+ Medium-wise total number of collisions for High energy and HI per source
+-------------------------------------------------------------------------------
+ Medium    Hydrogen       Decay     Elastic   Non-Elast   Heavy Ion    Hi-Total
+      1  6.7500E-01  2.0000E-02  1.0850E+00  1.9350E+00  8.7500E-01  4.5900E+00
+  Total  6.7500E-01  2.0000E-02  1.0850E+00  1.9350E+00  8.7500E-01  4.5900E+00
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+     proton       2212        938.3         1       1
+     neutron      2112        939.6         0       1
+     pion+         211        139.6         1       0
+     muon+         -13        105.7         1       0
+     positron      -11          0.5         1       0
+     deuteron  1000002       1875.6         1       2
+     triton    1000003       2808.9         1       3
+     3he       2000003       2808.4         2       3
+     alpha     2000004       3727.4         2       4
+
+     nu_ebar       -12          0.0         0       0
+     nu_mu          14          0.0         0       0
+
+-------------------------------------------------------------------------------
+ prod. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron            1016.     1.0160000E+03     5.0800000E+00
+     proton              913.     9.1300000E+02     4.5650000E+00
+     alpha               276.     2.7600000E+02     1.3800000E+00
+     deuteron             62.     6.2000000E+01     3.1000000E-01
+     3he                  28.     2.8000000E+01     1.4000000E-01
+     triton               19.     1.9000000E+01     9.5000000E-02
+     other                 6.     6.0000000E+00     3.0000000E-02
+     pion+                 3.     3.0000000E+00     1.5000000E-02
+     muon+                 2.     2.0000000E+00     1.0000000E-02
+     positron              2.     2.0000000E+00     1.0000000E-02
+
+-------------------------------------------------------------------------------
+ the other kind of produced particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14             4       0.0         0       0
+     nu_ebar       -12             2       0.0         0       0
+
+-------------------------------------------------------------------------------
+ particle decays       number        weight        weight per source
+-------------------------------------------------------------------------------
+     pion+                 2.     2.0000000E+00     1.0000000E-02
+     muon+                 2.     2.0000000E+00     1.0000000E-02
+
+-------------------------------------------------------------------------------
+ stop. particles.    number        weight        weight per source
+-------------------------------------------------------------------------------
+     proton              714.     7.1400000E+02     3.5700000E+00
+     nucleus             621.     6.2100000E+02     3.1050000E+00
+     alpha               243.     2.4300000E+02     1.2150000E+00
+     neutron              52.     5.2000000E+01     2.6000000E-01
+     deuteron             49.     4.9000000E+01     2.4500000E-01
+     3he                  25.     2.5000000E+01     1.2500000E-01
+     triton               11.     1.1000000E+01     5.5000000E-02
+     positron              2.     2.0000000E+00     1.0000000E-02
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron             524.     5.2400000E+02     2.6200000E+00
+     proton               75.     7.5000000E+01     3.7500000E-01
+     other                 6.     6.0000000E+00     3.0000000E-02
+     deuteron              5.     5.0000000E+00     2.5000000E-02
+     triton                3.     3.0000000E+00     1.5000000E-02
+     pion+                 1.     1.0000000E+00     5.0000000E-03
+
+-------------------------------------------------------------------------------
+ the other kind of leakage particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14             4       0.0         0       0
+     nu_ebar       -12             2       0.0         0       0
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+         200           1           0    1.0000000E+00    2.0000000000000E+02
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost part in CG    =     0 / nlost =       10
+ Number of CG region errors   =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ next initial random number =  96574767179961.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:02:22
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =         8.94       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00          11432.
+         nevap =         0.00         0.00            704.
+         nreac =         0.00         0.00            754.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00            135.
+         dklos =         0.00         0.00              4.
+         elast =         0.00         0.00            217.
+         ncasc =         0.00         0.00           1756.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00           1500.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00             65.
+         QMD   =         0.00         0.00            190.
+         INCL  =         0.00         0.00              0.
+
+   === incident particle into bert =====
+
+        proton =                     51.73            776.
+       neutron =                     48.13            722.
+          pi + =                      0.13              2.
+     -----------------------------------------------------
+          total                                      1500.
+           real                                       255.
+
+   === incident particle into JAM =====
+
+        proton =                    100.00             65.
+     -----------------------------------------------------
+          total                                        65.
+           real                                        13.
+
+   === incident particle into QMD =====
+
+      deuteron =                      5.26             10.
+        triton =                      2.11              4.
+           3He =                      1.58              3.
+         Alpha =                     21.58             41.
+       Nucleus =                     69.47            132.
+     -----------------------------------------------------
+          total                                       190.
+           real                                       119.
+
+ END 

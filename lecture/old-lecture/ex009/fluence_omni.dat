@@ -1,0 +1,39 @@
+[ T - C r o s s ]
+    title = [t-cross] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    2            # number of crossing regions
+      non     r-in    r-out      area
+        1     100     10       7.068583    
+        2     10      100      7.068583    
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  reg            # axis of output
+     file = fluence_omni.dat  # file name of output for the above axis
+   output = o-curr          # surface crossing omni current
+     part =  neutron  
+# kf/name :  2112     
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          26 (  0)           7 (  0)          33 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#   no. =  1
+
+x: Serial Num. of Region
+y:  O-Curr [1/cm^2/source]                 
+p: xlin ylog afac(0.8) form(0.9)
+h: x       n            y(neutron ),l3   n   
+#  num     area           o-curr    r.err 
+     1     7.0686E+00   4.1027E-02  0.1106
+     2     7.0686E+00   7.0736E-04  0.9975
+
+#   sum    1.4137E+01   2.0867E-02  0.1101
+
+'no. =  1'
+msuc: {\huge [t-cross] in region mesh}
+msdl: {\it plotted by \ANGEL \version}
+msdr: {\it calculated by \PHITS  2.30}
+wt: s(0.7)
+\vspace{-3}
+  region surface crossing
+e:

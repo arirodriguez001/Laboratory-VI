@@ -1,0 +1,79 @@
+[ T-Track ]
+    title = [t-track] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =      1          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+#    zdel =   1.000000      # mesh width of z-mesh points
+       nz =     10          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  1.00000E+00  2.00000E+00  3.00000E+00  4.00000E+00
+#           5.00000E+00  6.00000E+00  7.00000E+00  8.00000E+00  9.00000E+00
+#           1.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =       z            # axis of output
+     file = RBEdose.out     # file name of output for the above axis
+     part =  photon   
+# kf/name :  22       
+  multiplier = all          # number of material group
+     part =  photon   
+# kf/name :  22       
+     emax =    20.000    
+      mat                 mset1  
+      all ( 1.53336E-11 1 -5 -6 )
+    angel = ymin(1.0e-17) ymax(1.0e-14) 
+    y-txt = Dose [Gy/source]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+
+x: z [cm]         
+y: Dose [Gy/source]
+p: xlin ylog afac(0.8) form(0.9)
+p: ymin(1.0e-17) ymax(1.0e-14) 
+h: n            x            y(photon  ),hh0l   n 
+#  lower        upper        photon      r.err 
+   0.0000E+00   1.0000E+00   2.1252E-14  0.0328
+   1.0000E+00   2.0000E+00   2.9087E-14  0.0397
+   2.0000E+00   3.0000E+00   3.3353E-14  0.0407
+   3.0000E+00   4.0000E+00   3.4732E-14  0.0414
+   4.0000E+00   5.0000E+00   3.2233E-14  0.0434
+   5.0000E+00   6.0000E+00   2.7243E-14  0.0475
+   6.0000E+00   7.0000E+00   2.2821E-14  0.0527
+   7.0000E+00   8.0000E+00   1.7051E-14  0.0609
+   8.0000E+00   9.0000E+00   1.0685E-14  0.0659
+   9.0000E+00   1.0000E+01   5.2215E-15  0.0787
+
+#   sum over    3.1416E+03   2.3368E-14
+
+'no. =  1'
+msuc: {\huge [t-track] in r-z mesh}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.33}
+wt: s(0.7)
+\vspace{-3}
+Energy [MeV]     (    1-th bin)
+   0.0000E+00  $--$   1.0000E+03
+Time [nsec]      (    1-th bin)
+  -1.0000E+30  $--$   1.0000E+30
+r [cm]           (    1-th bin)
+   0.0000E+00  $--$   1.0000E+01
+Multiplier set &=&    1
+e:

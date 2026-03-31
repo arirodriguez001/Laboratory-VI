@@ -1,0 +1,122 @@
+[ T i t l e ]
+sample input for dchain: 10MeV neutron into iron dump
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ igamma   =           3     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+$  must option for DCHAIN 
+ jmout    =           1     # (D=0) Density echo, 0:input, 1:number density
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident particle         
+       e0 =   10.00         # energy of beam [MeV/u]
+       r0 =   0.5000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -30.000        # minimum position of z-axis [cm]
+       z1 =  -30.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 3 ]      Al   1.0
+MAT[ 5 ]      Fe   1.0
+
+[ S u r f a c e ]
+set:c1[1.0] $ height of cylinder (cm)
+set:c2[50.0] $ radius of cylinder (cm)
+1  pz  0.0
+2  pz  0.0+c1
+3  pz  200.0
+4  pz  200.0+c2
+11 cz  c1/2.0
+12 cz  c2/2.0
+99 so  500.0
+
+[ C e l l ]
+1        3 -2.7     1 -2 -11
+2        5 -7.8     3 -4 -12
+99       0          -99 #(1 -2  -11) #(3 -4 -12)
+999      -1          99
+
+[ V o l u m e ] 
+$  must section for DCHAIN 
+    reg   vol
+    1   pi*c1*(c1/2.0)**2  $ c1: height and radius of cylinder (cm)
+    2   pi*c2*(c2/2.0)**2  $ c2: height and radius of cylinder (cm)
+
+[ T - D C H A I N ]  
+$  must section for DCHAIN 
+    title = 10MeV neutron into iron dump
+     mesh =  reg            # mesh type is region-wise
+      reg =  1 2
+     file = tdchain.out        # file name of dchain-sp input file
+  timeevo =    2               # time evolution
+    1.0 h  1.0
+    2.0 h  0.0
+  outtime =    1               # output time
+    1.0 h
+$ beam current (nA)
+set:c21[100.0]
+  amp = c21*1.0e-9/1.602e-19   # (D=1.0) Source Intensity(source/sec)
+
+[ T - T r a c k ]
+    title = neutron, proton & photon distributions
+  mesh = xyz
+x-type = 2
+  xmin = -20
+  xmax =  20
+    nx = 1
+z-type = 2
+  zmin = -10.0
+  zmax = 200.0+c2+10.0
+    nz = 100
+y-type = 2
+  ymin = -c2
+  ymax =  c2
+    ny = 100
+e-type = 2
+  emin = 0
+  emax =  1e10
+    ne = 1
+  axis = yz
+  file = track_yz_dump.out
+  part = neutron proton photon
+  unit = 1
+2D-type =  3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout=1
+
+[ T - T r a c k ] off
+    title = neutron, proton & photon distributions
+  mesh = xyz
+x-type = 2
+  xmin = -20
+  xmax =  20
+    nx = 1
+z-type = 2
+  zmin = -5.0
+  zmax =  5.0
+    nz = 100
+y-type = 2
+  ymin = -5.0
+  ymax =  5.0
+    ny = 100
+e-type = 2
+  emin = 0
+  emax =  1e10
+    ne = 1
+  axis = yz
+  file = track_yz_target.out
+  part = neutron proton photon
+  unit = 1
+2D-type =  3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+ epsout=1
+
+[ E n d ]

@@ -1,0 +1,105 @@
+[ T i t l e ]
+input file for lecture about [parameters] section
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        2000     # (D=10) number of particles per one batch
+ maxbch   =           5     # (D=10) number of batches
+$ istdev   =          -1     # (D=0) 0:Auto, 1,2:Batch or History variance, <0:Restart mode
+
+set: c1[25]
+
+[ S o u r c e ]
+  totfact =   1.0           # (D=1.0) global factor
+   s-type =   2             # mono-energetic rectangular-solid source
+     proj =  proton         # kind of incident particle         
+       e0 =   150.00        # energy of beam [MeV]
+       x0 =  -c1            # minimum position of x-axis [cm]
+       x1 =   c1            # maximum position of x-axis [cm]
+       y0 =  -c1            # minimum position of y-axis [cm]
+       y1 =   c1            # maximum position of y-axis [cm]
+       z0 =  -30.000        # minimum position of z-axis [cm]
+       z1 =  -30.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+ 
+infl: {onion.inp}[1-40]
+infl: {volume.out}
+
+[ T - 3Dshow ]
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                6
+       x0 =  0.             # (D=0.0) x-coordinate of the origin
+       y0 =  0.             # (D=0.0) y-coordinate of the origin
+       z0 =  0.             # (D=0.0) z-coordinate of the origin
+    e-the =   70.           # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =   20.           # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =   80.           # (D=w-dst*10) eye point distance from origin
+    l-the =   20.           # (D=e-the) light point theta from z-axis
+    l-phi =    0.           # (D=e-phi) light point phi from x-axis
+    l-dst =  100.           # (D=e-dst) light point distance from origin
+    w-wdt =   50.           # (D=100) width of window (cm)
+    w-hgt =   50.           # (D=100) hight of window (cm)
+    w-dst =   25.           # (D=200) window distance from origin
+   heaven =   z             # (D=y) direction to heaven
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+    resol =    1            # (D=1) resolution of 3dshow
+     file = 3dshow.out      # file name of output
+    title = Check onion structure using [T-3dshow] tally
+   epsout =    1            # (D=0) generate eps file by ANGEL
+      box =    1            # (D=0) number of boxes
+      box       0.    0.  0.
+              100.    0.  0.
+                0.  100.  0.  100.
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  140            # number of x-mesh points
+     xmin =  -35.           # minimum value of x-mesh points
+     xmax =   35.           # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -35.0  35.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  140            # number of z-mesh points
+     zmin =  -35.           # minimum value of z-mesh points
+     zmax =   35.           # maximum value of z-mesh points
+     part =  proton   
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.  200.
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = track_xz.out  # file name of output for the above axis
+    title = Check source direction using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - V o l u m e ]
+     mesh =  reg            # mesh type is region-wise
+      reg = 101 102 103 104 105
+     file = volume.out      # file name of output for [volume]
+   s-type =    2            # 1: Sphere source, 2: Rectangular source
+       x0 = -c1             #  x-min of rectangular
+       x1 =  c1             #  x-max of rectangular
+       y0 = -c1             #  y-min of rectangular
+       y1 =  c1             #  y-max of rectangular
+       z0 = -c1             #  z-min of rectangular
+       z1 =  c1             #  z-max of rectangular
+   stdcut = 0.01            # (D=-1) threshold value of STD cutoff
+
+[ T - Deposit ]
+    title = Deposition energy in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 101 102 103 104 105
+     unit =    0            # unit is [Gy/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =   reg           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  all      
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+
+[ E n d ]

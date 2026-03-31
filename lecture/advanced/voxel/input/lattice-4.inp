@@ -1,0 +1,117 @@
+[title]
+Sample input using lattice and universe
+
+[parameters]
+ icntl    =          8   # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       50     # (D=10) number of particles per one batch
+ maxbch   =        2     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[source]
+       e0 = 1.0
+     proj = neutron
+   s-type =  2             # rectangular (rectangle)
+       x0 =  0.0           # minimum x coordinate (cm)
+       x1 =  0.0           # maximum x coordinate (cm)
+       y0 =  0.0           # minimum y coordinate (cm)
+       y1 =  0.0           # maximum y coordinate (cm)
+       z0 =  -10.0           # minimum z coordinate (cm)
+       z1 =  -10.0           # maximum y coordinate (cm)
+      dir =  1.0           # direction cosine from z axis
+
+[ M a t e r i a l ]
+m1    # Gold  19.32 g/cm3
+        Au        1.0
+m3    # Cupper 8.96 g/cm3
+        Cu        1.0
+
+[ Mat Name Color ]
+mat  name  size  color
+  0  void    1    lightgray
+  1  Gold    1    pastelyellow
+  3  Copper  1    brown
+
+[ S u r f a c e ]
+  1  rpp  -5 5 -5 5 -1 1
+  2  rpp  -6 6 -6 6 -2 1
+ 99  so  100
+101  rpp  -1 1 -1 1 -1 1
+201  so   1
+
+[ C e l l ]
+$ Main spac
+  1  0   -1  fill=1
+  2  3  -8.96  #1 -2
+ 98  0  -99    #1 #2
+ 99 -1   99
+$ Universe 1
+ 101  0  -101  lat=1 u=1
+      fill=-2:2  -2:2   0:0
+      3 2 2 2 2
+      2 2 2 2 2
+      2 2 3 2 2
+      2 2 2 2 2
+      2 2 2 2 2
+$ Universe 2
+ 201  1  -19.32  -201  u=2
+ 202  0   201          u=2
+$ Add a new cell with u = 3
+ 301  0  -99  u=3
+
+[ transform ]
+$ rotate 45 degree around z axis
+*tr500 0 0 0 0 0 0 0 0 0 0 0 0 2
+
+[ T - 3Dshow ]
+    title = [t-3dshow: icnt = 11]
+     file = lattice-3D.out      # file name of output
+ material =  all              # (D=all) show(+) or transparent(-) material
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  0.000000       # (D=0.0) z-coordinate of the origin
+    e-the =  20.0000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  20.00000       # (D=140.0) eye point phi(degree) from z-axis
+    l-the =  40.0000       # (D=e-the) light point theta from z-axis
+    l-phi =  40.00000       # (D=e-phi) light point phi from z-axis
+    w-wdt =  20.0000       # (D=100) width of window (cm)
+    w-hgt =  20.00000       # (D=100) hight of window (cm)
+    w-dst =  20.00000       # (D=200) window distance from origin
+    w-mnw =  50            # (D=100) mesh number of window width
+    w-mnh =  50            # (D=100) mesh number of window hight
+   heaven =    z            # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 1.0000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+    resol =   20            # (D=1) resolution of 3dshow
+    width = 0.1000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    0            # (D=0) 0:surface+mat, 1:+region
+   shadow =    1            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  100            # number of x-mesh points
+     xmin =   -7.           # minimum value of x-mesh points
+     xmax =    7.           # maximum value of x-mesh points
+   y-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       ny =  100            # number of z-mesh points
+     ymin =   -7.           # minimum value of z-mesh points
+     ymax =    7.           # maximum value of z-mesh points
+   z-type =    1            # y-mesh is given by the below data
+       nz =    1            # number of y-mesh points
+           -1.0  1.0
+     part =  all      
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xy            # axis of output
+     file = lattice-2D.out  # file name of output for the above axis
+    title = Track Detection using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+

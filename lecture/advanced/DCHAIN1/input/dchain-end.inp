@@ -1,0 +1,244 @@
+[Title]
+Dose from 250MeV protons activating W/H2O/Fe block surrounded in Be
+
+[Parameters]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        200000     # (D=10) number of particles per one batch
+ maxbch   =           5     # (D=10) number of batches
+$ Required option for DCHAIN
+ jmout    =           1     # (D=0) Density echo, 0:input, 1:number density
+ e-mode   =           0     # (D=0) Event generator mode is not recommended for DCHAIN
+$ recommended option for isomer production
+ igamma   =           3     # (D=2) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+$  recommended for use in activation calculation, installation of JENDL-5 is required
+ dmax(1)  =  200.000000     # (D=emin(1)) data max. energy of proton (MeV)
+ dmax(2)  =  200.000000     # (D=20.0) data max. energy of neutron (MeV)
+$ dmax(15) =  100.000000     # (D=emin(15)) data max. energy of deuteron (MeV/n)
+$ dmax(18) =  50.000000     # (D=emin(18)) data max. energy of alpha (MeV/n)
+$ dpnmax   =  200.000000     # (D=emin(14)) data max. energy for photo-nuclear lib. (MeV)
+
+$ Photon source from DCHAIN output
+ infl:{W_xyz_target_RIsrc_t3.pht}
+$ This needs to come before the "off" source section or it will be skipped.
+
+[Source] off
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+       e0 =   250.00        # energy of beam [MeV/u]
+       r0 =   0.5000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -10.000        # minimum position of z-axis [cm]
+       z1 =  -10.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+
+[Material]
+$ Tungsten, Density (g/cm3) = 19.300000 
+M1      74000  1.000000  $  W
+$ Water, Density (g/cm3) = 0.998207 ~= 1.0
+M2       1000  0.666657  $  H 
+         8000  0.333343  $  O
+$ Iron, Density (g/cm3) = 7.874000 
+M3      26000  1.000000  $  Fe           
+$ Beryllium, Density (g/cm3) = 1.848000            
+M4       4000  1.000000  $  Be
+$ Air (dry, sea level), Density (g/cm3) = 0.001205 
+M10      6000  0.000150  $  C
+         7000  0.784431  $  N
+         8000  0.210748  $  O
+        18000  0.004671  $  Ar
+$  Concrete, Ordinary (NIST), Density (g/cm3) = 2.300
+M11      1000  0.305330  $  H
+         6000  0.002880  $  C
+         8000  0.500407  $  O
+        11000  0.009212  $  Na
+        12000  0.000725  $  Mg
+        13000  0.010298  $  Al
+        14000  0.151042  $  Si
+        19000  0.003578  $  K
+        20000  0.014924  $  Ca
+        26000  0.001605  $  Fe
+
+set:c1[3]  $ thickness of W portion
+set:c2[10] $ thickness of H2O portion
+set:c3[5]  $ thickness of Fe portion
+set:c4[5]  $ thickness of Be back end
+set:c5[4]  $ half side length of inner rectangular prism
+set:c6[8]  $ half side length of outer rectangular prism
+
+[Surface] 
+$ Target components
+1 rpp -c5 c5 -c5 c5 0     c1            $ W portion 
+2 rpp -c5 c5 -c5 c5 c1    c1+c2         $ H2O portion 
+3 rpp -c5 c5 -c5 c5 c1+c2 c1+c2+c3      $ Fe portion 
+4 rpp -c5 c5 -c5 c5 0     c1+c2+c3      $ Be inner border
+5 rpp -c6 c6 -c6 c6 0     c1+c2+c3+c4   $ Be outer border
+
+$ Room structure
+15 rpp -350 -300  -100  200  -100  150  $ inside shield
+16 rpp -550 -500  -100  200  -100   50  $ doorway
+20 rpp -500  100  -100  200  -100  300  $ inner wall 
+21 rpp -550  150  -150  250  -150  350  $ outer wall 
+
+
+[Cell] 
+$ Target 
+1   1 -19.3    -1               $ W 
+2   2 -1.0     -2               $ H20
+3   3 -7.874   -3               $ Fe 
+4   4 -1.848    4 -5            $ Be 
+
+$ Room (void)
+$10  0          -16:(5 -20 15)   $ room + doorway air  
+$11  0          -15:(20 -21 #10) $ outer + maze concrete walls 
+$ Room (with materials)
+ 10 10 -0.0012  -16:(5 -20 15)   $ room + doorway air  
+ 11 11 -2.3     -15:(20 -21 #10) $ outer + maze concrete walls 
+
+99 -1  21                       $ outer void / particle graveyard
+
+
+[Volume]   $ required section for DCHAIN 
+   reg   vol
+     1   c1*(2*c5)**2
+     2   c2*(2*c5)**2
+     3   c3*(2*c5)**2
+     4   ((c1+c2+c3+c4)*(2*c6)**2)-((c1+c2+c3)*(2*c5)**2)
+
+[T-Track] 
+  title = proton, neutron, and photon distributions
+    mesh = xyz
+  x-type = 2
+    xmin = -10
+    xmax =  10
+      nx = 1
+  z-type = 2
+    zmin = -10
+    zmax =  30
+      nz = 200
+  y-type = 2
+    ymin = -20
+    ymax =  20
+      ny = 200
+  e-type = 2
+    emin = 0
+    emax =  2000
+      ne = 1
+  axis = yz
+  file = yz-track.out
+  part = proton neutron photon
+  unit = 1
+  2D-type =  7   # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+  gshow =    3   # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+  epsout = 1     # automatically generate eps plot 
+
+$ Beam settings to be used in [T-Dchain] tallies
+set:c11[100.0]                           $ beam current (nA)
+set:c12[ c11 * 1.0e-9 / (1.602177e-19) ] $ beam power (source/sec) 
+
+[T-DCHAIN] off
+  title = 250 MeV protons on core
+  mesh = reg
+  reg = 1 2 3
+  file = tdchain.out     # file name of dchain input file
+  timeevo =    2             # time evolution / irradiation schedule
+    2.0 h  1.0 
+    5.0 h  0.0 
+  outtime =   7              # output times
+    1 h 
+    2 h
+    3 h  $ or -1 h
+    4 h  $ or -2 h
+    5 h  $ or -3 h
+    6 h  $ or -4 h
+    7 h  $ or -5 h
+  amp = c12                  # (D=1.0) Source Intensity(source/sec)
+  idivs = 4                 # (D=50) number of calculation substebs used in irradiation
+
+[T-DCHAIN] off
+  title = W target (reg)
+  mesh = reg
+  reg = 1
+  file = W_reg_target.out     # file name of dchain input file
+  timeevo =    2             # time evolution / irradiation schedule
+    10.0 m 1.0 
+     5.0 m 0.0 
+  outtime =    3             # output times
+     1.0 m
+    10.0 m
+    -5.0 m
+  idivs = 4                 # (D=50) number of calculation substebs used in irradiation
+  amp = c12                  # (D=1.0) Source Intensity(source/sec)
+  iphtout = -20             # (D=0) -20 is RI source mode only for each timing
+
+[T-DCHAIN] off
+  title = W target (xyz)
+  mesh = xyz
+  x-type = 2
+      nx = 3
+    xmin = -c5
+    xmax =  c5
+  y-type = 2
+      ny = 3
+    ymin = -c5
+    ymax =  c5
+  z-type = 2
+      nz = 2
+    zmin = 0
+    zmax = c1
+  file = W_xyz_target.out     # file name of dchain input file
+  timeevo =    2             # time evolution / irradiation schedule
+    10.0 m 1.0 
+     5.0 m 0.0 
+  outtime =    3             # output times
+     1.0 m
+    10.0 m
+    -5.0 m
+  amp = c12                  # (D=1.0) Source Intensity(source/sec)
+  iphtout = -20             # (D=0) -20 is RI source mode only for each timing
+  ipltmode = 1               # (D=0) enable DCHAIN 2D xy activity plot
+  idivs = 4                 # (D=50) number of calculation substebs used in irradiation
+
+[T-Track]
+  title = Ambient dose equivalent H*(10) [mSv/hr] room map 
+  mesh = xyz
+  x-type = 2
+      nx =  140
+    xmin = -550
+    xmax =  150
+  y-type = 2
+      ny = 1
+    ymin = -100
+    ymax =  100
+  z-type = 2
+      nz =  100
+    zmin = -150
+    zmax =  350
+    unit = 1
+    axis = xz
+  e-type = 3
+      ne = 1
+    emin = 0.001
+    emax = 10
+  file = room-dose.out
+  multiplier = all     $ number of regions using multiplier
+     mat    mset1 
+     all  ( 3600/1.0E+09 -200 ) $ convert pSv/sec to uSv/h
+  2D-type =  7   # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+  gshow =    3   # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+  epsout = 1         $ automatically generate eps plot 
+  z-txt = Ambient dose equivalent rate \dot{H}^*(10) [mSv/hr]
+  angel = cmin(1.0E-4) cmax(1.0E+1)  
+
+[Mat Name Color]
+   mat     name     size          color   
+     0     void     1.00     lightgray   
+     1    Tungsten  1.00     darkgreen   
+     2    Water     1.00     pastelcyan  
+     3    Iron      1.00     orange  
+     4    Beryllium 1.00     pastelviolet  
+    10    Air       1.00     {-0.9}  
+    11    Concrete  1.00     gray  
+
+[End]

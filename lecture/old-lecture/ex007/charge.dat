@@ -1,0 +1,71 @@
+[ T - Y i e l d ]
+    title = [t-yield] in r-z mesh
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   10.00000      # maximum value of r-mesh points
+#    rdel =   10.00000      # mesh width of r-mesh points
+       nr =    1            # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  1.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   50.00000      # maximum value of z-mesh points
+#    zdel =   50.00000      # mesh width of z-mesh points
+       nz =    1            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E+01
+  special =    0            # (D=0) number of repeated nuclear reactions
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+  nucleus =  all            # (D=all) number of detected nucleus
+     unit =    1            # unit is [1/source]
+     axis = charge          # axis of output
+     file = charge.dat      # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+   output = product         # (D=product) normal yeild
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :       53044 (  0)       35909 (  0)       88953 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#   no. =  1   ir =  1   iz =  1
+#   r = (   0.0000E+00  -   1.0000E+01  )
+#   z = (   0.0000E+00  -   5.0000E+01  )
+
+x: Charge
+y: Number [1/source]     
+p: xlin ylog afac(0.8) form(0.9)
+h: x-0.5    y,hl0       n
+#  charge   number      r.err
+    0.5     0.0000E+00  0.0000
+      1     4.6500E-01  0.0869
+      2     1.7100E+00  0.0148
+      3     1.5500E-01  0.1722
+      4     8.0000E-02  0.2467
+      5     1.2000E-01  0.1992
+      6     5.1500E-01  0.0878
+      7     3.7000E-01  0.1063
+      8     2.0900E+00  0.0111
+      9     0.0000E+00  0.0000
+     10     0.0000E+00  0.0000
+
+#   sum     5.5050E+00  0.0163
+
+'no. =  1,    ir  =    1,    iz  =    1'
+msuc: {\huge [t-yield] in r-z mesh}
+msdl: {\it plotted by \ANGEL \version}
+msdr: {\it calculated by \PHITS  2.30}
+wt: s(0.7)
+\vspace{-3}
+  charge distribution
+  in r-z mesh
+  rmin  &=&   0.0000E+00 [cm]
+  rmax  &=&   1.0000E+01 [cm]
+  zmin  &=&   0.0000E+00 [cm]
+  zmax  &=&   5.0000E+01 [cm]
+e:

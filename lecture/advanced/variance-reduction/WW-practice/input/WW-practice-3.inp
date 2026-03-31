@@ -1,0 +1,166 @@
+[ T i t l e ]
+Sample input for shielding calculation using importance
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000    # (D=10) number of particles per one batch
+ maxbch   =           4     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+$ itall = 3
+
+ infl:{wwg.out}
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident nucleus          
+       e0 =   14.00         # energy of beam [MeV/u]
+       r0 =   1.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -0.1
+       z1 =  -0.1
+      dir =  1            # inner direction with uniform dis. by analog
+
+[ M a t e r i a l ]
+$[m1 Concrete D=-2.2]
+m1        H  1.3407e-2
+          C  1.1030e-3
+          O  4.3887e-2
+         Al  1.7971e-3
+         Si  1.6123e-2
+         Ca  1.8940e-3
+         Fe  3.3448e-4
+
+[ C e l l ]
+ 1   1 -2.2   -1 10 -11 #2 #3
+ 2   1 -2.2   -2
+ 3   1 -2.2   -3
+100  0      -100 #all
+101 -1       100
+
+[ S u r f a c e ]
+set:c1[100.0] $ radius of shielding
+set:c2[180.0] $ length of shielding
+set:c3[30.0]  $ radius of target
+  1   cz    c1
+  2    s   c1-c3 0 c2-c3 c3
+  3    s  -c1+c3 0 c2-c3 c3
+ 10   pz   0.0
+ 11   pz    c2
+100   so    500.0
+
+[ T - T r a c k ]
+     mesh =  r-z            # mesh type is region-wise
+   r-type =    2            # r-mesh is linear given by xmin, xmax and nx
+       nr =    1            # number of r-mesh points
+     rmin =    0.00000      # minimum value of y-mesh points
+     rmax =   c1            # maximum value of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =     0.000000    # minimum value of z-mesh points
+     zmax =   c2            # maximum value of z-mesh points
+       nz =   c2/2          # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+         1.00000E-10  1.00000E+03
+   unit=1
+     axis =   z           # axis of output
+     file = track-rz.out     # file name of output for the above axis
+     y-txt = Effective dose [pSv/source]
+   epsout =    2            # (D=0) generate eps file by ANGEL
+     part =  all
+  multiplier = all          # number of material group
+      mat              mset1  
+      all          ( 1.0 -202 )
+  $ Effective dose for AP calculated using pre-defined [multiplier] in data/multiplier/-202.inp
+  angel = ymin(1.0e-7) ymax(1.0e-1)
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -c1            # minimum value of x-mesh points
+     xmax =   c1            # maximum value of x-mesh points
+       nx =   c1            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -c1            # minimum value of y-mesh points
+     ymax =   c1            # maximum value of y-mesh points
+       ny =      1          # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =    0.000000     # minimum value of z-mesh points
+     zmax =   c2            # maximum value of z-mesh points
+       nz =   c2/2         # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+         1.00000E-10  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    7            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+    z-txt = Effective dose [pSv/source]
+     file = track-xz.out  # file name of output for the above axis
+     part =  all
+   epsout =    1  
+    gshow =    3
+  multiplier = all          # number of material group
+      mat              mset1  
+      all          ( 1.0 -202 )
+  $ Effective dose for AP calculated using pre-defined [multiplier] in data/multiplier/-202.inp
+  angel = cmin(1.0e-10) cmax(1.0e0)
+
+[ T - WWG ] 
+  mesh = xyz
+x-type = 2
+  xmin = -c1
+  xmax =  c1
+    nx = 5
+y-type = 2
+  ymin = -c1
+  ymax =  c1
+    ny = 1
+z-type = 2
+  zmin =  0
+  zmax =  c2
+    nz =  12
+   part = all
+   e-type = 1
+       ne = 1
+     0   1e5
+axis = xz
+file =  wwg-xz.out
+axis =  wwg
+file =  wwg.out
+epsout = 1
+ elowthre = 0.01
+$ chwei(1) = 10.0
+
+[ T-track ]
+   mesh = reg               # mesh type is region-wise
+    reg = 2 3
+   volume      
+    reg      vol     
+      2     4/3*pi*c3**3
+      3     4/3*pi*c3**3
+e-type = 2
+  emin = 0
+  emax =  1.0e5
+    ne = 1
+unit=1
+     axis =   reg            # axis of output
+     file = track-reg.out     # file name of output for the above axis
+   y-txt  = Effective dose (pSv/source)
+     part =  all
+  multiplier = all          # number of material group
+      mat      mset1     
+      all  (1.0 -202)  # Effective dose based on ICRP103 for AP (pSv.cm2)
+epsout = 1
+iextstat = 1
+anatally start
+anatally end
+
+[counter]
+counter = 1
+part=neutron
+reg  in
+2     1
+
+[END]
+

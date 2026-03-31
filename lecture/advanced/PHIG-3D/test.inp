@@ -1,0 +1,34 @@
+[ Parameters ]
+ maxcas = 10       # (D=10) number of particles per one batch
+ maxbch = 1        # (D=10) number of batches
+ negs = 2          # EGS5 mode
+
+[ Source ]
+ s-type = 1          # mono-energetic axial source
+   proj = electron   # kind of incident particle         
+     z0 = -40        # minimum position of z-axis [cm]
+     z1 = -40        # maximum position of z-axis [cm]
+     e0 = 100         # energy of beam [MeV]
+
+[ Material ]
+ mat[1] Fe 1
+ mat[2] Al 1
+
+[ Surface ]
+ 11  so   10
+ 12  rpp -20 20   -20 20   -20 20
+ 13  rpp -50 50  -30 -20   -50 50
+ 99  so   100
+
+[ Cell ]
+ 101    1 -7.87   -11
+ 102    2 -2.70   -12 #101
+ 103    2 -2.70   -13
+ 998    0         -99 #(-12) #103
+ 999   -1          99
+
+[ T-4Dtrack ]
+     file = track.out
+stepminEM = 1 $ cm
+
+[ End ]

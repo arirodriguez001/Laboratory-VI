@@ -1,0 +1,104 @@
+[ T i t l e ]
+Sample input for variance reduction 
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       10000    # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ iMeVperU =           1     # (D=0) 0:[MeV] or 1:[MeV/u] is unit of tally output
+ esmax    =  100000000.     # (D=1.0e6) max energy/u for charged particle range
+ negs     =           2     # (D=-1) =-1:original, =0:No, =1:EGS
+ irqmd    =           1     # (D=0) 0: JQMD legacy version, 1: JQMD-2.0
+
+[ S o u r c e ]
+set:c1[1.0]  $ Source radius
+set:c2[26]   $ e-type
+
+  totfact =  pi*c1**2       # (D=1.0) global factor
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # mono-energetic axial source
+       r1 =   c1      # radius of sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  c2       # Cosmic-ray source
+    icenv =   0       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+ solarmod =   0.0000  # Solar activity W-index
+    rigid =   0.0000  # Cut-off rigidity in GV
+   proj   = proton
+
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # mono-energetic axial source
+       r1 =   c1      # radius of sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  c2       # Cosmic-ray source
+    icenv =   0       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+ solarmod =   0.0000  # Solar activity W-index
+    rigid =   0.0000  # Cut-off rigidity in GV
+   proj   = 4He
+
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # mono-energetic axial source
+       r1 =   c1      # radius of sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  c2       # Cosmic-ray source
+    icenv =   0       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+ solarmod =   0.0000  # Solar activity W-index
+    rigid =   0.0000  # Cut-off rigidity in GV
+   proj   = 56Fe
+
+[ M a t e r i a l ]
+MAT[ 1 ]  $ Si
+           Si  1.0
+
+[ S u r f a c e ]
+ 1  rpp -0.5 0.5 -0.5 0.5 -0.01 0.01
+99  so  c1+1.0
+
+
+[ C e l l ]
+  1  1  -2.33  -1
+ 98  0  -99 #1
+ 99 -1   99
+
+[ T - T r a c k ]
+    title = Track Detection in reg mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1
+   volume 
+      reg  vol
+        1  0.02
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+       ne =   120            # number of e-mesh points
+     emin =   1.000000      # minimum value of e-mesh points
+     emax =   1.0e6      # maximum value of e-mesh points
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng            # axis of output
+     file = source_track.out  # file name of output for the above axis
+     part =  proton alpha fe
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    2            # (D=0) generate eps file by ANGEL
+ y-txt    = Flux [1/cm^2/(MeV/n)/sec]
+   angel  = ymin(1.0e-13) ymax(1.0e-2)
+
+[ T - L E T ] 
+    title = LET distribution in water
+     mesh =  reg            # mesh type is region-wise
+      reg =    1
+   l-type =    3            # l-mesh is log given by lmin, lmax and nl
+     lmin =  1.0000000E-01  # minimum value of l-mesh points
+     lmax =   10000.00      # maximum value of l-mesh points
+       nl =  150            # number of l-mesh points
+     unit =    8            # Dose [MeV/cm3/(keV/um)/source]
+ material =  all            # (D=all) number of specific material
+     axis =  let            # axis of output
+     file = source_let.out  # file name of output for the above axis
+     part =  all      
+   epsout =    2
+ y-txt    = Dose [MeV/cm3/(keV/um)/sec]
+   angel  = ymin(5.0e-7) ymax(5.0e0)
+
+[END]
+

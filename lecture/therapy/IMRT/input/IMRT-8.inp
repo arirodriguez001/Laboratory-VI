@@ -1,0 +1,223 @@
+ file = IMRT-8.inp
+[ T i t l e ]
+Input file for lecture about IMRT therapy
+
+[ P a r a m e t e r s ]
+ icntl    =          13     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-01 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-01 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ igamma   =           2     # (D=0) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ipnint   =           1     # (D=0) photonuclear GDR, 1:analog, -1:implicit itall
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=xdirs) nuclear data input file name
+
+[ S o u r c e ]
+   s-type =   4             # mono-energetic axial source
+     proj =  photon         # kind of incident particle         
+$       e0 =   8.0000        # energy of beam [MeV/u]
+       r0 =   5.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -100.00        # minimum position of z-axis [cm]
+       z1 =  -100.00        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+ e-type = 1
+     ne = 28
+ infl:{spectrum.inp}
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Water
+           1H         2.0000000E+00
+          16O         1.0000000E+00
+
+MAT[ 2 ]   # Air (1.20e-3 g/cm3)
+          14N         8.0000000E+00
+          16O         2.0000000E+00
+
+MAT[ 3 ]   # Collimator (17g/cm3, from AAPM report 72, TG-50)
+         184W        -9.0500000E+01
+         58Ni        -6.5000000E+00
+         56Fe        -3.0000000E+00
+
+[ Mat Name Color ]
+   mat                name     size            color   # HSB color value
+     0                void     1.00        lightgray   # { -0.800  1.000  1.000 }
+     1               Water     1.00       pastelblue   # {  0.250  0.400  1.000 }
+     2                 Air     1.00       pastelcyan   # {  0.400  0.400  1.000 }
+     3          Collimator     1.00          magenta   # {  0.067  1.000  1.000 }
+
+[ C e l l ]
+ 1          1 -1.0       1 -2 3 -4 5 -6  $ Water phantom
+ 998        2 -1.20e-3  -999 #1 #11 #12  $ Air
+infl: {RemovedCell.inp}
+ 999       -1            999             $ Outer region
+ 11         3 -11.34     11 -12 13 -14   $ Collimator
+ 12         3 -11.34     15 -16 17 -18   $ Collimator
+
+infl: {cell.inp}
+
+[ S u r f a c e ]
+ 999          so  1000.0
+ 1            px   -15.0
+ 2            px    15.0
+ 3            py   -15.0
+ 4            py    15.0
+ 5            pz   -15.0
+ 6            pz    15.0
+ 11           pz   -84.0
+ 12           pz   -80.0
+ 13           cz     5.0
+ 14           cz    10.0
+ 15           pz   -78.0
+ 16           pz   -70.0
+ 17           cz     5.0
+ 18           cz    15.0
+
+set: c1[50/100]   $ Scaling factor
+set: c2[10]   $ width of leaves [cm]
+set: c4[0.25]   $ thickness of leaves [cm]
+set: c5[120]   $ Number of leaves
+set: c3[-c4*c5/4]   $ y-coordinate of the first leaf [cm]
+set: c6[-65]   $ z-coordinate of multi-leaf collimator
+infl: {surfacex9.inp}
+infl: {surfacey.inp}
+infl: {surfacez.inp}
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+       nx =   50            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -5.000000      # minimum value of y-mesh points
+     ymax =   5.000000      # maximum value of y-mesh points
+       ny =    1            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -110.0000      # minimum value of z-mesh points
+     zmax =   20.00000      # maximum value of z-mesh points
+       nz =  130            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  electron   photon     neutron  
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     xmin =  -5.000000      # minimum value of y-mesh points
+     xmax =   5.000000      # maximum value of y-mesh points
+       nx =    1            # number of y-mesh points
+   y-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     ymin =  -25.00000      # minimum value of x-mesh points
+     ymax =   25.00000      # maximum value of x-mesh points
+       ny =   50            # number of x-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -110.0000      # minimum value of z-mesh points
+     zmax =   20.00000      # maximum value of z-mesh points
+       nz =  130            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   yz            # axis of output
+     file = track_yz.out    # file name of output for the above axis
+     part =  electron   photon     neutron  
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - 3Dshow ]
+    title = Geometry check using [T-3dshow]
+     file = 3dshow.out      # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                2
+       x0 =    0.0          # (D=0.0) x-coordinate of the origin
+       y0 =    0.0          # (D=0.0) y-coordinate of the origin
+       z0 =  -50.0          # (D=0.0) z-coordinate of the origin
+    e-the =  150            # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  160            # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  400            # (D=w-dst*10) eye point distance from origin
+    l-the =  150            # (D=e-the) light point theta from z-axis
+    l-phi =    0            # (D=e-phi) light point phi from x-axis
+    l-dst =  100            # (D=e-dst) light point distance from origin
+    w-wdt =   60            # (D=100) width of window (cm)
+    w-hgt =   50            # (D=100) hight of window (cm)
+    w-dst =  150            # (D=200) window distance from origin
+   heaven =   y             # (D=y) direction to heaven
+    resol =    3            # (D=1) resolution of 3dshow
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - T r a c k ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -10.00000      # minimum value of x-mesh points
+     xmax =   10.00000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -10.00000      # minimum value of y-mesh points
+     ymax =   10.00000      # maximum value of y-mesh points
+       ny =  100            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -65.00000      # minimum value of z-mesh points
+     zmax =  -60.00000      # maximum value of z-mesh points
+       nz =    1            # number of z-mesh points
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+             0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xy            # axis of output
+     file = track_xy-9.out    # file name of output for the above axis
+     part =  electron   photon     neutron  
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+
+[ T - deposit ]
+    title = Track in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -10.00000      # minimum value of x-mesh points
+     xmax =   10.00000      # maximum value of x-mesh points
+       nx =   60            # number of x-mesh points
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -10.00000      # minimum value of y-mesh points
+     ymax =   10.00000      # maximum value of y-mesh points
+       ny =   60            # number of y-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -15.00000      # minimum value of z-mesh points
+     zmax =    0.00000      # maximum value of z-mesh points
+       nz =    1            # number of z-mesh points
+$   e-type =    1            # e-mesh is given by the below data
+$       ne =    1            # number of e-mesh points
+$             0.0  1000.0
+$     unit =    1            # unit is [1/cm^2/source]
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xy            # axis of output
+     file = deposit_xy-9.out    # file name of output for the above axis
+     part =  all
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL   
+infl: {sumtally.inp}
+
+[END]

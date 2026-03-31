@@ -1,0 +1,119 @@
+    htitle = 250 MeV protons on core
+ 
+! --- control parameters ---
+     imode =       2
+     jmode =       2
+ 
+! --- calculation parameters ---
+     idivs =      50
+    ichain =     100
+   ilchain =     100
+    itdecs =       1
+    itdecn =       1
+    isomtr =       0
+    ifisyd =       0
+   ixsrall =       1
+ 
+! --- data library parameters ---
+   inxslib =     100
+   idcylib =       5
+   infylib =      17
+   infyerg =       4
+   ergthfa =  1.0000E-01
+   ergfafu =  1.0000E+01
+   isfylib =       1
+!   hnxslib = h-JP-US-EU                                                                      
+!   hdcylib = J15-EB8-ES                                                                      
+!   hnfylib = h-JENDL-JEFF                                                                    
+!   hsfylib = h-JENDL-JEFF                                                                    
+ 
+! --- output parameters ---
+     iyild =       2
+     iggrp =       3
+    ibetap =       1
+     acmin =  1.0000E-20
+    istabl =       0
+    igsdef =       1
+    igsorg =       1
+   iwrtchn =       1
+   chrlvth = -1.0000E+00
+   iwrchdt =       0
+   iwrchss =       0
+  iwrchnuc =       0
+   idosecf =       1
+  idosunit =     333
+   imtcard =       1
+   imtcnum =       0
+  imtcmeta =       2
+   thmatnd =  1.0000E-06
+ 
+! --- Proton beam current and neutron flux ---
+       amp =  1.0000E-04
+     ebeam =  3.0000E+00
+    prodnp =  1.0000E+00
+ 
+! --- irradiation time ---
+    itstep =       5
+      2.0 h  1.0
+      1.0 h  0.0
+      1.0 h  0.5
+      1.3 h  1.0
+      1.7 h  0.0 
+ 
+! --- output time ---
+     itout =       7
+      1.0000E+00 h
+      2.0000E+00 h
+      3.0000E+00 h
+      4.0000E+00 h
+      5.0000E+00 h
+      6.0000E+00 h
+      7.0000E+00 h
+ 
+! --- irradiation condition ---
+    inmtcf =       1
+!  ffnmtcf =    1.0
+  itdchout =       1
+   hhnmtcf = tdchain.dyld
+  iertdcho =       1
+   henmtcf = tdchain_err.dyld
+  iredufmt =       1
+   irdonce =       1
+ 
+! --- calculation region details ---
+ 
+    iregon =      3
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY001        1    5  1.9944E+10   tdchain.dtrk  1.9200E+02
+   W-180     7.5882E-05
+   W-182     1.6756E-02
+   W-183     9.0514E-03
+   W-184     1.9376E-02
+   W-186     1.7975E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY002        2    3  6.7763E+09   tdchain.dtrk  6.4000E+02
+   H-1       6.6880E-02
+   H-2       1.0033E-05
+   O-16      3.3446E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY003        3    4  9.9744E+08   tdchain.dtrk  3.2000E+02
+  Fe-54      4.9642E-03
+  Fe-56      7.7928E-02
+  Fe-57      1.7997E-03
+  Fe-58      2.3951E-04
+ 
+! --- output option for ANGEL ---
+  phitsout =  1
+    radlev =  0.0000E+00
+  iangbpwr =  1
+  angelout =  1
+!   angelout_act        = 0
+!   angelout_heat       = 0
+!   angelout_heat_alpha = 0
+!   angelout_heat_beta  = 0
+!   angelout_heat_gamma = 0
+!   angelout_dose       = 0
+!   angelout_region     = all, sum
+!   angelout_nuclides   = 0
+ 
+end

@@ -1,0 +1,83 @@
+[ T i t l e ]
+input file for lecture about tally
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          50     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+       z0 =  -10.           # minimum position of z-axis [cm]
+       z1 =  -10.           # maximum position of z-axis [cm]
+       r0 =   2.5           # radius [cm]
+      dir =   1.0           # z-direction of beam [cosine]
+       e0 =   250.          # energy of beam [MeV/u]
+     proj =  12C            # kind of incident nucleus
+
+[ M a t e r i a l ]
+mat[1]    H 2  O 1
+
+[ Mat Name Color ]
+    mat   name      color
+     1    Water     pastelblue
+
+[ S u r f a c e ]
+  10  cz      10.
+ 101  pz       0.
+ 102  pz      50.
+ 999  so     500.
+
+[ C e l l ]
+  1     1 -1.0  -10  101  -102
+ 100    0      -999  #all
+ 101   -1       999
+
+[ T - T r a c k ]
+    title = Track Detection in xyz mesh
+     mesh =  reg            # mesh type is reg scoring mesh
+      reg = 1 100
+ samepage = reg
+   e-type =    3            # e-mesh is given by the below data
+       ne =  100            # number of e-mesh points
+     emin =  1.0           # minimum value of e-mesh points
+     emax = 5000.           # maximum value of e-mesh points
+   t-type =    2            # t-mesh is given by the below data
+       nt =    1            # number of t-mesh points
+     tmin =    0.           # minimum value of t-mesh points
+     tmax =    5.           # maximum value of t-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   eng            # axis of output
+     file = track_eng.out  # file name of output for the above axis
+     part =  12C proton neutron
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - Deposit ]
+    title = Energy deposition in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  100            # number of x-mesh points
+     xmin =  -25.00000      # minimum value of x-mesh points
+     xmax =   25.00000      # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -5.0  5.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  200            # number of z-mesh points
+     zmin =  -20.00000      # minimum value of z-mesh points
+     zmax =   80.00000      # maximum value of z-mesh points
+     unit =    0            # unit is [MeV/cm^3/source]
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+     axis =    xz           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  all      
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - 4 D t r a c k ] off
+     file = 4Dtrack.out     # file name of output
+  HistoryMax = 20           # maximum history for drawing tracks
+
+[ E n d ]

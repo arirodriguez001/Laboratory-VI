@@ -1,0 +1,75 @@
+[title]
+Sample input using universe
+
+[parameters]
+ icntl    =          8   # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       50     # (D=10) number of particles per one batch
+ maxbch   =        2     # (D=10) number of batches
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[source]
+       e0 = 1.0
+     proj = neutron
+   s-type =  2             # rectangular (rectangle)
+       x0 =  0.0           # minimum x coordinate (cm)
+       x1 =  0.0           # maximum x coordinate (cm)
+       y0 =  0.0           # minimum y coordinate (cm)
+       y1 =  0.0           # maximum y coordinate (cm)
+       z0 =  -10.0           # minimum z coordinate (cm)
+       z1 =  -10.0           # maximum y coordinate (cm)
+      dir =  1.0           # direction cosine from z axis
+
+[ M a t e r i a l ]
+mat[1]  H 2  O 1
+mat[2]  Fe 1
+
+[ Mat Name Color ]
+mat  name  size  color
+  0  void    1    lightgray
+  1  water   1    pastelblue
+  2  iron    1    darkgreen
+
+[ C e l l ]
+$ Main space
+ 1  0  -11  -1 FILL=1
+ 2  0  -11   1 FILL=2
+99 -1   11
+$ Universe 1
+ 101 1 -1.00 -10 U=1
+ 102 0        10 U=1
+$ Universe 2
+ 201 2 -7.86 -10 U=2
+ 202 1 -1.00  10 U=2
+
+ [ S u r f a c e ]
+  1 pz  0.0
+ 10 cy  5.0
+ 11 rpp -3. 9. -6. 6. -6. 6.
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  100            # number of x-mesh points
+     xmin =  -10.           # minimum value of x-mesh points
+     xmax =   10.           # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -1.0  1.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  100            # number of z-mesh points
+     zmin =  -10.           # minimum value of z-mesh points
+     zmax =   10.           # maximum value of z-mesh points
+     part =  all      
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = universe-2D.out  # file name of output for the above axis
+    title = Track Detection using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[end]
+

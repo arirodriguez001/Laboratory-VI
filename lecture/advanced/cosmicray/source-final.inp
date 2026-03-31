@@ -1,0 +1,14 @@
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   9       # mono-energetic axial source
+       r1 =   c1      # radius of sphere [cm]
+       r2 =   c1      # radius of source circle [cm]
+      dir =  iso      # inner direction with uniform dis. by analog
+   e-type =  25       # Cosmic-ray source
+    icenv =  -1       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+ solarmod =   150.0000  # Solar activity W-index
+$    rigid =   10.0000  # Cut-off rigidity in GV
+$ glat = 41
+$ glong = -74
+$ alti = 12.0
+  ag1 = -1.0
+  ag2 =  0.0

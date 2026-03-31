@@ -1,0 +1,257 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+                   ____________ [ Job Title ] __________ 
+                  |                                     |
+                  |  Test Calculation for Example (15)  |
+                  |_____________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 13m 50
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+Test Calculation for Example (15)
+
+[ P a r a m e t e r s ]
+ icntl    =           8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =         100     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ imout    =           2     # (D=0) MAT format, 0: 208Pb, 1: Pb-208, 2: MCNP
+ icput    =           1     # (D=0) 0: no cpu time for each process
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =  proton         # kind of incident particle         
+       e0 =   500.00        # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   0.0000        # minimum position of z-axis [cm]
+       z1 =   0.0000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+m1    
+        80196         5.9595000E-05
+        80198         3.9611000E-03
+        80199         6.7025000E-03
+        80200         9.1776000E-03
+        80201         5.2364000E-03
+        80202         1.1863000E-02
+        80204         2.2795000E-03
+m2    
+        82204         4.6801000E-04
+        82206         7.9430000E-03
+        82207         7.2838000E-03
+        82208         1.7238000E-02
+m3    
+        26054         4.9161000E-03
+        26056         7.7741000E-02
+        26057         1.8647000E-03
+        26058         2.3733000E-04
+m4    
+         7014         4.6801000E-05
+         8016         7.9430000E-06
+
+[ C e l l ]
+ 1          1  3.9279695E-02  6 -9 -1 
+ 2          2  3.2932810E-02  7 -9 1 -2 
+ 3          3  8.4759130E-02  8 -9 2 -3 
+ 4          4  5.4744000E-05  5 -10 -4 #1 #2 #3 
+ 5         -1                 -5 : 10 : 4 
+
+[ S u r f a c e ]
+ 1            cz     5.0000000E+00
+ 2            cz     1.0000000E+01
+ 3            cz     1.5000000E+01
+ 4            cz     2.0000000E+01
+ 5            pz     0.0000000E+00
+ 6            pz     5.0000000E+00
+ 7            pz     1.0000000E+01
+ 8            pz     1.5000000E+01
+ 9            pz     5.5000000E+01
+ 10           pz     6.0000000E+01
+
+[ T - T r a c k ]
+    title = [t-track] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    1            # x-mesh is given by the below data
+       nx =    1            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+           -2.00000E+01  2.00000E+01
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -20.00000      # minimum value of y-mesh points
+     ymax =   20.00000      # maximum value of y-mesh points
+#    ydel =  0.5000000      # mesh width of y-mesh points
+       ny =   80            # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -2.00000E+01 -1.95000E+01 -1.90000E+01 -1.85000E+01 -1.80000E+01
+#          -1.75000E+01 -1.70000E+01 -1.65000E+01 -1.60000E+01 -1.55000E+01
+#          -1.50000E+01 -1.45000E+01 -1.40000E+01 -1.35000E+01 -1.30000E+01
+#          -1.25000E+01 -1.20000E+01 -1.15000E+01 -1.10000E+01 -1.05000E+01
+#          -1.00000E+01 -9.50000E+00 -9.00000E+00 -8.50000E+00 -8.00000E+00
+#          -7.50000E+00 -7.00000E+00 -6.50000E+00 -6.00000E+00 -5.50000E+00
+#          -5.00000E+00 -4.50000E+00 -4.00000E+00 -3.50000E+00 -3.00000E+00
+#          -2.50000E+00 -2.00000E+00 -1.50000E+00 -1.00000E+00 -5.00000E-01
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   60.00000      # maximum value of z-mesh points
+#    zdel =  0.5000000      # mesh width of z-mesh points
+       nz =  120            # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01  2.55000E+01  2.60000E+01  2.65000E+01  2.70000E+01
+#           2.75000E+01  2.80000E+01  2.85000E+01  2.90000E+01  2.95000E+01
+#           3.00000E+01  3.05000E+01  3.10000E+01  3.15000E+01  3.20000E+01
+#           3.25000E+01  3.30000E+01  3.35000E+01  3.40000E+01  3.45000E+01
+#           3.50000E+01  3.55000E+01  3.60000E+01  3.65000E+01  3.70000E+01
+#           3.75000E+01  3.80000E+01  3.85000E+01  3.90000E+01  3.95000E+01
+#           4.00000E+01  4.05000E+01  4.10000E+01  4.15000E+01  4.20000E+01
+#           4.25000E+01  4.30000E+01  4.35000E+01  4.40000E+01  4.45000E+01
+#           4.50000E+01  4.55000E+01  4.60000E+01  4.65000E+01  4.70000E+01
+#           4.75000E+01  4.80000E+01  4.85000E+01  4.90000E+01  4.95000E+01
+#           5.00000E+01  5.05000E+01  5.10000E+01  5.15000E+01  5.20000E+01
+#           5.25000E+01  5.30000E+01  5.35000E+01  5.40000E+01  5.45000E+01
+#           5.50000E+01  5.55000E+01  5.60000E+01  5.65000E+01  5.70000E+01
+#           5.75000E+01  5.80000E+01  5.85000E+01  5.90000E+01  5.95000E+01
+#           6.00000E+01
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   yz            # axis of output
+     file = yz-show1.dat    # file name of output for the above axis
+     part =  proton     neutron  
+# kf/name :  2212       2112     
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+    resol =    1            # (D=1) resolution of gshow or rshow
+    width = 0.5000000       # (D=0.5) width of lines for gshow or rshow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :       38608 (  0)        9803 (  0)       48411 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      256
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =    11992
+*     total memory: mdas = 20000000
+*                percent =     0.06 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =    38608
+*     total memory: mdas = 20000000
+*                percent =     0.19 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =     1265
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of total memory >>>
+*      used total memory =   399621
+*     total memory: mdas = 20000000
+*                percent =     2.00 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:13:51
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =         1.28       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00              0.
+         nevap =         0.00         0.00              0.
+         nreac =         0.00         0.00              0.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00              0.
+         elast =         0.00         0.00              0.
+         ncasc =         0.00         0.00              0.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00              0.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+ END 

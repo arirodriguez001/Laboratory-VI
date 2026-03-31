@@ -1,0 +1,17 @@
+ <source> = 1.0       # should be 1.0 for e-type=25
+   s-type =   1       # mono-energetic axial source
+       r0 =   c1      # radius of sphere [cm]
+       z0 =   c3
+       z1 =   c3+0.01
+      dir =  cr       # cosmic-ray distribution
+      ag1 = c11
+      ag2 = c12
+   e-type =  25       # Cosmic-ray source
+    icenv =   2       # 0>: Terrestiral GCR, D=0: Free-space GCR, <0:Free-space SEP
+  icyear  = 2001      # Year
+  icmonth =    1      # Month
+  icday   =    1      # Day
+   alti   =  0.0      # Altitude in km
+   glat   =  41.0     # Latitude in degree
+   glong  = -74.0     # Longitude in degree
+ environ  = 0.15      # Local parameter (water density in ground)

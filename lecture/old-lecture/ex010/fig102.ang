@@ -1,0 +1,23 @@
+'Figure 2'
+X: E (MeV)
+Y: d\sigma/d\Omega dE (nb/MeV/sr)
+W:Comment = ^{12}C + ^{40}Ca/ X(1) Y(65)
+A: X(4.3) Y(65) AX(5.5) AY(53)
+AW:Arrow/ X(4.5) Y(23) AX(4) AY(10)
+H:  X   Y(Histogram),DH0
+    0.0    0
+    0.5   10
+    1.5   20
+    2.5   35
+    3.5   30
+    4.5   45
+    5.5   70
+    6.5    0
+H: X  Y(Spline),SL5
+  0.5   40
+  4     10
+  6     20
+  7     60
+H: X   DX    Y(Error bar),N3    D
+   2    1         50           10
+

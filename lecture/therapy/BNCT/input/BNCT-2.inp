@@ -1,0 +1,151 @@
+[ T i t l e ]
+Sample input for BNCT calculation
+
+[ P a r a m e t e r s ]
+ icntl    =           0    # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+
+[ S o u r c e ]
+   totfact =  1.0e15        # normalized the dose approximately 10 Gy
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident nucleus
+       e0 =   1.0e-5        # energy of beam [MeV/u]
+       r0 =   10.000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -20.000        # minimum position of z-axis [cm]
+       z1 =  -20.000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+
+m1    $ Normal tissue (region 1)
+            H     -0.101
+            C     -0.111
+            N     -0.026
+            O     -0.762
+          10B     -1.0e-5
+mt1   lwtr.20t
+
+m2    $ Tumor (region 2)
+            H     -0.101
+            C     -0.111
+            N     -0.026
+            O     -0.762
+          10B     -2.0e-5
+mt2   lwtr.20t
+
+[ C e l l ]
+ 1          1  -1.0    1 -4 -10 #2 $ Normal tissue
+ 2          2  -1.0    2 -3 -10    $ Tumor
+98          0        #all -999  $ Void
+99         -1             999  $ Outer region
+
+[ S u r f a c e ]
+ 1            pz     0.0
+ 2            pz     3.0
+ 3            pz     4.0
+ 4            pz    10.0
+ 10           cz    10.0
+ 999          so   100.0
+
+[t-deposit]
+   mesh = r-z
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =  10.000000      # maximum value of r-mesh points
+       nr =    1            # number of r-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =    0.00000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+     axis =   z            # axis of output
+     file = hydro.out       # file name of output for the above axis
+   mother = 1
+            H
+     part = neutron
+     unit =    0            # unit is [Gy/source]
+   output = dose
+   epsout = 1
+    angel = ymin(0.1) ymax(30.0)
+
+[t-deposit]
+   mesh = r-z
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =  10.000000      # maximum value of r-mesh points
+       nr =    1            # number of r-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =    0.00000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+     axis =   z            # axis of output
+     file = nitro.out       # file name of output for the above axis
+   mother = 1
+            N
+     part = neutron
+     unit =    0            # unit is [Gy/source]
+   output = dose
+   epsout = 1
+    angel = ymin(0.1) ymax(30.0)
+
+[t-deposit]
+   mesh = r-z
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =  10.000000      # maximum value of r-mesh points
+       nr =    1            # number of r-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =    0.00000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+     axis =   z            # axis of output
+     file = boron.out       # file name of output for the above axis
+   mother = 1
+            B
+     part = neutron
+     unit =    0            # unit is [Gy/source]
+   output = dose
+   epsout = 1
+    angel = ymin(0.1) ymax(30.0)
+
+[t-deposit]
+   mesh = r-z
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =  10.000000      # maximum value of r-mesh points
+       nr =    1            # number of r-mesh points
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =    0.00000      # minimum value of z-mesh points
+     zmax =   10.00000      # maximum value of z-mesh points
+       nz =   10            # number of z-mesh points
+     axis =   z            # axis of output
+     file = photon.out       # file name of output for the above axis
+     part = photon
+     unit =    0            # unit is [Gy/source]
+   output = dose
+   epsout = 1
+    angel = ymin(0.1) ymax(30.0)
+
+[anatally]  $ for RBE-CBE weighted dose
+$ parameters used in anatally (icntl=17) (same as default value)
+ set: c99[0.0]    $ Weighted sum (=0) FFT SMK (=1), Taylor-expansion SMK (=2), z*-based MK (=3)
+ set: c90[1.0]    $ dose scaling factor, normalized at 10 Gy at the entrance position
+ set: c1[1.0*c90]   $ RBE for photon dose
+ set: c2[2.5*c90]   $ RBE for hydrogen dose
+ set: c3[2.5*c90]   $ RBE for nitrogen dose
+ set: c4[3.8*c90]   $ CBE for boron dose
+anatally start    1
+manatally = 0
+sfile=RBEdose.out
+nfile =       4
+photon.out
+hydro.out
+nitro.out
+boron.out
+anatally end    1
+
+
+[END]
+

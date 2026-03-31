@@ -1,0 +1,40 @@
+[ M a t e r i a l ]
+mat[1]    Au 1
+set:%Au%[1  -19.32]
+
+mat[2]    H 2  O 1
+set:%H2O%[2  -1.0]
+
+mat[3]    Cu 1
+set:%Cu%[3  -8.93]
+
+mat[5]    C 2  H 4
+set:%C2H4%[5  -0.9]
+
+mat[6]    N 8  O 2
+set:%Air%[6  -1.20e-3]
+
+[ Mat Name Color ]
+    mat   name      color
+     1    Gold      orangeyellow
+     2    Water     pastelblue
+     3    Copper    darkred
+     5    C2H4      gray
+     6    Air       pastelcyan
+
+[ S u r f a c e ]
+  10  so     500.
+  11  so       5.
+  12  so      10.
+  13  so      15.
+  14  so      20.
+  15  so      25.
+
+[ C e l l ]
+ 100  -1       10
+ 101  %Au%    -11
+ 102  %H2O%    11   -12
+ 103  %Cu%     12   -13
+ 104  %H2O%    13   -14
+ 105  %C2H4%   14   -15
+ 106  %Air%    15   -10

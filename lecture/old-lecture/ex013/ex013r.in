@@ -1,0 +1,120 @@
+[title]
+test for quadropole magnet
+
+[parameters]
+icntl  = 0
+maxcas = 100
+maxbch = 1
+imagnf = 1
+file(6) = ex013r.out
+itstep = 1
+
+[source]
+s-type = 2
+proj = proton
+dir  = 1
+phi  = 0
+dom  = 5
+x0   = 0
+x1   = 0
+y0   = 0
+y1   = 0
+z0   = -0.1
+z1   = -0.1
+e0   = 200.0
+
+[magnetic field] 
+   reg   typ     gap     mgf
+    1     4      50      105
+    2     4      50      105
+
+[material] 
+m1    1001.    2  8016.    1
+
+[cell]
+1   0   -1
+2   0   -2
+3   0    3 -4
+4   0   -5 : -6
+5  -1    7
+
+[surface]
+1   rpp  -50 50 -50 50 0 50
+2   rpp  -50 50 -50 50 50 100
+3   rpp  -50 50 -50 50 0 100
+4   rpp  -60 60 -60 60 0 100
+5   rpp  -60 60 -60 60 -10 0
+6   rpp  -60 60 -60 60 100 110
+7   rpp  -60 60 -60 60 -10 110
+
+[t-track] 
+     mesh = xyz
+   x-type =  2
+       nx =  100
+     xmin = -5.0
+     xmax =  5.0
+   z-type =  2
+       nz =  100
+     zmin = -10
+     zmax =  110
+   y-type =  2
+       ny =  1
+     ymin = -60
+     ymax =  60
+     axis = xz
+     file = magt01r.dat
+   e-type = 2
+       ne =   1
+     emin = 0
+     emax = 3000
+    gshow = 1
+   epsout = 1
+    angel = form(0.7)
+
+[t-track] 
+     mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -60.0
+     xmax =  60.0
+   z-type =  2
+       nz =  100
+     zmin = -10
+     zmax =  110
+   y-type =  2
+       ny =  100
+     ymin = -60
+     ymax =  60
+     axis = yz
+     file = magt02r.dat
+   e-type = 2
+       ne = 1
+     emin = 0
+     emax = 3000
+    gshow = 1
+   epsout = 1
+
+[t-cross]
+     mesh = xyz
+   x-type =  2
+       nx =  100
+     xmin = -20.0
+     xmax =  20.0
+   z-type =  2
+       nz =  5
+     zmin =  0
+     zmax =  100
+   y-type =  2
+       ny =  100
+     ymin = -20
+     ymax =  20
+     axis = xy
+     file = magt03r.dat
+   output = o-curr
+    gshow = 1
+   epsout = 1
+  2d-type = 3
+   
+
+
+

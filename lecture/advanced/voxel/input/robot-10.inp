@@ -1,0 +1,177 @@
+[title]
+Sample input for making Robot (Voxel phantom with very poor resolution)
+
+[parameters]
+ icntl    =          0    # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =       1000     # (D=10) number of particles per one batch
+ maxbch   =          1     # (D=10) number of batches
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[source]
+       e0 = 150.0
+     proj = proton
+   s-type =  2             # rectangular (rectangle)
+       x0 =  -0.5           # minimum x coordinate (cm)
+       x1 =   0.5           # maximum x coordinate (cm)
+       y0 =  -0.5           # minimum y coordinate (cm)
+       y1 =   0.5           # maximum y coordinate (cm)
+       z0 =  10.0           # minimum z coordinate (cm)
+       z1 =  10.0           # maximum y coordinate (cm)
+      dir =  -1.0           # direction cosine from z axis
+
+[ M a t e r i a l ]
+m1    # Water  1.00 g/cm3
+         H        2.0
+         O        1.0
+m2    # Aluminum 2.7 g/cm3
+         Al       1.0
+m3    # Cupper 8.96 g/cm3
+         Cu       1.0
+
+[ Mat Name Color ]
+mat  name       size  color
+  0  void        1    lightgray
+  1  Water       1    pastelcyan
+  2  Aluminum    1    pastelpink
+  3  Copper      1    brown
+
+[ C e l l ]
+$ Material universe
+ 1   0         -99  u=1
+ 2   1  -1.00  -99  u=2
+ 3   2  -2.70  -99  u=3
+ 4   3  -8.96  -99  u=4
+$ Voxel universe 
+ 101  0  -101  trcl=500
+      lat=1 u=10
+      fill=0:4 0:4 0:5
+      1 1 1 1 1
+      1 4 1 4 1
+      1 4 1 4 1
+      1 1 1 1 1
+      1 1 1 1 1
+
+      1 1 1 1 1
+      1 1 1 1 1
+      1 2 1 2 1
+      1 1 1 1 1
+      1 1 1 1 1
+
+      1 1 1 1 1
+      2 1 1 1 2
+      2 3 3 3 2
+      1 1 1 1 1
+      1 1 1 1 1
+
+      1 1 1 1 1
+      1 1 1 1 1
+      2 3 3 3 2
+      1 1 1 1 1
+      1 1 1 1 1
+
+      1 1 1 1 1
+      1 1 1 1 1
+      1 1 2 1 1
+      1 1 1 1 1
+      1 1 1 1 1
+
+      1 1 1 1 1
+      1 1 1 1 1
+      1 1 4 1 1
+      1 1 1 1 1
+      1 1 1 1 1
+
+$ Main space
+ 201  0  -201  fill=10            $ Resion filled with voxel phantom
+ 202  0  -202  #201     trcl = 500 $ Void inside cylinder
+ 203  3  -8.96 202 -203 trcl = 500 $ Copper 
+ 204  0  -99   #201 #202 #203    $ Void
+ 205 -1   99             $ Outer region
+
+[ surface ]
+set: c81[5]  $ number of x pixel
+set: c82[5]  $ number of y pixel
+set: c83[6]  $ number of z pixel
+set: c84[2.0] $ unit voxel x
+set: c85[2.0] $ unit voxel y
+set: c86[1.5] $ unit voxel z
+set: c87[-c81*c84/2] $ smallest x
+set: c88[-c82*c85/2] $ smallest y
+set: c89[-c83*c86/2] $ smallest z
+set: c90[   0.00001] $ small quota
+
+$ fundamental voxel
+101 rpp  c87 c87+c84 c88 c88+c85 c89 c89+c86
+99 so 100
+$ Main space
+201 500 rpp c87+c90 c87+c81*c84-c90 c88+c90 c88+c82*c85-c90 c89+c90 c89+c83*c86-c90
+202 rcc  0 0 c89   0 0 4 8
+203 rcc  0 0 c89-1 0 0 5 9
+
+[ transform ]
+*tr500  0 0 0  0 45 0  0 0 0 0 0 0 2
+
+[ T-Deposit ] 
+     mesh = reg
+      reg = 2 3 (2 < 101[0:4 0:4 0:5])
+   volume 
+   reg   vol     # reg definition
+     2  c84*c85*c86*9
+     3  c84*c85*c86*6
+     axis = reg
+ material = all
+   output = dose
+     unit = 0
+     file = robot-deposit-reg.out
+
+[ T-Deposit ]
+  mesh = xyz
+  x-type = 2
+  nx = 100
+  xmin = -10.0
+  xmax =  10.0
+  y-type = 2
+  ny = 1
+  ymin = -1.0
+  ymax = 1.0
+  z-type = 2
+  nz = 100
+  zmin = -10.0
+  zmax =  10.0
+  axis = xz
+  output = dose
+  unit = 0
+  title = Dose for xz surface
+  file = robot-deposit-xz.out
+  gshow = 3
+  epsout = 1
+
+[ T - 3Dshow ]
+    title = [t-3dshow: icnt = 11]
+     file = robot-3D.out      # file name of output
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  0.000000       # (D=0.0) z-coordinate of the origin
+    e-the =  60.0000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  290.00000       # (D=140.0) eye point phi(degree) from z-axis
+    l-the =  40.0000       # (D=e-the) light point theta from z-axis
+    l-phi =  310.00000       # (D=e-phi) light point phi from z-axis
+    w-wdt =  30.0000       # (D=100) width of window (cm)
+    w-hgt =  30.00000       # (D=100) hight of window (cm)
+    w-dst =  30.00000       # (D=200) window distance from origin
+    w-mnw =  50            # (D=100) mesh number of window width
+    w-mnh =  50            # (D=100) mesh number of window hight
+   heaven =    z            # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 1.0000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+    resol =   10           # (D=1) resolution of 3dshow
+    width = 0.1000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    0            # (D=0) 0:surface+mat, 1:+region
+   shadow =    1            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[end]
+

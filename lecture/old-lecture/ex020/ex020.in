@@ -1,0 +1,115 @@
+[ T i t l e ]
+Test Calculation for Example (20)
+
+[ P a r a m e t e r s ]
+ icntl   = 0
+ maxcas  = 1000
+ maxbch  = 1
+ emin(2) = 1.e-1
+ dmax(2) = 20
+ file(6) = phits.out
+ file(7) = c:/phits/data/xsdir.jnd
+ file(14) = c:/phits/data/trxcrd.dat
+ jmout = 1
+ esmin = 1.e-6
+ ndedx = 2
+ e-mode = 1
+ itall = 1
+
+ dmax(14) = 1000
+ emin(14) = 1.e-3
+
+ dmax(12) = 1000
+ emin(12) = 1.e-3
+ emin(13) = 1.e-3
+
+ emin(15) = 1.e-6
+ emin(16) = 1.e-6
+ emin(17) = 1.e-6
+ emin(18) = 1.e-6
+ emin(19) = 1.e-6
+
+
+[ S o u r c e ] 
+ s-type =   1     
+   proj =   proton
+     e0 =   100
+     z0 =   0.0
+     z1 =   0.0
+     r0 =   0.0
+    dir =   1.0000
+
+[ M a t e r i a l ]
+MAT[ 1 ]
+ 196Hg       5.9595000E-05
+ 198Hg       3.9611000E-03
+ 199Hg       6.7025000E-03
+ 200Hg       9.1776000E-03
+ 201Hg       5.2364000E-03
+ 202Hg       1.1863000E-02
+ 204Hg       2.2795000E-03
+MAT[ 2 ]
+ 204Pb       4.6801000E-04
+ 206Pb       7.9430000E-03
+ 207Pb       7.2838000E-03
+ 208Pb       1.7238000E-02
+MAT[ 3 ]
+  54Fe       4.9161000E-03
+  56Fe       7.7741000E-02
+  57Fe       1.8647000E-03
+  58Fe       2.3733000E-04
+MAT[ 4 ]
+  14N        4.6801000E-05
+  16O        7.9430000E-06
+mat[5]
+   1H        6.6893407E-02
+  16O        3.3446704E-02
+
+[surface]  
+  1   cz     5.0
+  2   cz    10.0
+  3   cz    15.0
+  4   cz    20.0
+  5   pz     0.0
+  6   pz     5.0
+  7   pz    10.0
+  8   pz    15.0
+  9   pz    55.0
+ 10   pz    60.0
+
+[cell] 
+  1   5 -1   6  -9 -1
+  2   5 -1   7  -9  1 -2
+  3   5 -1   8  -9  2 -3
+  4   0   5 -10 -4 #1 #2 #3 
+  5  -1  -5 : 10 :  4 
+
+[ T - let ] 
+     mesh = r-z
+   r-type =  2
+       nr =  1
+     rmin =  0
+     rmax =  5
+   z-type =  2
+       nz =  1
+     zmin =  5
+     zmax =  55
+   l-type =  3
+       nl =  50
+     lmin =  0.1
+     lmax =  1.e+5
+     unit = 2
+     axis = let
+     file = let-arzp.dat
+    part = proton nucleus electron alpha pion+ muon+
+   epsout = 1
+    letmat = 5
+
+[ V o l u m e ] 
+  reg    vol
+   1      3927.0
+   2     10602.9
+   3     15708.0
+   4     45160.4
+
+[END]

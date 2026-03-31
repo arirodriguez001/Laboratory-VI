@@ -1,0 +1,432 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+                           ___ [ Job Title ] __ 
+                          |                    |
+                          |  3um Si test case  |
+                          |____________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 11h 22m 17
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+3um Si test case
+
+[ P a r a m e t e r s ]
+ e-mode   =           1     # (D=0) 0: Normal, 1: Event generator mode
+ itall    =           1     # (D=0) 0:no tally at batch, 1:same, 2:different
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =    10000000     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ emin(1)  = 1.000000000E-03 # (D=1.0) cut-off energy of proton (MeV)
+ emin(2)  = 1.000000000E-10 # (D=1.0) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 1.000000000E-03 # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 1.000000000E-03 # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+ delt0    = 1.022000000E-04 # (D=0.1) flight mesh for spread and magfield (cm)
+ file(6)  = phits.out       # (D=phits.out) general output file name
+ file(7)  = c:/phits/data/xsdir.jnd # (D=xdirs) nuclear data input file name
+ file(14) = c:/phits/data/trxcrd.dat # (D=trxcrd.dat) photon data input file name
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident particle         
+       e0 =   19.000        # energy of beam [MeV/u]
+       r0 =  1.00000E-02    # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 = -1.00000E-03    # minimum position of z-axis [cm]
+       z1 = -1.00000E-03    # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+         28Si.50c     1.0000000E+00
+
+[ C e l l ]
+ 1          0                 1 -2 11 -12 13 -14 
+ 2          1 -2.3290000E+00  2 -3 11 -12 13 -14 
+ 3          0                 3 -4 11 -12 13 -14 
+ 10        -1                 #( 1 -4 11 -12 13 -14 ) 
+
+[ S u r f a c e ]
+ 1            pz    -1.0000000E-02
+ 2            pz     0.0000000E+00
+ 3            pz     3.0000000E-04
+ 4            pz     1.0000000E+00
+ 11           px    -5.0000000E-02
+ 12           px     5.0000000E-02
+ 13           py    -5.0000000E-02
+ 14           py     5.0000000E-02
+
+[ T - H e a t ]
+    title = [t-heat] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 2
+     unit =    3            # unit is [1/source] : only for output=deposit
+     axis =  eng            # axis of output
+     file = heat-01.dat     # file name of output for the above axis
+ material =  all            # (D=all) number of specific material
+   output = deposit_heat    # only deposit energy is written
+  deposit =    0            # (D=0) 0-> total deposit dist, 1-> each process
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-05  # minimum value of e-mesh points
+     emax =   100.0000      # maximum value of e-mesh points
+#    edel =  0.1611810      # mesh width of e-mesh points
+       ne =  100            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-05  1.17490E-05  1.38038E-05  1.62181E-05  1.90546E-05
+#           2.23872E-05  2.63027E-05  3.09030E-05  3.63078E-05  4.26580E-05
+#           5.01187E-05  5.88844E-05  6.91831E-05  8.12831E-05  9.54993E-05
+#           1.12202E-04  1.31826E-04  1.54882E-04  1.81970E-04  2.13796E-04
+#           2.51189E-04  2.95121E-04  3.46737E-04  4.07380E-04  4.78630E-04
+#           5.62341E-04  6.60693E-04  7.76247E-04  9.12011E-04  1.07152E-03
+#           1.25893E-03  1.47911E-03  1.73780E-03  2.04174E-03  2.39883E-03
+#           2.81838E-03  3.31131E-03  3.89045E-03  4.57088E-03  5.37032E-03
+#           6.30957E-03  7.41310E-03  8.70964E-03  1.02329E-02  1.20226E-02
+#           1.41254E-02  1.65959E-02  1.94984E-02  2.29087E-02  2.69153E-02
+#           3.16228E-02  3.71535E-02  4.36516E-02  5.12861E-02  6.02560E-02
+#           7.07946E-02  8.31764E-02  9.77237E-02  1.14815E-01  1.34896E-01
+#           1.58489E-01  1.86209E-01  2.18776E-01  2.57040E-01  3.01995E-01
+#           3.54813E-01  4.16869E-01  4.89779E-01  5.75440E-01  6.76083E-01
+#           7.94328E-01  9.33254E-01  1.09648E+00  1.28825E+00  1.51356E+00
+#           1.77828E+00  2.08930E+00  2.45471E+00  2.88403E+00  3.38844E+00
+#           3.98107E+00  4.67735E+00  5.49541E+00  6.45654E+00  7.58578E+00
+#           8.91251E+00  1.04713E+01  1.23027E+01  1.44544E+01  1.69824E+01
+#           1.99526E+01  2.34423E+01  2.75423E+01  3.23594E+01  3.80189E+01
+#           4.46684E+01  5.24807E+01  6.16595E+01  7.24436E+01  8.51138E+01
+#           1.00000E+02
+ electron =    1            # (D=0) 0-> photon library, 1-> electron ionization
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         310 (  0)         210 (  0)         520 (  0)
+
+[ T - Deposit ]
+    title = [t-deposit] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 2
+     unit =    3            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = deposit         # deposit enerygy distribution
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-05  # minimum value of e-mesh points
+     emax =   100.0000      # maximum value of e-mesh points
+#    edel =  0.1611810      # mesh width of e-mesh points
+       ne =  100            # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-05  1.17490E-05  1.38038E-05  1.62181E-05  1.90546E-05
+#           2.23872E-05  2.63027E-05  3.09030E-05  3.63078E-05  4.26580E-05
+#           5.01187E-05  5.88844E-05  6.91831E-05  8.12831E-05  9.54993E-05
+#           1.12202E-04  1.31826E-04  1.54882E-04  1.81970E-04  2.13796E-04
+#           2.51189E-04  2.95121E-04  3.46737E-04  4.07380E-04  4.78630E-04
+#           5.62341E-04  6.60693E-04  7.76247E-04  9.12011E-04  1.07152E-03
+#           1.25893E-03  1.47911E-03  1.73780E-03  2.04174E-03  2.39883E-03
+#           2.81838E-03  3.31131E-03  3.89045E-03  4.57088E-03  5.37032E-03
+#           6.30957E-03  7.41310E-03  8.70964E-03  1.02329E-02  1.20226E-02
+#           1.41254E-02  1.65959E-02  1.94984E-02  2.29087E-02  2.69153E-02
+#           3.16228E-02  3.71535E-02  4.36516E-02  5.12861E-02  6.02560E-02
+#           7.07946E-02  8.31764E-02  9.77237E-02  1.14815E-01  1.34896E-01
+#           1.58489E-01  1.86209E-01  2.18776E-01  2.57040E-01  3.01995E-01
+#           3.54813E-01  4.16869E-01  4.89779E-01  5.75440E-01  6.76083E-01
+#           7.94328E-01  9.33254E-01  1.09648E+00  1.28825E+00  1.51356E+00
+#           1.77828E+00  2.08930E+00  2.45471E+00  2.88403E+00  3.38844E+00
+#           3.98107E+00  4.67735E+00  5.49541E+00  6.45654E+00  7.58578E+00
+#           8.91251E+00  1.04713E+01  1.23027E+01  1.44544E+01  1.69824E+01
+#           1.99526E+01  2.34423E+01  2.75423E+01  3.23594E+01  3.80189E+01
+#           4.46684E+01  5.24807E+01  6.16595E+01  7.24436E+01  8.51138E+01
+#           1.00000E+02
+     axis =   eng           # axis of output
+     file = dep-01.dat      # file name of output for the above axis
+     part =  all        deuteron   triton     alpha    
+# kf/name :  0          1000002    1000003    2000004  
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         913 (  0)         812 (  0)        1725 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      213
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =     4494
+*     total memory: mdas = 20000000
+*                percent =     0.02 %
+
+<<< Report of material memory for low energy>>>
+*    low energy material =   226221
+*     total memory: mdas = 20000000
+*                percent =     1.13 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =     1223
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =     1954
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of total memory >>>
+*      used total memory =   581605
+*     total memory: mdas = 20000000
+*                percent =     2.91 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =       10000000. : rijk    =   6647299061401.
+       low neutron =       10000000. : ncall/s =  1.030051210E+01
+          cpu time =   1 m. 26.09 s.
+
+-------------------------------------------------------------------------------
+bat[       2] ncas =       20000000. : rijk    = 173130845167769.
+       low neutron =       10000000. : ncall/s =  1.030040230E+01
+          cpu time =   1 m. 22.19 s.
+
+-------------------------------------------------------------------------------
+bat[       3] ncas =       30000000. : rijk    =  86970683034265.
+       low neutron =       10000000. : ncall/s =  1.030206100E+01
+          cpu time =   1 m. 24.27 s.
+
+-------------------------------------------------------------------------------
+bat[       4] ncas =       40000000. : rijk    = 275721537942681.
+       low neutron =       10000000. : ncall/s =  1.030015890E+01
+          cpu time =   1 m. 22.22 s.
+
+-------------------------------------------------------------------------------
+bat[       5] ncas =       50000000. : rijk    = 253806889655961.
+       low neutron =       10000000. : ncall/s =  1.029982770E+01
+          cpu time =   1 m. 21.08 s.
+
+-------------------------------------------------------------------------------
+bat[       6] ncas =       60000000. : rijk    = 105815716415641.
+       low neutron =       10000000. : ncall/s =  1.030018830E+01
+          cpu time =   1 m. 21.62 s.
+
+-------------------------------------------------------------------------------
+bat[       7] ncas =       70000000. : rijk    =  99474401964697.
+       low neutron =       10000000. : ncall/s =  1.030110860E+01
+          cpu time =   1 m. 22.23 s.
+
+-------------------------------------------------------------------------------
+bat[       8] ncas =       80000000. : rijk    =  17143665859737.
+       low neutron =       10000000. : ncall/s =  1.029896300E+01
+          cpu time =   1 m. 21.22 s.
+
+-------------------------------------------------------------------------------
+bat[       9] ncas =       90000000. : rijk    = 176165354047129.
+       low neutron =       10000000. : ncall/s =  1.030030170E+01
+          cpu time =   1 m. 21.55 s.
+
+-------------------------------------------------------------------------------
+bat[      10] ncas =      100000000. : rijk    = 197409415753881.
+       low neutron =       10000000. : ncall/s =  1.030044930E+01
+          cpu time =   1 m. 22.11 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3             10.   : end of a batch                  
+        4      100000000.   : source                          
+        5              0.   : detection of geometry error     
+        6              0.   : recovery of geometry error      
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10      200001590.   : geometry boundary crossing      
+       11             10.   : termination by energy cut-off   
+       12      100001595.   : termination by escape or leakage
+       13            212.   : reaction : (n,x) type           
+       14           2537.   : reaction : (n,n'x) type         
+       15              0.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ Region-wise total number of collisions for Nuclear Data part per source
+-------------------------------------------------------------------------------
+ Region     Neutron      Photon    Electron      Proton     N-Emode  Data-Total
+      2  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  2.7490E-05  2.7490E-05
+  Total  0.0000E+00  0.0000E+00  0.0000E+00  0.0000E+00  2.7490E-05  2.7490E-05
+
+-------------------------------------------------------------------------------
+ Region-wise total number of n-coll for low energy per source
+-------------------------------------------------------------------------------
+ Region     Capture     Elastic      (N,N')      (N,xN)     Fission  Total-Coll
+      2  2.1200E-06  1.3440E-05  0.0000E+00  1.1930E-05  0.0000E+00  2.5370E-05
+  Total  2.1200E-06  1.3440E-05  0.0000E+00  1.1930E-05  0.0000E+00  2.7490E-05
+
+-------------------------------------------------------------------------------
+ Region-wise neutron flux gain and loss for low energy per source
+-------------------------------------------------------------------------------
+ Region   Capt-Loss  (N,xN)Loss  (N,xN)Gain   Fiss-Loss   Fiss-Gain       Total
+      2 -2.1200E-06 -1.1930E-05  1.1940E-05  0.0000E+00  0.0000E+00 -2.1100E-06
+  Total -2.1200E-06 -1.1930E-05  1.1940E-05  0.0000E+00  0.0000E+00 -2.1100E-06
+
+-------------------------------------------------------------------------------
+ Region-wise neutron energy gain and loss for low energy per source
+-------------------------------------------------------------------------------
+ Region   Capt-Loss   UpScatter   DownScatt
+      2  4.0280E-05  0.0000E+00  0.0000E+00
+  Total  4.0280E-05  0.0000E+00  0.0000E+00
+
+-------------------------------------------------------------------------------
+ Medium-wise total number of n-coll for low energy per source
+-------------------------------------------------------------------------------
+ Medium     Capture     Elastic      (N,N')      (N,xN)     Fission  Total-Coll
+      1  2.1200E-06  1.3440E-05  0.0000E+00  1.1930E-05  0.0000E+00  2.5370E-05
+  Total  2.1200E-06  1.3440E-05  0.0000E+00  1.1930E-05  0.0000E+00  2.7490E-05
+
+-------------------------------------------------------------------------------
+ Medium-wise neutron flux gain and loss for low energy per source
+-------------------------------------------------------------------------------
+ Medium   Capt-Loss  (N,xN)Loss  (N,xN)Gain   Fiss-Loss   Fiss-Gain       Total
+      1 -2.1200E-06 -1.1930E-05  1.1940E-05  0.0000E+00  0.0000E+00 -2.1100E-06
+  Total -2.1200E-06 -1.1930E-05  1.1940E-05  0.0000E+00  0.0000E+00 -2.1100E-06
+
+-------------------------------------------------------------------------------
+ Medium-wise neutron energy gain and loss for low energy per source
+-------------------------------------------------------------------------------
+ Medium   Capt-Loss   UpScatter   DownScatt
+      1  4.0280E-05  0.0000E+00  0.0000E+00
+  Total  4.0280E-05  0.0000E+00  0.0000E+00
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+     proton       2212        938.3         1       1
+     neutron      2112        939.6         0       1
+     photon         22          0.0         0       0
+     deuteron  1000002       1875.6         1       2
+     alpha     2000004       3727.4         2       4
+
+-------------------------------------------------------------------------------
+ prod. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron            3730.     3.7300000E+03     3.7300000E-05
+     photon             1157.     1.1570000E+03     1.1570000E-05
+     proton              660.     6.6000000E+02     6.6000000E-06
+     alpha               290.     2.9000000E+02     2.9000000E-06
+     deuteron              7.     7.0000000E+00     7.0000000E-08
+
+-------------------------------------------------------------------------------
+ stop. particles.    number        weight        weight per source
+-------------------------------------------------------------------------------
+     nucleus            2751.     2.7510000E+03     2.7510000E-05
+     alpha               290.     2.9000000E+02     2.9000000E-06
+     proton               10.     1.0000000E+01     1.0000000E-07
+     deuteron              7.     7.0000000E+00     7.0000000E-08
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     neutron        99999788.     9.9999788E+07     9.9999788E-01
+     photon             1157.     1.1570000E+03     1.1570000E-05
+     proton              650.     6.5000000E+02     6.5000000E-06
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+    10000000          10           0    1.0000000E+00    1.0000000000000E+08
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost part in CG    =     0 / nlost =       10
+ Number of CG region errors   =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+ next initial random number =  25620694063769.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   11:36:03
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =       826.33       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00      400005964.
+         nevap =         0.00         0.00           1405.
+        photon =         0.00         0.00            946.
+         nreac =         0.00         0.00           2749.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00              0.
+         elast =         0.00         0.00              0.
+         ncasc =         0.00         0.00              0.
+        n-data =         0.00         0.00           2749.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00              0.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+ END 

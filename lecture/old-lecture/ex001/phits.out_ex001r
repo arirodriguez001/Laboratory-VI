@@ -1,0 +1,378 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  2.300                   |
+          |                         made by                         |
+          |                                                         |
+          |                       Koji NIITA,                       |
+          |           Research Organization for Information         |
+          |                    Science & Technology                 |
+          |                                                         |
+          |           Norihiro MATSUDA, Shintaro HASHIMOTO,         |
+          |              Yosuke IWAMOTO, Tatsuhiko SATO,            |
+          |             Hiroshi NAKASHIMA, Yukio SAKAMOTO,          |
+          |               Tokio FUKAHORI, Satoshi CHIBA,            |
+          |                 Japan Atomic Energy Agency              |
+          |                                                         |
+          |                      Hiroshi IWASE,                     |
+          |                           KEK                           |
+          |                                                         |
+          |                           and                           |
+          |                                                         |
+          |                      Lembit SIHVER,                     |
+          |             Chalmers University of Technology           |
+          |                                                         |
+          |                 Last Revised  2011-08-11                |
+          |_________________________________________________________|
+
+    ___________________________ [ Job Title ] _________________________ 
+   |                                                                   |
+   |  example 001        -Calculation Geometry(3D-show)- sample input  |
+   |___________________________________________________________________|
+
+                        Starting Date = 2011-08-17
+                        Starting Time = 10h 56m 35
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+example 001        -Calculation Geometry(3D-show)- sample input
+
+[ P a r a m e t e r s ]
+ icntl    =          11     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
+ itall    =           1     # (D=0) 0:no tally at batch, 1:same, 2:different
+ imout    =           2     # (D=0) MAT format, 0: 208Pb, 1: Pb-208, 2: MCNP
+ file(6)  = phits.out_ex001r # (D=phits.out) general output file name
+ file(7)  = c:\phits\data\xsdir.jnd # (D=xdirs) nuclear data input file name
+
+[ S o u r c e ]
+  totfact =   2.0000        # (D=1.0) global factor
+
+ <Source> =   1.0000        # weight of this sub-source
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident particle         
+       e0 =   1.1732        # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   0.0000        # minimum position of z-axis [cm]
+       z1 =   0.0000        # maximum position of z-axis [cm]
+      dir =   all           # z-direction of beam [isotropic]
+   factor =  0.99974        # (D=1.0) factor for each source
+
+ <Source> =   1.0000        # weight of this sub-source
+   s-type =   1             # mono-energetic axial source
+     proj =  neutron        # kind of incident particle         
+       e0 =   1.3325        # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =   0.0000        # minimum position of z-axis [cm]
+       z1 =   0.0000        # maximum position of z-axis [cm]
+      dir =   all           # z-direction of beam [isotropic]
+   factor =  0.99986        # (D=1.0) factor for each source
+
+[ M a t e r i a l ]
+m1    
+         7014         7.8084000E+01
+         8016         2.0948000E+01
+m2    
+         1001         2.0000000E+00
+         6012         1.0000000E+00
+m4    
+        26000         1.0000000E+00
+m5    
+        82000         1.0000000E+00
+m6    
+        29000         1.0000000E+00
+m9    
+         1002         1.0000000E+00
+         1003         1.0000000E+00
+
+[ C e l l ]
+ 1011       4 -7.8700000E+00  601 -602 -9024 
+ 1012       4 -7.8700000E+00  602 -603 -9016 
+ 2011       4 -7.8700000E+00  -9113 
+ 2012       4 -7.8700000E+00  -9114 
+ 2021       6 -8.9300000E+00  401 -402 -9923 
+ 3011       5 -1.1350000E+01  62 -64 -940 
+ 3012       5 -1.1350000E+01  61 -63 -910 
+ 4000       2 -9.3000000E-01  ( -8010 : -8020 ) 6000 8001
+                              #( 601 -9024 ) 9113 9114
+                              #( 401 -9923 )
+                              #( 62 -64 -940 )
+                              #( 61 -63 -910 ) 
+ 4001       9 -1.0000000E+00  -8001 
+ 5011       2 -9.3000000E-01  -6000 -8500 
+ 6011       1 -1.2050000E-03  6000 -8500
+                              #( -8010 : -8020 )
+                              #( 601 -603 -9024 ) 9113 9114
+                              #( 401 -402 -9923 )
+                              #( 62 -64 -940 )
+                              #( 61 -63 -910 ) 
+ 6012       1 -1.2050000E-03  602 -603 9016 -9024 
+ 9999       0                 8500   -1000000
+ ******    -1                    1000000
+
+[ S u r f a c e ]
+ 401          py     1.9800000E+01
+ 402          py     2.6900000E+01
+ 6000         pz     0.0000000E+00
+ 61        10 pz     2.9000000E+01
+ 62        40 pz     2.9000000E+01
+ 63        10 pz     3.1000000E+01
+ 64        40 pz     3.1000000E+01
+ 601          pz     7.9500000E+01
+ 602          pz     8.3500000E+01
+ 603          pz     1.0400000E+02
+ 8500         sz     5.0000000E+01  5.0000000E+02
+ 8001         sz     5.0000000E+01  5.0000000E+00
+ 8010         sz     7.1500000E+01  2.0000000E+01
+ 8020         sz     2.9000000E+01  3.0000000E+01
+ 9113         s     -8.0000000E+00  1.8000000E+01  7.4000000E+01
+                    3.5000000E+00
+ 9114         s      8.0000000E+00  1.8000000E+01  7.4000000E+01
+                    3.5000000E+00
+ 9016         cz     1.6000000E+01
+ 9024         cz     2.4000000E+01
+ 910       10 cz     4.0000000E+00
+ 940       40 cz     4.0000000E+00
+ 9923         k/y    0.0000000E+00  2.7000000E+01  7.1500000E+01
+                    1.5123457E-01 -1.0000000E+00
+ ******       so     5.0000000E+04
+
+[ T r a n s f o r m ]
+*tr10        0.0000000E+00  0.0000000E+00  2.9000000E+01
+             0.0000000E+00  9.0000000E+01  9.0000000E+01
+             9.0000000E+01  8.0000000E+01  1.7000000E+02
+             9.0000000E+01  1.0000000E+01  8.0000000E+01    1
+*tr40        0.0000000E+00  0.0000000E+00  2.9000000E+01
+             0.0000000E+00  9.0000000E+01  9.0000000E+01
+             9.0000000E+01  5.0000000E+01  1.4000000E+02
+             9.0000000E+01  4.0000000E+01  5.0000000E+01    1
+
+[ Mat Name Color ]
+   mat name     size          color   # HSB color value
+     0 void     1.00      lightgray   # { -0.800  1.000  1.000 }
+     1    1     1.00     pastelcyan   # {  0.400  0.400  1.000 }
+     2    2     1.00          white   # { -1.000  1.000  1.000 }
+     4    4     1.00          black   # {  0.000  1.000  1.000 }
+     5    5     1.00           blue   # {  0.200  1.000  1.000 }
+     6    6     1.00         orange   # {  0.933  1.000  1.000 }
+     9    9     1.00            red   # {  1.000  1.000  1.000 }
+
+[ T - 3Dshow ]
+    title = [t-3dshow]
+     file = 3dshow011.dat   # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                1
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  55.00000       # (D=0.0) z-coordinate of the origin
+    e-the =  80.00000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  90.00000       # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  100.0000       # (D=w-dst*10) eye point distance from origin
+    l-the =  30.00000       # (D=e-the) light point theta from z-axis
+    l-phi =  90.00000       # (D=e-phi) light point phi from x-axis
+    l-dst =  100.0000       # (D=e-dst) light point distance from origin
+    w-wdt =  50.00000       # (D=100) width of window (cm)
+    w-hgt =  50.00000       # (D=100) hight of window (cm)
+    w-dst =  60.00000       # (D=200) window distance from origin
+    w-mnw =  100            # (D=100) mesh number of window width
+    w-mnh =  100            # (D=100) mesh number of window hight
+   heaven =   z             # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 0.8000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+      box =    1            # (D=0) number of boxes
+      box     0.0000000E+00  0.0000000E+00  5.0000000E+01
+              0.0000000E+00  5.0000000E+02  5.0000000E+01
+             -5.0000000E+02  0.0000000E+00  5.0000000E+01  5.0000000E+02
+ matinbox =    1            # shown materials in box
+                9
+    resol =    1            # (D=1) resolution of 3dshow
+    width = 0.5000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :           2 (  0)       45905 (  0)       45907 (  0)
+
+[ T - 3Dshow ]
+    title = [t-3dshow]
+     file = 3dshow002.dat   # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                1
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  55.00000       # (D=0.0) z-coordinate of the origin
+    e-the =  90.00000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  180.0000       # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  100.0000       # (D=w-dst*10) eye point distance from origin
+    l-the =  30.00000       # (D=e-the) light point theta from z-axis
+    l-phi =  90.00000       # (D=e-phi) light point phi from x-axis
+    l-dst =  100.0000       # (D=e-dst) light point distance from origin
+    w-wdt =  50.00000       # (D=100) width of window (cm)
+    w-hgt =  50.00000       # (D=100) hight of window (cm)
+    w-dst =  60.00000       # (D=200) window distance from origin
+    w-mnw =  100            # (D=100) mesh number of window width
+    w-mnh =  100            # (D=100) mesh number of window hight
+   heaven =   z             # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 0.8000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+    resol =    1            # (D=1) resolution of 3dshow
+    width = 0.5000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :           2 (  0)       45905 (  0)       45907 (  0)
+
+[ T - 3Dshow ]
+    title = [t-3dshow]
+     file = 3dshow013.dat   # file name of output
+ material =  all            # (D=all) all materials are shown
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  55.00000       # (D=0.0) z-coordinate of the origin
+    e-the =  120.0000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  70.00000       # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  70.00000       # (D=w-dst*10) eye point distance from origin
+    l-the =  30.00000       # (D=e-the) light point theta from z-axis
+    l-phi =  90.00000       # (D=e-phi) light point phi from x-axis
+    l-dst =  100.0000       # (D=e-dst) light point distance from origin
+    w-wdt =  50.00000       # (D=100) width of window (cm)
+    w-hgt =  50.00000       # (D=100) hight of window (cm)
+    w-dst =  43.00000       # (D=200) window distance from origin
+    w-mnw =  100            # (D=100) mesh number of window width
+    w-mnh =  100            # (D=100) mesh number of window hight
+   heaven =   z             # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 0.8000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+    resol =    1            # (D=1) resolution of 3dshow
+    width = 0.5000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :           1 (  0)       45905 (  0)       45906 (  0)
+
+[ T - 3Dshow ]
+    title = [t-3dshow]
+     file = 3dshow004.dat   # file name of output
+ material =   -1            # (D=all) show(+) or transparent(-) material
+                1
+       x0 =  0.000000       # (D=0.0) x-coordinate of the origin
+       y0 =  0.000000       # (D=0.0) y-coordinate of the origin
+       z0 =  55.00000       # (D=0.0) z-coordinate of the origin
+    e-the =  60.00000       # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  70.00000       # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  70.00000       # (D=w-dst*10) eye point distance from origin
+    l-the =  30.00000       # (D=e-the) light point theta from z-axis
+    l-phi =  90.00000       # (D=e-phi) light point phi from x-axis
+    l-dst =  100.0000       # (D=e-dst) light point distance from origin
+    w-wdt =  50.00000       # (D=100) width of window (cm)
+    w-hgt =  50.00000       # (D=100) hight of window (cm)
+    w-dst =  60.00000       # (D=200) window distance from origin
+    w-mnw =  100            # (D=100) mesh number of window width
+    w-mnh =  100            # (D=100) mesh number of window hight
+   heaven =   z             # (D=y) direction to heaven
+    w-ang =  0.000000       # (D=0.0) angle of frame (degree)
+   bright = 0.8000000       # (D=0.8) top brightness
+     dark = 0.2000000       # (D=0.2) bottom darkness
+    resol =    1            # (D=1) resolution of 3dshow
+    width = 0.5000000       # (D=0.5) width of lines for 3dshow
+    r-out =  50000.00       # (D=50000) radius of outer sphere
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :           2 (  0)       45905 (  0)       45907 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =      563
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =    16745
+*     total memory: mdas = 20000000
+*                percent =     0.08 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =        7
+*     total memory: mdas = 20000000
+*                percent =     0.00 %
+
+<<< Report of bank memory >>>
+*            bank memory =   347500
+*     total memory: mdas = 20000000
+*                percent =     1.74 %
+
+<<< Report of other memory >>>
+*           other memory =     2853
+*     total memory: mdas = 20000000
+*                percent =     0.01 %
+
+<<< Report of total memory >>>
+*      used total memory =   367668
+*     total memory: mdas = 20000000
+*                percent =     1.84 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+ job termination date : 2011/08/17
+                 time :   10:56:52
+
+-------------------------------------------------------------------------------
+    CPU Summary
+-------------------------------------------------------------------------------
+
+                         sec          %             count
+total cpu time =        16.42       100.00
+
+      set data =         0.00         0.00
+     transport =         0.00         0.00
+      analysis =         0.00         0.00              0.
+         nevap =         0.00         0.00              0.
+         nreac =         0.00         0.00              0.
+
+         other =         0.00         0.00
+         hydro =         0.00         0.00              0.
+         dklos =         0.00         0.00              0.
+         elast =         0.00         0.00              0.
+         ncasc =         0.00         0.00              0.
+        n-data =         0.00         0.00              0.
+        p-data =         0.00         0.00              0.
+        e-data =         0.00         0.00              0.
+        h-data =         0.00         0.00              0.
+
+         berti =         0.00         0.00              0.
+         isoba =         0.00         0.00              0.
+         JAM   =         0.00         0.00              0.
+         QMD   =         0.00         0.00              0.
+         INCL  =         0.00         0.00              0.
+
+ END 

@@ -1,0 +1,156 @@
+[ T i t l e ]  
+Sample input for nuclear reaction physics
+
+[ P a r a m e t e r s ]
+$ general parameters
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ wc2(1)   = 1.000000000E-10 # (D=-100->wc1/2) weight cutoff of proton
+ wc2(2)   = 1.000000000E-10 # (D=-100->wc1/2) weight cutoff of neutron
+ wc2(15)  = 1.000000000E-10 # (D=-100->wc1/2) weight cutoff of deuteron
+ wc2(18)  = 1.000000000E-10 # (D=-100->wc1/2) weight cutoff of Alpha
+ wc2(19)  = 1.000000000E-10 # (D=-100->wc1/2) weight cutoff of Nucleus
+$ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EG dmaxS ngem
+
+$ Hadron physics
+$ ielas    =           0     # (D=2) 0:non, 1:neutron, 2:neut. and proton
+ icxsni   =           1     # (D=0) 0: Pearlstein-Niita, 1: KUROTAMA, 2: Sato
+ dmax(1)  =  200.000000     # (D=emin(1)) data max. energy of proton (MeV)
+ ngem     =           2     # (D=0) 0: Default (Ver.1), 1: GEM Ver.1, 2:GEM Ver.2, 100:GEM-Furihata
+ igamma   =           3     # (D=2) 0:No, 1:Old, 2:EBITEM, 3:EBITEM+Isomer
+ ismm     =           1     # (D=0) 0: no, 1: Activate statistical multi-fragmentation
+$ ndedx    =           0     # (D=3) 0: SPAR, 1: ATIMA, 2: SPAR all for dE/dx, 3: ATIMA all for dE/dx
+ inclg    =           1     # (D=1) 0:no, 1:INCL for p,n,pi,d,t,3He,alpha, 2:p,n,pi only
+$ mdbatima =        1000     # (D=500) max database size of ATIMA
+
+$ Light cluster phycis
+ icrdm    =           1     # (D=0) 0: =icrhi, 1: MWO formula for Deuteron
+ icrhi    =           2     # (D=2) 0: Shen, 1: NASA, 2: KUROTAMA, 3: Hashimoto
+ imevperu =           1     # (D=0) 0:[MeV] or 1:[MeV/n] is unit of tally output
+ dmax(15) =  100.000000     # (D=emin(15)) data max. energy of deuteron (MeV/n)
+$ e-mode   =           2     # (D=0) 0: Normal, 1: Event generator mode Ver.1, 2: Ver.2
+ dmax(18) =  3.75000000     # (D=emin(18)) data max. energy of Alpha (MeV/n)
+
+$ Heavy ion phycis
+ irqmd    =           1     # (D=0) 0: JQMD legacy version, 1: JQMD-2.0
+  eqmdmin  =  1.00000000     # (D=10.0) min energy / u for QMD reaction
+
+[ S o u r c e ] 
+set: c4[50] $ beam energy in MeV/n
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # cylindrical source
+     proj =  12C            # incident particle species        
+       e0 =   c4            # energy of beam [MeV/u]
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -1.0000        # minimum position of z-axis [cm]
+       z1 =  -1.0000        # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+$   Target
+$ set: c1[0.53]  $ density of Li
+$ set: c2[6.941] $ atomic mass of Li
+$ m1     Li  1.0
+
+$ set: c1[2.7]  $ density of Al
+$ set: c2[27] $ atomic mass of Al
+$ m1     Al  1.0
+
+$ set: c1[2.0]  $ density of C
+$ set: c2[12.01] $ atomic mass of C
+$ m1     C  1.0
+
+$ set: c1[2.34]  $ density of B
+$ set: c2[10.81] $ atomic mass of B
+$ m1     B  1.0
+
+set: c1[11.34]  $ density of Pb
+set: c2[207.2] $ atomic mass of Pb
+m1     Pb  1.0
+
+[ C e l l ]
+    1     1 -c1                   -1   $ Target
+   11     0                       -2 1 $ Surrouding vacuum
+   12    -1                        2   $ Outer void
+
+[ S u r f a c e ]
+set: c3[0.0001] $ target thickness
+  1         RCC    0 0 0 0 0 c3 1
+  2         so     10  
+
+[ Forced collisions ]
+ part = proton 12C
+  reg     fcl 
+  1        -1
+
+[T-Track] 
+    title = [t-track] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -3.000000      # minimum value of x-mesh points
+     xmax =   3.000000      # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -3.00000E+00  3.00000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =  -3.000000      # minimum value of z-mesh points
+     zmax =   3.000000      # maximum value of z-mesh points
+       nz =  100            # number of z-mesh points
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.000000      # minimum value of e-mesh points
+     emax =   c4*1.5        # maximum value of e-mesh points
+       ne =    1            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+    gshow =    2            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat 5:bmp style
+     axis =   xz            # axis of output
+     file = track_xz.out    # file name of output for the above axis
+     part =  all neutron proton deuteron alpha
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[T-Product] 
+     mesh =  reg
+      reg =    1
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =   1.000000      # minimum value of e-mesh points
+     emax =   c4*1.5        # maximum value of e-mesh points
+       ne =   50            # number of e-mesh points
+  a-type = -1
+      na = 3
+      12.5 17.5 87.5 92.5 
+     unit = 23
+     axis =  eng
+     file = prod_reg.out
+   output = nuclear
+   epsout = 1
+    part  = neutron proton deuteron alpha photon
+set: c50[c1/c2*6.02e23*c3] $ target density particles/cm^2
+    factor = 1/c50*1.0E27
+    y-txt = d^2\sigma/dE/d\Omega (mb/sr/MeV)
+
+[ T - Y i e l d ]
+    title = Production yield of isotopes in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 1
+   volume                   # combined, lattice or level structure 
+   non     reg      vol     # reg definition
+    1      1     1*pi*1**2
+ material =  all            # (D=all) number of specific material
+   mother =  all            # (D=all) number of specific mother
+  nucleus =  all            # (D=all) number of detected nucleus
+     unit =    1            # unit is [1/source]
+     axis = chart           # axis of output
+     file = yield_reg.out   # file name of output for the above axis
+     info =    1            # 0-> no, 1-> write magic number and stable nuclei
+     part =  all
+   output = product         # (D=product) normal yeild
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[END]
+
+ 

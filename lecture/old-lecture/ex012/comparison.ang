@@ -1,0 +1,42 @@
+
+# Cross-section(mb): 1. / {7.87 x 3.0 (g cm^-2) / 55.847(g/mol) x Avogadro's}
+#  3.928E+03
+# Steradian(sr): AREA/R^2
+# Conversion (cm^-2) to (sr^-1): R^2 = 350^2 = 1.225E+05
+# Correction factor
+#  3.928E+03 x 1.225E+05 = 4.8118E+08
+
+'Double Differential Cross-section(DDX) ^{nat}Fe(p=1200MeV,n) reaction'
+x: Neutron Energy [MeV]
+y:   Cross-section  [mb/sr/MeV]             
+p: xlog ylog afac(0.8) form(1.0)
+p: ymin(1.e-8) ymax(1.e+02) xmax(2.e+03)
+
+# Expt.
+h: x dx y(Expt.\(10 deg.\))/1.,N3R            d/1.  
+infl: {expt.dat} [86-174]
+h: x dx y(Expt.\(20 deg.\)/10)/10.,N3RR       d/10.  
+infl: {expt.dat} [179-261]
+h: x dx y(Expt.\(40 deg.\)/100)/100.,N3YY     d/100.  
+infl: {expt.dat} [265-286]
+h: x dx y(Expt.\(55 deg.\)/1000)/1000.,N3CC   d/1000.  
+infl: {expt.dat} [290-352]
+h: x dx y(Expt.\(85 deg.\)/10000)/10000.,N3BB d/10000.  
+infl: {expt.dat} [356-404]
+
+# Calc.
+h: n x y(Calc.\(10 deg.\))*4.8118E+08,hh0lR         n  
+infl: {flux_neutron.dat} [457-537]
+h: n x y(Calc.\(20 deg.\)/10)*4.8118E+07,hh0lRR     n  
+infl: {flux_neutron.dat} [356-436]
+h: n x y(Calc.\(40 deg.\)/100)*4.8118E+06,hh0lYY    n  
+infl: {flux_neutron.dat} [255-335]
+h: n x y(Calc.\(55 deg.\)/1000)*4.8118E+05,hh0lCC   n  
+infl: {flux_neutron.dat} [154-234]
+h: n x y(Calc.\(85 deg.\)/10000)*4.8118E+04,hh0lBB  n  
+infl: {flux_neutron.dat} [53-133]
+
+msdl: {\it plotted by \ANGEL \version}
+msdr: {\it calculated by \PHITS  2.24}
+e:
+

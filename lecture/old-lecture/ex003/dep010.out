@@ -1,0 +1,50 @@
+[ T - H e a t ]
+    title = [t-heat] in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg = 10
+     unit =    2            # unit is [MeV/source]
+     axis =  reg            # axis of output
+     file = dep010.out      # file name of output for the above axis
+ material =  all            # (D=all) number of specific material
+   output = heat            # only heat is written
+ electron =    0            # (D=0) 0-> photon library, 1-> electron ionization
+    angel = ylin ymin(0.0) ymax(200.)
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          10 (  0)          10 (  0)          20 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+msuc: {\huge [t-heat] in region mesh}
+msdl: {\it plotted by \ANGEL \version}
+msdr: {\it calculated by \PHITS  2.30}
+p: xlin ylog afac(0.8) form(0.9)
+
+'no. =  1,    heat'
+#----------------------------------------#
+# Total heat without ncut, gcut and pcut #
+#----------------------------------------#
+wt: s(0.7)
+\vspace{-3}
+  without ncut
+  gcut and pcut
+e:
+x: Serial Num. of Region
+y: Heat [MeV/source]     
+p: ylin ymin(0.0) ymax(200.)
+h:   x      n     n          y(total),l3  n
+#  num    reg     volume        heat     r.err
+    1      10   1.0000E+00   5.4967E+01  0.0871
+
+#   sum over    1.0000E+00   5.4967E+01  0.0871
+#   [MeV/source]
+
+#   no. =  1
+
+#------------------------------------------------------------------------------
+
+#   total  heat  =    5.4967E+01 (MeV/source)
+#   energy diff. =   -0.321      (%) of total heat
+#                =   -1.7653E-01 (MeV/source)
+#     absorption =    8.0253E-01 (MeV/source)
+#     mass diff. =    9.7906E-01 (MeV/source)

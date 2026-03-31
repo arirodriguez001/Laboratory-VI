@@ -1,0 +1,83 @@
+[ T i t l e ]
+mille-feuille geometry
+
+[ P a r a m e t e r s ]
+ icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+  maxcas  = 1000
+  maxbch  = 1
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+
+[ S o u r c e ]
+   s-type =   1             # mono-energetic axial source
+     proj =  alpha          # kind of incident particle         
+      dir =   1.0           # z-direction of beam [cosine]
+       r0 =   1.0           # radius [cm]
+       z0 =   -30.          # minimum position of z-axis [cm]
+       z1 =   -30.          # maximum position of z-axis [cm]
+       e0 =   300.          # energy of beam [MeV/u]
+
+[ M a t e r i a l ]
+mat[1]     Fe 1.0
+mat[2]     Al 1.0
+mat[3]     C  1.0
+mat[4]     H 2.0    O 1.0
+mat[5]     C 1.0    H 2.0
+
+[ S u r f a c e ]
+  11  so       5.
+  12  so      10.
+  13  so      15.
+  14  so      20.
+  15  so      25.
+  99  so      99.
+[ C e l l ]
+ 101     1 -7.87              -11
+ 102     2 -2.7          11   -12
+ 103     3 -2.0          12   -13
+ 104     4 -1.0          13   -14
+ 105     5 -0.93         14   -15
+ 998     0               15   -99
+ 999    -1               99
+
+[ T - Gshow ]
+     mesh =  xyz
+   x-type =    2
+       nx =    1
+     xmin =  -30.
+     xmax =   30.
+   y-type =    2
+       ny =   30
+     ymin =  -30.
+     ymax =   30.
+  z-type =     2
+       nz =   30
+     zmin = -30.
+     zmax =  30.
+     axis =   yz
+   epsout = 1
+     file = geometry.out
+   output = 2
+
+[ T - Deposit ]
+     mesh =  xyz
+   x-type =    2
+       nx =  50
+     xmin =  -25.
+     xmax =   25.
+   y-type =    2
+       ny =    1
+     ymin =  -25.
+     ymax =   25.
+   z-type =    2
+       nz =  50
+     zmin =  -25.
+     zmax =   25.
+     axis =   xz            # axis of output
+   epsout =    1
+     part =  all He proton
+     unit =    1          
+  2d-type = 3
+     file = deposit.out
+    gshow =    0            # 0: no 1:bnd 2:bnd+mat 3:bnd+reg 4:bnd+lat
+[ E n d ]

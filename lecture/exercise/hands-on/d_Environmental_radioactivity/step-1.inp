@@ -1,0 +1,54 @@
+[ T i t l e ]
+Sample input for dose calculation for photon therapy
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =           2     # (D=10) number of batches
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ file(1)  = c:/phits        # (D=c:/phits) PHITS install folder name
+
+[ S o u r c e ]
+   s-type =   1             # axial source without energy distribution
+     proj =   photon        # 
+       r0 =   0.0000        # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -1.0000        # minimum position of z-axis [cm]
+       z1 =  -1.0000        # maximum position of z-axis [cm]
+      dir =   all           # isootropic source 
+   e-type =   1             # Energy distribution. 28 means RI soource
+       e0 =   0.1000        # source energy (MeV)
+
+[ M a t e r i a l ]
+MAT[ 1 ]   # Air D = 1.21e-3 g/cm3
+           H     7.199E-09
+           C     7.585E-09
+           N     3.910E-05
+           O     1.054E-05
+
+MAT[ 2 ]   # Soil D = 2.1 g/cm3
+           H     -0.023       
+           C     -0.0023
+           O     -1.22
+           Na    -0.0368
+           Mg    -0.005
+           Al    -0.078
+           Si    -0.775
+           K     -0.0299
+           Ca    -0.1
+           Fe    -0.032
+
+
+[ C e l l ]
+1           2 -2.1              -1       -999  $ Soil
+98          1 -1.21e-3           1       -999  $ Air
+99         -1                             999  $ Outer region
+
+[ S u r f a c e ]
+ 1            rcc      0     0      -10      0      0    10    1000
+ 999          so   1000.0
+
+
+[END]
+

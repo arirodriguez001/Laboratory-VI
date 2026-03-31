@@ -1,0 +1,38 @@
+List of sample input for PHITS lecture
+
+*phits-lec01-1.ppt
+  ex001: [T-3dshow]を用いた計算体系の3次元表示
+  ex002: [T-Track]のgshowオプションを用いた計算体系の確認（動作確認用）
+
+*phits-lec01-3.ppt
+  ex003: Bragg Peakの計算（mesh=regの例題、[T-Heat]）
+  ex004: Bragg Peakの計算（mesh=r-zの例題、[T-Heat]）
+  ex005: 粒子飛跡の計算（mesh=xyzの例題、粒子の指定、[T-Track]）
+  ex006: 粒子飛跡の計算（線源形状の変更、[Source]、[T-Track]）
+  ex007: 生成放射能の計算（[T-yield]）
+  ex008: 深さに対する粒子個数分布の計算（[T-Cross]）
+  ex009: 粒子横断方向弁別の計算（mesh=regの例題、outputオプション、[T-Cross]）
+  ex010: 描画作成ソフトAngelの例題
+  ex011: PHITS出力ファイルを加工する例題
+  ex012: inflコマンドを用いた実験結果とPHITS計算結果の比較
+
+*phits-lec01-4.ppt
+  ex013: [Magnet Field]の例題（itstepオプション）
+  ex014: 生成放射能の計算（動作確認用、[T-Yield]、e-mode）
+   ※要 中性子の断面積データ
+
+*phits-lec01-5.ppt
+  ex015: 高度な使い方（inflコマンド、変数、計算式）
+  ex016: dump出力の作成と、2次利用に関する例題（dumpオプション、s-type=17）
+  ex017: [Counter]の例題
+  ex018: [Transform]の例題
+  ex019: 半導体ソフトエラー発生率の計算（e-mode、[T-Heat]、[T-Deposit]、重イオンの輸送）
+   ※要 光子・電子の核データ
+  ex020: [T-LET]の例題
+  ex021: [T-Deposit]、[T-Deposit2]の例題
+  ex022: マルチソースの例題
+
+その他
+  ex023: マイクロドジメトリの計算（[T-LET]、[T-SED]）
+
+
