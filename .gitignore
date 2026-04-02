@@ -2,17 +2,17 @@
 *
 
 # Permitir estas carpetas
-!ejemplos_con_sebas/
-!ejemplos_con_sebas/**
+!ejemplos_en_clase/
+!ejemplos_en_clase/**
 
 !lecture/
 !lecture/**
 
-!simulaciones/
-!simulaciones/**
+!simulaciones_iniciales/
+!simulaciones_iniciales/**
 
-!test_ari/
-!test_ari/**
+!test_inicial/
+!test_inicial/**
 
 # Permitir archivos importantes
 !.gitignore
