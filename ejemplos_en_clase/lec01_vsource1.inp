@@ -2,7 +2,7 @@
 minimized input file for lecture
 
 [ P a r a m e t e r s ]
- icntl    =          0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
  maxbch   =          10 # (D=10) number of batches
  
@@ -23,23 +23,27 @@ mat[2]   Al 1
 mat[3]   Cu 1
 
 [ S u r f a c e ]
-10 so 10 $esfera chica
-20 so 15 $esfera grande
-99 rpp -20 20 -20 20 -20 20 $paralelepipedo
-30 px 12 $plano arriba
-40 px -12 $plano abajo
-50 s 7 0 7 1 $mini esfera
-60 s 15 0 12 1
-61 s 15 0 -12 1
+10 so 10                       $ esfera chica
+20 so 15                       $ esfera grande
+99 rpp -20 20 -20 20 -20 20    $ paralelepipedo
+30 px 12                       $ plano arriba
+40 px -12                      $ plano abajo
+50 s 7 0 7 1                   $ mini esfera (s: x0, y0, z0, R)
+60 s 13 0 9 1                 $ oreja derecha
+61 s 13 0 -9 1                $ oreja izquierda
 
 
 [ C e l l ]
-100 2 -13.0 -10 #102$esfera chica adentro
-200 1 -1.0 (-30 40 -20 10 #102) $ entre esfera chica y grande adentro planos
-201 1 -1.0 -60
-98 0   -99 #200 #100 #102 #201 $ caja
-101 -1   99 $esp exterior
-102 3 -13.0 -50 $adentro esfera mini
+100 2 -13.0 -10 #102                            $ dentro esfera 10 
+200 1 -1.0 (-30 40 -20 10 #102) : -60 : -61     $ entre esfera 10 y 20, adentro planos, fuera esfera 50
+
+102 3 -13.0 -50                                   $ entre esferas 10 y 20
+$ 201 1 -1.0 -60                                  $ dentro oreja derecha 
+$ 202 1 -1.0 -61                                  $ dentro oreja izquierda
+
+98 0   -99 #200 #100 #102 $ #201 #202 $ caja
+101 -1   99                                    $esp exterior
+
 
 
 [ T - T r a c k ]
@@ -65,7 +69,7 @@ mat[3]   Cu 1
             0.0  1000.0
      unit =    1            # unit is [1/cm^2/source]
      axis =   xz            # axis of output
-     file = track_xz.out  # file name of output for the above axis
+     file = lec01_vsource1_xz.out  # file name of output for the above axis
     title = Track Detection using [T-track] tally
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
@@ -94,7 +98,7 @@ mat[3]   Cu 1
             0.0  1000.0
      unit =    1            # unit is [1/cm^2/source]
      axis =   xy           # axis of output
-     file = track_xy.out  # file name of output for the above axis
+     file = lec01_vsource1_xy.out  # file name of output for the above axis
     title = Track Detection using [T-track] tally
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
@@ -117,8 +121,6 @@ mat[3]   Cu 1
     title = Track Detection using [T-track] tally
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
-
-
 
 [ E n d ]
 
