@@ -11,10 +11,10 @@ Modulo acrilico posicionador Hamsters
      proj =  proton         # kind of incident particle         
       dir =   -1.0           # z-direction of beam [cosine]
        r0 =   1.0            # radius [cm]
-       z0 =   6            # minimum position of z-axis [cm]
+       z0 =   15            # minimum position of z-axis [cm]
        x0 =   17
        y0 =   2.5
-       z1 =   10         # maximum position of z-axis [cm]
+       z1 =   17        # maximum position of z-axis [cm]
        e0 =   150.          # energy of beam [MeV/u]
 
 [ M a t e r i a l ]
@@ -48,10 +48,10 @@ $ Soporte del Pouch
   26  pz   2.75       $ techo saliente
 
 $ placa
-  31 rpp 0 15 0 5 5 5.5
+  31 rpp 13 21 0 5 10 14
 
 $ Defino el limite de la geometria
-  101  so  30.0
+  101  so  40.0
 
 [ C e l l ]
 100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 $material y le saco el hueco, es decir, la celda 200
@@ -102,12 +102,12 @@ mesh = xyz
 x-type = 2
 nx = 200
 xmin = -5
-xmax = 20
+xmax = 30
 
 z-type = 2
 nz = 200
 zmin = -5
-zmax = 16
+zmax = 25
 
 y-type = 1
 ny = 1
