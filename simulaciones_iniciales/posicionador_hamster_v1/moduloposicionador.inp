@@ -2,24 +2,33 @@
 Modulo acrilico posicionador Hamsters
 
 [ P a r a m e t e r s ]
- icntl    =          0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
  maxbch   =          50     # (D=10) number of batches
 
 [ S o u r c e ]
    s-type =   1             # fuente axial monocromática
      proj =  proton         # kind of incident particle         
+<<<<<<< HEAD:simulaciones/moduloposicionador.inp
       dir =   -1.0           # z-direction of beam [cosine]
        r0 =   1.0            # radius [cm]
        z0 =   15            # minimum position of z-axis [cm]
        x0 =   17
        y0 =   2.5
        z1 =   17        # maximum position of z-axis [cm]
+=======
+      dir =   -1.0          # z-direction of beam [cosine]
+       r0 =   1.0           # radius [cm]
+       z0 =   6             # minimum position of z-axis [cm]
+       x0 =   17
+       y0 =   2.5
+       z1 =   10            # maximum position of z-axis [cm]
+>>>>>>> 3db647a012da472c8a4f08a441f050e1d6c6d5c1:simulaciones_iniciales/posicionador_hamster_v1/moduloposicionador.inp
        e0 =   150.          # energy of beam [MeV/u]
 
 [ M a t e r i a l ]
-mat[1]  C 5 H 8 O 2     $ acrilico 
-mat[2]  Al 1 $material de la placa
+mat[1]  C 5 H 8 O 2         $ acrilico 
+mat[2]  Al 1                $ material de la placa
 
 [ S u r f a c e ]
 $ Caras exteriores
@@ -40,10 +49,10 @@ $ Superficies para hacer el hueco interior suponiendo un grosor del acrilico de 
 
 $ Soporte del Pouch
 
-  21  px  15.0       $ inicio saliente = cara der del cuerpo
-  22  px  19.0         $ fin saliente
-  23  py   1.0     $ lado izq saliente
-  24  py   4.0       $ lado der saliente
+  21  px  15.0        $ inicio saliente = cara der del cuerpo
+  22  px  19.0        $ fin saliente
+  23  py   1.0        $ lado izq saliente
+  24  py   4.0        $ lado der saliente
   25  pz   2.25       $ base saliente
   26  pz   2.75       $ techo saliente
 
@@ -54,17 +63,17 @@ $ Defino el limite de la geometria
   101  so  40.0
 
 [ C e l l ]
-100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 $material y le saco el hueco, es decir, la celda 200
-200 0 11 -12 13 -14 15 -16 $celda hueco
-300 1 -1.18 21 -22 23 -24 25 -26  $ soporte pouch
-400 2 -2.7 -31 $celda placa
+100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300  $material y le saco el hueco, es decir, la celda 200
+200 0 11 -12 13 -14 15 -16                   $celda hueco
+300 1 -1.18 21 -22 23 -24 25 -26             $ soporte pouch
+400 2 -2.7 -31                               $celda placa
 
 $si quiero unir 100 y 300:
 $100  1 -1.18  (+1 -2 +3 -4 +5 -6 #200) : (+21 -22 +23 -24 +25 -26)
 
 
-1000  0  -101  #300 #100 #200 #400 $defino el vacio entre el soporte y la esfera grande
-1001  -1  101 $defino el exterior absoluto
+1000  0  -101  #300 #100 #200 #400   $defino el vacio entre el soporte y la esfera grande
+1001  -1  101                                 $defino el exterior absoluto
 
 [ T - T r a c k ]
 mesh = xyz

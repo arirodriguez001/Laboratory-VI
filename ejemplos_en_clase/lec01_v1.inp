@@ -62,7 +62,7 @@ mat[3]   Cu 1
             0.0  1000.0
      unit =    1            # unit is [1/cm^2/source]
      axis =   xz            # axis of output
-     file = track_xz.out  # file name of output for the above axis
+     file = lec01_v1_xz.out  # file name of output for the above axis
     title = Track Detection using [T-track] tally
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
