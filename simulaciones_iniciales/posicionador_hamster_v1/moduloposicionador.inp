@@ -4,31 +4,26 @@ Modulo acrilico posicionador Hamsters
 [ P a r a m e t e r s ]
  icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
- maxbch   =          50     # (D=10) number of batches
+ maxbch   =          200     # (D=10) number of batches
 
 [ S o u r c e ]
    s-type =   1             # fuente axial monocromática
      proj =  proton         # kind of incident particle         
-<<<<<<< HEAD:simulaciones/moduloposicionador.inp
       dir =   -1.0           # z-direction of beam [cosine]
        r0 =   1.0            # radius [cm]
-       z0 =   15            # minimum position of z-axis [cm]
        x0 =   17
        y0 =   2.5
-       z1 =   17        # maximum position of z-axis [cm]
-=======
-      dir =   -1.0          # z-direction of beam [cosine]
-       r0 =   1.0           # radius [cm]
-       z0 =   6             # minimum position of z-axis [cm]
-       x0 =   17
-       y0 =   2.5
-       z1 =   10            # maximum position of z-axis [cm]
->>>>>>> 3db647a012da472c8a4f08a441f050e1d6c6d5c1:simulaciones_iniciales/posicionador_hamster_v1/moduloposicionador.inp
+       z0 =   12            # minimum position of z-axis [cm]
+       z1 =   14        # maximum position of z-axis [cm]
        e0 =   150.          # energy of beam [MeV/u]
 
 [ M a t e r i a l ]
 mat[1]  C 5 H 8 O 2         $ acrilico 
 mat[2]  Al 1                $ material de la placa
+mat[3]  H 2 O 1 $agua
+mat[4]  Pb 1 $plomo
+mat[5]  Fe 1 $hierro
+mat[6]  Fe 1 C 1 $acero 
 
 [ S u r f a c e ]
 $ Caras exteriores
@@ -57,22 +52,27 @@ $ Soporte del Pouch
   26  pz   2.75       $ techo saliente
 
 $ placa
-  31 rpp 13 21 0 5 10 14
+  31 rpp 13 21 0 5 10 11
+
+$ paralelepipedo que simula el Hamster
+  41 rpp 0.5 14.5 0.5 4.5 0.5 4.5
 
 $ Defino el limite de la geometria
   101  so  40.0
 
 [ C e l l ]
-100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300  $material y le saco el hueco, es decir, la celda 200
-200 0 11 -12 13 -14 15 -16                   $celda hueco
+100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 #500 $material y le saco el hueco, es decir, la celda 200
+200 0 11 -12 13 -14 15 -16 #500                  $celda hueco
 300 1 -1.18 21 -22 23 -24 25 -26             $ soporte pouch
-400 2 -2.7 -31                               $celda placa
+$400 2 -2.7 -31                               $celda placa de aluminio
+400 4 -11.34 -31                             $celda placa de plomo
+500 3 -1 -41                                $ celda hamster
 
 $si quiero unir 100 y 300:
 $100  1 -1.18  (+1 -2 +3 -4 +5 -6 #200) : (+21 -22 +23 -24 +25 -26)
 
 
-1000  0  -101  #300 #100 #200 #400   $defino el vacio entre el soporte y la esfera grande
+1000  0  -101  #300 #100 #200 #400 #500  $defino el vacio entre el soporte y la esfera grande
 1001  -1  101                                 $defino el exterior absoluto
 
 [ T - T r a c k ]
@@ -133,5 +133,22 @@ axis = xz
 file = track_xz.out
 gshow = 3
 epsout = 1
+
+[T-Track]
+title = energy spectrum in lead plate
+
+mesh = reg
+reg = 400
+
+part = proton neutron
+
+e-type = 2
+emin = 0.001
+emax = 200
+ne = 100
+
+unit = 1
+axis = eng
+file = spectrum_lead.out
 
 [ E n d  ]
