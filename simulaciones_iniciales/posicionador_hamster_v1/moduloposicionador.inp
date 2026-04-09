@@ -41,6 +41,8 @@ mat   name       size   color
 4     plomo      3      magenta
 5     hierro     2      brown
 6     acero      2      darkgray
+7     pouch      3      pink
+8     hamster    3      brown
 999   aire       1      white
 
 [ S u r f a c e ]
@@ -60,6 +62,9 @@ $ Superficies para hacer el hueco interior suponiendo un grosor del acrilico de 
   15 1 pz   0.3       
   16 1 pz   5.0       
 
+$ Hueco entre trampolin y caja
+51 1 rpp 14.7 15 1 4 2.75 5
+
 $ Soporte del Pouch
 
   21 1 px  15.0        $ inicio saliente = cara der del cuerpo
@@ -70,43 +75,45 @@ $ Soporte del Pouch
   26 1 pz   2.75       $ techo saliente
 
 $ POUCH (hamster cheek pouch)
-$ tamaño aproximado 2cm x 2cm x 0.1cm
-$ =========================
-42 1 rpp   13.0 15.0 1.5 3.5 2.45 2.55
+42 1 rpp 15.5 17.5 1.5 3.5 2.75 2.85
 
-$ Hamster 14cm de largo, 4cm de ancho y alto
-41 1 ell 7.5 2.5 2.5 14.0 0.0 0.0 -4.0 $ ell se define como x0 y0 z0, las siguientes 3 eje mayor y radio dir perpend a eje mayor
-
-
+$ Hamster elipsoidal: 14 cm de largo, 4 cm de ancho y 4 cm de alto
+41 1 ell 7.5 2.5 2.5 7.0 0.0 0.0 -2.0
 
 $ placa
   31 1 rpp 13 21 0 5 10 11
-
-$ paralelepipedo que simula el Hamster
-  41 1 rpp 0.5 14.5 0.5 4.5 0.5 4.5
 
 $ Defino el limite de la geometria
   101 1 so  40.0
 
 [ C e l l ]
-100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 #500                $material y le saco el hueco, es decir, la celda 200
-200 999 -1.20479E-03 11 -12 13 -14 15 -16 #500                  $celda hueco (le agregue la densidad del aire)
-300 1 -1.18 21 -22 23 -24 25 -26                                  $ soporte pouch
-$400 2 -2.7 -31                                                   $celda placa de aluminio
-400 4 -11.34 -31                                                 $celda placa de plomo
-500 3 -1 -41                                                    $ celda hamster
 
-$si quiero unir 100 y 300:
-$100  1 -1.18  (+1 -2 +3 -4 +5 -6 #200) : (+21 -22 +23 -24 +25 -26)
+$ Caja exterior de acrílico, sacándole el hueco, el soporte, el hamster y el pouch
+100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 #500 #510 #600
 
-1000  999 -1.20479E-03 -101  #300 #100 #200 #400 #500 #510  $defino el vacio entre el soporte y la esfera grande (le agregue la densidad del aire)
-1001  -1  101                                                      $defino el exterior absoluto
+$ Hueco interior con aire, excluyendo hamster y pouch
+200 999 -1.20479E-03 11 -12 13 -14 15 -16 #500 #510
+
+$ Soporte del pouch (trampolín) de acrílico
+300 1 -1.18 21 -22 23 -24 25 -26
+
+$ Placa de plomo
+400 4 -11.34 -31
+
+$ Hamster (elipsoide), excluyendo el pouch
+500 8 -1.1 -41 #510
 
 $ Pouch
-510 7 -1 -42 $ revisar densidad del soft tissue
-$ Hamster (soft tissue)
-520 8 -1.1 -42 #510
+510 7 -1.0 -42
 
+$Hueco entre trampolin y caja, con aire
+600 999 -1.20479E-03 -51
+
+$ Aire exterior dentro de la esfera límite
+1000 999 -1.20479E-03 -101 #100 #200 #300 #400 #500 #510 #600
+
+$ Exterior absoluto
+1001 -1 101
 
 
 [ T - T r a c k ]
@@ -124,8 +131,8 @@ ymax = 5.
 
 z-type = 2
 nz = 1
-zmin = -0.01
-zmax = 0.01
+zmin = -0.5
+zmax = 0.7
 
 part = all
 
@@ -139,18 +146,48 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
+[ T - T r a c k ] 
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -2.16
+xmax = -2.14
+
+y-type = 2
+ny = 200
+ymin = -5.
+ymax = 5.
+
+z-type = 2
+nz = 200
+zmin = -5.
+zmax = 15.
+
+part = all
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = yz
+file = track_yz.out
+gshow = 3
+epsout = 1
+
 [ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
 nx = 200
 xmin = -20.
-xmax = 10.
+xmax = 5.
 
 z-type = 2
 nz = 200
 zmin = -5.
-zmax = 15.
+zmax = 10.
 
 y-type = 1
 ny = 1
