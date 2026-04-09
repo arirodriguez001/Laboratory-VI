@@ -2,9 +2,12 @@
 Modulo acrilico posicionador Hamsters
 
 [ P a r a m e t e r s ]
- icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          8      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
  maxbch   =          200     # (D=10) number of batches
+
+[ T r a n s f o r m ]
+TR1  -17.0  -2.5  -2.5   1 0 0  0 1 0  0 0 1   1
 
 [ S o u r c e ]
    s-type =   1             # fuente axial monocromática
@@ -16,6 +19,7 @@ Modulo acrilico posicionador Hamsters
        z0 =   12            # minimum position of z-axis [cm]
        z1 =   14        # maximum position of z-axis [cm]
        e0 =   150.          # energy of beam [MeV/u]
+    trcl = 1
 
 [ M a t e r i a l ]
 mat[1]  C 5 H 8 O 2         $ acrilico 
@@ -24,74 +28,104 @@ mat[3]  H 2 O 1 $agua
 mat[4]  Pb 1 $plomo
 mat[5]  Fe 1 $hierro
 mat[6]  Fe 1 C 1 $acero 
+mat[7]  H 0.104472  C 0.232190  N 0.024880  O 0.630238  Na 0.001130  Mg 0.000130  P 0.001330  S 0.001990  Cl 0.001340  K 0.001990  Ca 0.000230  Fe 0.000050  Zn 0.000030   # soft tissue (ICRP) (pouch)
+mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ hamster
+mat[999]  C 0.000124  N 0.755267  O 0.231781  Ar 0.012827       # aire
+
+[ Mat Name Color ]
+mat   name       size   color
+0     void       1      lightgray
+1     acrilico   2      green
+2     aluminio   2      orange
+3     agua       2      cyan
+4     plomo      3      magenta
+5     hierro     2      brown
+6     acero      2      darkgray
+999   aire       1      white
 
 [ S u r f a c e ]
 $ Caras exteriores
-  1  px   0.0        
-  2  px  15.0        
-  3  py   0.0        
-  4  py   5.0        
-  5  pz   0.0        
-  6  pz   5.0        
+  1 1 px   0.0        
+  2 1 px  15.0        
+  3 1 py   0.0        
+  4 1 py   5.0        
+  5 1 pz   0.0        
+  6 1 pz   5.0        
 
 $ Superficies para hacer el hueco interior suponiendo un grosor del acrilico de 3mm
-  11  px   0.3      
-  12  px   14.7       
-  13  py   0.3       
-  14  py   4.7       
-  15  pz   0.3       
-  16  pz   5.0       
+  11 1 px   0.3      
+  12 1 px   14.7       
+  13 1 py   0.3       
+  14 1 py   4.7       
+  15 1 pz   0.3       
+  16 1 pz   5.0       
 
 $ Soporte del Pouch
 
-  21  px  15.0        $ inicio saliente = cara der del cuerpo
-  22  px  19.0        $ fin saliente
-  23  py   1.0        $ lado izq saliente
-  24  py   4.0        $ lado der saliente
-  25  pz   2.25       $ base saliente
-  26  pz   2.75       $ techo saliente
+  21 1 px  15.0        $ inicio saliente = cara der del cuerpo
+  22 1 px  19.0        $ fin saliente
+  23 1 py   1.0        $ lado izq saliente
+  24 1 py   4.0        $ lado der saliente
+  25 1 pz   2.25       $ base saliente
+  26 1 pz   2.75       $ techo saliente
+
+$ POUCH (hamster cheek pouch)
+$ tamaño aproximado 2cm x 2cm x 0.1cm
+$ =========================
+42 1 rpp   13.0 15.0 1.5 3.5 2.45 2.55
+
+$ Hamster 14cm de largo, 4cm de ancho y alto
+41 1 ell 7.5 2.5 2.5 14.0 0.0 0.0 -4.0 $ ell se define como x0 y0 z0, las siguientes 3 eje mayor y radio dir perpend a eje mayor
+
+
 
 $ placa
-  31 rpp 13 21 0 5 10 11
+  31 1 rpp 13 21 0 5 10 11
 
 $ paralelepipedo que simula el Hamster
-  41 rpp 0.5 14.5 0.5 4.5 0.5 4.5
+  41 1 rpp 0.5 14.5 0.5 4.5 0.5 4.5
 
 $ Defino el limite de la geometria
-  101  so  40.0
+  101 1 so  40.0
 
 [ C e l l ]
-100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 #500 $material y le saco el hueco, es decir, la celda 200
-200 0 11 -12 13 -14 15 -16 #500                  $celda hueco
-300 1 -1.18 21 -22 23 -24 25 -26             $ soporte pouch
-$400 2 -2.7 -31                               $celda placa de aluminio
-400 4 -11.34 -31                             $celda placa de plomo
-500 3 -1 -41                                $ celda hamster
+100 1 -1.18 +1 -2 +3 -4 +5 -6 #200 #300 #500                $material y le saco el hueco, es decir, la celda 200
+200 999 -1.20479E-03 11 -12 13 -14 15 -16 #500                  $celda hueco (le agregue la densidad del aire)
+300 1 -1.18 21 -22 23 -24 25 -26                                  $ soporte pouch
+$400 2 -2.7 -31                                                   $celda placa de aluminio
+400 4 -11.34 -31                                                 $celda placa de plomo
+500 3 -1 -41                                                    $ celda hamster
 
 $si quiero unir 100 y 300:
 $100  1 -1.18  (+1 -2 +3 -4 +5 -6 #200) : (+21 -22 +23 -24 +25 -26)
 
+1000  999 -1.20479E-03 -101  #300 #100 #200 #400 #500 #510  $defino el vacio entre el soporte y la esfera grande (le agregue la densidad del aire)
+1001  -1  101                                                      $defino el exterior absoluto
 
-1000  0  -101  #300 #100 #200 #400 #500  $defino el vacio entre el soporte y la esfera grande
-1001  -1  101                                 $defino el exterior absoluto
+$ Pouch
+510 7 -1 -42 $ revisar densidad del soft tissue
+$ Hamster (soft tissue)
+520 8 -1.1 -42 #510
+
+
 
 [ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
 nx = 200
-xmin = -5.
-xmax = 22.
+xmin = -20.
+xmax = 5.
 
 y-type = 2
 ny = 200
 ymin = -5.
-ymax = 10.
+ymax = 5.
 
 z-type = 2
 nz = 1
-zmin = 2.49
-zmax = 2.51
+zmin = -0.01
+zmax = 0.01
 
 part = all
 
@@ -110,17 +144,17 @@ mesh = xyz
 
 x-type = 2
 nx = 200
-xmin = -5
-xmax = 30
+xmin = -20.
+xmax = 10.
 
 z-type = 2
 nz = 200
-zmin = -5
-zmax = 25
+zmin = -5.
+zmax = 15.
 
 y-type = 1
 ny = 1
-0.0 5.0
+-0.1 0.1
 
 part = all
 
@@ -134,7 +168,7 @@ file = track_xz.out
 gshow = 3
 epsout = 1
 
-[T-Track]
+[T-Track] off
 title = energy spectrum in lead plate
 
 mesh = reg
