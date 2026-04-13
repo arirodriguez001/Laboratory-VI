@@ -1,0 +1,245 @@
+[ T i t l e ]
+Modulo acrilico posicionador Hamsters
+
+[ P a r a m e t e r s ]
+ icntl    =          8      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          50     # (D=10) number of particles per one batch
+ maxbch   =          200     # (D=10) number of batches
+ e-mode = 2
+negs = 1
+
+[ T r a n s f o r m ]
+TR1  -17.0  -2.5  -2.5   1 0 0  0 1 0  0 0 1   1
+
+[ S o u r c e ]
+   s-type =   1             # fuente axial monocromática
+     proj =  proton         # kind of incident particle         
+      dir =   -1.0           # z-direction of beam [cosine]
+       r0 =   1.0            # radius [cm]
+       x0 =   17
+       y0 =   2.5
+       z0 =   12            # minimum position of z-axis [cm]
+       z1 =   14        # maximum position of z-axis [cm]
+       e0 =   150.          # energy of beam [MeV/u]
+    trcl = 1
+
+[ M a t e r i a l ]
+mat[1]  C 5 H 8 O 2         $ acrilico 
+mat[2]  Al 1                $ material de la placa
+mat[3]  H 2 O 1             $agua
+mat[4]  Pb 1                $plomo
+mat[5]  Fe 1                $hierro
+mat[6]  Fe 1 C 1            $acero 
+mat[7]  H 0.104472  C 0.232190  N 0.024880  O 0.630238  Na 0.001130  Mg 0.000130  P 0.001330  S 0.001990  Cl 0.001340  K 0.001990  Ca 0.000230  Fe 0.000050  Zn 0.000030   # soft tissue (ICRP) (pouch)
+mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ hamster
+mat[999]  C 0.000124  N 0.755267  O 0.231781  Ar 0.012827       # aire
+
+[ Mat Name Color ]
+mat   name       size   color
+0     void       1      lightgray
+1     acrilico   2      green
+2     aluminio   2      orange
+3     agua       2      cyan
+4     plomo      3      magenta
+5     hierro     2      brown
+6     acero      2      darkgray
+7     pouch      3      pink
+8     hamster    3      brown
+999   aire       1      white
+
+[ S u r f a c e ]
+$ Caja exterior de acrilico
+1 1 rpp 0.0 13.47 0.0 5.23 0.0 4.92
+    
+$ Hueco interior de la caja de acrílico, suponiendo un grosor del acrilico de 2.5mm
+2 1 rpp 0.25 13.22 0.25 4.98 0.25 4.67
+
+$ Hueco entre trampolin y caja
+3 1 rpp 13.22 13.47 1.123 4.095 1.99 4.92
+
+$ Soporte del Pouch (trampolin)
+4 1 rpp 13.47 16.657 1.123 4.095 1.99 2.22
+
+$ POUCH (hamster cheek pouch)
+5 1 rpp 14.47 16.47 1.623 3.595 2.22 2.32
+
+$ Hamster elipsoidal
+6 1 ell 6.735 2.615 2.25 6.0 0.0 0.0 -2.0
+
+$ placa
+7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.42
+
+$ Defino el limite de la geometria
+101 1 so  40.0
+
+[ C e l l ]
+
+$ Caja exterior de acrílico, sacándole el hueco interior, el soporte, el hamster, el pouch y el hueco entre trampolín y caja
+100 1 -1.18 -1 #200 #300 #500 #510 #600
+
+$ Hueco interior con aire, excluyendo hamster y pouch
+200 999 -1.20479E-03 -2 #500 #510
+
+$ Soporte del pouch (trampolín) de acrílico
+300 1 -1.18 -4
+
+$ Placa de plomo
+400 4 -11.34 -7
+
+$ Hamster (elipsoide), excluyendo el pouch
+500 8 -1.1 -6 #510
+
+$ Pouch
+510 7 -1.0 -5
+
+$ Hueco entre trampolín y caja, con aire
+600 999 -1.20479E-03 -3
+
+$ Aire exterior dentro de la esfera límite
+1000 999 -1.20479E-03 -101 #100 #200 #300 #400 #500 #510 #600
+
+$ Exterior absoluto
+1001 -1 101
+
+
+[ T - T r a c k ]
+mesh = xyz
+
+x-type = 2
+nx = 200
+xmin = -20.
+xmax = 5.
+
+y-type = 2
+ny = 200
+ymin = -5.
+ymax = 5.
+
+z-type = 2
+nz = 1
+zmin = -0.5
+zmax = 0.7
+
+part = all
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xy
+file = track_xy.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ] 
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -2.16
+xmax = -2.14
+
+y-type = 2
+ny = 200
+ymin = -5.
+ymax = 5.
+
+z-type = 2
+nz = 200
+zmin = -5.
+zmax = 15.
+
+part = all
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = yz
+file = track_yz.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ]
+mesh = xyz
+
+x-type = 2
+nx = 200
+xmin = -20.
+xmax = 5.
+
+z-type = 2
+nz = 200
+zmin = -5.
+zmax = 10.
+
+y-type = 1
+ny = 1
+-0.1 0.1
+
+part = all
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xz
+file = track_xz.out
+gshow = 3
+epsout = 1
+
+
+[T-Track] off
+title = energy spectrum in lead plate
+
+mesh = reg
+reg = 400
+
+part = proton neutron
+
+e-type = 2
+emin = 0.001
+emax = 200
+ne = 100
+
+unit = 1
+axis = eng
+file = spectrum_lead.out
+
+[ T - D e p o s i t ]
+title = dose distribution
+
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -20.
+xmax = 5.
+
+y-type = 2
+ny = 100
+ymin = -5.
+ymax = 5.
+
+z-type = 2
+nz = 200
+zmin = -5.
+zmax = 15.
+
+part = all
+
+output = deposit
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xyz
+file = deposit.out
+vtkout = 1
+
+[ E n d  ]
