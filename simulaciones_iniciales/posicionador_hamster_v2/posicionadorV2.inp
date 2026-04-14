@@ -2,26 +2,26 @@
 Modulo acrilico posicionador Hamsters
 
 [ P a r a m e t e r s ]
- icntl    =          8      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
- maxbch   =          200     # (D=10) number of batches
+ maxbch   =          100     # (D=10) number of batches
  e-mode = 2
 negs = 1
 
-[ T r a n s f o r m ]
-TR1  -17.0  -2.5  -2.5   1 0 0  0 1 0  0 0 1   1
+[ T r a n s f o r m ] 
+$ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
+TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
 
 [ S o u r c e ]
    s-type =   1             # fuente axial monocromática
      proj =  proton         # kind of incident particle         
       dir =   -1.0           # z-direction of beam [cosine]
-       r0 =   1.0            # radius [cm]
-       x0 =   17
-       y0 =   2.5
-       z0 =   12            # minimum position of z-axis [cm]
-       z1 =   14        # maximum position of z-axis [cm]
+       r0 =   0.5            # radius [cm]
+       x0 =   0
+       y0 =   0
+       z0 =   8            # minimum position of z-axis [cm]
+       z1 =   10        # maximum position of z-axis [cm]
        e0 =   150.          # energy of beam [MeV/u]
-    trcl = 1
 
 [ M a t e r i a l ]
 mat[1]  C 5 H 8 O 2         $ acrilico 
@@ -61,10 +61,16 @@ $ Soporte del Pouch (trampolin)
 4 1 rpp 13.47 16.657 1.123 4.095 1.99 2.22
 
 $ POUCH (hamster cheek pouch)
-5 1 rpp 14.47 16.47 1.623 3.595 2.22 2.32
+$ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
+$ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
+5 1 ell 14.7385 2.609 2.22 1.6 0.0 0.0 -0.5
+
+$ Planos de corte (Tus "rebanadores" de confianza)
+51 1 pz  2.22
+52 1 pz  2.32
 
 $ Hamster elipsoidal
-6 1 ell 6.735 2.615 2.25 6.0 0.0 0.0 -2.0
+6 1 ell 7.25 2.615 2.25 6.0 0.0 0.0 -2.0
 
 $ placa
 7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.42
@@ -90,10 +96,10 @@ $ Hamster (elipsoide), excluyendo el pouch
 500 8 -1.1 -6 #510
 
 $ Pouch
-510 7 -1.0 -5
+510 7 -1.0  -5  51  -52
 
 $ Hueco entre trampolín y caja, con aire
-600 999 -1.20479E-03 -3
+600 999 -1.20479E-03 -3 #510 #500
 
 $ Aire exterior dentro de la esfera límite
 1000 999 -1.20479E-03 -101 #100 #200 #300 #400 #500 #510 #600
@@ -117,7 +123,7 @@ ymax = 5.
 
 z-type = 1
 nz = 1
--0.52 -0.18
+0.12 0.18
 
 part = all
 
@@ -208,7 +214,7 @@ unit = 1
 axis = eng
 file = spectrum_lead.out
 
-[ T - D e p o s i t ]
+[ T - D e p o s i t ] off
 title = dose on pouch xy
 
 mesh = xyz
@@ -225,7 +231,7 @@ ymax = 1.5
 
 z-type = 1
 nz = 1
--0.28 -0.18
+0.116 0.15
 
 part = all
 
