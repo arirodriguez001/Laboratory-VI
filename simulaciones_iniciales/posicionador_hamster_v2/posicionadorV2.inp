@@ -91,7 +91,7 @@ $ Soporte del pouch (trampolín) de acrílico
 300 1 -1.18 -4
 
 $ Placa de plomo
-400 4 -11.34 -7
+400 999 -1.20479E-03 -7
 
 $ Hamster (elipsoide), excluyendo el pouch
 500 8 -1.1 -6 #510
@@ -197,46 +197,6 @@ file = track_xz.out
 gshow = 3
 epsout = 1 
 
-[ T - D e p o s i t ] off
-    title = Dosis absorbida en el Pouch (Celda 510)
-     mesh =  reg            $ Score basado en celdas (regiones)
-      reg =  510            $ ID de la celda de tu pouch
-     unit =  0              $ Resultado en Gy / historial
- material =  all           $ Incluye protones y radiación secundaria (gammas)
-   output =  dose           $ Calcula Dosis (Energía / Masa)
-     axis =  reg            $ Eje de salida por región
-     file = dose_pouch_reg.out
-
-
-[ T - D e p o s i t ] off
-title = dose on pouch xy
-
-mesh = xyz
-
-x-type = 2
-nx = 100
-xmin = -3.0
-xmax = 0.0
-
-y-type = 2
-ny = 100
-ymin = -1.5
-ymax = 1.5
-
-z-type = 1
-nz = 1
-0.116 0.15
-
-part = all
-
-output = dose
-
-unit = 0
-axis = xy
-file = dose_pouch_xy.out
-gshow = 3
-epsout = 1
-vtkout = 1
 
 [ T - D e p o s i t ]
 title = Deposit vs Energy in Pouch Slice
@@ -269,6 +229,29 @@ file = deposit_energy_pouch_xz.out
 gshow = 3
 epsout = 1
 
+[ T - D e p o s i t ]
+title = Bragg peak in pouch
+
+mesh = xyz
+
+x-type = 1
+nx = 1
+-0.1 0.1
+
+y-type = 1
+ny = 1
+-0.05 0.05
+
+z-type = 2
+nz = 200
+zmin = -1.0
+zmax = 2.0
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_z.out
 
 
 [ E n d  ]
