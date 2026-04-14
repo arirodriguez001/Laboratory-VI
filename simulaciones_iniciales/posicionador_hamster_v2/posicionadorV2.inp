@@ -2,11 +2,11 @@
 Modulo acrilico posicionador Hamsters
 
 [ P a r a m e t e r s ]
- icntl    =          0      # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          50     # (D=10) number of particles per one batch
  maxbch   =          100     # (D=10) number of batches
  e-mode = 2
-negs = 1
+$ negs = 1
 
 [ T r a n s f o r m ] 
 $ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
@@ -236,22 +236,23 @@ mesh = xyz
 
 x-type = 1
 nx = 1
--0.1 0.1
+-0.05 0.05
 
 y-type = 1
 ny = 1
 -0.05 0.05
 
 z-type = 2
-nz = 200
-zmin = -1.0
-zmax = 2.0
+nz = 50
+zmin = -0.5
+zmax = 0.5
 
 part = proton
 output = dose
 unit = 0
 axis = z
 file = bragg_pouch_z.out
+epsout = 1
 
 
 [ E n d  ]
