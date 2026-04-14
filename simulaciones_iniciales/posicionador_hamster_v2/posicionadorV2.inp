@@ -12,6 +12,7 @@ negs = 1
 $ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
 TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
 
+
 [ S o u r c e ]
    s-type =   1             # fuente axial monocromática
      proj =  proton         # kind of incident particle         
@@ -21,7 +22,7 @@ TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
        y0 =   0
        z0 =   8            # minimum position of z-axis [cm]
        z1 =   10        # maximum position of z-axis [cm]
-       e0 =   150.          # energy of beam [MeV/u]
+       e0 =   20.          # energy of beam [MeV/u]
 
 [ M a t e r i a l ]
 mat[1]  C 5 H 8 O 2         $ acrilico 
@@ -194,25 +195,18 @@ unit = 1
 axis = xz
 file = track_xz.out
 gshow = 3
-epsout = 1
+epsout = 1 
 
+[ T - D e p o s i t ] off
+    title = Dosis absorbida en el Pouch (Celda 510)
+     mesh =  reg            $ Score basado en celdas (regiones)
+      reg =  510            $ ID de la celda de tu pouch
+     unit =  0              $ Resultado en Gy / historial
+ material =  all           $ Incluye protones y radiación secundaria (gammas)
+   output =  dose           $ Calcula Dosis (Energía / Masa)
+     axis =  reg            $ Eje de salida por región
+     file = dose_pouch_reg.out
 
-[T-Track] off
-title = energy spectrum in lead plate
-
-mesh = reg
-reg = 400
-
-part = proton neutron
-
-e-type = 2
-emin = 0.001
-emax = 200
-ne = 100
-
-unit = 1
-axis = eng
-file = spectrum_lead.out
 
 [ T - D e p o s i t ] off
 title = dose on pouch xy
@@ -243,6 +237,38 @@ file = dose_pouch_xy.out
 gshow = 3
 epsout = 1
 vtkout = 1
+
+[ T - D e p o s i t ]
+title = Deposit vs Energy in Pouch Slice
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -0.2
+xmax = 0.2
+
+y-type = 1
+ny = 1
+-0.05 0.05
+
+z-type = 2
+nz = 100
+zmin = -1.0
+zmax = 1.0
+
+e-type = 2
+ne = 10
+emin = 0.0
+emax = 20.0
+
+part = all
+output = deposit
+unit = 3
+axis = xz
+file = deposit_energy_pouch_xz.out
+gshow = 3
+epsout = 1
+
 
 
 [ E n d  ]
