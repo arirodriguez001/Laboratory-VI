@@ -7,6 +7,10 @@ Modulo acrilico posicionador Hamsters
  maxbch   =          100     # (D=10) number of batches
  e-mode = 2
 $ negs = 1
+ nedisp   =           1    $ Landau Vavilov energy straggling
+ nspred   =           2    $ Lynch (Moliere) angle straggling
+ ascat1   =  13.6000000    $ Parametro S2 para nspred = 2
+ ascat2   =  3.80000000E-02 $ Parametro e para nspred = 2
 
 [ T r a n s f o r m ] 
 $ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
@@ -22,7 +26,8 @@ TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
        y0 =   0
        z0 =   8            # minimum position of z-axis [cm]
        z1 =   10        # maximum position of z-axis [cm]
-       e0 =   14.          # energy of beam [MeV/u]
+       e0 =   26.         # energy of beam [MeV/u]
+    
 
 [ M a t e r i a l ]
 mat[1]  C 5 H 8 O 2         $ acrilico 
@@ -33,6 +38,7 @@ mat[5]  Fe 1                $hierro
 mat[6]  Fe 1 C 1            $acero 
 mat[7]  H 0.104472  C 0.232190  N 0.024880  O 0.630238  Na 0.001130  Mg 0.000130  P 0.001330  S 0.001990  Cl 0.001340  K 0.001990  Ca 0.000230  Fe 0.000050  Zn 0.000030   # soft tissue (ICRP) (pouch)
 mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ hamster
+mat[9]  C 3 H 4 O 2	$polylactic acid plastic for 3D printers
 mat[999]  C 0.000124  N 0.755267  O 0.231781  Ar 0.012827       # aire
 
 [ Mat Name Color ]
@@ -46,6 +52,7 @@ mat   name       size   color
 6     acero      2      darkgray
 7     pouch      3      pink
 8     hamster    3      brown
+9     placa      3      darkgray
 999   aire       1      white
 
 [ S u r f a c e ]
@@ -74,7 +81,7 @@ $ Hamster elipsoidal
 6 1 ell 7.25 2.615 2.25 6.0 0.0 0.0 -2.0
 
 $ placa
-7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.42
+7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.82
 
 $ Defino el limite de la geometria
 101 1 so  40.0
@@ -90,8 +97,8 @@ $ Hueco interior con aire, excluyendo hamster y pouch
 $ Soporte del pouch (trampolín) de acrílico
 300 1 -1.18 -4
 
-$ Placa de plomo
-400 999 -1.20479E-03 -7
+$ Filtro
+400 9 -1.24 -7
 
 $ Hamster (elipsoide), excluyendo el pouch
 500 7 -1.1 -6 #510
@@ -113,12 +120,12 @@ $ Exterior absoluto
 mesh = xyz
 
 x-type = 2
-nx = 200
+nx = 100
 xmin = -20.
 xmax = 5.
 
 y-type = 2
-ny = 200
+ny = 100
 ymin = -5.
 ymax = 5.
 
@@ -147,12 +154,12 @@ xmin = -2.16
 xmax = -2.14
 
 y-type = 2
-ny = 200
+ny = 100
 ymin = -5.
 ymax = 5.
 
 z-type = 2
-nz = 200
+nz = 100
 zmin = -5.
 zmax = 15.
 
@@ -168,16 +175,16 @@ file = track_yz.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ]
+[ T - T r a c k ] 
 mesh = xyz
 
 x-type = 2
-nx = 200
+nx = 100
 xmin = -20.
 xmax = 5.
 
 z-type = 2
-nz = 200
+nz = 100
 zmin = -5.
 zmax = 10.
 
@@ -198,7 +205,7 @@ gshow = 3
 epsout = 1 
 
 
-[ T - D e p o s i t ]
+[ T - D e p o s i t ] off
 title = Deposit vs Energy in Pouch Slice
 mesh = xyz
 x-type = 2
@@ -224,7 +231,7 @@ file = deposit_energy_pouch_xz.out
 gshow = 3
 epsout = 1
 
-[ T - D e p o s i t ]
+[ T - D e p o s i t ] off
 title = Bragg peak in pouch
 
 mesh = xyz
@@ -249,7 +256,28 @@ axis = z
 file = bragg_pouch_z.out
 epsout = 1
 
-[ T - D e p o s i t ]
+[ T - D e p o s i t ] $ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = r-z
+
+r-type =    2           $ Malla radial (sustituye a x e y)
+rmin   =    0.0         $ Desde el centro del haz
+rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =   -0.5
+zmax   =    0.5
+nz     =    500         $ Mantenemos alta resolucion para el grafico de Python
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_zcilind.out
+epsout = 1
+
+[ T - D e p o s i t ] off
 title = Bragg peak in pouch
 
 mesh = xyz
@@ -274,8 +302,8 @@ file = bragg_pouch_z2.out
 epsout = 1
 
 
-[ T - T r a c k ]
-title = Bragg peak in pouch
+[ T - T r a c k ] off
+title = Bragg peak in pouch Mesh cartesiana 
 
 mesh = xyz
 x-type = 2
@@ -300,5 +328,57 @@ axis = xy
 file = track_xy2.out
 epsout = 1
 
+[ T - T r a c k ] off
+title = ParaView Output
+mesh = xyz
+
+x-type = 2
+xmin = -10.0
+xmax = 20.0
+nx = 100
+
+y-type = 2
+ymin = -5.0
+ymax = 10.0
+ny = 100
+
+z-type = 2
+zmin = -5.0
+zmax = 15.0
+nz = 100
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xyz
+
+gshow = 3
+vtkout = 1
+
+file = track_xyz.out
+
+[ T - D e p o s i t ] off
+title = Visualizacion de Geometria para Paraview
+  mesh =  xyz
+x-type =    2
+  xmin =  -17.0
+  xmax =   5.0
+    nx =   200
+y-type =    2
+  ymin =  -5.0
+  ymax =   10.0
+    ny =   100
+z-type =    2
+  zmin =  -5.0
+  zmax =   15.0
+    nz =   100
+  unit =    0
+  axis =  xyz
+vtkout =    1
+  file = check_geo.out
 
 [ E n d  ]
