@@ -2,7 +2,7 @@
 Modulo acrilico posicionador Hamsters
 
 [ P a r a m e t e r s ]
- icntl    =          0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ icntl    =          8     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =          1000     # (D=10) number of particles per one batch
  maxbch   =          100     # (D=10) number of batches
  e-mode = 2
@@ -14,7 +14,7 @@ $ negs = 1
 
 [ T r a n s f o r m ] 
 $ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
-TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
+TR1  -15.0635  -2.609  -2.22  1 0 0  0 1 0  0 0 1  1
 
 
 [ S o u r c e ]
@@ -22,11 +22,11 @@ TR1  -15.0635  -2.609  -2.105  1 0 0  0 1 0  0 0 1  1
      proj =  proton         # kind of incident particle         
       dir =   -1.0           # z-direction of beam [cosine]
        r0 =   0.5            # radius [cm]
-       x0 =   0
+       x0 =  -0.325        # x-coordinate of center of beam [cm] 
        y0 =   0
        z0 =   8            # minimum position of z-axis [cm]
        z1 =   10        # maximum position of z-axis [cm]
-       e0 =   26.         # energy of beam [MeV/u]
+       e0 =   14.         # energy of beam [MeV/u]
     
 
 [ M a t e r i a l ]
@@ -37,7 +37,7 @@ mat[4]  Pb 1                $plomo
 mat[5]  Fe 1                $hierro
 mat[6]  Fe 1 C 1            $acero 
 mat[7]  H 0.104472  C 0.232190  N 0.024880  O 0.630238  Na 0.001130  Mg 0.000130  P 0.001330  S 0.001990  Cl 0.001340  K 0.001990  Ca 0.000230  Fe 0.000050  Zn 0.000030   # soft tissue (ICRP) (pouch)
-mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ hamster
+mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ skin
 mat[9]  C 3 H 4 O 2	$polylactic acid plastic for 3D printers
 mat[999]  C 0.000124  N 0.755267  O 0.231781  Ar 0.012827       # aire
 
@@ -50,8 +50,8 @@ mat   name       size   color
 4     plomo      3      magenta
 5     hierro     2      brown
 6     acero      2      darkgray
-7     pouch      3      pink
-8     hamster    3      brown
+7     hamster    3      brown
+8     pouch      3      pink
 9     placa      3      darkgray
 999   aire       1      white
 
