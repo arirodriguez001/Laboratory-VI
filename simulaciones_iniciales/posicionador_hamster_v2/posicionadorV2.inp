@@ -12,12 +12,16 @@ $ negs = 1
  ascat1   =  13.6000000    $ Parametro S2 para nspred = 2
  ascat2   =  3.80000000E-02 $ Parametro e para nspred = 2
 
+set: c1[1.0] 
+set: c2[1]
+
 [ T r a n s f o r m ] 
 $ TR1 mueve el centro del trampolin (15.0635, 2.609, 2.105) al (0,0,0)
 TR1  -15.0635  -2.609  -2.22  1 0 0  0 1 0  0 0 1  1
 
 
 [ S o u r c e ]
+   totfact = (c1 * 1e-9 / 1.602177e-19) * c2 # Ntot= (I/e).t use I=Q/t
    s-type =   1             # fuente axial monocromática
      proj =  proton         # kind of incident particle         
       dir =   -1.0           # z-direction of beam [cosine]
@@ -26,7 +30,7 @@ TR1  -15.0635  -2.609  -2.22  1 0 0  0 1 0  0 0 1  1
        y0 =   0
        z0 =   8            # minimum position of z-axis [cm]
        z1 =   10        # maximum position of z-axis [cm]
-       e0 =   14.         # energy of beam [MeV/u]
+       e0 =   9.5         # energy of beam [MeV/u]
     
 
 [ M a t e r i a l ]
@@ -81,7 +85,7 @@ $ Hamster elipsoidal
 6 1 ell 7.25 2.615 2.25 6.0 0.0 0.0 -2.0
 
 $ placa
-7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.42
+7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.40
 
 $ Defino el limite de la geometria
 101 1 so  40.0
