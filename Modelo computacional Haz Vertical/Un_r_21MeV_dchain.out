@@ -1,0 +1,131 @@
+[ T-Deposit ]
+    title = Radial dose uniformity at monolayer cells
+     mesh =  r-z            # mesh type is r-z scoring mesh
+       x0 =   0.000000      # center x-position of r-z mesh
+       y0 =   0.000000      # center y-position of r-z mesh
+   r-type =    2            # r-mesh is linear given by rmin, rmax and nr
+     rmin =   0.000000      # minimum value of r-mesh points
+     rmax =   1.715000      # maximum value of r-mesh points
+#    rdel =  3.4300000E-02  # mesh width of r-mesh points
+       nr =     50          # number of r-mesh points
+#    data = ( r(i), i = 1, nr + 1 )
+#           0.00000E+00  3.43000E-02  6.86000E-02  1.02900E-01  1.37200E-01
+#           1.71500E-01  2.05800E-01  2.40100E-01  2.74400E-01  3.08700E-01
+#           3.43000E-01  3.77300E-01  4.11600E-01  4.45900E-01  4.80200E-01
+#           5.14500E-01  5.48800E-01  5.83100E-01  6.17400E-01  6.51700E-01
+#           6.86000E-01  7.20300E-01  7.54600E-01  7.88900E-01  8.23200E-01
+#           8.57500E-01  8.91800E-01  9.26100E-01  9.60400E-01  9.94700E-01
+#           1.02900E+00  1.06330E+00  1.09760E+00  1.13190E+00  1.16620E+00
+#           1.20050E+00  1.23480E+00  1.26910E+00  1.30340E+00  1.33770E+00
+#           1.37200E+00  1.40630E+00  1.44060E+00  1.47490E+00  1.50920E+00
+#           1.54350E+00  1.57780E+00  1.61210E+00  1.64640E+00  1.68070E+00
+#           1.71500E+00
+   z-type =    1            # z-mesh is given by the below data
+       nz =      1          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+            0.00000E+00  1.10000E-03
+     trcl =     61          # transform ID
+     unit =    0            # unit is [Gy/source]
+   letmat =    0            # (D=0) mat ID for LET, 0:real mat, <0: electron for H2O
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =    1            # (D=all) number of specific material
+               12
+   output =  dose           # total deposit energy
+  deposit =    0            # (D=0) 0-> total deposit dist, 1-> each process
+     axis =     r           # axis of output
+     file = Un_r_21MeV_dchain.out  # file name of output for the above axis
+     part =  all      
+# kf/name :  0        
+   factor = -1.000000       # (D=1.0) normalization factor
+    angel = ylin
+    gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat 5:bmp style
+    resol =    1            # (D=1) resolution of gshow or rshow
+    width = 0.5000000       # (D=0.5) width of lines for gshow or rshow
+   epsout =    2            # (D=0) generate eps file by ANGEL
+   stdcut = 1.0000000E-02   # (D=-1) threshold value of STD cutoff
+   mother =  all            # (D=all) number of specific mother
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          57 (  0)           0 (  0)          57 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#restart maximum for normalization: 1.5316681E+03
+#   no. =  1   iz  =  1
+#   z = (   0.0000E+00  -   1.1000E-03  )
+
+x: r [cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+p: ylin
+h: n            x            y1(all     ),hh0l ny2 dy1=[y1*y2] 
+#  r-lower      r-upper        all       r.err 
+   0.0000E+00   3.4300E-02   0.0000E+00  0.0000
+   3.4300E-02   6.8600E-02   0.0000E+00  0.0000
+   6.8600E-02   1.0290E-01   0.0000E+00  0.0000
+   1.0290E-01   1.3720E-01   0.0000E+00  0.0000
+   1.3720E-01   1.7150E-01   0.0000E+00  0.0000
+   1.7150E-01   2.0580E-01   0.0000E+00  0.0000
+   2.0580E-01   2.4010E-01   4.3664E-01  1.0000
+   2.4010E-01   2.7440E-01   0.0000E+00  0.0000
+   2.7440E-01   3.0870E-01   0.0000E+00  0.0000
+   3.0870E-01   3.4300E-01   2.7209E-01  1.0000
+   3.4300E-01   3.7730E-01   0.0000E+00  0.0000
+   3.7730E-01   4.1160E-01   0.0000E+00  0.0000
+   4.1160E-01   4.4590E-01   4.3764E-01  0.7175
+   4.4590E-01   4.8020E-01   8.7642E-01  0.6043
+   4.8020E-01   5.1450E-01   0.0000E+00  0.0000
+   5.1450E-01   5.4880E-01   0.0000E+00  0.0000
+   5.4880E-01   5.8310E-01   1.8081E-01  1.0000
+   5.8310E-01   6.1740E-01   1.4890E-01  1.0000
+   6.1740E-01   6.5170E-01   1.8539E-01  1.0000
+   6.5170E-01   6.8600E-01   0.0000E+00  0.0000
+   6.8600E-01   7.2030E-01   1.1971E-01  1.0000
+   7.2030E-01   7.5460E-01   6.6474E-01  0.5932
+   7.5460E-01   7.8890E-01   3.4230E-01  0.7443
+   7.8890E-01   8.2320E-01   8.2584E-01  0.5111
+   8.2320E-01   8.5750E-01   5.7514E-01  0.6171
+   8.5750E-01   8.9180E-01   1.3226E-01  1.0000
+   8.9180E-01   9.2610E-01   4.9314E-01  0.8141
+   9.2610E-01   9.6040E-01   3.5681E-01  0.7095
+   9.6040E-01   9.9470E-01   5.9014E-01  0.5080
+   9.9470E-01   1.0290E+00   8.3132E-01  0.6178
+   1.0290E+00   1.0633E+00   3.3486E-01  0.7204
+   1.0633E+00   1.0976E+00   4.5657E-01  0.5050
+   1.0976E+00   1.1319E+00   6.4983E-01  0.5390
+   1.1319E+00   1.1662E+00   5.7585E-01  0.5350
+   1.1662E+00   1.2005E+00   1.0000E+00  0.6722
+   1.2005E+00   1.2348E+00   1.9618E-01  0.7083
+   1.2348E+00   1.2691E+00   5.0303E-01  0.5024
+   1.2691E+00   1.3034E+00   4.6381E-01  0.7435
+   1.3034E+00   1.3377E+00   3.2301E-01  0.5791
+   1.3377E+00   1.3720E+00   7.7021E-02  1.0000
+   1.3720E+00   1.4063E+00   4.4379E-01  0.5067
+   1.4063E+00   1.4406E+00   4.4417E-01  0.5025
+   1.4406E+00   1.4749E+00   9.9838E-01  0.4612
+   1.4749E+00   1.5092E+00   6.2633E-01  0.5325
+   1.5092E+00   1.5435E+00   0.0000E+00  0.0000
+   1.5435E+00   1.5778E+00   0.0000E+00  0.0000
+   1.5778E+00   1.6121E+00   0.0000E+00  0.0000
+   1.6121E+00   1.6464E+00   0.0000E+00  0.0000
+   1.6464E+00   1.6807E+00   0.0000E+00  0.0000
+   1.6807E+00   1.7150E+00   0.0000E+00  0.0000
+
+#   sum over    1.0164E-02   3.3686E-01  0.1267
+
+'no. =  1,  iz =  1'
+msuc: {\huge Radial dose uniformity at monolayer cells}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  zmin  &=&   0.0000E+00 [cm]
+  zmax  &=&   1.1000E-03 [cm]
+e:
+ 
+# Information for Restart Calculation
+# This calculation was newly started
+# istdev =  2 # 1:Batch variance, 2:History variance
+# resc2  = 1.60217699999867669E-05 # Total source weight or Total source weight / maxcas
+# resc3  = 1.00000000000000000E+05 # Total history number or Total batch number
+# maxcas =      100000 # History / Batch, only used for istdev=1
+# bitrseed = 0001110011011001101111011000110011100000010010101010010011101100 # bit data of rseed

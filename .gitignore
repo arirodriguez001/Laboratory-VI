@@ -14,6 +14,9 @@
 !test_inicial/
 !test_inicial/**
 
+!Modelo computacional Haz Vertical/
+!Modelo computacional Haz Vertical/**
+
 # Permitir archivos importantes
 !.gitignore
 !README.md

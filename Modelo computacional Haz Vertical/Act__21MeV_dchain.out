@@ -1,0 +1,241 @@
+    htitle = Activation of materials
+ 
+! --- control parameters ---
+     imode =       2
+     jmode =       2
+ 
+! --- calculation parameters ---
+     idivs =      50
+    ichain =     100
+   ilchain =     100
+    itdecs =       1
+    itdecn =       1
+    isomtr =       0
+    ifisyd =       0
+   ixsrall =       1
+ 
+! --- data library parameters ---
+   inxslib =     100
+   idcylib =       5
+   infylib =      17
+   infyerg =       4
+   ergthfa =  1.0000E-01
+   ergfafu =  1.0000E+01
+   isfylib =       1
+!   hnxslib = h-JP-US-EU                                                                      
+!   hdcylib = J15-EB8-ES                                                                      
+!   hnfylib = h-JENDL-JEFF                                                                    
+!   hsfylib = h-JENDL-JEFF                                                                    
+ 
+! --- output parameters ---
+     iyild =       2
+     iggrp =       3
+    ibetap =       1
+     acmin =  0.0000E+00
+    istabl =       0
+    igsdef =       0
+    igsorg =       0
+   iwrtchn =       1
+   chrlvth = -1.0000E+00
+   iwrchdt =       0
+   iwrchss =       0
+  iwrchnuc =       0
+   idosecf =       1
+  idosunit =     333
+   imtcard =       1
+   imtcnum =       0
+  imtcmeta =       2
+   thmatnd =  1.0000E-06
+ 
+! --- Proton beam current and neutron flux ---
+       amp =  8.0109E-16
+     ebeam =  3.0000E+00
+    prodnp =  1.0000E+00
+ 
+! --- irradiation time ---
+    itstep =       2
+      1.5000E+01 m  1.0000E+00
+      1.5000E+01 m  0.0000E+00
+ 
+! --- output time ---
+     itout =      24
+      1.0000E-01 s
+      1.0000E+00 s
+      2.0000E+00 s
+      3.0000E+00 s
+      1.0000E+01 s
+      2.0000E+01 s
+      3.0000E+01 s
+      1.0000E+00 m
+      2.0000E+00 m
+      3.0000E+00 m
+      1.0000E+01 m
+      1.5000E+01 m
+     -1.0000E-01 s
+     -1.0000E+00 s
+     -2.0000E+00 s
+     -3.0000E+00 s
+     -1.0000E+01 s
+     -2.0000E+01 s
+     -3.0000E+01 s
+     -1.0000E+00 m
+     -2.0000E+00 m
+     -3.0000E+00 m
+     -1.0000E+01 m
+     -1.5000E+01 m
+ 
+! --- irradiation condition ---
+    inmtcf =       1
+!  ffnmtcf =    1.0
+  itdchout =       1
+   hhnmtcf = Act__21MeV_dchain.dyld
+  iertdcho =       1
+   henmtcf = Act__21MeV_dchain_err.dyld
+  iredufmt =       1
+   irdonce =       1
+ 
+! --- calculation region details ---
+ 
+    iregon =     15
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY001      104   29  9.1013E+05   Act__21MeV_dchain.dtrk  2.8274E-03
+  Cr-50      9.4078E-04
+  Cr-52      1.8142E-02
+  Cr-53      2.0572E-03
+  Cr-54      5.1207E-04
+  Mg-24      2.6386E-03
+  Mg-25      3.3404E-04
+  Mg-26      3.6778E-04
+  Fe-54      9.6067E-04
+  Fe-56      1.5080E-02
+  Fe-57      3.4827E-04
+  Fe-58      4.6349E-05
+  Co-59      3.5878E-02
+  Ni-58      7.5312E-03
+  Ni-60      2.9010E-03
+  Ni-61      1.2610E-04
+  Ni-62      4.0209E-04
+  Ni-64      1.0239E-04
+  Mo-92      1.0755E-04
+  Mo-94      6.7729E-05
+  Mo-95      1.1725E-04
+  Mo-96      1.2339E-04
+  Mo-97      7.1060E-05
+  Mo-98      1.8054E-04
+  Mo-100     7.2688E-05
+   W-180     2.6479E-07
+   W-182     5.8474E-05
+   W-183     3.1576E-05
+   W-184     6.7610E-05
+   W-186     6.2733E-05
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY002     2101    1  8.7254E+05   Act__21MeV_dchain.dtrk  5.4646E+00
+  Al-27      6.0254E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY003  1000001    1  1.7399E+07   Act__21MeV_dchain.dtrk  7.6713E-01
+  Al-27      6.0254E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY004     2106   26  1.3885E+07   Act__21MeV_dchain.dtrk  2.9698E-04
+  Fe-54      3.5060E-03
+  Fe-56      5.5036E-02
+  Fe-57      1.2710E-03
+  Fe-58      1.6915E-04
+   C-12      2.7888E-04
+   C-13      3.0163E-06
+  Mn-55      1.7607E-03
+  Si-28      1.1913E-03
+  Si-29      6.0520E-05
+  Si-30      3.9942E-05
+   P-31      7.0266E-05
+   S-32      4.2990E-05
+   S-33      3.3943E-07
+   S-34      1.9234E-06
+   S-36      4.5257E-09
+  Cr-50      7.4777E-04
+  Cr-52      1.4420E-02
+  Cr-53      1.6351E-03
+  Cr-54      4.0701E-04
+  Ni-58      5.1911E-03
+  Ni-60      1.9996E-03
+  Ni-61      8.6921E-05
+  Ni-62      2.7715E-04
+  Ni-64      7.0572E-05
+   N-14      3.4405E-04
+   N-15      1.2569E-06
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY005     2107    5  4.3857E+05   Act__21MeV_dchain.dtrk  3.5966E+01
+   C-12      3.0767E-02
+   C-13      3.3277E-04
+   H-1       4.1462E-02
+   H-2       4.7687E-06
+   O-16      2.0733E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY006     2201    4  1.5909E+05   Act__21MeV_dchain.dtrk  6.9280E-02
+  Pb-204     4.6189E-04
+  Pb-206     7.9511E-03
+  Pb-207     7.2913E-03
+  Pb-208     1.7288E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY007     2301    4  1.1435E+04   Act__21MeV_dchain.dtrk  1.9166E-01
+  Pb-204     4.6189E-04
+  Pb-206     7.9511E-03
+  Pb-207     7.2913E-03
+  Pb-208     1.7288E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY008     2401    1  1.0000E-30   Act__21MeV_dchain.dtrk  3.1204E-01
+  Al-27      6.0254E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY009     2501    1  1.0000E-30   Act__21MeV_dchain.dtrk  8.0104E+01
+  Al-27      6.0254E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY010     2502    1  1.0000E-30   Act__21MeV_dchain.dtrk  4.9530E+00
+  Al-27      6.0254E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY011     2503    4  1.0000E-30   Act__21MeV_dchain.dtrk  1.1042E+00
+   C-12      4.8065E-02
+   C-13      5.1986E-04
+   H-1       4.8579E-02
+   H-2       5.5872E-06
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY012     2504    5  1.0000E-30   Act__21MeV_dchain.dtrk  6.6289E-03
+   C-12      4.3327E-02
+   C-13      4.6861E-04
+   H-1       3.5032E-02
+   H-2       4.0292E-06
+   O-16      1.7518E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY013     2506    3  1.0000E-30   Act__21MeV_dchain.dtrk  8.5000E-01
+   H-1       6.6885E-02
+   H-2       7.6926E-06
+   O-16      3.3446E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY014     2603    5  5.5297E+04   Act__21MeV_dchain.dtrk  2.0096E+01
+   C-12      3.0767E-02
+   C-13      3.3277E-04
+   H-1       4.1462E-02
+   H-2       4.7687E-06
+   O-16      2.0733E-02
+!1)HRGCMM 2)IREGS 3)ITGNCLS 4)FLUXS 5)HNFLUXS 6)VOLUMES
+   DUMMY015  1000002    5  7.0711E+04   Act__21MeV_dchain.dtrk  8.8561E-01
+   C-12      3.0767E-02
+   C-13      3.3277E-04
+   H-1       4.1462E-02
+   H-2       4.7687E-06
+   O-16      2.0733E-02
+ 
+! --- output option for ANGEL ---
+  phitsout =   0
+  itriton  =   0
+    radlev =  1.0000E-03
+  iangbpwr =  1
+  angelout =  1
+!   angelout_act        = 0
+!   angelout_heat       = 0
+!   angelout_heat_alpha = 0
+!   angelout_heat_beta  = 0
+!   angelout_heat_gamma = 0
+!   angelout_dose       = 0
+!   angelout_region     = all, sum
+!   angelout_nuclides   = 0
+ 
+end
