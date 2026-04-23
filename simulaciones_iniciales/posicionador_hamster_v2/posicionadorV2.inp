@@ -30,7 +30,8 @@ TR1  -15.0635  -2.609  -2.22  1 0 0  0 1 0  0 0 1  1
        y0 =   0
        z0 =   8            # minimum position of z-axis [cm]
        z1 =   10        # maximum position of z-axis [cm]
-       e0 =   9.5         # energy of beam [MeV/u]
+       e0 =   14         # energy of beam [MeV/u]
+       
     
 
 [ M a t e r i a l ]
