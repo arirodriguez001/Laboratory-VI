@@ -178,3 +178,314 @@ outtime	= 24
  -15.0 m
  
  amp	= 5 $ Power of source / second (multiplied by totfact)
+
+ $$$$$$$$$$$$$$$$$$$ tallis de ari y lu $$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ [ T-Track ] off
+title   = Flujo de partículas en plano XY a z = 1.10 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         1.05 1.15
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z1_10.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ] off
+title   = Flujo de partículas en coordenadas cilindricas a z = 1.10 cm
+mesh    = r-z
+
+r-type  = 4
+rdel    = 0.1
+rmin    = 0.0
+rmax    = 6.67
+
+z-type  = 4
+zdel    = 0.1
+zmin    = 1.05
+zmax    = 1.15
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = rz
+2d-type = 3
+file    = Flux_rz_z110.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off	
+title   = Flujo de partículas en plano XY a z = 4.65 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         4.60 4.70
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z465.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ] off
+title   = Flujo de partículas en plano XY a z = 14.04 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         13.99 14.09
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z14_04.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 26.52 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         26.47 26.57
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z26_52.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 49.91 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         49.86 49.96
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z49_91.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 79.83 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         79.78 79.88
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z79_83.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 96.73 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         96.68 96.78
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z96_73.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 100.92 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         100.87 100.97
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z100_92.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+$$$$$$$$$$$$$ ahora medimos la energia $$$$$$$$$$$$$$$$$$
+
+ [ T-Track ] 
+title   = Flujo de partículas en plano XY a z = 1.10 cm
+mesh    = xyz
+
+x-type  = 2
+nx    =  1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 2
+ny =1 
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         1.05 1.15
+
+e-type  = 2
+ne      = 100
+emin    = 0.0
+emax    = 25.0
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_energy_z1_10.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
