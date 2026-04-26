@@ -1,7 +1,7 @@
 $ [ Cell ]
 $100 -1  %att_zone%	$Deep space
 
-2100 %air%  %workzone_walls% %att_zone% #2101 #2102 #2106 #2107 #2108 %exclusions%	$fill w/ air
+2100 %air%  %workzone_walls% %att_zone% #2101 #2102 #2106 #2107 #2108 #510 %exclusions%	$fill w/ air
 2101 %Al%   %attn_base%	$attenuator base
 2102 0      %attn_grid% #2106 FILL=1	$attenuator grid area
 2103 0      %attn_unit%  LAT=1 U=1 FILL=2	$attenuator fundamental unit

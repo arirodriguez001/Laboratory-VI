@@ -1,0 +1,4224 @@
+[ T-Track ]
+    title = Dosis absorbida en linea 1 (Z=1.1)
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    4            # x-mesh is linear given by xmin, xmax and xdel
+     xmin =  -6.670000      # minimum value of x-mesh points
+     xmax =   6.670000      # maximum value of x-mesh points
+     xdel =  0.1000000      # mesh width of x-mesh points
+#      nx =  134            # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -6.67000E+00 -6.57000E+00 -6.47000E+00 -6.37000E+00 -6.27000E+00
+#          -6.17000E+00 -6.07000E+00 -5.97000E+00 -5.87000E+00 -5.77000E+00
+#          -5.67000E+00 -5.57000E+00 -5.47000E+00 -5.37000E+00 -5.27000E+00
+#          -5.17000E+00 -5.07000E+00 -4.97000E+00 -4.87000E+00 -4.77000E+00
+#          -4.67000E+00 -4.57000E+00 -4.47000E+00 -4.37000E+00 -4.27000E+00
+#          -4.17000E+00 -4.07000E+00 -3.97000E+00 -3.87000E+00 -3.77000E+00
+#          -3.67000E+00 -3.57000E+00 -3.47000E+00 -3.37000E+00 -3.27000E+00
+#          -3.17000E+00 -3.07000E+00 -2.97000E+00 -2.87000E+00 -2.77000E+00
+#          -2.67000E+00 -2.57000E+00 -2.47000E+00 -2.37000E+00 -2.27000E+00
+#          -2.17000E+00 -2.07000E+00 -1.97000E+00 -1.87000E+00 -1.77000E+00
+#          -1.67000E+00 -1.57000E+00 -1.47000E+00 -1.37000E+00 -1.27000E+00
+#          -1.17000E+00 -1.07000E+00 -9.70000E-01 -8.70000E-01 -7.70000E-01
+#          -6.70000E-01 -5.70000E-01 -4.70000E-01 -3.70000E-01 -2.70000E-01
+#          -1.70000E-01 -7.00000E-02  3.00000E-02  1.30000E-01  2.30000E-01
+#           3.30000E-01  4.30000E-01  5.30000E-01  6.30000E-01  7.30000E-01
+#           8.30000E-01  9.30000E-01  1.03000E+00  1.13000E+00  1.23000E+00
+#           1.33000E+00  1.43000E+00  1.53000E+00  1.63000E+00  1.73000E+00
+#           1.83000E+00  1.93000E+00  2.03000E+00  2.13000E+00  2.23000E+00
+#           2.33000E+00  2.43000E+00  2.53000E+00  2.63000E+00  2.73000E+00
+#           2.83000E+00  2.93000E+00  3.03000E+00  3.13000E+00  3.23000E+00
+#           3.33000E+00  3.43000E+00  3.53000E+00  3.63000E+00  3.73000E+00
+#           3.83000E+00  3.93000E+00  4.03000E+00  4.13000E+00  4.23000E+00
+#           4.33000E+00  4.43000E+00  4.53000E+00  4.63000E+00  4.73000E+00
+#           4.83000E+00  4.93000E+00  5.03000E+00  5.13000E+00  5.23000E+00
+#           5.33000E+00  5.43000E+00  5.53000E+00  5.63000E+00  5.73000E+00
+#           5.83000E+00  5.93000E+00  6.03000E+00  6.13000E+00  6.23000E+00
+#           6.33000E+00  6.43000E+00  6.53000E+00  6.63000E+00  6.73000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -6.670000      # minimum value of y-mesh points
+     ymax =   6.670000      # maximum value of y-mesh points
+#    ydel =   13.34000      # mesh width of y-mesh points
+       ny =      1          # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -6.67000E+00  6.67000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   1.050000      # minimum value of z-mesh points
+     zmax =   1.150000      # maximum value of z-mesh points
+#    zdel =  0.1000000      # mesh width of z-mesh points
+       nz =      1          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           1.05000E+00  1.15000E+00
+   e-type =    1            # e-mesh is given by the below data
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+            0.00000E+00  1.00000E+03
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+     axis =     eng            # axis of output
+     file = dosis_linea1.out  # file name of output for the above axis
+     part =  proton   
+# kf/name :  2212     
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         145 (  0)           0 (  0)         145 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#   no. =  1   ix  =  1   iy  =  1   iz  =  1
+#   x = (  -6.6700E+00  -  -6.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  1, (ix,iy,iz) = (  1,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.6700E+00 [cm]
+  xmax  &=&  -6.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  2   ix  =  2   iy  =  1   iz  =  1
+#   x = (  -6.5700E+00  -  -6.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  2, (ix,iy,iz) = (  2,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.5700E+00 [cm]
+  xmax  &=&  -6.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  3   ix  =  3   iy  =  1   iz  =  1
+#   x = (  -6.4700E+00  -  -6.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  3, (ix,iy,iz) = (  3,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.4700E+00 [cm]
+  xmax  &=&  -6.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  4   ix  =  4   iy  =  1   iz  =  1
+#   x = (  -6.3700E+00  -  -6.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  4, (ix,iy,iz) = (  4,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.3700E+00 [cm]
+  xmax  &=&  -6.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  5   ix  =  5   iy  =  1   iz  =  1
+#   x = (  -6.2700E+00  -  -6.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  5, (ix,iy,iz) = (  5,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.2700E+00 [cm]
+  xmax  &=&  -6.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  6   ix  =  6   iy  =  1   iz  =  1
+#   x = (  -6.1700E+00  -  -6.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  6, (ix,iy,iz) = (  6,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.1700E+00 [cm]
+  xmax  &=&  -6.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  7   ix  =  7   iy  =  1   iz  =  1
+#   x = (  -6.0700E+00  -  -5.9700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  7, (ix,iy,iz) = (  7,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.0700E+00 [cm]
+  xmax  &=&  -5.9700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  8   ix  =  8   iy  =  1   iz  =  1
+#   x = (  -5.9700E+00  -  -5.8700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  8, (ix,iy,iz) = (  8,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.9700E+00 [cm]
+  xmax  &=&  -5.8700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  9   ix  =  9   iy  =  1   iz  =  1
+#   x = (  -5.8700E+00  -  -5.7700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =  9, (ix,iy,iz) = (  9,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.8700E+00 [cm]
+  xmax  &=&  -5.7700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 10   ix  = 10   iy  =  1   iz  =  1
+#   x = (  -5.7700E+00  -  -5.6700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 10, (ix,iy,iz) = ( 10,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.7700E+00 [cm]
+  xmax  &=&  -5.6700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 11   ix  = 11   iy  =  1   iz  =  1
+#   x = (  -5.6700E+00  -  -5.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 11, (ix,iy,iz) = ( 11,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.6700E+00 [cm]
+  xmax  &=&  -5.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 12   ix  = 12   iy  =  1   iz  =  1
+#   x = (  -5.5700E+00  -  -5.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 12, (ix,iy,iz) = ( 12,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.5700E+00 [cm]
+  xmax  &=&  -5.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 13   ix  = 13   iy  =  1   iz  =  1
+#   x = (  -5.4700E+00  -  -5.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 13, (ix,iy,iz) = ( 13,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.4700E+00 [cm]
+  xmax  &=&  -5.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 14   ix  = 14   iy  =  1   iz  =  1
+#   x = (  -5.3700E+00  -  -5.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 14, (ix,iy,iz) = ( 14,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.3700E+00 [cm]
+  xmax  &=&  -5.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 15   ix  = 15   iy  =  1   iz  =  1
+#   x = (  -5.2700E+00  -  -5.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 15, (ix,iy,iz) = ( 15,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.2700E+00 [cm]
+  xmax  &=&  -5.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 16   ix  = 16   iy  =  1   iz  =  1
+#   x = (  -5.1700E+00  -  -5.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 16, (ix,iy,iz) = ( 16,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.1700E+00 [cm]
+  xmax  &=&  -5.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 17   ix  = 17   iy  =  1   iz  =  1
+#   x = (  -5.0700E+00  -  -4.9700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 17, (ix,iy,iz) = ( 17,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.0700E+00 [cm]
+  xmax  &=&  -4.9700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 18   ix  = 18   iy  =  1   iz  =  1
+#   x = (  -4.9700E+00  -  -4.8700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 18, (ix,iy,iz) = ( 18,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.9700E+00 [cm]
+  xmax  &=&  -4.8700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 19   ix  = 19   iy  =  1   iz  =  1
+#   x = (  -4.8700E+00  -  -4.7700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 19, (ix,iy,iz) = ( 19,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.8700E+00 [cm]
+  xmax  &=&  -4.7700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 20   ix  = 20   iy  =  1   iz  =  1
+#   x = (  -4.7700E+00  -  -4.6700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 20, (ix,iy,iz) = ( 20,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.7700E+00 [cm]
+  xmax  &=&  -4.6700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 21   ix  = 21   iy  =  1   iz  =  1
+#   x = (  -4.6700E+00  -  -4.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 21, (ix,iy,iz) = ( 21,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.6700E+00 [cm]
+  xmax  &=&  -4.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 22   ix  = 22   iy  =  1   iz  =  1
+#   x = (  -4.5700E+00  -  -4.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 22, (ix,iy,iz) = ( 22,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.5700E+00 [cm]
+  xmax  &=&  -4.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 23   ix  = 23   iy  =  1   iz  =  1
+#   x = (  -4.4700E+00  -  -4.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 23, (ix,iy,iz) = ( 23,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.4700E+00 [cm]
+  xmax  &=&  -4.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 24   ix  = 24   iy  =  1   iz  =  1
+#   x = (  -4.3700E+00  -  -4.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 24, (ix,iy,iz) = ( 24,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.3700E+00 [cm]
+  xmax  &=&  -4.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 25   ix  = 25   iy  =  1   iz  =  1
+#   x = (  -4.2700E+00  -  -4.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 25, (ix,iy,iz) = ( 25,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.2700E+00 [cm]
+  xmax  &=&  -4.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 26   ix  = 26   iy  =  1   iz  =  1
+#   x = (  -4.1700E+00  -  -4.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 26, (ix,iy,iz) = ( 26,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.1700E+00 [cm]
+  xmax  &=&  -4.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 27   ix  = 27   iy  =  1   iz  =  1
+#   x = (  -4.0700E+00  -  -3.9700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 27, (ix,iy,iz) = ( 27,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.0700E+00 [cm]
+  xmax  &=&  -3.9700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 28   ix  = 28   iy  =  1   iz  =  1
+#   x = (  -3.9700E+00  -  -3.8700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 28, (ix,iy,iz) = ( 28,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.9700E+00 [cm]
+  xmax  &=&  -3.8700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 29   ix  = 29   iy  =  1   iz  =  1
+#   x = (  -3.8700E+00  -  -3.7700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 29, (ix,iy,iz) = ( 29,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.8700E+00 [cm]
+  xmax  &=&  -3.7700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 30   ix  = 30   iy  =  1   iz  =  1
+#   x = (  -3.7700E+00  -  -3.6700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 30, (ix,iy,iz) = ( 30,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.7700E+00 [cm]
+  xmax  &=&  -3.6700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 31   ix  = 31   iy  =  1   iz  =  1
+#   x = (  -3.6700E+00  -  -3.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 31, (ix,iy,iz) = ( 31,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.6700E+00 [cm]
+  xmax  &=&  -3.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 32   ix  = 32   iy  =  1   iz  =  1
+#   x = (  -3.5700E+00  -  -3.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 32, (ix,iy,iz) = ( 32,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.5700E+00 [cm]
+  xmax  &=&  -3.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 33   ix  = 33   iy  =  1   iz  =  1
+#   x = (  -3.4700E+00  -  -3.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 33, (ix,iy,iz) = ( 33,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.4700E+00 [cm]
+  xmax  &=&  -3.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 34   ix  = 34   iy  =  1   iz  =  1
+#   x = (  -3.3700E+00  -  -3.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 34, (ix,iy,iz) = ( 34,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.3700E+00 [cm]
+  xmax  &=&  -3.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 35   ix  = 35   iy  =  1   iz  =  1
+#   x = (  -3.2700E+00  -  -3.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 35, (ix,iy,iz) = ( 35,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.2700E+00 [cm]
+  xmax  &=&  -3.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 36   ix  = 36   iy  =  1   iz  =  1
+#   x = (  -3.1700E+00  -  -3.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 36, (ix,iy,iz) = ( 36,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.1700E+00 [cm]
+  xmax  &=&  -3.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 37   ix  = 37   iy  =  1   iz  =  1
+#   x = (  -3.0700E+00  -  -2.9700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 37, (ix,iy,iz) = ( 37,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.0700E+00 [cm]
+  xmax  &=&  -2.9700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 38   ix  = 38   iy  =  1   iz  =  1
+#   x = (  -2.9700E+00  -  -2.8700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 38, (ix,iy,iz) = ( 38,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.9700E+00 [cm]
+  xmax  &=&  -2.8700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 39   ix  = 39   iy  =  1   iz  =  1
+#   x = (  -2.8700E+00  -  -2.7700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 39, (ix,iy,iz) = ( 39,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.8700E+00 [cm]
+  xmax  &=&  -2.7700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 40   ix  = 40   iy  =  1   iz  =  1
+#   x = (  -2.7700E+00  -  -2.6700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 40, (ix,iy,iz) = ( 40,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.7700E+00 [cm]
+  xmax  &=&  -2.6700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 41   ix  = 41   iy  =  1   iz  =  1
+#   x = (  -2.6700E+00  -  -2.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 41, (ix,iy,iz) = ( 41,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.6700E+00 [cm]
+  xmax  &=&  -2.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 42   ix  = 42   iy  =  1   iz  =  1
+#   x = (  -2.5700E+00  -  -2.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 42, (ix,iy,iz) = ( 42,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.5700E+00 [cm]
+  xmax  &=&  -2.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 43   ix  = 43   iy  =  1   iz  =  1
+#   x = (  -2.4700E+00  -  -2.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 43, (ix,iy,iz) = ( 43,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.4700E+00 [cm]
+  xmax  &=&  -2.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 44   ix  = 44   iy  =  1   iz  =  1
+#   x = (  -2.3700E+00  -  -2.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.9652E+03  1.0000
+
+#   sum over                 4.9652E+03  1.0000
+
+'no. = 44, (ix,iy,iz) = ( 44,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.3700E+00 [cm]
+  xmax  &=&  -2.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 45   ix  = 45   iy  =  1   iz  =  1
+#   x = (  -2.2700E+00  -  -2.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   8.8713E+04  0.8352
+
+#   sum over                 8.8713E+04  0.8352
+
+'no. = 45, (ix,iy,iz) = ( 45,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.2700E+00 [cm]
+  xmax  &=&  -2.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 46   ix  = 46   iy  =  1   iz  =  1
+#   x = (  -2.1700E+00  -  -2.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.3566E+05  0.7086
+
+#   sum over                 1.3566E+05  0.7086
+
+'no. = 46, (ix,iy,iz) = ( 46,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.1700E+00 [cm]
+  xmax  &=&  -2.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 47   ix  = 47   iy  =  1   iz  =  1
+#   x = (  -2.0700E+00  -  -1.9700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.2652E+05  0.7071
+
+#   sum over                 1.2652E+05  0.7071
+
+'no. = 47, (ix,iy,iz) = ( 47,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.0700E+00 [cm]
+  xmax  &=&  -1.9700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 48   ix  = 48   iy  =  1   iz  =  1
+#   x = (  -1.9700E+00  -  -1.8700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.6021E+04  1.0000
+
+#   sum over                 4.6021E+04  1.0000
+
+'no. = 48, (ix,iy,iz) = ( 48,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.9700E+00 [cm]
+  xmax  &=&  -1.8700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 49   ix  = 49   iy  =  1   iz  =  1
+#   x = (  -1.8700E+00  -  -1.7700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   3.7248E+04  1.0000
+
+#   sum over                 3.7248E+04  1.0000
+
+'no. = 49, (ix,iy,iz) = ( 49,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.8700E+00 [cm]
+  xmax  &=&  -1.7700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 50   ix  = 50   iy  =  1   iz  =  1
+#   x = (  -1.7700E+00  -  -1.6700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.4331E+04  1.0000
+
+#   sum over                 5.4331E+04  1.0000
+
+'no. = 50, (ix,iy,iz) = ( 50,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.7700E+00 [cm]
+  xmax  &=&  -1.6700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 51   ix  = 51   iy  =  1   iz  =  1
+#   x = (  -1.6700E+00  -  -1.5700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   3.3868E+04  1.0000
+
+#   sum over                 3.3868E+04  1.0000
+
+'no. = 51, (ix,iy,iz) = ( 51,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.6700E+00 [cm]
+  xmax  &=&  -1.5700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 52   ix  = 52   iy  =  1   iz  =  1
+#   x = (  -1.5700E+00  -  -1.4700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 52, (ix,iy,iz) = ( 52,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.5700E+00 [cm]
+  xmax  &=&  -1.4700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 53   ix  = 53   iy  =  1   iz  =  1
+#   x = (  -1.4700E+00  -  -1.3700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 53, (ix,iy,iz) = ( 53,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.4700E+00 [cm]
+  xmax  &=&  -1.3700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 54   ix  = 54   iy  =  1   iz  =  1
+#   x = (  -1.3700E+00  -  -1.2700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 54, (ix,iy,iz) = ( 54,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.3700E+00 [cm]
+  xmax  &=&  -1.2700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 55   ix  = 55   iy  =  1   iz  =  1
+#   x = (  -1.2700E+00  -  -1.1700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.9799E+04  1.0000
+
+#   sum over                 5.9799E+04  1.0000
+
+'no. = 55, (ix,iy,iz) = ( 55,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.2700E+00 [cm]
+  xmax  &=&  -1.1700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 56   ix  = 56   iy  =  1   iz  =  1
+#   x = (  -1.1700E+00  -  -1.0700E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   7.9435E+04  0.6328
+
+#   sum over                 7.9435E+04  0.6328
+
+'no. = 56, (ix,iy,iz) = ( 56,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.1700E+00 [cm]
+  xmax  &=&  -1.0700E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 57   ix  = 57   iy  =  1   iz  =  1
+#   x = (  -1.0700E+00  -  -9.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.5800E+05  0.6875
+
+#   sum over                 1.5800E+05  0.6875
+
+'no. = 57, (ix,iy,iz) = ( 57,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.0700E+00 [cm]
+  xmax  &=&  -9.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 58   ix  = 58   iy  =  1   iz  =  1
+#   x = (  -9.7000E-01  -  -8.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.6689E+04  0.7711
+
+#   sum over                 4.6689E+04  0.7711
+
+'no. = 58, (ix,iy,iz) = ( 58,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -9.7000E-01 [cm]
+  xmax  &=&  -8.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 59   ix  = 59   iy  =  1   iz  =  1
+#   x = (  -8.7000E-01  -  -7.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.6856E+05  0.7811
+
+#   sum over                 1.6856E+05  0.7811
+
+'no. = 59, (ix,iy,iz) = ( 59,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -8.7000E-01 [cm]
+  xmax  &=&  -7.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 60   ix  = 60   iy  =  1   iz  =  1
+#   x = (  -7.7000E-01  -  -6.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.4147E+05  0.8710
+
+#   sum over                 1.4147E+05  0.8710
+
+'no. = 60, (ix,iy,iz) = ( 60,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -7.7000E-01 [cm]
+  xmax  &=&  -6.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 61   ix  = 61   iy  =  1   iz  =  1
+#   x = (  -6.7000E-01  -  -5.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.1702E+05  1.0000
+
+#   sum over                 1.1702E+05  1.0000
+
+'no. = 61, (ix,iy,iz) = ( 61,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -6.7000E-01 [cm]
+  xmax  &=&  -5.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 62   ix  = 62   iy  =  1   iz  =  1
+#   x = (  -5.7000E-01  -  -4.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.2092E+07  0.0331
+
+#   sum over                 4.2092E+07  0.0331
+
+'no. = 62, (ix,iy,iz) = ( 62,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -5.7000E-01 [cm]
+  xmax  &=&  -4.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 63   ix  = 63   iy  =  1   iz  =  1
+#   x = (  -4.7000E-01  -  -3.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   3.1719E+08  0.0117
+
+#   sum over                 3.1719E+08  0.0117
+
+'no. = 63, (ix,iy,iz) = ( 63,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -4.7000E-01 [cm]
+  xmax  &=&  -3.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 64   ix  = 64   iy  =  1   iz  =  1
+#   x = (  -3.7000E-01  -  -2.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.5424E+08  0.0096
+
+#   sum over                 4.5424E+08  0.0096
+
+'no. = 64, (ix,iy,iz) = ( 64,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -3.7000E-01 [cm]
+  xmax  &=&  -2.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 65   ix  = 65   iy  =  1   iz  =  1
+#   x = (  -2.7000E-01  -  -1.7000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.3112E+08  0.0088
+
+#   sum over                 5.3112E+08  0.0088
+
+'no. = 65, (ix,iy,iz) = ( 65,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -2.7000E-01 [cm]
+  xmax  &=&  -1.7000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 66   ix  = 66   iy  =  1   iz  =  1
+#   x = (  -1.7000E-01  -  -7.0000E-02  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.8278E+08  0.0084
+
+#   sum over                 5.8278E+08  0.0084
+
+'no. = 66, (ix,iy,iz) = ( 66,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -1.7000E-01 [cm]
+  xmax  &=&  -7.0000E-02 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 67   ix  = 67   iy  =  1   iz  =  1
+#   x = (  -7.0000E-02  -   3.0000E-02  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.8764E+08  0.0083
+
+#   sum over                 5.8764E+08  0.0083
+
+'no. = 67, (ix,iy,iz) = ( 67,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&  -7.0000E-02 [cm]
+  xmax  &=&   3.0000E-02 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 68   ix  = 68   iy  =  1   iz  =  1
+#   x = (   3.0000E-02  -   1.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.9250E+08  0.0083
+
+#   sum over                 5.9250E+08  0.0083
+
+'no. = 68, (ix,iy,iz) = ( 68,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.0000E-02 [cm]
+  xmax  &=&   1.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 69   ix  = 69   iy  =  1   iz  =  1
+#   x = (   1.3000E-01  -   2.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.5524E+08  0.0086
+
+#   sum over                 5.5524E+08  0.0086
+
+'no. = 69, (ix,iy,iz) = ( 69,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.3000E-01 [cm]
+  xmax  &=&   2.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 70   ix  = 70   iy  =  1   iz  =  1
+#   x = (   2.3000E-01  -   3.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.9243E+08  0.0092
+
+#   sum over                 4.9243E+08  0.0092
+
+'no. = 70, (ix,iy,iz) = ( 70,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.3000E-01 [cm]
+  xmax  &=&   3.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 71   ix  = 71   iy  =  1   iz  =  1
+#   x = (   3.3000E-01  -   4.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   3.8134E+08  0.0106
+
+#   sum over                 3.8134E+08  0.0106
+
+'no. = 71, (ix,iy,iz) = ( 71,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.3000E-01 [cm]
+  xmax  &=&   4.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 72   ix  = 72   iy  =  1   iz  =  1
+#   x = (   4.3000E-01  -   5.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   1.4340E+08  0.0178
+
+#   sum over                 1.4340E+08  0.0178
+
+'no. = 72, (ix,iy,iz) = ( 72,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.3000E-01 [cm]
+  xmax  &=&   5.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 73   ix  = 73   iy  =  1   iz  =  1
+#   x = (   5.3000E-01  -   6.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 73, (ix,iy,iz) = ( 73,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.3000E-01 [cm]
+  xmax  &=&   6.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 74   ix  = 74   iy  =  1   iz  =  1
+#   x = (   6.3000E-01  -   7.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 74, (ix,iy,iz) = ( 74,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.3000E-01 [cm]
+  xmax  &=&   7.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 75   ix  = 75   iy  =  1   iz  =  1
+#   x = (   7.3000E-01  -   8.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   3.1628E+03  1.0000
+
+#   sum over                 3.1628E+03  1.0000
+
+'no. = 75, (ix,iy,iz) = ( 75,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   7.3000E-01 [cm]
+  xmax  &=&   8.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 76   ix  = 76   iy  =  1   iz  =  1
+#   x = (   8.3000E-01  -   9.3000E-01  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.8560E+04  1.0000
+
+#   sum over                 5.8560E+04  1.0000
+
+'no. = 76, (ix,iy,iz) = ( 76,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   8.3000E-01 [cm]
+  xmax  &=&   9.3000E-01 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 77   ix  = 77   iy  =  1   iz  =  1
+#   x = (   9.3000E-01  -   1.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 77, (ix,iy,iz) = ( 77,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   9.3000E-01 [cm]
+  xmax  &=&   1.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 78   ix  = 78   iy  =  1   iz  =  1
+#   x = (   1.0300E+00  -   1.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.8615E+03  1.0000
+
+#   sum over                 4.8615E+03  1.0000
+
+'no. = 78, (ix,iy,iz) = ( 78,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.0300E+00 [cm]
+  xmax  &=&   1.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 79   ix  = 79   iy  =  1   iz  =  1
+#   x = (   1.1300E+00  -   1.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   8.0826E+04  1.0000
+
+#   sum over                 8.0826E+04  1.0000
+
+'no. = 79, (ix,iy,iz) = ( 79,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.1300E+00 [cm]
+  xmax  &=&   1.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 80   ix  = 80   iy  =  1   iz  =  1
+#   x = (   1.2300E+00  -   1.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 80, (ix,iy,iz) = ( 80,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.2300E+00 [cm]
+  xmax  &=&   1.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 81   ix  = 81   iy  =  1   iz  =  1
+#   x = (   1.3300E+00  -   1.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 81, (ix,iy,iz) = ( 81,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.3300E+00 [cm]
+  xmax  &=&   1.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 82   ix  = 82   iy  =  1   iz  =  1
+#   x = (   1.4300E+00  -   1.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   5.3243E+04  1.0000
+
+#   sum over                 5.3243E+04  1.0000
+
+'no. = 82, (ix,iy,iz) = ( 82,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.4300E+00 [cm]
+  xmax  &=&   1.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 83   ix  = 83   iy  =  1   iz  =  1
+#   x = (   1.5300E+00  -   1.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   6.4480E+04  0.7347
+
+#   sum over                 6.4480E+04  0.7347
+
+'no. = 83, (ix,iy,iz) = ( 83,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.5300E+00 [cm]
+  xmax  &=&   1.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 84   ix  = 84   iy  =  1   iz  =  1
+#   x = (   1.6300E+00  -   1.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   6.2636E+04  1.0000
+
+#   sum over                 6.2636E+04  1.0000
+
+'no. = 84, (ix,iy,iz) = ( 84,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.6300E+00 [cm]
+  xmax  &=&   1.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 85   ix  = 85   iy  =  1   iz  =  1
+#   x = (   1.7300E+00  -   1.8300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   4.6755E+04  1.0000
+
+#   sum over                 4.6755E+04  1.0000
+
+'no. = 85, (ix,iy,iz) = ( 85,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.7300E+00 [cm]
+  xmax  &=&   1.8300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 86   ix  = 86   iy  =  1   iz  =  1
+#   x = (   1.8300E+00  -   1.9300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 86, (ix,iy,iz) = ( 86,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.8300E+00 [cm]
+  xmax  &=&   1.9300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 87   ix  = 87   iy  =  1   iz  =  1
+#   x = (   1.9300E+00  -   2.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 87, (ix,iy,iz) = ( 87,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   1.9300E+00 [cm]
+  xmax  &=&   2.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 88   ix  = 88   iy  =  1   iz  =  1
+#   x = (   2.0300E+00  -   2.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 88, (ix,iy,iz) = ( 88,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.0300E+00 [cm]
+  xmax  &=&   2.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 89   ix  = 89   iy  =  1   iz  =  1
+#   x = (   2.1300E+00  -   2.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 89, (ix,iy,iz) = ( 89,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.1300E+00 [cm]
+  xmax  &=&   2.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 90   ix  = 90   iy  =  1   iz  =  1
+#   x = (   2.2300E+00  -   2.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 90, (ix,iy,iz) = ( 90,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.2300E+00 [cm]
+  xmax  &=&   2.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 91   ix  = 91   iy  =  1   iz  =  1
+#   x = (   2.3300E+00  -   2.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 91, (ix,iy,iz) = ( 91,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.3300E+00 [cm]
+  xmax  &=&   2.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 92   ix  = 92   iy  =  1   iz  =  1
+#   x = (   2.4300E+00  -   2.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 92, (ix,iy,iz) = ( 92,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.4300E+00 [cm]
+  xmax  &=&   2.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 93   ix  = 93   iy  =  1   iz  =  1
+#   x = (   2.5300E+00  -   2.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 93, (ix,iy,iz) = ( 93,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.5300E+00 [cm]
+  xmax  &=&   2.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 94   ix  = 94   iy  =  1   iz  =  1
+#   x = (   2.6300E+00  -   2.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 94, (ix,iy,iz) = ( 94,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.6300E+00 [cm]
+  xmax  &=&   2.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 95   ix  = 95   iy  =  1   iz  =  1
+#   x = (   2.7300E+00  -   2.8300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 95, (ix,iy,iz) = ( 95,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.7300E+00 [cm]
+  xmax  &=&   2.8300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 96   ix  = 96   iy  =  1   iz  =  1
+#   x = (   2.8300E+00  -   2.9300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 96, (ix,iy,iz) = ( 96,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.8300E+00 [cm]
+  xmax  &=&   2.9300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 97   ix  = 97   iy  =  1   iz  =  1
+#   x = (   2.9300E+00  -   3.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 97, (ix,iy,iz) = ( 97,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   2.9300E+00 [cm]
+  xmax  &=&   3.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 98   ix  = 98   iy  =  1   iz  =  1
+#   x = (   3.0300E+00  -   3.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 98, (ix,iy,iz) = ( 98,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.0300E+00 [cm]
+  xmax  &=&   3.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 99   ix  = 99   iy  =  1   iz  =  1
+#   x = (   3.1300E+00  -   3.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. = 99, (ix,iy,iz) = ( 99,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.1300E+00 [cm]
+  xmax  &=&   3.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =100   ix  =100   iy  =  1   iz  =  1
+#   x = (   3.2300E+00  -   3.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =100, (ix,iy,iz) = (100,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.2300E+00 [cm]
+  xmax  &=&   3.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =101   ix  =101   iy  =  1   iz  =  1
+#   x = (   3.3300E+00  -   3.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =101, (ix,iy,iz) = (101,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.3300E+00 [cm]
+  xmax  &=&   3.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =102   ix  =102   iy  =  1   iz  =  1
+#   x = (   3.4300E+00  -   3.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =102, (ix,iy,iz) = (102,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.4300E+00 [cm]
+  xmax  &=&   3.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =103   ix  =103   iy  =  1   iz  =  1
+#   x = (   3.5300E+00  -   3.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =103, (ix,iy,iz) = (103,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.5300E+00 [cm]
+  xmax  &=&   3.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =104   ix  =104   iy  =  1   iz  =  1
+#   x = (   3.6300E+00  -   3.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =104, (ix,iy,iz) = (104,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.6300E+00 [cm]
+  xmax  &=&   3.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =105   ix  =105   iy  =  1   iz  =  1
+#   x = (   3.7300E+00  -   3.8300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =105, (ix,iy,iz) = (105,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.7300E+00 [cm]
+  xmax  &=&   3.8300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =106   ix  =106   iy  =  1   iz  =  1
+#   x = (   3.8300E+00  -   3.9300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =106, (ix,iy,iz) = (106,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.8300E+00 [cm]
+  xmax  &=&   3.9300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =107   ix  =107   iy  =  1   iz  =  1
+#   x = (   3.9300E+00  -   4.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =107, (ix,iy,iz) = (107,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   3.9300E+00 [cm]
+  xmax  &=&   4.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =108   ix  =108   iy  =  1   iz  =  1
+#   x = (   4.0300E+00  -   4.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =108, (ix,iy,iz) = (108,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.0300E+00 [cm]
+  xmax  &=&   4.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =109   ix  =109   iy  =  1   iz  =  1
+#   x = (   4.1300E+00  -   4.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =109, (ix,iy,iz) = (109,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.1300E+00 [cm]
+  xmax  &=&   4.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =110   ix  =110   iy  =  1   iz  =  1
+#   x = (   4.2300E+00  -   4.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =110, (ix,iy,iz) = (110,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.2300E+00 [cm]
+  xmax  &=&   4.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =111   ix  =111   iy  =  1   iz  =  1
+#   x = (   4.3300E+00  -   4.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =111, (ix,iy,iz) = (111,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.3300E+00 [cm]
+  xmax  &=&   4.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =112   ix  =112   iy  =  1   iz  =  1
+#   x = (   4.4300E+00  -   4.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =112, (ix,iy,iz) = (112,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.4300E+00 [cm]
+  xmax  &=&   4.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =113   ix  =113   iy  =  1   iz  =  1
+#   x = (   4.5300E+00  -   4.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =113, (ix,iy,iz) = (113,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.5300E+00 [cm]
+  xmax  &=&   4.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =114   ix  =114   iy  =  1   iz  =  1
+#   x = (   4.6300E+00  -   4.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =114, (ix,iy,iz) = (114,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.6300E+00 [cm]
+  xmax  &=&   4.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =115   ix  =115   iy  =  1   iz  =  1
+#   x = (   4.7300E+00  -   4.8300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =115, (ix,iy,iz) = (115,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.7300E+00 [cm]
+  xmax  &=&   4.8300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =116   ix  =116   iy  =  1   iz  =  1
+#   x = (   4.8300E+00  -   4.9300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =116, (ix,iy,iz) = (116,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.8300E+00 [cm]
+  xmax  &=&   4.9300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =117   ix  =117   iy  =  1   iz  =  1
+#   x = (   4.9300E+00  -   5.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =117, (ix,iy,iz) = (117,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   4.9300E+00 [cm]
+  xmax  &=&   5.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =118   ix  =118   iy  =  1   iz  =  1
+#   x = (   5.0300E+00  -   5.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =118, (ix,iy,iz) = (118,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.0300E+00 [cm]
+  xmax  &=&   5.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =119   ix  =119   iy  =  1   iz  =  1
+#   x = (   5.1300E+00  -   5.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =119, (ix,iy,iz) = (119,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.1300E+00 [cm]
+  xmax  &=&   5.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =120   ix  =120   iy  =  1   iz  =  1
+#   x = (   5.2300E+00  -   5.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =120, (ix,iy,iz) = (120,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.2300E+00 [cm]
+  xmax  &=&   5.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =121   ix  =121   iy  =  1   iz  =  1
+#   x = (   5.3300E+00  -   5.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =121, (ix,iy,iz) = (121,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.3300E+00 [cm]
+  xmax  &=&   5.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =122   ix  =122   iy  =  1   iz  =  1
+#   x = (   5.4300E+00  -   5.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =122, (ix,iy,iz) = (122,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.4300E+00 [cm]
+  xmax  &=&   5.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =123   ix  =123   iy  =  1   iz  =  1
+#   x = (   5.5300E+00  -   5.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =123, (ix,iy,iz) = (123,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.5300E+00 [cm]
+  xmax  &=&   5.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =124   ix  =124   iy  =  1   iz  =  1
+#   x = (   5.6300E+00  -   5.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =124, (ix,iy,iz) = (124,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.6300E+00 [cm]
+  xmax  &=&   5.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =125   ix  =125   iy  =  1   iz  =  1
+#   x = (   5.7300E+00  -   5.8300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =125, (ix,iy,iz) = (125,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.7300E+00 [cm]
+  xmax  &=&   5.8300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =126   ix  =126   iy  =  1   iz  =  1
+#   x = (   5.8300E+00  -   5.9300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =126, (ix,iy,iz) = (126,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.8300E+00 [cm]
+  xmax  &=&   5.9300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =127   ix  =127   iy  =  1   iz  =  1
+#   x = (   5.9300E+00  -   6.0300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =127, (ix,iy,iz) = (127,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   5.9300E+00 [cm]
+  xmax  &=&   6.0300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =128   ix  =128   iy  =  1   iz  =  1
+#   x = (   6.0300E+00  -   6.1300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =128, (ix,iy,iz) = (128,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.0300E+00 [cm]
+  xmax  &=&   6.1300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =129   ix  =129   iy  =  1   iz  =  1
+#   x = (   6.1300E+00  -   6.2300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =129, (ix,iy,iz) = (129,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.1300E+00 [cm]
+  xmax  &=&   6.2300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =130   ix  =130   iy  =  1   iz  =  1
+#   x = (   6.2300E+00  -   6.3300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =130, (ix,iy,iz) = (130,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.2300E+00 [cm]
+  xmax  &=&   6.3300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =131   ix  =131   iy  =  1   iz  =  1
+#   x = (   6.3300E+00  -   6.4300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =131, (ix,iy,iz) = (131,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.3300E+00 [cm]
+  xmax  &=&   6.4300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =132   ix  =132   iy  =  1   iz  =  1
+#   x = (   6.4300E+00  -   6.5300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =132, (ix,iy,iz) = (132,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.4300E+00 [cm]
+  xmax  &=&   6.5300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =133   ix  =133   iy  =  1   iz  =  1
+#   x = (   6.5300E+00  -   6.6300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =133, (ix,iy,iz) = (133,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.5300E+00 [cm]
+  xmax  &=&   6.6300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =134   ix  =134   iy  =  1   iz  =  1
+#   x = (   6.6300E+00  -   6.7300E+00  )
+#   y = (  -6.6700E+00  -   6.6700E+00  )
+#   z = (   1.0500E+00  -   1.1500E+00  )
+
+x: Energy [MeV]
+y: Flux [1/cm^2/source]              
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  e-lower      e-upper        proton    r.err 
+   0.0000E+00   1.0000E+03   0.0000E+00  0.0000
+
+#   sum over                 0.0000E+00  0.0000
+
+'no. =134, (ix,iy,iz) = (134,  1,  1)'
+msuc: {\huge Dosis absorbida en linea 1 (Z=1.1)}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+   vol  &=&   1.3340E-01 [cm^3]
+  xmin  &=&   6.6300E+00 [cm]
+  xmax  &=&   6.7300E+00 [cm]
+  ymin  &=&  -6.6700E+00 [cm]
+  ymax  &=&   6.6700E+00 [cm]
+  zmin  &=&   1.0500E+00 [cm]
+  zmax  &=&   1.1500E+00 [cm]
+e:
+ 
+# Information for Restart Calculation
+# This calculation was newly started
+# istdev =  2 # 1:Batch variance, 2:History variance
+# resc2  = 1.60217699999867669E-05 # Total source weight or Total source weight / maxcas
+# resc3  = 1.00000000000000000E+05 # Total history number or Total batch number
+# maxcas =        1000 # History / Batch, only used for istdev=1
+# bitrseed = 0001110011011001101111011000110011100000010010101010010011101100 # bit data of rseed
