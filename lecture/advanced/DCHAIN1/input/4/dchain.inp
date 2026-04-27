@@ -258,7 +258,7 @@ set:c12[ c11 * 1.0e-9 / (1.602177e-19) ] $ beam power (source/sec)
   ipltmode = 1               # (D=0) enable DCHAIN 2D xy activity plot
 
 
-[T-Track] 
+[T-Track] off
   title = Ambient dose equivalent H*(10) [mSv/hr] room map 
   mesh = xyz
   x-type = 2
@@ -312,7 +312,7 @@ set:c12[ c11 * 1.0e-9 / (1.602177e-19) ] $ beam power (source/sec)
     11    Concrete  1.00     gray  
 
 
-[T-Gshow] 
+[T-Gshow] off
   mesh = xyz
   x-type = 2
       nx = 280
@@ -331,7 +331,7 @@ set:c12[ c11 * 1.0e-9 / (1.602177e-19) ] $ beam power (source/sec)
   output = 2
   epsout = 1
 
-[T-Gshow] 
+[T-Gshow] off
   mesh = xyz
   x-type = 2
     xmin = -20

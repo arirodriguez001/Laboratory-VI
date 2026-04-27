@@ -489,3 +489,115 @@ unit    = 1
 epsout  = 2
 gshow   = 1
 stdcut  = 0.01
+
+$$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
+
+$ Tallys para ver la geometria
+[ T - T r a c k ]off
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -7.
+xmax = 7.
+
+y-type = 2
+ny = 100
+ymin = -50.
+ymax = 50.
+
+z-type = 1
+nz = 1
+14. 14.2
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xy
+file = track_xy.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ] off
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -2.16
+xmax = -2.14
+
+y-type = 2
+ny = 100
+ymin = -50.
+ymax = 50.
+
+z-type = 2
+nz = 100
+zmin = -5.
+zmax = 100.
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = yz
+file = track_yz.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ] 
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -7.
+xmax = 7.
+
+z-type = 2            
+nz = 100
+zmin = 80       $ -5, -5, -5, -5, -5, -5, 
+zmax = 110.      $ 10, 10, 20, 30, 60, 90
+
+y-type = 1
+ny = 1
+0. 0.1
+
+part = proton
+
+e-type = 1          $ acá estamos integrando todo: es el flujo total de particulas
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xz
+file = track_xz.out
+gshow = 3
+epsout = 1 
+
+[ T - D e p o s i t ] off  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = r-z
+
+r-type =    2           $ Malla radial (sustituye a x e y)
+rmin   =    0.0         $ Desde el centro del haz
+rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    79.9
+zmax   =    80.5
+nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_zcilindJesus.out
+epsout = 1

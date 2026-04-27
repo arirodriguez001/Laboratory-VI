@@ -160,14 +160,13 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0. 0. 80.2 1.6 0.0 0.0 -1.0
+100 ell 0. 0. 101.2 1.6 0.0 0.0 -1.0
 $100  TR50  ELL   1.7185 0.5  0.5  14.9385 2.609  2.22
 $100 TR50 sq  2.9532 0.25 0.25  14.9385 2.609 2.22
 
-
 $ Planos de corte para definir el pouch
-201 pz  80
-202 pz  80.4
+201 pz  101.0
+202 pz  101.4
 
 [ Transform ]
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
@@ -187,7 +186,7 @@ infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#2001]
+set:%exclusions%[#2001 #510]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -200,7 +199,7 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202
+510 16 -1.0  -100  201  -202 
 
 1 -1     1  $Deep space
 2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
@@ -209,114 +208,5 @@ $ Pouch
 infl:{volumes.inp}
 infl:{tallies.inp}
 
-$ Tallys para ver la geometria
-[ T - T r a c k ]off
-mesh = xyz
-
-x-type = 2
-nx = 100
-xmin = -7.
-xmax = 7.
-
-y-type = 2
-ny = 100
-ymin = -50.
-ymax = 50.
-
-z-type = 1
-nz = 1
-14. 14.2
-
-part = proton
-
-e-type = 1
-ne = 1
-0.0 1000.0
-
-unit = 1
-axis = xy
-file = track_xy.out
-gshow = 3
-epsout = 1
-
-[ T - T r a c k ] off
-mesh = xyz
-
-x-type = 2
-nx = 1
-xmin = -2.16
-xmax = -2.14
-
-y-type = 2
-ny = 100
-ymin = -50.
-ymax = 50.
-
-z-type = 2
-nz = 100
-zmin = -5.
-zmax = 100.
-
-part = proton
-
-e-type = 1
-ne = 1
-0.0 1000.0
-
-unit = 1
-axis = yz
-file = track_yz.out
-gshow = 3
-epsout = 1
-
-[ T - T r a c k ] 
-mesh = xyz
-
-x-type = 2
-nx = 100
-xmin = -7.
-xmax = 7.
-
-z-type = 2
-nz = 100
-zmin = 0.
-zmax = 100.
-
-y-type = 1
-ny = 1
-0. 0.1
-
-part = proton
-
-e-type = 1
-ne = 1
-0.0 1000.0
-
-unit = 1
-axis = xz
-file = track_xz.out
-gshow = 3
-epsout = 1 
-
-[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
-title = Bragg peak in pouch
-mesh = r-z
-
-r-type =    2           $ Malla radial (sustituye a x e y)
-rmin   =    0.0         $ Desde el centro del haz
-rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
-nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
-
-z-type =    2           $ Eje de profundidad (Z)
-zmin   =    79.9
-zmax   =    80.5
-nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
-
-part = proton
-output = dose
-unit = 0
-axis = z
-file = bragg_pouch_zcilindJesus.out
-epsout = 1
 
 [ E n d ]
