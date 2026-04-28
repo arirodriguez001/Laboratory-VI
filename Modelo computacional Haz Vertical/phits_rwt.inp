@@ -94,6 +94,9 @@ $set:%blood%[15  -1.06]
 
 mat[16] H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ skin
 
+mat[17]  C 5 H 8 O 2         $ acrilico
+$set:%acrilico%[17  -1.18]
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -601,13 +604,31 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0. 0. 101.2 1.6 0.0 0.0 -1.0
+100 ell 0.0 0.0 60.68  1.6 0.0 0.0  -1.0
 $100  TR50  ELL   1.7185 0.5  0.5  14.9385 2.609  2.22
 $100 TR50 sq  2.9532 0.25 0.25  14.9385 2.609 2.22
 
 $ Planos de corte para definir el pouch
-201 pz  101.0
-202 pz  101.4
+201 pz 60.58
+202 pz 60.78
+
+$ POSICIONADOR
+
+
+$[ S u r f a c e ]
+
+
+$ Caja exterior de acrilico
+3000 rpp -14.9385 -1.4685  -2.609 2.621  58.08 63.0
+
+$ Hueco interior
+3100 rpp -14.6885 -1.7185  -2.359 2.371  58.08 62.75
+
+$ Hueco hacia trampolin
+3200 rpp -1.7185 -1.4685  -1.486 1.486  58.08 61.01
+
+$ Trampolin / soporte del pouch
+3300 rpp -1.4685 1.7185  -1.486 1.486  60.78 61.01
 
 [ Transform ]
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
@@ -633,7 +654,7 @@ $set:%cell_iman%[104]
 $set:%vol_iman%[28.274334E-4] $(PI*1.5^2*4.0E-4)
 $[ Cell ]
 $2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 $Air inside
-2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013	$profiles for pilar
+2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 #6000 #6001 #6002 #6003	$profiles for pilar
 
 $set:%outside_stuff%[#101 #102 #103 #104]
 $set:%exclusions%[#2001 #510]
@@ -696,7 +717,7 @@ $infl:{Ce_fondo.inp}
 $ [ Cell ]
 $100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
 
-2500 1  -1.205e-3  4 -5 6 -7  1504 -1505 #2501 #2502 #2503 #2504 #2506 #103 #2505 #510	$fill w/ air
+2500 1  -1.205e-3  4 -5 6 -7  1504 -1505 #2501 #2502 #2503 #2504 #2506 #103 #2505 #510 #6000 #6001 #6002	#6003 $fill w/ air
 $2500 %air%  %workzone%  %sample_zone% #2501 #2502 #2503 #2504 #2505 #2506	$fill w/ air
 
 2501 2  -2.6989 1507 ((-1503 -1509):(-1508 -1510)) #(1511 -1512 1513 -1514 -1515) #(-1516 -1517)	$sAl base
@@ -739,6 +760,22 @@ $set:%vol_rfgrid%[(15.850477*c75*(8*c701+7*c702+6*c703+5*c704+4*c705+3*c706+2*c7
 
 $ Pouch
 510 16 -1.0  -100  201  -202
+
+$ POSICIONADOR
+
+$ [ C e l l ]
+
+$ Caja acrilica hueca
+6000 17  -1.18  -3000 3100 3200
+
+$ Aire dentro de la caja
+6001 1  -1.205e-3       -3100
+
+$ Aire en el hueco hacia el trampolin
+6002 1  -1.205e-3       -3200
+
+$ Trampolin acrilico
+6003 17  -1.18  -3300
 
 1 -1     1  $Deep space
 2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1504 -1505):(1621 -1623)))  #510
@@ -1002,7 +1039,7 @@ epsout  = 2
 gshow   = 1
 stdcut  = 0.01
 
-[ T-Track ]  off	
+[ T-Track ]  off
 title   = Flujo de partículas en plano XY a z = 4.65 cm
 mesh    = xyz
 
@@ -1221,7 +1258,7 @@ stdcut  = 0.01
 
 $$$$$$$$$$$$$ ahora medimos la energia $$$$$$$$$$$$$$$$$$
 
- [ T-Track ]
+[ T-Track ] off
 title   = Flujo de partículas en plano XY a z = 1.10 cm
 mesh    = xyz
 
@@ -1325,7 +1362,7 @@ xmax = 7.
 
 z-type = 2
 nz = 100
-zmin = 80       $ -5, -5, -5, -5, -5, -5,
+zmin = -5     $ -5, -5, -5, -5, -5, -5,
 zmax = 110.      $ 10, 10, 20, 30, 60, 90
 
 y-type = 1

@@ -41,10 +41,10 @@ mat[3]  H 2 O 1             $agua
 mat[4]  Pb 1                $plomo
 mat[5]  Fe 1                $hierro
 mat[6]  Fe 1 C 1            $acero 
-mat[7]  H 0.104472  C 0.232190  N 0.024880  O 0.630238  Na 0.001130  Mg 0.000130  P 0.001330  S 0.001990  Cl 0.001340  K 0.001990  Ca 0.000230  Fe 0.000050  Zn 0.000030   # soft tissue (ICRP) (pouch)
-mat[8]  H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ skin
+mat[7]  H -0.104472  C -0.232190  N -0.024880  O -0.630238  Na -0.001130  Mg -0.000130  P -0.001330  S -0.001990  Cl -0.001340  K -0.001990  Ca -0.000230  Fe -0.000050  Zn -0.000030   # soft tissue (ICRP) (pouch)
+mat[8]  H -0.100588  C -0.228250  N -0.046420  O -0.619002  Na -0.000070  Mg -0.000060  P -0.000330  S -0.001590  Cl -0.002670  K -0.000850  Ca -0.000150  Fe -0.000010  Zn -0.000010      $ skin
 mat[9]  C 3 H 4 O 2	$ polylactic acid plastic for 3D printers
-mat[999]  C 0.000124  N 0.755267  O 0.231781  Ar 0.012827       # aire
+mat[999]  C -0.000124  N -0.755267  O -0.231781  Ar -0.012827       # aire
 
 [ Mat Name Color ]
 mat   name       size   color

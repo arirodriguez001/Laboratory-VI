@@ -94,6 +94,9 @@ set:%blood%[15  -1.06]
 
 mat[16] H 0.100588  C 0.228250  N 0.046420  O 0.619002  Na 0.000070  Mg 0.000060  P 0.000330  S 0.001590  Cl 0.002670  K 0.000850  Ca 0.000150  Fe 0.000010  Zn 0.000010      $ skin
 
+mat[17]  C 5 H 8 O 2         $ acrilico 
+set:%acrilico%[17  -1.18]
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -160,13 +163,17 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0. 0. 101.2 1.6 0.0 0.0 -1.0
+100 ell 0.0 0.0 60.68  1.6 0.0 0.0  -1.0
 $100  TR50  ELL   1.7185 0.5  0.5  14.9385 2.609  2.22
 $100 TR50 sq  2.9532 0.25 0.25  14.9385 2.609 2.22
 
 $ Planos de corte para definir el pouch
-201 pz  101.0
-202 pz  101.4
+201 pz 60.58
+202 pz 60.78
+
+$ POSICIONADOR 
+
+infl:{Su_posicionador.inp}
 
 [ Transform ]
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
@@ -200,6 +207,10 @@ infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
 510 16 -1.0  -100  201  -202 
+
+$ POSICIONADOR 
+
+infl:{Ce_posicionador.inp}
 
 1 -1     1  $Deep space
 2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510

@@ -239,7 +239,7 @@ epsout  = 2
 gshow   = 1
 stdcut  = 0.01
 
-[ T-Track ]  off	
+[ T-Track ]  off
 title   = Flujo de partículas en plano XY a z = 4.65 cm
 mesh    = xyz
 
@@ -458,7 +458,7 @@ stdcut  = 0.01
 
 $$$$$$$$$$$$$ ahora medimos la energia $$$$$$$$$$$$$$$$$$
 
- [ T-Track ] 
+[ T-Track ] off
 title   = Flujo de partículas en plano XY a z = 1.10 cm
 mesh    = xyz
 
@@ -562,7 +562,7 @@ xmax = 7.
 
 z-type = 2            
 nz = 100
-zmin = 80       $ -5, -5, -5, -5, -5, -5, 
+zmin = -5     $ -5, -5, -5, -5, -5, -5, 
 zmax = 110.      $ 10, 10, 20, 30, 60, 90
 
 y-type = 1

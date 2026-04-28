@@ -1,0 +1,15 @@
+
+$[ S u r f a c e ]
+
+
+$ Caja exterior de acrilico
+3000 rpp -14.9385 -1.4685  -2.609 2.621  58.08 63.0
+    
+$ Hueco interior
+3100 rpp -14.6885 -1.7185  -2.359 2.371  58.08 62.75
+
+$ Hueco hacia trampolin
+3200 rpp -1.7185 -1.4685  -1.486 1.486  58.08 61.01
+
+$ Trampolin / soporte del pouch
+3300 rpp -1.4685 1.7185  -1.486 1.486  60.78 61.01
