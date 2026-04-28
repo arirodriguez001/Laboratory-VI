@@ -17,7 +17,7 @@ istdcut	= 1 $Stop when its statistical uncertainty becomes less than stdcut.
 delt0	= 4e-5 $Minimum ﬂight mesh [cm], should be set to 1/10 of the minimum thickness of thin films less than 1 cm when describing a scattering process.
 ireschk	= 1 $Control parameter for tally consistency check. The inconsistency of a tally may occur as the result of the loss of signiﬁcant digits in the PHITS input ﬁle
 nlost	= 10000 $number of tolerance of lost particles before stopping the run.
-itall	= 1 $Output numerical and image files after every batch.
+$itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while
 
 $  required options for DCHAIN (also e-mode=0)
@@ -1296,9 +1296,10 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.57
-zmax   =    60.79
-nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
+zmin   =    57.
+zmax   =    63.
+nz     =    600      $ Mantenemos alta resolucion para el grafico de Python
+
 
 part = proton
 output = dose

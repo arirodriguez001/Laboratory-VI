@@ -591,9 +591,10 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.57
-zmax   =    60.79
-nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
+zmin   =    57.
+zmax   =    63.
+nz     =    600      $ Mantenemos alta resolucion para el grafico de Python
+
 
 part = proton
 output = dose
