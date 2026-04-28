@@ -7,9 +7,9 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 1000 $ (D=10) number of particles per one batch
-maxbch	= 100 $ (D=10) number of batches
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+maxcas	= 10000 $ (D=10) number of particles per one batch
+maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -147,15 +147,15 @@ infl:{Su_dispersor1.inp}
 infl:{Su_dispersor2.inp}
 infl:{Su_oclusor.inp}
 $infl:{Su_fondo.inp}
-infl:{Su_fondo_mylar.inp}
+$infl:{Su_fondo_mylar.inp}
 $infl:{Su_diodos.inp}
 $infl:{Su_ridge_filter_4.inp}
 infl:{Su_ridge_filter_9.inp}
 
-set: c100[ c7 + c61 - c63 - c68 ]	$cell monolayer start
-set: c101[ c100 + c68 ]	$cell monolayer
-set: c102[ c7 + c61 - c63 - c601 ]	$Liquid medium start
-set: c103[ c102 + c69 ]	$Liquid medium
+$set: c100[ c7 + c61 - c63 - c68 ]	$cell monolayer start
+$set: c101[ c100 + c68 ]	$cell monolayer
+$set: c102[ c7 + c61 - c63 - c601 ]	$Liquid medium start
+$set: c103[ c102 + c69 ]	$Liquid medium
 $For inverted Petri
 $$set: c100[ c7 + c61 - c66 - c67 + c65 ]	$cell monolayer start
 $$set: c101[ c100 + c68 ]	$cell monolayer
@@ -184,8 +184,8 @@ TR30  0 0 c5  0 0 0  0 0  0 0  0 0  3	$disp 2 height
 TR40  0 0 c6  0 0 0  0 0  0 0  0 0  3	$occluder height
 TR50  0 0 101.0  0 0 0  0 0  0 0  0 0  3	$sample table height
 TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
-TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
-TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
+$TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
+$TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
 
 
 [ Cell ]
@@ -200,7 +200,7 @@ infl:{Ce_dispersor1.inp}
 infl:{Ce_dispersor2.inp}
 infl:{Ce_oclusor.inp}
 $infl:{Ce_fondo.inp}
-infl:{Ce_fondo_mylar.inp}
+$infl:{Ce_fondo_mylar.inp}
 $infl:{Ce_diodos.inp}
 $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
@@ -213,8 +213,12 @@ $ POSICIONADOR
 infl:{Ce_posicionador.inp}
 
 1 -1     1  $Deep space
-2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
+$2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
      %outside_stuff% %exclusions% $Cover unused workzone with air
+
+$ Modifica la Celda 2 así:
+2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #6000 #6001 #6002 #6003 
+      %outside_stuff% %exclusions%
 
 infl:{volumes.inp}
 infl:{tallies.inp}

@@ -7,9 +7,9 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 1000 $ (D=10) number of particles per one batch
-maxbch	= 100 $ (D=10) number of batches
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+maxcas	= 10000 $ (D=10) number of particles per one batch
+maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -400,90 +400,7 @@ $ occluder holder plate
 1421 CZ  4.0
 $set:%ocl_plate%[1415 -1416 1417 -1418 1419 -1420 1421]
 $infl:{Su_fondo.inp}
-set: c60[ 0.63 ]	$Petri holder width
-set: c600[ 0.04 ]	$Petri holder height
-set: c62[ 1.715 ]	$Petri dish internal radius
-set: c63[ 0.115 ]	$Petri dish thickness
-set: c64[ 0.44 ]	$Petri dish depth from holder surface
-set: c65[ 0.85 ]	$sample volume in ml (cm3)
-set: c61[ c600 - c60 + c64 ]	$Petri dish depth from holder surface
-set: c66[ 6.3e-4 ]	$MYLAR thickness
-set: c67[ 1.0 ]	$Petri dish width
-set: c68[ 11e-4 ]	$Cell monolayer
-set: c69[ c65 / (PI * c62 * c62) ]	$medium height from volume (plane)
-set: c601[ 0.274852804 ]	$max height of meniscus at border
-set: c602[ c61 - c63 ]	$Petri dish inner bottom
-$set: %sample_TR%[50]	$sample translation number (leave blank for not)
-
-$[ Surface ]
-1503 50 PZ  0.0
-1504 50 PZ -36.5
-1505 50 PZ  1.6
-$set:%sample_zone%[1504 -1505]	$use with %workzone%
-
-$Al base for samples
-1507 50 PZ -0.3
-1508 50 PZ  0.425
-1509 CZ   6.67
-1510 CZ   5.928	$ hole 2
-
-$Phosphoric scintillator place
-1511 PX -1.625
-1512 PX  1.625
-1513 PY -1.625
-1514 PY  1.625
-1515 50 PZ  0.28
-
-1516 CZ  2.55	$Petri holder hole
-1517 50 PZ  c600 $Petri holder height
-
-$set:%Al_base%[1507 ((-1503 -1509):(-1508 -1510)) #(1511 -1512 1513 -1514 -1515) #(-1516 -1517)]
-
-$Petri holder
-1518 50 PZ (c600-c60)	$Petri holder top surface
-1519 CZ  1.5275	$beam exit
-1520 CZ  2.0	$radius for inverted lid
-1521 50 PZ (c600-c60+0.20)	$depth for inverted lid
-1522 CZ  (c62+c63)	$radius for Petri dish
-1523 50 PZ  (c61)	$depth for Petri dish
-$set:%petri_holder%[-1517 1518 -1516 1519 #(-1520 -1521) #(-1522 -1523)]
-
-$Petri dish
-1524 50 PZ  (c61-c67)	$Petri dish top
-1527 CZ  (c62+c63)	$Petri dish radius outside
-1529 50 PZ  c602	$Petri dish inside bottom
-1530 CZ  c62	$Petri dish radius inside
-$set:%Petri_dish%[1524 -1523 -1527 #(-1529 -1530)]
-
-$Petri dish lid
-1525 50 PZ  (c61-c67-c66+0.63)	$Petri lid skirt
-1526 CZ  (c62+c63+c66)	$Petri lid radius outside
-1528 50 PZ  (c61-c67-c66)	$Petri lid top
-$set:%Petri_lid%[1528 -1525 -1526 #(1524 -1527)]
-
-$Cell monolayer
-1531 50 PZ  (c602-c68)	$monolayer surface
-$set:%monolayer%[1531 -1529 -1530]
-
-$Medium with meniscus (r_n = Petri dish internal radius / 20 )
-$n	R_max = sqrt(n/20)*c62 [cm]	h [cm]
-$1	0.500	0.010943249
-$2	0.707	0.138455053
-$3	0.866	0.711048142
-$4	1.000	2.748528038
-
-
-
-1540 50 PZ  (c602-0.001094325)
-1541 50 PZ  (c602-0.013845505)
-1542 50 PZ  (c602-0.071104814)
-1543 50 PZ  (c602-0.274852804)
-
-1560 CZ  (0.500*c62)
-1561 CZ  (0.707*c62)
-1562 CZ  (0.866*c62)
-
-$set:%medium_steps%[-1529 -1530 ((1540):(1541 1560):(1542 1561):(1543 1562))]
+$infl:{Su_fondo_mylar.inp}
 $infl:{Su_diodos.inp}
 $infl:{Su_ridge_filter_4.inp}
 set: c70[ 0.146255 ]	$pin radius r = sqrt(0.24 * 0.28 / pi)
@@ -593,10 +510,10 @@ $step 8
 $set:%ridge_ladder_a%[(1632 -1633):(1634 1635 -1636):(1637 1638 -1639):(1640 1641 -1642):(1643 1644 -1645)]
 $set:%ridge_ladder_b%[(1646 1647 -1648):(1649 1650 -1651):(1652 1653 -1654)]
 
-set: c100[ c7 + c61 - c63 - c68 ]	$cell monolayer start
-set: c101[ c100 + c68 ]	$cell monolayer
-set: c102[ c7 + c61 - c63 - c601 ]	$Liquid medium start
-set: c103[ c102 + c69 ]	$Liquid medium
+$set: c100[ c7 + c61 - c63 - c68 ]	$cell monolayer start
+$set: c101[ c100 + c68 ]	$cell monolayer
+$set: c102[ c7 + c61 - c63 - c601 ]	$Liquid medium start
+$set: c103[ c102 + c69 ]	$Liquid medium
 $For inverted Petri
 $$set: c100[ c7 + c61 - c66 - c67 + c65 ]	$cell monolayer start
 $$set: c101[ c100 + c68 ]	$cell monolayer
@@ -639,8 +556,8 @@ TR30  0 0 c5  0 0 0  0 0  0 0  0 0  3	$disp 2 height
 TR40  0 0 c6  0 0 0  0 0  0 0  0 0  3	$occluder height
 TR50  0 0 101.0  0 0 0  0 0  0 0  0 0  3	$sample table height
 TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
-TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
-TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
+$TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
+$TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
 
 
 [ Cell ]
@@ -654,7 +571,7 @@ $set:%cell_iman%[104]
 $set:%vol_iman%[28.274334E-4] $(PI*1.5^2*4.0E-4)
 $[ Cell ]
 $2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 $Air inside
-2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 #6000 #6001 #6002 #6003	$profiles for pilar
+2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 $profiles for pilar
 
 $set:%outside_stuff%[#101 #102 #103 #104]
 $set:%exclusions%[#2001 #510]
@@ -714,29 +631,7 @@ $100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
 $set:%cell_oclusor%[2401]
 $set:%vol_oclusor%[(PI*(c50*c50*c51+c52*c52*0.2))]
 $infl:{Ce_fondo.inp}
-$ [ Cell ]
-$100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
-
-2500 1  -1.205e-3  4 -5 6 -7  1504 -1505 #2501 #2502 #2503 #2504 #2506 #103 #2505 #510 #6000 #6001 #6002	#6003 $fill w/ air
-$2500 %air%  %workzone%  %sample_zone% #2501 #2502 #2503 #2504 #2505 #2506	$fill w/ air
-
-2501 2  -2.6989 1507 ((-1503 -1509):(-1508 -1510)) #(1511 -1512 1513 -1514 -1515) #(-1516 -1517)	$sAl base
-2502 2  -2.6989  -1517 1518 -1516 1519 #(-1520 -1521) #(-1522 -1523)	$Petri holder
-2503 7  -1.050  1524 -1523 -1527 #(-1529 -1530)	$Petri dish
-2504 14 -1.397  1528 -1525 -1526 #(1524 -1527)	$Petri lid
-2505 12 -1.04  1531 -1529 -1530	$cells
-2506 8  -1.0  -1529 -1530 ((1540):(1541 1560):(1542 1561):(1543 1562)) #2505	$medium with meniscus
-
-$set:%cell_albase%[2501]
-$set:%vol_albase%[80.104322] $PI*(13.34667+14.9350032-1.97676)-2.535
-$set:%cell_petrihold%[2502]
-$set:%vol_petrihold%[(7.8618356*c60)]  $PI*(6.5025-4.0)
-$set:%cell_petri%[2503]
-$set:%vol_petri%[(PI*(c63*c63*c67+c62*c62*c63))]
-$set:%cell_mylar%[2504]
-$set:%vol_mylar%[(PI*(c66*c66*0.63+(c62+c63)*(c62+c63)*c66))]
-$set:%cell_medium%[2506]
-$set:%vol_medium%[(c65)]
+$infl:{Ce_fondo_mylar.inp}
 $infl:{Ce_diodos.inp}
 $infl:{Ce_ridge_filter_4.inp}
 $ [ Cell ]
@@ -778,26 +673,36 @@ $ Trampolin acrilico
 6003 17  -1.18  -3300
 
 1 -1     1  $Deep space
-2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1504 -1505):(1621 -1623)))  #510
+$2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
      #101 #102 #103 #104 #2001 #510 $Cover unused workzone with air
 
+$ Modifica la Celda 2 así:
+2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1621 -1623))) #510 #6000 #6001 #6002 #6003
+      #101 #102 #103 #104 #2001 #510
+
 [ Volume ]
- reg	vol
- 104	28.274334E-4
-2101	((25-PI*c21*c21)*c20)
-( 2104 < 2103 < 2102 )	(PI*c21*c21*c20*42/43)
-2106	(2*PI*c23*c23*c20)
-2107	(8.016+47.61*c24-25*c20-PI*2.25*(c24-c20))
-2201	(16*c30)
-2301	(54.76*c40)
-2401	(PI*(c50*c50*c51+c52*c52*0.2))
-2501	80.104322
-2502	(7.8618356*c60)
-2503	(PI*(c63*c63*c67+c62*c62*c63))
-2504	(PI*(c66*c66*0.63+(c62+c63)*(c62+c63)*c66))
-2506	(c65)
-2603	(c76*40.19137)
-(2606 < 2605 < 2604)	(15.850477*c75*(8*c701+7*c702+6*c703+5*c704+4*c705+3*c706+2*c707+c708)/c71)
+ reg    vol
+ 104    28.274334E-4
+ 2101   ((25-PI*c21*c21)*c20)
+ ( 2104 < 2103 < 2102 )   (PI*c21*c21*c20*42/43)
+ 2106   (2*PI*c23*c23*c20)
+ 2107 (8.016+47.61*c24-25*c20-PI*2.25*(c24-c20))
+ 2201    (16*c30)
+ 2301    (54.76*c40)
+ 2401  (PI*(c50*c50*c51+c52*c52*0.2))
+
+$ --- ESTAS LÍNEAS ESTÁN DANDO EL ERROR ---
+$ %cell_albase%     %vol_albase%    <-- Comenta esta
+$ %cell_petrihold%  %vol_petrihold% <-- Y esta
+$ %cell_petri%      %vol_petri%     <-- Y esta
+$ %cell_medium%     %vol_medium%    <-- Y esta
+$ -----------------------------------------
+
+ 2603   (c76*40.19137)
+ (2606 < 2605 < 2604)   (15.850477*c75*(8*c701+7*c702+6*c703+5*c704+4*c705+3*c706+2*c707+c708)/c71)
+
+$ --- No olvides definir el volumen de tu nuevo Pouch ---
+ 510             1.608
 [ T-Track ] off
 title	= Particle track
 mesh	= xyz
@@ -1381,7 +1286,7 @@ file = track_xz.out
 gshow = 3
 epsout = 1
 
-[ T - D e p o s i t ] off  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ] $ Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -1391,8 +1296,8 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    79.9
-zmax   =    80.5
+zmin   =    60.57
+zmax   =    60.79
 nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
@@ -1401,6 +1306,19 @@ unit = 0
 axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
+
+[ T - Track ] $Medimos espectro de energía
+    title = Espectro de energía
+     mesh =  reg           $ Tally por región (celda)
+      reg =  510           $ Tu celda del pouch
+    e-type =  2            $ Mesh logarítmico
+       ne =  100           $ Número de divisiones (bins)
+     emin =  1.0e-9        $ Energía mínima (ej. 1e-9 MeV para neutrones)
+     emax =  25.0         $ Energía máxima (el dmax de tu problema)
+     unit =  1             $ Resultado en 1/cm2/source
+     axis =  eng           $ El eje X será la energía
+     file = energy_pouch.out
+     part = all $ Las partículas que te interese trackear
 
 
 [ E n d ]
