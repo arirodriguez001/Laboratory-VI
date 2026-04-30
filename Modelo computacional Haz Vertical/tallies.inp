@@ -593,7 +593,7 @@ nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 z-type =    2           $ Eje de profundidad (Z)
 zmin   =    57.
 zmax   =    63.
-nz     =    600      $ Mantenemos alta resolucion para el grafico de Python
+nz     =    300      $ Mantenemos alta resolucion para el grafico de Python
 
 
 part = proton
@@ -614,4 +614,4 @@ epsout = 1
      unit =  1             $ Resultado en 1/cm2/source
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
-     part = all $ Las partículas que te interese trackear
+     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
