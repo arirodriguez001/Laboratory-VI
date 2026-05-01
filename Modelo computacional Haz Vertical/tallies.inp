@@ -493,7 +493,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]off
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -508,8 +508,7 @@ ymax = 50.
 
 z-type = 1
 nz = 1
-14. 14.2
-
+60.63 60.73 $ centrado en 60.68 +- 0.05 cm, que es el centro del pouch
 part = proton
 
 e-type = 1
@@ -593,8 +592,7 @@ nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 z-type =    2           $ Eje de profundidad (Z)
 zmin   =    57.
 zmax   =    63.
-nz     =    300      $ Mantenemos alta resolucion para el grafico de Python
-
+nz     =    500      $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
 output = dose
@@ -615,3 +613,54 @@ epsout = 1
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
      part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+
+[ T - T r a c k ] 
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+part = proton
+
+e-type = 1
+emin = 0.0
+emax = 25.0
+ne = 200
+
+unit = 1
+axis = xy
+
+file = track_xy_energy_pouch.out
+gshow = 1
+epsout = 1
+
+[ T - D e p o s i t ] $ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -7    $ Ajustá a las dimensiones de tu haz
+     xmax =  7
+   y-type =  2
+       ny =  1
+     ymin = -7
+     ymax =  7
+   z-type =  1
+       nz =  1
+    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
+     unit =  0      $ Resultado en MeV/source o Gy/source
+   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
+     axis =  z
+     file =  avg_energy_z.out
+     part =  proton

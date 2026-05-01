@@ -1198,7 +1198,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]off
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -1213,8 +1213,7 @@ ymax = 50.
 
 z-type = 1
 nz = 1
-14. 14.2
-
+60.63 60.73 $ centrado en 60.68 +- 0.05 cm, que es el centro del pouch
 part = proton
 
 e-type = 1
@@ -1298,7 +1297,7 @@ nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 z-type =    2           $ Eje de profundidad (Z)
 zmin   =    57.
 zmax   =    63.
-nz     =    300      $ Mantenemos alta resolucion para el grafico de Python
+nz     =    500      $ Mantenemos alta resolucion para el grafico de Python
 
 
 part = proton
@@ -1320,6 +1319,37 @@ epsout = 1
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
      part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+
+[ T - T r a c k ]
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+part = proton
+
+e-type = 2
+emin = 0.0
+emax = 25.0
+ne = 100
+
+unit = 1
+axis = xy
+
+file = track_xy_energy_pouch.out
+gshow = 1
+epsout = 1
 
 
 [ E n d ]
