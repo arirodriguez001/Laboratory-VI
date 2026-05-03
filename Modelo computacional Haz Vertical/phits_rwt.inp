@@ -97,6 +97,7 @@ mat[16] H -0.100588  C -0.228250  N -0.046420  O -0.619002  Na -0.000070  Mg -0.
 mat[17]  C 5 H 8 O 2         $ acrilico
 $set:%acrilico%[17  -1.18]
 
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -115,6 +116,7 @@ mat name   color
 14	Mylar  pastelpink
 15	Blood  red
 16  pouch  pink
+17  acrilico white
 
 [ Surface ]
 $Room
@@ -521,13 +523,16 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0.0 0.0 60.68  1.6 0.0 0.0  -1.0
+100 ell 0.0 0.0 61.01  1.6 0.0 0.0  -1.0
 $100  TR50  ELL   1.7185 0.5  0.5  14.9385 2.609  2.22
 $100 TR50 sq  2.9532 0.25 0.25  14.9385 2.609 2.22
 
 $ Planos de corte para definir el pouch
 201 pz 60.58
 202 pz 60.78
+
+$Gel de ultrasonido de 0.3cm de altura
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.08 60.58
 
 $ POSICIONADOR
 
@@ -545,7 +550,7 @@ $ Hueco hacia trampolin
 3200 rpp -1.7185 -1.4685  -1.486 1.486  58.08 61.01
 
 $ Trampolin / soporte del pouch
-3300 rpp -1.4685 1.7185  -1.486 1.486  60.78 61.01
+3300 rpp -1.4685 2.7185  -1.486 1.486  60.78 61.01
 
 [ Transform ]
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
@@ -570,8 +575,8 @@ $[ Cell ]
 $set:%cell_iman%[104]
 $set:%vol_iman%[28.274334E-4] $(PI*1.5^2*4.0E-4)
 $[ Cell ]
-$2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 $Air inside
-2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 $profiles for pilar
+$2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 #6000 #6001 #6002 #6003 $Air inside
+2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 #6000 #6001 #6002 #6003 $profiles for pilar
 
 $set:%outside_stuff%[#101 #102 #103 #104]
 $set:%exclusions%[#2001 #510]
@@ -600,7 +605,7 @@ $set:%cell_atholder%[2107]
 $set:%vol_atholder%[(8.016+47.61*c24-25*c20-PI*2.25*(c24-c20))]
 
 $ [ Cell ]
-$100 -1 #( %disp1_zone% ) #510 TRCL=30	$Deep space
+$100 -1 #( %disp1_zone% ) #510 #600 TRCL=30	$Deep space
 
 2200 1  -1.205e-3  4 -5 6 -7 1204 -1205 #2201 #2202 #2203 #2204 #2001 #510	$fill w/ air
 2201 6  -11.35   1206 -1207  1208 -1209  1210 -1211 TRCL=21	$scatterer foil 1
@@ -656,28 +661,31 @@ $set:%vol_rfgrid%[(15.850477*c75*(8*c701+7*c702+6*c703+5*c704+4*c705+3*c706+2*c7
 $ Pouch
 510 16 -1.0  -100  201  -202
 
+$ Gel ultrasonido
+600 8 -1.0  -4000 #510
+
 $ POSICIONADOR
 
 $ [ C e l l ]
 
 $ Caja acrilica hueca
-6000 17  -1.18  -3000 3100 3200
+6000 17  -1.18  -3000 3100 3200 #6001 #6002 #6003 #510 #600
 
 $ Aire dentro de la caja
-6001 1  -1.205e-3       -3100
+6001 1  -1.205e-3       -3100 #510 #600
 
 $ Aire en el hueco hacia el trampolin
-6002 1  -1.205e-3       -3200
+6002 1  -1.205e-3       -3200 #6003 #510 #600
 
 $ Trampolin acrilico
-6003 17  -1.18  -3300
+6003 17  -1.18  -3300 #510
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
      #101 #102 #103 #104 #2001 #510 $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
-2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1621 -1623))) #510 #6000 #6001 #6002 #6003
+2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1621 -1623))) #510 #600 #103 #6000 #6001 #6002 #6003
       #101 #102 #103 #104 #2001 #510
 
 [ Volume ]
@@ -1198,22 +1206,22 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]off
+[ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
 nx = 100
-xmin = -7.
-xmax = 7.
+xmin = -4.
+xmax = 4.
 
 y-type = 2
 ny = 100
-ymin = -50.
-ymax = 50.
+ymin = -20.
+ymax = 20.
 
 z-type = 1
 nz = 1
-14. 14.2
+60.58 60.78
 
 part = proton
 
@@ -1227,7 +1235,7 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] off
+[ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
@@ -1268,7 +1276,7 @@ xmax = 7.
 z-type = 2
 nz = 100
 zmin = -5     $ -5, -5, -5, -5, -5, -5,
-zmax = 110.      $ 10, 10, 20, 30, 60, 90
+zmax = 100.      $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
@@ -1296,10 +1304,9 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    57.
-zmax   =    63.
-nz     =    300      $ Mantenemos alta resolucion para el grafico de Python
-
+zmin   =    59.98
+zmax   =    60.6
+nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
 output = dose
@@ -1308,7 +1315,7 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
-[ T - Track ] $Medimos espectro de energía
+[ T - Track ] off $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510           $ Tu celda del pouch
@@ -1319,7 +1326,52 @@ epsout = 1
      unit =  1             $ Resultado en 1/cm2/source
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
-     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - D e p o s i t ] off $ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -7    $ Ajustá a las dimensiones de tu haz
+     xmax =  7
+   y-type =  2
+       ny =  1
+     ymin = -7
+     ymax =  7
+   z-type =  1
+       nz =  1
+    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
+     unit =  0      $ Resultado en MeV/source o Gy/source
+   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
+     axis =  z
+     file =  avg_energy_z.out
+     part =  proton
+
+[ T - T r a c k ]
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto.out
+     unit =  1
+   epsout =  1
 
 
 [ E n d ]

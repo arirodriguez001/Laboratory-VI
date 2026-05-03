@@ -1,5 +1,5 @@
 $ [ Cell ]
-$100 -1 #( %disp1_zone% ) #510 TRCL=30	$Deep space
+$100 -1 #( %disp1_zone% ) #510 #600 TRCL=30	$Deep space
 
 2200 %air%  %workzone_walls% %disp1_zone% #2201 #2202 #2203 #2204 %exclusions%	$fill w/ air
 2201 %Pb%   %disp1_foil% TRCL=21	$scatterer foil 1

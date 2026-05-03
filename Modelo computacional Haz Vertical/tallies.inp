@@ -493,22 +493,22 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]off
+[ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
 nx = 100
-xmin = -7.
-xmax = 7.
+xmin = -4.
+xmax = 4.
 
 y-type = 2
 ny = 100
-ymin = -50.
-ymax = 50.
+ymin = -20.
+ymax = 20.
 
 z-type = 1
 nz = 1
-14. 14.2
+60.58 60.78
 
 part = proton
 
@@ -522,7 +522,7 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] off
+[ T - T r a c k ] 
 mesh = xyz
 
 x-type = 2
@@ -563,7 +563,7 @@ xmax = 7.
 z-type = 2            
 nz = 100
 zmin = -5     $ -5, -5, -5, -5, -5, -5, 
-zmax = 110.      $ 10, 10, 20, 30, 60, 90
+zmax = 100.      $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
@@ -591,10 +591,9 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    57.
-zmax   =    63.
-nz     =    300      $ Mantenemos alta resolucion para el grafico de Python
-
+zmin   =    59.98
+zmax   =    60.6
+nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
 output = dose
@@ -603,7 +602,7 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
-[ T - Track ] $Medimos espectro de energía
+[ T - Track ] off $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510           $ Tu celda del pouch
@@ -614,4 +613,49 @@ epsout = 1
      unit =  1             $ Resultado en 1/cm2/source
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
-     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - D e p o s i t ] off $ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -7    $ Ajustá a las dimensiones de tu haz
+     xmax =  7
+   y-type =  2
+       ny =  1
+     ymin = -7
+     ymax =  7
+   z-type =  1
+       nz =  1
+    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
+     unit =  0      $ Resultado en MeV/source o Gy/source
+   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
+     axis =  z
+     file =  avg_energy_z.out
+     part =  proton
+
+[ T - T r a c k ] 
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto.out
+     unit =  1
+   epsout =  1
