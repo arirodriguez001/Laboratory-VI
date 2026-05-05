@@ -8,8 +8,8 @@ Vertical external proton beam - modular input
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
 icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 100000 $ (D=10) number of particles per one batch
-maxbch	= 10000 $ (D=10) number of batches
+maxcas	= 10000 $ (D=10) number of particles per one batch
+maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -21,10 +21,10 @@ $itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while
 
 $  required options for DCHAIN (also e-mode=0)
-igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
-jmout	= 1 $ (D=0) Density echo, 0:input, 1:number density
-dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
-dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
+$ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
+$ jmout	= 1 $ (D=0) Density echo, 0:input, 1:number density
+$ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
+$ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
 set: c2[ 18.0 ]	$accelerator terminal tension
@@ -532,7 +532,7 @@ $ Planos de corte para definir el pouch
 202 pz 60.78
 
 $Gel de ultrasonido de 0.3cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.08 60.58
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.58  $ 0.5 cm
 
 $ POSICIONADOR
 
@@ -1206,7 +1206,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -1222,6 +1222,8 @@ ymax = 20.
 z-type = 1
 nz = 1
 60.58  60.63 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+$60.58 60.78
+
 part = proton
 
 e-type = 1
@@ -1234,7 +1236,7 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ]
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -1264,7 +1266,7 @@ file = track_yz.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ]
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -1303,9 +1305,9 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    57.
-zmax   =    63.
-nz     =    400      $ Mantenemos alta resolucion para el grafico de Python
+zmin   =    60.33
+zmax   =    61.0
+nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
 output = dose
@@ -1314,10 +1316,10 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
-[ T - Track ]  $Medimos espectro de energía
+[ T - Track ]  off $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
-      reg =  510           $ Tu celda del pouch
+      reg =  510 600 6003      $ Tu celda del pouch
     e-type =  2            $ Mesh logarítmico
        ne =  100           $ Número de divisiones (bins)
      emin =  1.0e-9        $ Energía mínima (ej. 1e-9 MeV para neutrones)
@@ -1325,54 +1327,9 @@ epsout = 1
      unit =  1             $ Resultado en 1/cm2/source
      axis =  eng           $ El eje X será la energía
      file = energy_pouch.out
-     part = all $ Las partículas que te interese trackear
+     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
 
-
-[ T - D e p o s i t ] off $ Mismo Tdeposit que el anterior solo que con mesh cilind
-title = Bragg peak in pouch
-mesh = xyz
-   x-type =  2
-       nx =  1
-     xmin = -7    $ Ajustá a las dimensiones de tu haz
-     xmax =  7
-   y-type =  2
-       ny =  1
-     ymin = -7
-     ymax =  7
-   z-type =  1
-       nz =  1
-    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
-     unit =  0      $ Resultado en MeV/source o Gy/source
-   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
-     axis =  z
-     file =  avg_energy_z.out
-     part =  proton
-
-[ T - T r a c k ]
-    title = Espectro de energia justo antes del pouch
-     mesh =  xyz
-    x-type =  2
-       nx  =  1
-     xmin  = -6.0
-     xmax  =  6.0
-    y-type =  2
-       ny  =  1
-     ymin  = -6.0
-     ymax  =  6.0
-    z-type =  1
-       nz  =  1
-     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
-   e-type =  2
-       ne =  100
-     emin =  1.0
-     emax =  25.0
-     part =  proton neutron alpha photon positron
-     axis =  eng
-     file = energia_pre_impacto.out
-     unit =  1
-   epsout =  1
-
-[ T - T r a c k ]
+[ T - T r a c k ] off $ este track es lo mismo q el xy
 title = Para ver que energia llega al pouch
 mesh = xyz
 
@@ -1402,7 +1359,7 @@ file = track_xy_energy_pouch.out
 gshow = 1
 epsout = 1
 
-[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ] off $ energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
 
 title = Energia depositada en el pouch
 mesh = xyz
@@ -1433,6 +1390,79 @@ unit = 3
 axis = z
 
 file = deposit_pouch_z.out
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - D e p o s i t ] off
+title = Bragg peak in pouch
+mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -7    $ Ajustá a las dimensiones de tu haz
+     xmax =  7
+   y-type =  2
+       ny =  1
+     ymin = -7
+     ymax =  7
+   z-type =  1
+       nz =  1
+    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
+     unit =  0      $ Resultado en MeV/source o Gy/source
+   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
+     axis =  z
+     file =  avg_energy_z.out
+     part =  proton
+
+[ T - T r a c k ] off
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto.out
+     unit =  1
+   epsout =  1
+
+[ T - D e p o s i t ]  $ para hacer el histograma dosis volumen
+title = Bragg peak in pouch
+mesh = xyz
+
+x-type =    2           $ Malla radial (sustituye a x e y)
+xmin   =    -1.6      $ Desde el centro del haz
+xmax   =    1.6       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nx     =    16           $ Un solo bin radial para integrar toda la dosis del haz
+
+y-type =    2           $ Malla radial (sustituye a x e y)
+ymin   =    -1       $ Desde el centro del haz
+ymax   =    1         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+ny     =    10           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.58
+zmax   =    60.78
+nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = histograma_dosis.out
+epsout = 1
 
 
 [ E n d ]

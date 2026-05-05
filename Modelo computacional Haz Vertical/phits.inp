@@ -8,8 +8,8 @@ Vertical external proton beam - modular input
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
 icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 100000 $ (D=10) number of particles per one batch
-maxbch	= 10000 $ (D=10) number of batches
+maxcas	= 10000 $ (D=10) number of particles per one batch
+maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -21,10 +21,10 @@ $itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while the information on secondary particles is evaluated using the nuclear reaction models
 
 $  required options for DCHAIN (also e-mode=0)
-igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
-jmout	= 1 $ (D=0) Density echo, 0:input, 1:number density
-dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
-dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
+$ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
+$ jmout	= 1 $ (D=0) Density echo, 0:input, 1:number density
+$ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
+$ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
 set: c2[ 18.0 ]	$accelerator terminal tension
@@ -174,7 +174,7 @@ $ Planos de corte para definir el pouch
 202 pz 60.78
 
 $Gel de ultrasonido de 0.3cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.08 60.58
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.58  $ 0.5 cm
 
 $ POSICIONADOR 
 
