@@ -8,8 +8,8 @@ Vertical external proton beam - modular input
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
 icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 10000 $ (D=10) number of particles per one batch
-maxbch	= 1000 $ (D=10) number of batches
+maxcas	= 100000 $ (D=10) number of particles per one batch
+maxbch	= 10000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -1221,8 +1221,7 @@ ymax = 5.
 
 z-type = 1
 nz = 1
-60.58 60.78
-
+60.58  60.63 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
 part = proton
 
 e-type = 1
@@ -1294,7 +1293,11 @@ file = track_xz.out
 gshow = 3
 epsout = 1
 
+<<<<<<< HEAD
 [ T - D e p o s i t ] off$ Mismo Tdeposit que el anterior solo que con mesh cilind
+=======
+[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+>>>>>>> 51339fe55c3e3025343fc32ec61fc94db769a8ed
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -1304,9 +1307,15 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
+<<<<<<< HEAD
 zmin   =    60.38
 zmax   =    61
 nz     =    400         $ Mantenemos alta resolucion para el grafico de Python
+=======
+zmin   =    57.
+zmax   =    63.
+nz     =    400      $ Mantenemos alta resolucion para el grafico de Python
+>>>>>>> 51339fe55c3e3025343fc32ec61fc94db769a8ed
 
 part = proton
 output = dose
@@ -1315,7 +1324,11 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
+<<<<<<< HEAD
 [ T - Track ] off$Medimos espectro de energía en el gel
+=======
+[ T - Track ]  $Medimos espectro de energía
+>>>>>>> 51339fe55c3e3025343fc32ec61fc94db769a8ed
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  600  $ Tu celda
@@ -1399,6 +1412,7 @@ mesh = xyz
      unit =  1
    epsout =  1
 
+<<<<<<< HEAD
 [ T - D e p o s i t ]  $ para hacer el histograma dosis volumen
 title = Bragg peak in pouch
 mesh = xyz
@@ -1425,5 +1439,69 @@ axis = z
 file = histograma_dosis.out
 epsout = 1
 
+=======
+[ T - T r a c k ]
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.58 + 0.05 cm, que es donde empieza el pouch
+part = proton
+
+e-type = 1
+ne = 1
+0.0 20.0
+
+unit = 1
+axis = xy
+
+file = track_xy_energy_pouch.out
+gshow = 1
+epsout = 1
+
+[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+
+title = Energia depositada en el pouch
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -7
+xmax = 7
+
+
+y-type = 2
+ny = 1
+ymin = -7
+ymax = 7
+
+z-type = 1
+nz = 1
+60.63 60.73
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+output = deposit                 $ output = deposit  -> unit = 3   # MeV/source
+unit = 3
+axis = z
+
+file = deposit_pouch_z.out
+
+>>>>>>> 51339fe55c3e3025343fc32ec61fc94db769a8ed
 
 [ E n d ]
