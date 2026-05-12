@@ -553,7 +553,7 @@ file = track_yz.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] off
+[ T - T r a c k ] 
 mesh = xyz
 
 x-type = 2
@@ -563,8 +563,8 @@ xmax = 7.
 
 z-type = 2            
 nz = 100
-zmin = -5     $ -5, -5, -5, -5, -5, -5, 
-zmax = 100.      $ 10, 10, 20, 30, 60, 90
+zmin = 50     $ -5, -5, -5, -5, -5, -5, 
+zmax = 70.      $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
