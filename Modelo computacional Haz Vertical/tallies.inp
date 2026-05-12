@@ -493,7 +493,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ] off
+[ T - T r a c k ] 
 mesh = xyz
 
 x-type = 2
@@ -508,7 +508,7 @@ ymax = 20.
 
 z-type = 1
 nz = 1
-60.58  60.63 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+60.68  60.70 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
 $60.58 60.78
 
 part = proton
@@ -582,7 +582,7 @@ file = track_xz.out
 gshow = 3
 epsout = 1 
 
-[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ]  off$ Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 

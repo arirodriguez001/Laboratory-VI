@@ -7,7 +7,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -42,7 +42,6 @@ s-type	= 1	$1 = monoenergetic, 11 = emitance beam, 13 = xy Gaussian beam
   z1	= -3.0	$ maximum position of z-axis [cm]
  dir	= 1.0	$ z-direction of beam [cosine]
   e0	= c2
-
 
 [ Material ]
 mat[1] C -0.000124 N -0.755267 O -0.231781 Ar -0.012827	$ air (ICRU)
@@ -174,7 +173,7 @@ $ Planos de corte para definir el pouch
 202 pz 60.78
 
 $Gel de ultrasonido de 0.3cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.58  $ 0.5 cm
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.78  $ 0.5 cm
 
 $ POSICIONADOR 
 
@@ -214,7 +213,7 @@ $ Pouch
 510 16 -1.0  -100  201  -202 
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510
+600 8 -1.0  -4000 #510 #510
 
 $ POSICIONADOR 
 

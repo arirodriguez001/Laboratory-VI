@@ -7,7 +7,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -42,7 +42,6 @@ s-type	= 1	$1 = monoenergetic, 11 = emitance beam, 13 = xy Gaussian beam
   z1	= -3.0	$ maximum position of z-axis [cm]
  dir	= 1.0	$ z-direction of beam [cosine]
   e0	= c2
-
 
 [ Material ]
 mat[1] C -0.000124 N -0.755267 O -0.231781 Ar -0.012827	$ air (ICRU)
@@ -532,7 +531,7 @@ $ Planos de corte para definir el pouch
 202 pz 60.78
 
 $Gel de ultrasonido de 0.3cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.58  $ 0.5 cm
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.78  $ 0.5 cm
 
 $ POSICIONADOR
 
@@ -662,7 +661,7 @@ $ Pouch
 510 16 -1.0  -100  201  -202
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510
+600 8 -1.0  -4000 #510 #510
 
 $ POSICIONADOR
 
@@ -678,7 +677,7 @@ $ Aire en el hueco hacia el trampolin
 6002 1  -1.205e-3       -3200 #6003 #510 #600
 
 $ Trampolin acrilico
-6003 17  -1.18  -3300 #510
+6003 17  -1.18  -3300 #510 #600
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
@@ -1206,7 +1205,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ] off
+[ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
@@ -1221,7 +1220,7 @@ ymax = 20.
 
 z-type = 1
 nz = 1
-60.58  60.63 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+60.68  60.70 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
 $60.58 60.78
 
 part = proton
@@ -1295,7 +1294,7 @@ file = track_xz.out
 gshow = 3
 epsout = 1
 
-[ T - D e p o s i t ]  $ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ]  off$ Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
