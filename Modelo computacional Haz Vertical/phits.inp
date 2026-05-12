@@ -27,7 +27,7 @@ $ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
 $ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
-set: c2[ 18.0 ]	$accelerator terminal tension
+set: c2[ 20.0 ]	$accelerator terminal tension
 $$infl:{c2.inp} $Reemplazar una variable linealmente
 
 set:%thisdata%[_21MeV_dchain]	$for tallies
@@ -167,16 +167,16 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0.0 0.0 61.01  1.6 0.0 0.0  -1.0
+100 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
 $100  TR50  ELL   1.7185 0.5  0.5  14.9385 2.609  2.22
 $100 TR50 sq  2.9532 0.25 0.25  14.9385 2.609 2.22
 
-$ Planos de corte para definir el pouch
-201 pz 60.58
-202 pz 60.78
+$ Planos de corte para definir el pouch (espesor 0.2 cm)
+202 pz 60.58
+201 pz 60.38
 
-$Gel de ultrasonido de 0.3cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.43 60.78  $ 0.5 cm
+$Gel de ultrasonido de 0.35cm de altura
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.23 60.58  $
 
 $ POSICIONADOR 
 

@@ -493,7 +493,7 @@ stdcut  = 0.01
 $$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
 
 $ Tallys para ver la geometria
-[ T - T r a c k ] 
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -508,8 +508,7 @@ ymax = 20.
 
 z-type = 1
 nz = 1
-60.68  60.70 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
-$60.58 60.78
+60.47  60.49 $ centro del pouch
 
 part = proton
 
@@ -563,8 +562,8 @@ xmax = 7.
 
 z-type = 2            
 nz = 100
-zmin = 50     $ -5, -5, -5, -5, -5, -5, 
-zmax = 70.      $ 10, 10, 20, 30, 60, 90
+zmin = 58.01     $ -5, -5, -5, -5, -5, -5, 
+zmax = 58.02     $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
@@ -582,7 +581,7 @@ file = track_xz.out
 gshow = 3
 epsout = 1 
 
-[ T - D e p o s i t ]  off$ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ]  off $ Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -592,8 +591,8 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.33
-zmax   =    61.0
+zmin   =    60.
+zmax   =    61.05
 nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
@@ -603,7 +602,7 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
-[ T - Track ]  off $Medimos espectro de energía
+[ T - Track ]off $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510 600 6003      $ Tu celda del pouch
@@ -724,7 +723,7 @@ mesh = xyz
      unit =  1
    epsout =  1
 
-[ T - D e p o s i t ]  $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ]off  $ para hacer el histograma dosis volumen
 title = Bragg peak in pouch
 mesh = xyz
 
@@ -740,8 +739,8 @@ ny     =    10           $ Un solo bin radial para integrar toda la dosis del ha
 
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.58
-zmax   =    60.78
+zmin   =    60.38
+zmax   =    60.58
 nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
