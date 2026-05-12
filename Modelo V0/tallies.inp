@@ -1,0 +1,993 @@
+[ T-Track ] off
+title	= Particle track
+mesh	= xyz
+x-type	= 4
+xdel	= 0.1
+xmin	= -6.67
+xmax	=  6.67
+y-type	= 1
+  ny	= 1
+		-6.67  6.67
+z-type	= 4
+zdel	= 0.1
+zmin	= -5.0
+zmax	=  102.5
+e-type	= 1
+  ne	= 1
+		0.0  1000
+part	= proton
+axis	= zx
+2d-type = 3
+file	= Flux%thisdata%.out
+unit	= 1
+epsout	= 2
+gshow	= 1	$ 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+stdcut	= 0.01
+
+
+[ T-Deposit ] off
+title	= Dose per region
+mesh	= reg
+ reg	= 2505 2506
+unit	= 0	$ unit is [Gy/source]
+axis	= reg	$ axis of output
+output	= dose	$ total deposit energy
+file	= Dose%thisdata%.out	$ file name of output for the above axis
+part	= all
+epsout	= 0
+stdcut	= 0.01
+
+
+[ T-Deposit ] off
+$$factor	= -1
+title	= Bragg peak in medium
+mesh	= r-z 
+r-type	= 1
+  nr	= 4
+			0.0 (0.500*c62) (0.707*c62) (0.866*c62) (c62)
+z-type	= 4
+zdel	= (c68)
+zmin	= 0.0 
+zmax	= (c601)  
+material = 2
+			8  12
+unit	= 0	$ unit is [Gy/source]
+output	= dose	$ total deposit energy
+axis	= z	$ axis of output
+file	= Bragg_peak%thisdata%.out	$ file name of output for the above axis
+part	= all
+epsout	= 2
+angel	= ylin
+trcl	= 62
+stdcut	= 0.01
+
+
+[ T-Deposit ] off
+factor	= -1
+title	= Radial dose uniformity at monolayer cells
+mesh	= r-z 
+r-type	= 2
+  nr	= 50
+rmin	= 0.0
+rmax	= (c62)
+z-type	= 1
+  nz	= 1
+		(0.0)   (c68)
+material = 1
+			12
+unit	= 0	$ unit is [Gy/source]
+output	= dose	$ total deposit energy
+axis	= r	$ axis of output
+file	= Un_r%thisdata%.out	$ file name of output for the above axis
+part	= all
+gshow	= 1	$ 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+$2D-type	= 3	$1: contour plot	2: cluster plot	3: color plot	6: cluster and contour plot	7: color and contour plot.
+epsout	= 2
+angel	= ylin
+$angel	= zlin form(0.75) xfac(1.0) afac(1.0) scal(0.9)
+trcl	= 61
+stdcut	= 0.01
+
+
+[ T-Deposit ] off
+factor	= -1
+title	= xy uniformity
+mesh	= xyz 
+x-type	= 2
+  nx	= 20
+xmin	= -c62
+xmax	=  c62
+y-type	= 2
+  ny	= 20
+ymin	= -c62
+ymax	=  c62
+z-type	= 2
+  nz	= 20
+zmin	= 0.0 
+zmax	= (c601)  
+material = 2
+			8  12
+unit	= 0	$ unit is [Gy/source]
+output	= dose	$ total deposit energy
+axis	= xy	$ axis of output
+file	= Un_xy%thisdata%.out	$ file name of output for the above axis
+part	= all
+gshow	= 1	$ 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+2D-type	= 3	$1: contour plot	2: cluster plot	3: color plot	6: cluster and contour plot	7: color and contour plot.
+epsout	= 1	$ (D=0) generate eps file by ANGEL
+angel	= ylin
+trcl	= 62
+$stdcut	= 0.01
+
+
+[ T-Yield ] off
+title	= Activation yield
+mesh	= reg
+ reg	= 104 2101 ( 2104 < 2103 < 2102 ) 2106 2107 2201 2301 
+			2401 2501 2502 2503 2504 2506 2603 (2606 < 2605 < 2604) 
+volume
+ reg	vol
+ 1000001	%vol_atgrid%
+ 1000002	%vol_rfgrid%
+
+material = -1
+			1	$to exclude air
+axis	= dchain
+info	= 1
+file	= Act_dchain%thisdata%.out
+unit	= 1
+epsout	= 2
+stdcut	= 0.01
+
+
+[T-DCHAIN] off 
+title	= Activation of materials 
+mesh	= reg
+ reg	= 104 2101 ( 2104 < 2103 < 2102 ) 2106 2107 2201 2301 
+			2401 2501 2502 2503 2504 2506 2603 (2606 < 2605 < 2604)
+file	= Act_%thisdata%.out
+stdcut	= 0.01 
+timeevo	= 2 
+ 15.0 m	1.0 
+ 15.0 m	0.0	
+
+outtime	= 24
+ 0.1 s
+ 1.0 s
+ 2.0 s
+ 3.0 s
+ 10.0 s
+ 20.0 s
+ 30.0 s
+ 1.0 m
+ 2.0 m
+ 3.0 m
+ 10.0 m
+ 15.0 m
+ -0.1 s
+ -1.0 s
+ -2.0 s
+ -3.0 s
+ -10.0 s
+ -20.0 s
+ -30.0 s
+ -1.0 m
+ -2.0 m
+ -3.0 m
+ -10.0 m
+ -15.0 m
+ 
+ amp	= 5 $ Power of source / second (multiplied by totfact)
+
+ $$$$$$$$$$$$$$$$$$$ tallis de ari y lu $$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ [ T-Track ] off
+title   = Flujo de partículas en plano XY a z = 1.10 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         1.05 1.15
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z1_10.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ] off
+title   = Flujo de partículas en coordenadas cilindricas a z = 1.10 cm
+mesh    = r-z
+
+r-type  = 4
+rdel    = 0.1
+rmin    = 0.0
+rmax    = 6.67
+
+z-type  = 4
+zdel    = 0.1
+zmin    = 1.05
+zmax    = 1.15
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = rz
+2d-type = 3
+file    = Flux_rz_z110.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 4.65 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         4.60 4.70
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z465.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ] off
+title   = Flujo de partículas en plano XY a z = 14.04 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         13.99 14.09
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z14_04.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 26.52 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         26.47 26.57
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z26_52.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 49.91 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         49.86 49.96
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z49_91.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 79.83 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         79.78 79.88
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z79_83.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 96.73 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         96.68 96.78
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z96_73.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+[ T-Track ]  off
+title   = Flujo de partículas en plano XY a z = 100.92 cm
+mesh    = xyz
+
+x-type  = 4
+xdel    = 0.1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 4
+ydel    = 0.1
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         100.87 100.97
+
+e-type  = 1
+ne      = 1
+         0.0 1000
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_xy_z100_92.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+$$$$$$$$$$$$$ ahora medimos la energia $$$$$$$$$$$$$$$$$$
+
+[ T-Track ] off
+title   = Flujo de partículas en plano XY a z = 1.10 cm
+mesh    = xyz
+
+x-type  = 2
+nx    =  1
+xmin    = -6.67
+xmax    =  6.67
+
+y-type  = 2
+ny =1 
+ymin    = -6.67
+ymax    =  6.67
+
+z-type  = 1
+nz      = 1
+         1.05 1.15
+
+e-type  = 2
+ne      = 100
+emin    = 0.0
+emax    = 25.0
+
+part    = proton
+axis    = xy
+2d-type = 3
+file    = Flux_energy_z1_10.out
+unit    = 1
+epsout  = 2
+gshow   = 1
+stdcut  = 0.01
+
+$$$$$$$$$$$$$$$$$$$$$$$$ tallys de lu 25-4 actualizados por ari $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4
+
+$ Tallys para ver la geometria
+[ T - T r a c k ] off
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -4.
+xmax = 4.
+
+y-type = 2
+ny = 100
+ymin = -20.
+ymax = 20.
+
+z-type = 1
+nz = 1
+60.49  60.47 $ 60.63 60.73  centrado en 60.68 +- 0.05 cm, que es el centro del pouch
+$60.58 60.78
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xy
+file = track_xy.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ] off
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -2.16
+xmax = -2.14
+
+y-type = 2
+ny = 100
+ymin = -50.
+ymax = 50.
+
+z-type = 2
+nz = 100
+zmin = -5.
+zmax = 100.
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = yz
+file = track_yz.out
+gshow = 3
+epsout = 1
+
+[ T - T r a c k ] off
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -10.
+xmax = 10.
+
+z-type = 2            
+nz = 100
+zmin = 55     $ -5, -5, -5, -5, -5, -5, 
+zmax = 65.      $ 10, 10, 20, 30, 60, 90
+
+y-type = 1
+ny = 1
+0. 0.1
+
+part = proton
+
+e-type = 1          $ acá estamos integrando todo: es el flujo total de particulas
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xz
+file = track_xz.out
+gshow = 3
+epsout = 1 
+
+[ T - D e p o s i t ]  off$ Mismo Tdeposit que el anterior solo que con mesh cilind
+title = Bragg peak in pouch
+mesh = r-z
+
+r-type =    2           $ Malla radial (sustituye a x e y)
+rmin   =    0.0         $ Desde el centro del haz
+rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.33
+zmax   =    61.0
+nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_zcilindJesus.out
+epsout = 1
+
+[ T - Track ]  off $Medimos espectro de energía
+    title = Espectro de energía
+     mesh =  reg           $ Tally por región (celda)
+      reg =  510 600 6003      $ Tu celda del pouch
+    e-type =  2            $ Mesh logarítmico
+       ne =  100           $ Número de divisiones (bins)
+     emin =  1.0e-9        $ Energía mínima (ej. 1e-9 MeV para neutrones)
+     emax =  25.0         $ Energía máxima (el dmax de tu problema)
+     unit =  1             $ Resultado en 1/cm2/source
+     axis =  eng           $ El eje X será la energía
+     file = energy_pouch.out
+     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+
+[ T - T r a c k ] off $ este track es lo mismo q el xy
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.58 + 0.05 cm, que es donde empieza el pouch
+part = proton
+
+e-type = 1
+ne = 1
+0.0 20.0
+
+unit = 1
+axis = xy
+
+file = track_xy_energy_pouch.out
+gshow = 1
+epsout = 1
+
+[ T - D e p o s i t ] off $ energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
+
+title = Energia depositada en el pouch
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -7
+xmax = 7
+
+
+y-type = 2
+ny = 1
+ymin = -7
+ymax = 7
+
+z-type = 1
+nz = 1
+60.63 60.73
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+output = deposit                 $ output = deposit  -> unit = 3   # MeV/source
+unit = 3
+axis = z
+
+file = deposit_pouch_z.out
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - D e p o s i t ] off 
+title = Bragg peak in pouch
+mesh = xyz
+   x-type =  2
+       nx =  1
+     xmin = -7    $ Ajustá a las dimensiones de tu haz
+     xmax =  7
+   y-type =  2
+       ny =  1
+     ymin = -7
+     ymax =  7
+   z-type =  1
+       nz =  1
+    60.58  60.63   $ Tu plano Z de interés (rebanada fina)
+     unit =  0      $ Resultado en MeV/source o Gy/source
+   output =  energy $ 'dose' para Gy, 'energy' para MeV totales en el volumen
+     axis =  z
+     file =  avg_energy_z.out
+     part =  proton
+
+[ T - T r a c k ] off
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto.out
+     unit =  1
+   epsout =  1
+
+[ T - D e p o s i t ] off $ para hacer el histograma dosis volumen
+title = Bragg peak in pouch
+mesh = xyz
+
+x-type =    2           $ Malla radial (sustituye a x e y)
+xmin   =    -1.6      $ Desde el centro del haz
+xmax   =    1.6       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nx     =    16           $ Un solo bin radial para integrar toda la dosis del haz
+
+y-type =    2           $ Malla radial (sustituye a x e y)
+ymin   =    -1       $ Desde el centro del haz
+ymax   =    1         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+ny     =    10           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.58
+zmax   =    60.78
+nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = histograma_dosis.out
+epsout = 1
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO 0 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+$ Tallys para ver la geometria
+[ T - T r a c k ]
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -4.
+xmax = 4.
+
+y-type = 2
+ny = 100
+ymin = -20.
+ymax = 20.
+
+z-type = 1
+nz = 1
+60.47  60.49 $ centro del pouch
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xy
+file = track_xy_M0.out
+gshow = 3
+epsout = 1
+
+
+[ T - T r a c k ]
+mesh = xyz
+
+
+x-type = 2
+nx = 100
+xmin = -7.
+xmax = 7.
+
+
+z-type = 2            
+nz = 100
+zmin = -5     $ -5, -5, -5, -5, -5, -5,
+zmax = 100.      $ 10, 10, 20, 30, 60, 90
+
+
+y-type = 1
+ny = 1
+0. 0.1
+
+
+part = proton
+
+
+e-type = 1          $ acá estamos integrando todo: es el flujo total de particulas
+ne = 1
+0.0 1000.0
+
+
+unit = 1
+axis = xz
+file = track_xz_M0.out
+gshow = 3
+epsout = 1
+
+
+[ T - D e p o s i t ]  $
+title = Bragg peak in pouch
+mesh = r-z
+
+
+r-type =    2           $ Malla radial (sustituye a x e y)
+rmin   =    0.0         $ Desde el centro del haz
+rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.
+zmax   =    61.05
+nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
+
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_zcilindJesus_M0.out
+epsout = 1
+
+
+[ T - Track ]    $Medimos espectro de energía
+    title = Espectro de energía
+     mesh =  reg           $ Tally por región (celda)
+      reg =  510 600 6003      $ Tu celda del pouch
+    e-type =  2            $ Mesh logarítmico
+       ne =  100           $ Número de divisiones (bins)
+     emin =  1.0e-9        $ Energía mínima (ej. 1e-9 MeV para neutrones)
+     emax =  25.0         $ Energía máxima (el dmax de tu problema)
+     unit =  1             $ Resultado en 1/cm2/source
+     axis =  eng           $ El eje X será la energía
+     file = energy_pouch_M0.out
+     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+
+
+[ T - T r a c k ]  $ este track es lo mismo q el xy
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.58 + 0.05 cm, que es donde empieza el pouch
+part = proton
+
+
+e-type = 1
+ne = 1
+0.0 20.0
+
+
+unit = 1
+axis = xy
+
+
+file = track_xy_energy_pouch_M0.out
+gshow = 1
+epsout = 1
+
+
+[ T - D e p o s i t ]  $ energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
+
+
+title = Energia depositada en el pouch
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -7
+xmax = 7
+
+y-type = 2
+ny = 1
+ymin = -7
+ymax = 7
+
+
+z-type = 1
+nz = 1
+60.63 60.73
+
+
+part = proton
+
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+
+output = deposit                 $ output = deposit  -> unit = 3   # MeV/source
+unit = 3
+axis = z
+
+
+file = deposit_pouch_z_M0.out
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - T r a c k ] 
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto_M0.out
+     unit =  1
+   epsout =  1
+
+
+[ T - D e p o s i t ]  $ para hacer el histograma dosis volumen
+title = Bragg peak in pouch
+mesh = xyz
+
+
+x-type =    2           $ Malla radial (sustituye a x e y)
+xmin   =    -1.6      $ Desde el centro del haz
+xmax   =    1.6       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nx     =    16           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+y-type =    2           $ Malla radial (sustituye a x e y)
+ymin   =    -1       $ Desde el centro del haz
+ymax   =    1         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+ny     =    10           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.38
+zmax   =    60.58
+nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
+
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = histograma_dosis_M0.out
+epsout = 1
