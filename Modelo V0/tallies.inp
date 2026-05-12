@@ -724,7 +724,7 @@ mesh = xyz
      unit =  1
    epsout =  1
 
-[ T - D e p o s i t ] off  $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ] off $ para hacer el histograma dosis volumen
 title = Bragg peak in pouch
 mesh = xyz
 
@@ -751,6 +751,243 @@ axis = z
 file = histograma_dosis.out
 epsout = 1
 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO 0 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+$ Tallys para ver la geometria
+[ T - T r a c k ]
+mesh = xyz
+
+x-type = 2
+nx = 100
+xmin = -4.
+xmax = 4.
+
+y-type = 2
+ny = 100
+ymin = -20.
+ymax = 20.
+
+z-type = 1
+nz = 1
+60.47  60.49 $ centro del pouch
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = xy
+file = track_xy_M0.out
+gshow = 3
+epsout = 1
+
+
+[ T - T r a c k ]
+mesh = xyz
+
+
+x-type = 2
+nx = 100
+xmin = -7.
+xmax = 7.
+
+
+z-type = 2            
+nz = 100
+zmin = -5     $ -5, -5, -5, -5, -5, -5,
+zmax = 100.      $ 10, 10, 20, 30, 60, 90
+
+
+y-type = 1
+ny = 1
+0. 0.1
+
+
+part = proton
+
+
+e-type = 1          $ acá estamos integrando todo: es el flujo total de particulas
+ne = 1
+0.0 1000.0
+
+
+unit = 1
+axis = xz
+file = track_xz_M0.out
+gshow = 3
+epsout = 1
+
+
+[ T - D e p o s i t ]  $
+title = Bragg peak in pouch
+mesh = r-z
+
+
+r-type =    2           $ Malla radial (sustituye a x e y)
+rmin   =    0.0         $ Desde el centro del haz
+rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.
+zmax   =    61.05
+nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
+
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = bragg_pouch_zcilindJesus_M0.out
+epsout = 1
+
+
+[ T - Track ]    $Medimos espectro de energía
+    title = Espectro de energía
+     mesh =  reg           $ Tally por región (celda)
+      reg =  510 600 6003      $ Tu celda del pouch
+    e-type =  2            $ Mesh logarítmico
+       ne =  100           $ Número de divisiones (bins)
+     emin =  1.0e-9        $ Energía mínima (ej. 1e-9 MeV para neutrones)
+     emax =  25.0         $ Energía máxima (el dmax de tu problema)
+     unit =  1             $ Resultado en 1/cm2/source
+     axis =  eng           $ El eje X será la energía
+     file = energy_pouch_M0.out
+     part = proton neutron alpha photon positron $ Las partículas que te interese trackear
+
+
+[ T - T r a c k ]  $ este track es lo mismo q el xy
+title = Para ver que energia llega al pouch
+mesh = xyz
+
+
+x-type = 2
+nx = 100
+xmin = -6.
+xmax = 6.
+
+
+y-type = 2
+ny = 100
+ymin = -6.
+ymax = 6.
+
+
+z-type = 1
+nz = 1
+60.58 60.63 $ centrado en 60.58 + 0.05 cm, que es donde empieza el pouch
+part = proton
+
+
+e-type = 1
+ne = 1
+0.0 20.0
+
+
+unit = 1
+axis = xy
+
+
+file = track_xy_energy_pouch_M0.out
+gshow = 1
+epsout = 1
+
+
+[ T - D e p o s i t ]  $ energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
+
+
+title = Energia depositada en el pouch
+mesh = xyz
+
+x-type = 2
+nx = 1
+xmin = -7
+xmax = 7
+
+y-type = 2
+ny = 1
+ymin = -7
+ymax = 7
+
+
+z-type = 1
+nz = 1
+60.63 60.73
+
+
+part = proton
+
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+
+output = deposit                 $ output = deposit  -> unit = 3   # MeV/source
+unit = 3
+axis = z
+
+
+file = deposit_pouch_z_M0.out
+     part = all $ Las partículas que te interese trackear
+
+
+[ T - T r a c k ] 
+    title = Espectro de energia justo antes del pouch
+     mesh =  xyz
+    x-type =  2
+       nx  =  1
+     xmin  = -6.0
+     xmax  =  6.0
+    y-type =  2
+       ny  =  1
+     ymin  = -6.0
+     ymax  =  6.0
+    z-type =  1
+       nz  =  1
+     60.58  60.63           $ Una lamina de 0.05 cm de espesor antes del pouch
+   e-type =  2
+       ne =  100
+     emin =  1.0
+     emax =  25.0
+     part =  proton neutron alpha photon positron
+     axis =  eng
+     file = energia_pre_impacto_M0.out
+     unit =  1
+   epsout =  1
+
+
+[ T - D e p o s i t ]  $ para hacer el histograma dosis volumen
+title = Bragg peak in pouch
+mesh = xyz
+
+
+x-type =    2           $ Malla radial (sustituye a x e y)
+xmin   =    -1.6      $ Desde el centro del haz
+xmax   =    1.6       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nx     =    16           $ Un solo bin radial para integrar toda la dosis del haz
+
+
+y-type =    2           $ Malla radial (sustituye a x e y)
+ymin   =    -1       $ Desde el centro del haz
+ymax   =    1         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+ny     =    10           $ Un solo bin radial para integrar toda la dosis del haz
 
 
 
+
+z-type =    2           $ Eje de profundidad (Z)
+zmin   =    60.38
+zmax   =    60.58
+nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
+
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = histograma_dosis_M0.out
+epsout = 1

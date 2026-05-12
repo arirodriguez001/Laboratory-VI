@@ -4,10 +4,9 @@ $RWT = 2
 [ Title ]
 Vertical external proton beam - modular input
 
-
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -118,7 +117,7 @@ mat name   color
 15	Blood  red
 16  pouch  pink
 17  acrilico white
-18  skin  brown
+18  skin  blue
 
 [ Surface ]
 $Room
@@ -219,7 +218,7 @@ $ Pouch
 510 16 -1.0  -100  201  -202 
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510 #700
+600 %air% -1.0  -4000 #510 #700
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}
