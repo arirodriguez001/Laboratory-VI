@@ -10,13 +10,13 @@ $ Aire en el hueco hacia el trampolin
 6002 %air%       -3200 #6003 #510 #600 #700
 
 $ Trampolin acrilico
-6003 %acrilico%  -3300 #510 #600 #700
+6003 %acrilico%  -3300 #510 #600 #700 #6006 #6005 #6004
 
-$ Pared izq
-6004 %acrilico%  -3400 #510 #600 #700
+$ Pared izq #510 #600 #700 #2001 #6003
+6004 %acrilico%  -3400 
 
-$ Pared der
-6005 %acrilico%  -3500 #510 #600 #700
+$ Pared der #510 #600 #700 #2001
+6005 %acrilico%  -3500 
 
-$ Pared frontal
-6006 %acrilico%  -3600 #510 #600 #700
+$ Pared frontal #510 #600 #700 #2001
+6006 %acrilico%  -3600 #6005
