@@ -7,7 +7,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -175,8 +175,8 @@ $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 pz 60.58
 201 pz 60.38
 
-$Gel de ultrasonido de 0.35cm de altura
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.23 60.58  $
+$Gel de ultrasonido de 0.3cm de altura total, 0.1 respecto pouch
+4000 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58  
 
 $ POSICIONADOR 
 
@@ -203,7 +203,8 @@ infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#2001 #510 #700]
+$set:%exclusions%[#2001 #510 #700]
+set:%exclusions%[#510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -216,10 +217,10 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202 
+510 16 -1.0  -100  201  -202 #6006 #6005 #6004
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510 #700
+600 8 -1.0  -4000 #510 #700 #6006 #6005 #6004
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}
@@ -232,8 +233,9 @@ $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl
      %outside_stuff% %exclusions% $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
-2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 
+$2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 
       %outside_stuff% %exclusions%
+2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) %exclusions% %outside_stuff%
 
 infl:{volumes.inp}
 infl:{tallies.inp}
