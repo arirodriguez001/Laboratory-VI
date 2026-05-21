@@ -754,7 +754,7 @@ epsout = 1
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO 0 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
-[ T - T r a c k ]      $ para ver flujo de protones a la altura del pouch : con una resolucion de 1.6 mm
+[ T - T r a c k ]   $ para ver flujo de protones a la altura del pouch : con una resolucion de 1.6 mm
 
 mesh = xyz
 x-type = 2
@@ -763,8 +763,8 @@ xmin = -4.
 xmax = 4.
 y-type = 2
 ny = 125
-ymin = -10.
-ymax = 10.
+ymin = -6.
+ymax = 6.
 z-type = 1
 nz = 1
 60.47  60.49 $ centro del pouch
@@ -775,11 +775,34 @@ ne = 1
 unit = 1
 axis = xy
 file = track_xy_M0.out
-gshow = 3
+gshow = 1
+epsout = 1
+
+[ T - T r a c k ]  $ S flujo de particulas en xz
+mesh = xyz
+x-type = 2
+nx = 94
+xmin = -7.
+xmax = 7.
+z-type = 2            
+nz = 20
+zmin = 5.     
+zmax = 105.
+y-type = 1
+ny = 1
+0. 0.1
+part = proton
+e-type = 1          $ acá estamos integrando todo: es el flujo total de particulas
+ne = 1
+0.0 1000.0
+unit = 1
+axis = xz
+file = track_xz_M0.out
+gshow = 1
 epsout = 1
 
 
-[ T - T r a c k ]  $ flujo de particulas en xz con resolucion de 1.5 mm 
+[ T - T r a c k ] off $ N flujo de particulas en xz con zoom
 mesh = xyz
 x-type = 2
 nx = 94
@@ -799,11 +822,11 @@ ne = 1
 unit = 1
 axis = xz
 file = track_xz_zoom_M0.out
-gshow = 3
+gshow = 1
 epsout = 1
 
 
-[ T - D e p o s i t ]  $ cuánta dosis depositan los protones en cada tajadita del cilindro a medida que avanzan en z
+[ T - D e p o s i t ]  $ S cuánta dosis depositan los protones en cada tajadita del cilindro a medida que avanzan en z
 title = Bragg peak in pouch
 
 mesh = r-z
@@ -826,7 +849,7 @@ epsout = 1
 
 $ hacemos tipo pico de bragg pero bineado en r:
 
-[ T - D e p o s i t ]   $ EJE RADIAL Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ]  $ S EJE RADIAL Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -851,7 +874,7 @@ file = bragg_pouch_rcilindJesus.out
 epsout = 1
 
 
-[ T - Track ]   $ Medimos espectro de energía: para ver cuántas partículas pasan en cada rango de energía
+[ T - Track ]  off $ N Medimos espectro de energía: para ver cuántas partículas pasan en cada rango de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510 600 6003      $ Tu celda del pouch
@@ -865,7 +888,7 @@ epsout = 1
      part = proton neutron alpha photon positron $ Las partículas que te interese trackear
 
 
-[ T - T r a c k ] off  $ este track es lo mismo q el xy
+[ T - T r a c k ] off  $ N/S este track es lo mismo q el xy
 title = Para ver que energia llega al pouch
 mesh = xyz
 x-type = 2
@@ -894,7 +917,7 @@ gshow = 1
 epsout = 1
 
 
-[ T - D e p o s i t ] off $ ponerle off !!! energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
+[ T - D e p o s i t ] off $ N/S ponerle off !!! energía depositada en ese volumen por cada protón primario simulado (energía dejan los protones al entrar en el pouch)
 
 title = Energia depositada en el pouch
 
@@ -923,7 +946,7 @@ file = deposit_pouch_z_M0.out
 part = all $ Las partículas que te interese trackear
 
 
-[ T - T r a c k ] 
+[ T - T r a c k ] off $ S
 title = Espectro de energia justo antes del pouch
 
 mesh =  xyz
@@ -949,8 +972,8 @@ file = espectro_antes_pouch_M0.out
 unit =  1  
 epsout =  1
 
-[ T - T r a c k ] 
-title = Espectro de energia justo antes del pouch
+[ T - T r a c k ] off $ S
+title = Espectro de energia justo en el medio del pouch
 
 mesh =  xyz
 x-type =  2
@@ -963,7 +986,7 @@ ymin  = -6.0
 ymax  =  6.0
 z-type =  1
 nz  =  1
-60.47 60.9           $ el pouch comienza en 60.38
+60.47 60.49           $ el pouch comienza en 60.38
 
 e-type =  3      $  ahora esta en log 
 ne =  100
@@ -976,7 +999,7 @@ unit =  1
 epsout =  1
 
 
-[ T - D e p o s i t ]   $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ] off $ S para hacer el histograma dosis volumen
 title = Histograma
 
 mesh = xyz
@@ -1000,7 +1023,7 @@ file = histograma_dosis_M0.out
 epsout = 1
 
 
-[ T - D e p o s i t ]  off $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ]  off $ N para ver la distribucion de dosis a lo largo de todo el setup
 title = deposit
 
 mesh = xyz
