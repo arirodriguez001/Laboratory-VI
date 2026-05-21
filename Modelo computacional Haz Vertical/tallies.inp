@@ -212,7 +212,7 @@ epsout  = 2
 gshow   = 1
 stdcut  = 0.01
 
-[ T-Track ] off
+[ T-Track ]off
 title   = Flujo de partículas en coordenadas cilindricas a z = 1.10 cm
 mesh    = r-z
 
@@ -497,7 +497,7 @@ $ Tallys para ver la geometria
 mesh = xyz
 
 x-type = 2
-nx = 50
+nx = 80
 xmin = -4.
 xmax = 4.
 
@@ -508,7 +508,7 @@ ymax = 7.
 
 z-type = 1
 nz = 1
-60.47  60.49 $ centro del pouch
+98.46  98.47 $ centro del pouch
 
 part = proton
 
@@ -552,7 +552,7 @@ file = track_yz.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] 
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -562,12 +562,12 @@ xmax = 7.
 
 z-type = 2            
 nz = 700
-zmin = -5     $ -5, -5, -5, -5, -5, -5, 
-zmax = 100     $ 10, 10, 20, 30, 60, 90
+zmin = 95     $ -5, -5, -5, -5, -5, -5, 
+zmax = 110     $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
-0. 0.1
+-10. -10.1
 
 part = proton
 
@@ -581,7 +581,7 @@ file = track_xz.out
 gshow = 1
 epsout = 1 
 
-[ T - D e p o s i t ] off $ EJE Z Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ]  $ EJE Z Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -660,7 +660,7 @@ epsout = 1
      unit =  1
    epsout =  1
 
-[ T - D e p o s i t ]off $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ] off $ para hacer el histograma dosis volumen
 title = Bragg peak in pouch
 mesh = xyz
 
