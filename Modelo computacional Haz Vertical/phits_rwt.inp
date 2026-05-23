@@ -6,7 +6,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -532,7 +532,7 @@ $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38
 
-$Gel de ultrasonido de 0.3cm de altura total, 0.1 respecto pouch
+$Gel de ultrasonido de 0.1cm de altura total, 0.1 respecto pouch
 4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58
 
 $ POSICIONADOR
@@ -1246,18 +1246,18 @@ $ Tallys para ver la geometria
 mesh = xyz
 
 x-type = 2
-nx = 50
+nx = 50 $ESTABA EN 80
 xmin = -4.
 xmax = 4.
 
 y-type = 2
-ny = 125
+ny = 80 $ESTABA EN 125
 ymin = -7.
 ymax = 7.
 
 z-type = 1
 nz = 1
-98.46  98.47 $ centro del pouch
+98.47  98.49 $ centro del pouch, un poquito antes y despues del centro del pouch
 
 part = proton
 
@@ -1271,7 +1271,7 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] off
+[ T - T r a c k ]
 mesh = xyz
 
 x-type = 2
@@ -1281,13 +1281,13 @@ xmax = -2.14
 
 y-type = 2
 ny = 100
-ymin = -50.
-ymax = 50.
+ymin = -10.
+ymax = 20.
 
 z-type = 2
 nz = 100
 zmin = -5.
-zmax = 100.
+zmax = 110.
 
 part = proton
 
@@ -1305,18 +1305,18 @@ epsout = 1
 mesh = xyz
 
 x-type = 2
-nx = 94
+nx = 60 $ESTABA EN 94
 xmin = -7.
 xmax = 7.
 
 z-type = 2
-nz = 700
+nz = 100 $ESTABA EN 150
 zmin = 95     $ -5, -5, -5, -5, -5, -5,
 zmax = 110     $ 10, 10, 20, 30, 60, 90
 
 y-type = 1
 ny = 1
--10. -10.1
+0 0.1
 
 part = proton
 
@@ -1330,7 +1330,7 @@ file = track_xz.out
 gshow = 1
 epsout = 1
 
-[ T - D e p o s i t ] off $ EJE Z Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ] $ EJE Z Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -1340,9 +1340,9 @@ rmax   =    0.5         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
 nr     =    1           $ Un solo bin radial para integrar toda la dosis del haz
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.
-zmax   =    61.05
-nz     =    100      $ Mantenemos alta resolucion para el grafico de Python
+zmin   =    98.1
+zmax   =    99.1
+nz     =    100    $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton
 output = dose
@@ -1351,7 +1351,7 @@ axis = z
 file = bragg_pouch_zcilindJesus.out
 epsout = 1
 
-[ T - D e p o s i t ] off $ EJE RADIAL Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ] $ EJE RADIAL Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -1361,8 +1361,8 @@ rmax   =    1.6         $ Radio de 1.6 cm (coincide con el radio max del pouch)
 nr     =    100         $ Asi cada bin mide 0.016cm
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.
-zmax   =    61.05
+zmin   =    98.47
+zmax   =    98.49
 nz     =    1
 
 part = proton
@@ -1398,7 +1398,7 @@ epsout = 1
      ymax  =  6.0
     z-type =  1
        nz  =  1
-     60.33  60.38          $ Una lamina de 0.05 cm de espesor antes del pouch
+     98.280  98.380          $ Una lamina de 0.05 cm de espesor antes del pouch
    e-type =  2
        ne =  100
      emin =  1.0
@@ -1409,7 +1409,7 @@ epsout = 1
      unit =  1
    epsout =  1
 
-[ T - D e p o s i t ] off $ para hacer el histograma dosis volumen
+[ T - D e p o s i t ] $ para hacer el histograma dosis volumen
 title = Bragg peak in pouch
 mesh = xyz
 
@@ -1425,8 +1425,8 @@ ny     =    10           $ Un solo bin radial para integrar toda la dosis del ha
 
 
 z-type =    2           $ Eje de profundidad (Z)
-zmin   =    60.38
-zmax   =    60.58
+zmin   =    98.380
+zmax   =    98.580
 nz     =    4      $ Mantenemos alta resolucion para el grafico de Python
 
 part = proton

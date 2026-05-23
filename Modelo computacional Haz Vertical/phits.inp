@@ -6,7 +6,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 10000 $ (D=10) number of particles per one batch
 maxbch	= 1000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -166,16 +166,16 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
+100 90 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
 $100 ell 0.0 -19.0 83.40  1.6 0.0 0.0  -1.0
 
 
 $ Planos de corte para definir el pouch (espesor 0.2 cm)
-202 pz 60.58
-201 pz 60.38
+202 90 pz 60.58
+201 90 pz 60.38
 
-$Gel de ultrasonido de 0.3cm de altura total, 0.1 respecto pouch
-4000 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58  
+$Gel de ultrasonido de 0.1cm de altura total, 0.1 respecto pouch
+4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58  
 
 $ POSICIONADOR 
 
@@ -185,7 +185,7 @@ $ HAMSTER
 infl:{Su_hamster.inp}
 
 [ Transform ]
-$set: c900[ 38 ]
+set: c900[ 38 ]
 
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
 TR20  0 0 c4  0 0 0  0 0  0 0  0 0  3	$disp 1 height
@@ -197,7 +197,7 @@ TR50  0 0 101.0  0 0 0  0 0  0 0  0 0  3	$sample table height
 TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
 $TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
 $TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
-$*TR90  0 0 c900   0 0 0   3 90  0 0  0 0   3
+*TR90  0 0 c900   0 0 0   3 90  0 0  0 0   3
 
 [ Cell ]
 infl:{Ce_iman.inp}
