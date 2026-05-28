@@ -7,8 +7,8 @@ Vertical external proton beam - modular input
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
 icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
-maxcas	= 10000 $ (D=10) number of particles per one batch
-maxbch	= 1000 $ (D=10) number of batches
+maxcas	= 100000 $ (D=10) number of particles per one batch
+maxbch	= 10000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
@@ -18,6 +18,7 @@ ireschk	= 1 $Control parameter for tally consistency check. The inconsistency of
 nlost	= 10000 $number of tolerance of lost particles before stopping the run.
 $itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while
+$igeomem = 200000
 
 $  required options for DCHAIN (also e-mode=0)
 $ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
@@ -26,7 +27,7 @@ $ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
 $ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
-set: c2[ 20.0 ]	$accelerator terminal tension
+set: c2[ 21.0 ]	$accelerator terminal tension
 $$infl:{c2.inp} $Reemplazar una variable linealmente
 
 $set:%thisdata%[_21MeV_dchain]	$for tallies
@@ -98,6 +99,9 @@ $set:%acrilico%[17  -1.18]
 mat[18]  H -0.104472  C -0.232190  N -0.024880  O -0.630238  Na -0.001130  Mg -0.000130  P -0.001330  S -0.001990  Cl -0.001340  K -0.001990  Ca -0.000230  Fe -0.000050  Zn -0.000030   # soft tissue (
 $set:%skin%[18  -1.1]
 
+mat[19]  C -0.8563  H -0.1437   $ plastico SRIM (C2H4)
+$set:%plastic%[19 -0.93]
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -118,6 +122,7 @@ mat name   color
 16  pouch  pink
 17  acrilico white
 18  skin  brown
+19 plastic black
 
 [ Surface ]
 $Room
@@ -561,6 +566,20 @@ $ Pared der
 $ Pared frontal
 3600 90 rpp 2.7185 2.8185  -1.586 1.586  59.58 61.01
 
+$-------------BLINDAJE-------------------------------
+$ Tapa: superficie superior
+3700 90 rpp -14.9385 -1.4685  -2.609 2.621  57.58 58.08
+
+$ Tapa: superficie lateral izquierda(visto de frente el acelerador)
+3800 90 rpp -14.9385 -1.4685  -2.909 -2.609 57.58 58.58
+
+$ Tapa: superficie lateral derecha (visto de frente el acelerador)
+3900 90 rpp -14.9385 -1.4685  2.621 2.921  57.58 58.58
+
+$ Tapa: superficie trasera (visto de frente el acelerador)
+3990 90 rpp -15.2385 -14.9385  -2.909 2.921  57.58 58.58
+
+
 $ HAMSTER
 $[ S u r f a c e ]
 
@@ -595,17 +614,16 @@ $[ Cell ]
 $set:%cell_iman%[104]
 $set:%vol_iman%[28.274334E-4] $(PI*1.5^2*4.0E-4)
 $[ Cell ]
-$2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 #6000 #6001 #6002 #6003 #700 $Air inside
+$2000 %air%  %profilezone% #2001 $#101 #102 #104  #510 #6000 #6001 #6002 #6003 #700 #6009 #6008 $Air inside
 2001 2  -2.6989   -1006:-1007:-1008:-1009:-1010:-1011:-1012:-1013 #6000 #6001 #6002 #6003 #700 $profiles for pilar
 
 $set:%outside_stuff%[#101 #102 #103 #104]
-$set:%exclusions%[#2001 #510 #700]
-$set:%exclusions%[#510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004]
+$set:%exclusions%[#510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007]
 
 $ [ Cell ]
 $100 -1  %att_zone%	$Deep space
 
-2100 1  -1.205e-3  4 -5 6 -7 1104 -1105 #2101 #2102 #2106 #2107 #2108 #510 #700 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004	$fill w/ air
+2100 1  -1.205e-3  4 -5 6 -7 1104 -1105 #2101 #2102 #2106 #2107 #2108 #510 #700 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007	$fill w/ air
 2101 2  -2.6989   1106 -1107 1108 -1109 1110 -1111 1112	$attenuator base
 2102 0      1110 -1111 -1112 #2106 FILL=1	$attenuator grid area
 2103 0      1113 -1114 1115 -1116  LAT=1 U=1 FILL=2	$attenuator fundamental unit
@@ -628,7 +646,7 @@ $set:%vol_atholder%[(8.016+47.61*c24-25*c20-PI*2.25*(c24-c20))]
 $ [ Cell ]
 $100 -1 #( %disp1_zone% ) #510 #600 TRCL=30	#700 $Deep space
 
-2200 1  -1.205e-3  4 -5 6 -7 1204 -1205 #2201 #2202 #2203 #2204 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004	$fill w/ air
+2200 1  -1.205e-3  4 -5 6 -7 1204 -1205 #2201 #2202 #2203 #2204 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007	$fill w/ air
 2201 6  -11.35   1206 -1207  1208 -1209  1210 -1211 TRCL=21	$scatterer foil 1
 2202 11  -1.0  -1212 TRCL=21	$O-ring
 2203 2  -2.6989   1213 -1214 1215 -1216  1217 -1219 #(1218 -1211) 1220 TRCL=21	$Al sandwich
@@ -639,7 +657,7 @@ $set:%vol_disp1%[(16*c30)]
 $ [ Cell ]
 $100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
 
-2300 1  -1.205e-3  4 -5 6 -7 1304 -1305 #2301 #2302 #2303 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004	$fill w/ air
+2300 1  -1.205e-3  4 -5 6 -7 1304 -1305 #2301 #2302 #2303 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007	$fill w/ air
 2301 6  -11.35   1306 -1307  1308 -1309  1310 -1311 TRCL=31	$scatterer foil 2
 2302 11  -1.0  -1312	$O-ring
 2303 2  -2.6989   1313 -1314 1315 -1316  1317 -1319 #(1318 -1311) 1320 TRCL=31	$Al sandwich
@@ -649,7 +667,7 @@ $set:%vol_disp2%[(54.76*c40)]
 $ [ Cell ]
 $100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
 
-2400 1  -1.205e-3    4 -5 6 -7  1404 -1405 #2401 #2402 #2403 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004	$fill w/ air
+2400 1  -1.205e-3    4 -5 6 -7  1404 -1405 #2401 #2402 #2403 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007	$fill w/ air
 2401 2  -2.6989     1407 ((-1406 -1408):(-1409 -1410))	$occluder
 2402 9  -1.14  -1411:-1412:-1413:-1414
 2403 2  -2.6989     1415 -1416 1417 -1418 1419 -1420 1421
@@ -663,7 +681,7 @@ $infl:{Ce_ridge_filter_4.inp}
 $ [ Cell ]
 $100 -1  %att_zone%	$Deep space
 
-2600 1  -1.205e-3  4 -5 6 -7 1621 -1623 #2601 #2602 #2603 #2604 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004	$fill w/ air
+2600 1  -1.205e-3  4 -5 6 -7 1621 -1623 #2601 #2602 #2603 #2604 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007	$fill w/ air
 2601 13 -2.329  1604 -1605 (-1607:-1608:-1609:-1610)
 2602 2  -2.6989  1611 -1612 1613 -1614 1604 -1605 #(1615 -1616 1617 -1618) #2601
 2603 10  -1.24 1617 1624 ((1615 -1616 -1618 1604 -1623):(((1619 -1622):(1625 -1626)) -1620 1621 -1604))
@@ -709,6 +727,24 @@ $ Pared der #510 #600 #700 #2001
 $ Pared frontal #510 #600 #700 #2001
 6006 17  -1.18  -3600 #6005
 
+$-------------BLINDAJE-------------------------------
+$ Tapa: superficie superior
+6007 19 -0.93 -3700
+
+$ Tapa: superficie lateral izquierda(visto de frente el acelerador)
+$6008 %plastic% -3800
+
+$ Tapa: superficie lateral derecha (visto de frente el acelerador)
+$6009 %plastic% -3900
+
+$ Tapa: superficie trasera (visto de frente el acelerador)
+$6010 %plastic% -3990
+
+
+
+
+
+
 $ HAMSTER
 $ [ C e l l ]
 
@@ -717,12 +753,12 @@ $ Hamster (elipsoide), excluyendo el pouch
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510
-     #101 #102 #103 #104 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004 $Cover unused workzone with air
+     #101 #102 #103 #104 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007 $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003
-      #101 #102 #103 #104 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004
-2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1621 -1623))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #510 #6006 #6005 #6004 #101 #102 #103 #104
+      #101 #102 #103 #104 #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007
+2 1  -1.205e-3 -1 #(4 -5 6 -7 ((1104 -1105):(1204 -1205):(1304 -1305):(1404 -1405):(1621 -1623))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007 #101 #102 #103 #104
 
 [ Volume ]
  reg    vol
@@ -1252,12 +1288,12 @@ xmax = 4.
 
 y-type = 2
 ny = 80 $ESTABA EN 125
-ymin = -7.
-ymax = 7.
+ymin = -5.
+ymax = 5.
 
 z-type = 1
 nz = 1
-98.47  98.49 $ centro del pouch, un poquito antes y despues del centro del pouch
+98.47  98.49 centro del pouch, un poquito antes y despues del centro del pouch
 
 part = proton
 
@@ -1268,7 +1304,7 @@ ne = 1
 unit = 1
 axis = xy
 file = track_xy.out
-gshow = 3
+gshow = 1
 epsout = 1
 
 [ T - T r a c k ]
@@ -1276,16 +1312,16 @@ mesh = xyz
 
 x-type = 2
 nx = 1
-xmin = -2.16
-xmax = -2.14
+xmin = 0
+xmax = 0.1
 
 y-type = 2
-ny = 100
-ymin = -10.
-ymax = 20.
+ny = 200
+ymin = -17.
+ymax = 17.
 
 z-type = 2
-nz = 100
+nz = 300
 zmin = -5.
 zmax = 110.
 
@@ -1298,7 +1334,7 @@ ne = 1
 unit = 1
 axis = yz
 file = track_yz.out
-gshow = 3
+gshow = 1
 epsout = 1
 
 [ T - T r a c k ] off
@@ -1372,7 +1408,7 @@ axis = z
 file = bragg_pouch_rcilindJesus.out
 epsout = 1
 
-[ T - Track ] off $Medimos espectro de energía
+[ T - Track ] $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510 600 6003      $ Tu celda del pouch
@@ -1385,7 +1421,7 @@ epsout = 1
      file = energy_pouch.out
      part = proton neutron alpha photon positron $ Las partículas que te interese trackear
 
-[ T - T r a c k ] off
+[ T - T r a c k ]
     title = Espectro de energia justo antes del pouch
      mesh =  xyz
     x-type =  2
@@ -1402,7 +1438,7 @@ epsout = 1
    e-type =  2
        ne =  100
      emin =  1.0
-     emax =  25.0
+     emax =  26.0
      part =  proton neutron alpha photon positron
      axis =  eng
      file = energia_pre_impacto.out
@@ -1414,14 +1450,14 @@ title = Bragg peak in pouch
 mesh = xyz
 
 x-type =    2           $ Malla radial (sustituye a x e y)
-xmin   =    -1.6      $ Desde el centro del haz
-xmax   =    1.6       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
-nx     =    16           $ Un solo bin radial para integrar toda la dosis del haz
+xmin   =    -1.      $ Desde el centro del haz
+xmax   =    1.       $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+nx     =    10           $ Un solo bin radial para integrar toda la dosis del haz
 
 y-type =    2           $ Malla radial (sustituye a x e y)
-ymin   =    -1       $ Desde el centro del haz
-ymax   =    1         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
-ny     =    10           $ Un solo bin radial para integrar toda la dosis del haz
+ymin   =    -1.6       $ Desde el centro del haz
+ymax   =    1.6         $ Radio de 0.5 cm (coincide con tu r0 de la fuente)
+ny     =    16           $ Un solo bin radial para integrar toda la dosis del haz
 
 
 z-type =    2           $ Eje de profundidad (Z)
@@ -1435,6 +1471,5 @@ unit = 0
 axis = z
 file = histograma_dosis.out
 epsout = 1
-
 
 [ E n d ]
