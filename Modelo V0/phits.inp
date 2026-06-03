@@ -98,6 +98,10 @@ set:%acrilico%[17  -1.18]
 mat[18]  H -0.104472  C -0.232190  N -0.024880  O -0.630238  Na -0.001130  Mg -0.000130  P -0.001330  S -0.001990  Cl -0.001340  K -0.001990  Ca -0.000230  Fe -0.000050  Zn -0.000030   # soft tissue (ICRP) (pouch)
 set:%skin%[18  -1.1]
 
+mat[19]  C -0.8563  H -0.1437   $ plastico SRIM (C2H4)
+set:%plastic%[19 -0.93]
+
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -118,6 +122,7 @@ mat name   color
 16  pouch  pink
 17  acrilico white
 18  skin  blue
+19 plastic black
 
 [ Surface ]
 $Room
@@ -202,7 +207,7 @@ infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#2001 #510 #700]
+set:%exclusions%[#2001 #510 #700 #6007]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -215,10 +220,10 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202 
+510 16 -1.0  -100  201  -202 #6004 #6005 #6006
 
 $ Gel ultrasonido
-600 %air%  -4000 #510 #700
+600 %air%  -4000 #510 #700 #6004 #6005 #6006
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}

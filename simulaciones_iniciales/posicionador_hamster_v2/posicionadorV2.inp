@@ -34,94 +34,177 @@ TR1  -15.0635  -2.609  -2.22  1 0 0  0 1 0  0 0 1  1
        
     
 
-[ M a t e r i a l ]
-mat[1]  C 5 H 8 O 2         $ acrilico 
-mat[2]  Al 1                $ material de la placa
-mat[3]  H 2 O 1             $agua
-mat[4]  Pb 1                $plomo
-mat[5]  Fe 1                $hierro
-mat[6]  Fe 1 C 1            $acero 
-mat[7]  H -0.104472  C -0.232190  N -0.024880  O -0.630238  Na -0.001130  Mg -0.000130  P -0.001330  S -0.001990  Cl -0.001340  K -0.001990  Ca -0.000230  Fe -0.000050  Zn -0.000030   # soft tissue (ICRP) (pouch)
-mat[8]  H -0.100588  C -0.228250  N -0.046420  O -0.619002  Na -0.000070  Mg -0.000060  P -0.000330  S -0.001590  Cl -0.002670  K -0.000850  Ca -0.000150  Fe -0.000010  Zn -0.000010      $ skin
-mat[9]  C 3 H 4 O 2	$ polylactic acid plastic for 3D printers
-mat[999]  C -0.000124  N -0.755267  O -0.231781  Ar -0.012827       # aire
+[ Material ]
+mat[1] C -0.000124 N -0.755267 O -0.231781 Ar -0.012827	$ air (ICRU)
+$dedxfile = air_icru90.txt
+set:%air%[1  -1.205e-3]
+
+mat[2] Al 1	$ aluminum
+set:%Al%[2  -2.6989]
+ 
+mat[3] Fe -98.5 C -0.25 Mn -0.95 Si -0.3	$ structural steel
+set:%body%[3  -5.2]
+
+mat[4] Fe -69.255 C -0.07 Mn -2.0 Si -0.75 P -0.045 S -0.030 Cr -18.5 Ni -9.25 N -0.10	$ 304S stainless steel
+set:%stainless%[4  -8.03]
+
+mat[5] Cr -0.222 Mg -0.016 Fe -0.181 Co -0.417 Ni -0.128 Mo -0.014 W -0.008	$ havar
+set:%havar%[5  -8.3]
+
+mat[6] Pb 1	$ lead
+set:%Pb%[6  -11.35]
+
+mat[7] C 8 H 8	$ polystyrene
+set:%PS%[7  -1.050] $density according to Petri dish datasheet
+
+mat[8] H 2 O 1	$ water (ICRU)
+$dedxfile = water_liquid_icru90.txt
+set:%water%[8  -1.0]
+
+mat[9] C 6 H 11 N 1 O 1	$ nylon 6
+set:%nylon%[9  -1.14]
+
+mat[10] C 3 H 4 O 2	$polylactic acid plastic for 3D printers
+set:%PLA%[10  -1.24]
+
+mat[11] C -(4*0.6+3*0.4) H -(6*0.6+3*0.4) N -(1*0.4)	$Nitrile butadiene rubber (o-ring)
+set:%NBR%[11  -1.0]
+
+mat[12] O -76.2 C -11.1 H -10.1 N -2.6	$ICRU-4 Soft tissue
+set:%tissue%[12 -1.04]
+
+mat[13] Si 1
+set:%Si%[13 -2.329]
+
+mat[14] C 10 H 8 O 4	$Mylar
+set:%Mylar%[14 -1.397]
+
+mat[15] H -0.102 C -0.11 N -0.033 O -0.745 Na -0.001 P -0.001 S -0.002 Cl -0.003 K -0.002 Fe -0.001	$ICRU blood composition
+set:%blood%[15  -1.06]
+
+mat[16] H -0.100588  C -0.228250  N -0.046420  O -0.619002  Na -0.000070  Mg -0.000060  P -0.000330  S -0.001590  Cl -0.002670  K -0.000850  Ca -0.000150  Fe -0.000010  Zn -0.000010      $ skin
+
+mat[17]  C 5 H 8 O 2         $ acrilico 
+set:%acrilico%[17  -1.18]
+
+mat[18]  H -0.104472  C -0.232190  N -0.024880  O -0.630238  Na -0.001130  Mg -0.000130  P -0.001330  S -0.001990  Cl -0.001340  K -0.001990  Ca -0.000230  Fe -0.000050  Zn -0.000030   # soft tissue (ICRP) (pouch)
+set:%skin%[18  -1.1]
+
+mat[19]  C -0.8563  H -0.1437   $ plastico SRIM (C2H4)
+set:%plastic%[19 -0.93]
+
 
 [ Mat Name Color ]
-mat   name       size   color
-0     void       1      lightgray
-1     acrilico   2      green
-2     aluminio   2      orange
-3     agua       2      cyan
-4     plomo      3      magenta
-5     hierro     2      brown
-6     acero      2      darkgray
-7     hamster    3      brown
-8     pouch      3      pink
-9     placa      3      darkgray
-999   aire       1      white
+mat name   color
+1	Air    cyan
+2	Al     lightgray
+3	{Structure - steel}   brown
+4	{Stainless steel}    gray
+5	Havar  rrr
+6	Pb     matblack
+7	{Petri dish - polystyrene}   {0.7 0.3 1.0}
+8	Water  ccc
+9	Nylon  gg
+10	{3D printer - PLA}   orange
+11	{O-ring}  black
+12	{ICRU-4 soft tissue}   magenta
+13	Si   yellow
+14	Mylar  pastelpink
+15	Blood  red
+16  pouch  pink
+17  acrilico white
+18  skin  brown
+19 plastic black
 
-[ S u r f a c e ]
+
+[Surface]
+
+$ POUCH centrado en (0,0,0)
+100 ell 0.0 0.0 0.0  1.6 0.0 0.0  -1.0
+
+$ Planos de corte del pouch: espesor 0.2 cm
+201 pz -0.10
+202 pz  0.10
+
+$ Gel de ultrasonido
+4000 rpp -1.4685 2.7185  -1.486 1.486  -0.25 0.10
+
+$ POSICIONADOR
+
 $ Caja exterior de acrilico
-1 1 rpp 0.0 13.47 0.0 5.23 0.0 4.92
-    
-$ Hueco interior de la caja de acrílico, suponiendo un grosor del acrilico de 2.5mm
-2 1 rpp 0.25 13.22 0.25 4.98 0.25 4.92
+3000 rpp -14.9385 -1.4685  -2.609 2.621  -2.40 2.52
 
-$ Hueco entre trampolin y caja
-3 1 rpp 13.22 13.47 1.123 4.095 1.99 4.92
+$ Hueco interior
+3100 rpp -14.6885 -1.7185  -2.359 2.371  -2.40 2.27
 
-$ Soporte del Pouch (trampolin)
-4 1 rpp 13.47 16.657 1.123 4.095 1.99 2.22
+$ Hueco hacia trampolin
+3200 rpp -1.7185 -1.4685  -1.486 1.486  -2.40 0.53
 
-$ POUCH (hamster cheek pouch)
-$ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
-$ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-5 1 ell 14.7385 2.609 2.22 1.6 0.0 0.0 -1.0
+$ Trampolin / soporte del pouch
+3300 rpp -1.4685 2.7185  -1.486 1.486  0.10 0.53
 
-$ Planos de corte para definir el pouch
-51 1 pz  2.22
-52 1 pz  2.42
+$ Pared izq del trampolin, hacia y positivo
+3400 rpp -1.4685 2.7185  1.486 1.586  -0.90 0.53
 
-$ Hamster elipsoidal
-6 1 ell 7.25 2.615 2.25 6.0 0.0 0.0 -2.0
+$ Pared der del trampolin, hacia y negativo
+3500 rpp -1.4685 2.7185  -1.586 -1.486  -0.90 0.53
 
-$ placa
-7 1 rpp 13.0 17.0 0.123 5.095 7.32 7.40
+$ Pared frontal del trampolin
+3600 rpp 2.7185 2.8185  -1.586 1.586  -0.90 0.53
 
-$ Defino el limite de la geometria
-101 1 so  40.0
+$ BLINDAJE / tapa superior
+3700 rpp -14.9385 -1.4685  -2.609 2.621  -2.90 -2.40
 
-[ C e l l ]
+$ HAMSTER
+5000 ell -7.5 0.006 0.27  6.0 0.0 0.0  -2.0
 
-$ Caja exterior de acrílico, sacándole el hueco interior, el soporte, el hamster, el pouch y el hueco entre trampolín y caja
-100 1 -1.18 -1 #200 #300 #500 #510 #600
+$ Universo de aire
+9000 so 40.0
 
-$ Hueco interior con aire, excluyendo hamster y pouch
-200 999 -1.20479E-03 -2 #500 #510
 
-$ Soporte del pouch (trampolín) de acrílico
-300 1 -1.18 -4
-
-$ Filtro
-400 9 -1.24 -7
-
-$ Hamster (elipsoide), excluyendo el pouch
-500 7 -1.1 -6 #510
+[Cell]
 
 $ Pouch
-510 8 -1.0  -5  51  -52
+510 16 -1.0  -100  201  -202
 
-$ Hueco entre trampolín y caja, con aire
-600 999 -1.20479E-03 -3 #510 #500
+$ Gel ultrasonido
+600 %water%  -4000 #510 #700
 
-$ Aire exterior dentro de la esfera límite
-1000 999 -1.20479E-03 -101 #100 #200 #300 #400 #500 #510 #600
+$ Caja acrilica hueca
+6000 %acrilico%  -3000 3100 3200
 
-$ Exterior absoluto
-1001 -1 101
+$ Aire dentro de la caja
+6001 %air%  -3100 #700
+
+$ Aire en el hueco hacia el trampolin
+6002 %air%  -3200 #700
+
+$ Trampolin acrilico
+6003 %acrilico%  -3300 #510 #600 #700
+
+$ Pared izq del trampolin
+6004 %acrilico%  -3400 #510 #600 #700
+
+$ Pared der del trampolin
+6005 %acrilico%  -3500 #510 #600 #700
+
+$ Pared frontal del trampolin
+6006 %acrilico%  -3600 #510 #600 #700
+
+$ Blindaje / tapa
+6007 %plastic%  -3700
+
+$ Hamster, excluyendo el pouch
+700 %skin%  -5000 #510
+
+$ Aire exterior dentro del universo
+9998 %air%  -9000 #510 #600 #6000 #6001 #6002 #6003 #6004 #6005 #6006 #6007 #700
+
+$ Exterior
+9999 -1 9000
 
 
-[ T - T r a c k ]
+[ T - T r a c k ]off
 mesh = xyz
 
 x-type = 2
@@ -150,7 +233,7 @@ file = track_xy.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] 
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -180,7 +263,7 @@ file = track_yz.out
 gshow = 3
 epsout = 1
 
-[ T - T r a c k ] 
+[ T - T r a c k ] off
 mesh = xyz
 
 x-type = 2
@@ -261,7 +344,7 @@ axis = z
 file = bragg_pouch_z.out
 epsout = 1
 
-[ T - D e p o s i t ] $ Mismo Tdeposit que el anterior solo que con mesh cilind
+[ T - D e p o s i t ] off $ Mismo Tdeposit que el anterior solo que con mesh cilind
 title = Bragg peak in pouch
 mesh = r-z
 
@@ -306,7 +389,7 @@ axis = xy
 file = bragg_pouch_z2.out
 epsout = 1
 
-[ T - D e p o s i t ] 
+[ T - D e p o s i t ] off
 title = Perfil Haz ZY
 
 mesh = xyz

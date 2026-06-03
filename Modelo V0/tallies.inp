@@ -3,7 +3,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO 0 DESPLAZADO $$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
 
-[ T - T r a c k ]  $ flujo de protones a la altura del pouch
+[ T - T r a c k ]   $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
@@ -65,8 +65,8 @@ $$$$$$$$$$$$  perfiles de flujo a x e y cte $$$$$$$$$$$$$$$
     nx = 120
 
     y-type = 2
-    ymin = -0.05
-    ymax =  0.05
+    ymin = -0.2
+    ymax =  0.2
     ny = 1
 
     z-type = 2
@@ -89,8 +89,8 @@ ne = 1
     mesh = xyz
 
     x-type = 2
-    xmin = -0.05
-    xmax =  0.05
+    xmin = -0.2
+    xmax =  0.2
     nx = 1
 
     y-type = 2
@@ -127,8 +127,8 @@ rmax = 0.5
 nr = 1
 
 z-type = 2 
-zmin = 98.38
-zmax = 98.58                
+zmin = 98
+zmax = 99            
 nz = 100                     $ 1% de error espacial 
 
 part = proton
@@ -138,15 +138,14 @@ axis = z
 file = bragg_pouch_zcilindJesus_M0.out
 epsout = 1
 
-
 [ T - D e p o s i t ]  $ dosis radial en el pouch
 
-title = Bragg peak in pouch
+title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
 
 r-type = 2
 rmin = 0.0
-rmax = 1.6
+rmax = 1.7     $ lo cambie pero antes llegaba a 1
 nr = 100
 
 z-type = 2
@@ -178,7 +177,7 @@ part = proton neutron alpha photon positron
 
 
 
-[ T - T r a c k ] off $ espectro justo antes del pouch
+[ T - T r a c k ]  $ espectro justo antes del pouch
 
 title = Espectro de energia justo antes del pouch
 
@@ -206,7 +205,7 @@ unit = 1
 epsout = 1
 
 
-[ T - T r a c k ] off $ espectro justo en el medio del pouch
+[ T - T r a c k ]  $ espectro justo en el medio del pouch
 
 title = Espectro de energia justo en el medio del pouch
 
