@@ -1,0 +1,4851 @@
+[ T-Deposit ]
+    title = Histograma
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -1.000000      # minimum value of x-mesh points
+     xmax =   1.000000      # maximum value of x-mesh points
+#    xdel =  0.2000000      # mesh width of x-mesh points
+       nx =     10          # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -1.00000E+00 -8.00000E-01 -6.00000E-01 -4.00000E-01 -2.00000E-01
+#           0.00000E+00  2.00000E-01  4.00000E-01  6.00000E-01  8.00000E-01
+#           1.00000E+00
+   y-type =    2            # y-mesh is linear given by ymin, ymax and ny
+     ymin =  -1.600000      # minimum value of y-mesh points
+     ymax =   1.600000      # maximum value of y-mesh points
+#    ydel =  0.2000000      # mesh width of y-mesh points
+       ny =     16          # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+#          -1.60000E+00 -1.40000E+00 -1.20000E+00 -1.00000E+00 -8.00000E-01
+#          -6.00000E-01 -4.00000E-01 -2.00000E-01  0.00000E+00  2.00000E-01
+#           4.00000E-01  6.00000E-01  8.00000E-01  1.00000E+00  1.20000E+00
+#           1.40000E+00  1.60000E+00
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   98.38000      # minimum value of z-mesh points
+     zmax =   98.58000      # maximum value of z-mesh points
+#    zdel =  5.0000000E-02  # mesh width of z-mesh points
+       nz =      4          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           9.83800E+01  9.84300E+01  9.84800E+01  9.85300E+01  9.85800E+01
+     unit =    0            # unit is [Gy/source]
+   letmat =    0            # (D=0) mat ID for LET, 0:real mat, <0: electron for H2O
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output =  dose           # total deposit energy
+  deposit =    0            # (D=0) 0-> total deposit dist, 1-> each process
+     axis =     z           # axis of output
+     file = histograma_dosis_A.out  # file name of output for the above axis
+     part =  proton   
+# kf/name :  2212     
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   mother =  all            # (D=all) number of specific mother
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          36 (  0)           0 (  0)          36 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#   no. =  1   ix  =  1   iy  =  1
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.2891E-03  0.1760
+   9.8430E+01   9.8480E+01   4.7740E-03  0.1775
+   9.8480E+01   9.8530E+01   4.6460E-03  0.2032
+   9.8530E+01   9.8580E+01   4.5247E-03  0.2138
+
+#   sum over    8.0000E-03   4.5585E-03  0.1678
+
+'no. =  1,  ix =  1,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  2   ix  =  1   iy  =  2
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.1223E-03  0.1254
+   9.8430E+01   9.8480E+01   9.4223E-03  0.1287
+   9.8480E+01   9.8530E+01   1.0392E-02  0.1376
+   9.8530E+01   9.8580E+01   8.2495E-03  0.1614
+
+#   sum over    8.0000E-03   9.2966E-03  0.1194
+
+'no. =  2,  ix =  1,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  3   ix  =  1   iy  =  3
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9809E-03  0.1272
+   9.8430E+01   9.8480E+01   9.6557E-03  0.1325
+   9.8480E+01   9.8530E+01   9.1227E-03  0.1434
+   9.8530E+01   9.8580E+01   7.8772E-03  0.1683
+
+#   sum over    8.0000E-03   8.9091E-03  0.1221
+
+'no. =  3,  ix =  1,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  4   ix  =  1   iy  =  4
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.2986E-03  0.1511
+   9.8430E+01   9.8480E+01   6.6593E-03  0.1509
+   9.8480E+01   9.8530E+01   6.3971E-03  0.1583
+   9.8530E+01   9.8580E+01   7.1217E-03  0.1791
+
+#   sum over    8.0000E-03   6.6192E-03  0.1408
+
+'no. =  4,  ix =  1,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  5   ix  =  1   iy  =  5
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.6861E-03  0.1417
+   9.8430E+01   9.8480E+01   7.3699E-03  0.1449
+   9.8480E+01   9.8530E+01   8.2043E-03  0.1556
+   9.8530E+01   9.8580E+01   6.3582E-03  0.1888
+
+#   sum over    8.0000E-03   7.1546E-03  0.1381
+
+'no. =  5,  ix =  1,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  6   ix  =  1   iy  =  6
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.8351E-03  0.1248
+   9.8430E+01   9.8480E+01   9.4687E-03  0.1293
+   9.8480E+01   9.8530E+01   9.1238E-03  0.1360
+   9.8530E+01   9.8580E+01   9.2823E-03  0.1549
+
+#   sum over    8.0000E-03   9.4275E-03  0.1180
+
+'no. =  6,  ix =  1,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  7   ix  =  1   iy  =  7
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.8357E-03  0.1327
+   9.8430E+01   9.8480E+01   8.5633E-03  0.1412
+   9.8480E+01   9.8530E+01   7.3519E-03  0.1507
+   9.8530E+01   9.8580E+01   8.0879E-03  0.1616
+
+#   sum over    8.0000E-03   7.9597E-03  0.1274
+
+'no. =  7,  ix =  1,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  8   ix  =  1   iy  =  8
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4072E-03  0.1375
+   9.8430E+01   9.8480E+01   7.8219E-03  0.1387
+   9.8480E+01   9.8530E+01   7.3401E-03  0.1506
+   9.8530E+01   9.8580E+01   8.0971E-03  0.1656
+
+#   sum over    8.0000E-03   7.6666E-03  0.1305
+
+'no. =  8,  ix =  1,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =  9   ix  =  1   iy  =  9
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.6702E-03  0.1436
+   9.8430E+01   9.8480E+01   7.7382E-03  0.1465
+   9.8480E+01   9.8530E+01   5.4028E-03  0.1725
+   9.8530E+01   9.8580E+01   5.6627E-03  0.1874
+
+#   sum over    8.0000E-03   6.6185E-03  0.1364
+
+'no. =  9,  ix =  1,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 10   ix  =  1   iy  = 10
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.9310E-03  0.1305
+   9.8430E+01   9.8480E+01   8.4479E-03  0.1323
+   9.8480E+01   9.8530E+01   8.5999E-03  0.1420
+   9.8530E+01   9.8580E+01   8.6736E-03  0.1533
+
+#   sum over    8.0000E-03   8.4131E-03  0.1243
+
+'no. = 10,  ix =  1,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 11   ix  =  1   iy  = 11
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.3001E-03  0.1327
+   9.8430E+01   9.8480E+01   8.7992E-03  0.1363
+   9.8480E+01   9.8530E+01   8.1131E-03  0.1426
+   9.8530E+01   9.8580E+01   7.9457E-03  0.1683
+
+#   sum over    8.0000E-03   8.2895E-03  0.1259
+
+'no. = 11,  ix =  1,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 12   ix  =  1   iy  = 12
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.5090E-03  0.1463
+   9.8430E+01   9.8480E+01   6.6875E-03  0.1507
+   9.8480E+01   9.8530E+01   6.5972E-03  0.1589
+   9.8530E+01   9.8580E+01   6.7997E-03  0.1781
+
+#   sum over    8.0000E-03   6.8983E-03  0.1367
+
+'no. = 12,  ix =  1,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 13   ix  =  1   iy  = 13
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.4346E-03  0.1190
+   9.8430E+01   9.8480E+01   1.0243E-02  0.1211
+   9.8480E+01   9.8530E+01   1.0711E-02  0.1257
+   9.8530E+01   9.8580E+01   1.1448E-02  0.1388
+
+#   sum over    8.0000E-03   1.0209E-02  0.1156
+
+'no. = 13,  ix =  1,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 14   ix  =  1   iy  = 14
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2479E-03  0.1330
+   9.8430E+01   9.8480E+01   8.9033E-03  0.1359
+   9.8480E+01   9.8530E+01   7.9707E-03  0.1456
+   9.8530E+01   9.8580E+01   8.0035E-03  0.1697
+
+#   sum over    8.0000E-03   8.0313E-03  0.1290
+
+'no. = 14,  ix =  1,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 15   ix  =  1   iy  = 15
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1247E-03  0.1236
+   9.8430E+01   9.8480E+01   9.2642E-03  0.1276
+   9.8480E+01   9.8530E+01   1.0710E-02  0.1328
+   9.8530E+01   9.8580E+01   9.4747E-03  0.1508
+
+#   sum over    8.0000E-03   9.3935E-03  0.1197
+
+'no. = 15,  ix =  1,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 16   ix  =  1   iy  = 16
+#   x = (  -1.0000E+00  -  -8.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.8683E-03  0.1496
+   9.8430E+01   9.8480E+01   6.6343E-03  0.1477
+   9.8480E+01   9.8530E+01   6.9009E-03  0.1606
+   9.8530E+01   9.8580E+01   6.6613E-03  0.1772
+
+#   sum over    8.0000E-03   6.7662E-03  0.1388
+
+'no. = 16,  ix =  1,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -1.0000E+00 [cm]
+  xmax  &=&  -8.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 17   ix  =  2   iy  =  1
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.6683E-03  0.1704
+   9.8430E+01   9.8480E+01   4.5605E-03  0.1704
+   9.8480E+01   9.8530E+01   4.7706E-03  0.1864
+   9.8530E+01   9.8580E+01   4.6573E-03  0.1938
+
+#   sum over    8.0000E-03   4.6642E-03  0.1601
+
+'no. = 17,  ix =  2,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 18   ix  =  2   iy  =  2
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.2269E-03  0.1245
+   9.8430E+01   9.8480E+01   9.1396E-03  0.1296
+   9.8480E+01   9.8530E+01   9.7834E-03  0.1350
+   9.8530E+01   9.8580E+01   1.0180E-02  0.1479
+
+#   sum over    8.0000E-03   9.5824E-03  0.1190
+
+'no. = 18,  ix =  2,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 19   ix  =  2   iy  =  3
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.9546E-03  0.1280
+   9.8430E+01   9.8480E+01   8.9099E-03  0.1299
+   9.8480E+01   9.8530E+01   8.8223E-03  0.1340
+   9.8530E+01   9.8580E+01   1.0228E-02  0.1465
+
+#   sum over    8.0000E-03   8.9787E-03  0.1227
+
+'no. = 19,  ix =  2,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 20   ix  =  2   iy  =  4
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1483E-03  0.1337
+   9.8430E+01   9.8480E+01   8.0469E-03  0.1369
+   9.8480E+01   9.8530E+01   8.3689E-03  0.1479
+   9.8530E+01   9.8580E+01   6.7547E-03  0.1723
+
+#   sum over    8.0000E-03   7.8297E-03  0.1289
+
+'no. = 20,  ix =  2,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 21   ix  =  2   iy  =  5
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.5196E-03  0.1457
+   9.8430E+01   9.8480E+01   7.0891E-03  0.1505
+   9.8480E+01   9.8530E+01   6.9682E-03  0.1595
+   9.8530E+01   9.8580E+01   6.8380E-03  0.1796
+
+#   sum over    8.0000E-03   6.8537E-03  0.1387
+
+'no. = 21,  ix =  2,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 22   ix  =  2   iy  =  6
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.8392E-03  0.1260
+   9.8430E+01   9.8480E+01   9.3645E-03  0.1289
+   9.8480E+01   9.8530E+01   9.0443E-03  0.1405
+   9.8530E+01   9.8580E+01   8.5414E-03  0.1597
+
+#   sum over    8.0000E-03   8.9473E-03  0.1217
+
+'no. = 22,  ix =  2,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 23   ix  =  2   iy  =  7
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.7549E-03  0.1248
+   9.8430E+01   9.8480E+01   9.5238E-03  0.1298
+   9.8480E+01   9.8530E+01   8.6683E-03  0.1409
+   9.8530E+01   9.8580E+01   8.6823E-03  0.1507
+
+#   sum over    8.0000E-03   9.1573E-03  0.1176
+
+'no. = 23,  ix =  2,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 24   ix  =  2   iy  =  8
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.7137E-03  0.1218
+   9.8430E+01   9.8480E+01   1.0544E-02  0.1224
+   9.8480E+01   9.8530E+01   1.1218E-02  0.1271
+   9.8530E+01   9.8580E+01   1.0358E-02  0.1484
+
+#   sum over    8.0000E-03   1.0208E-02  0.1160
+
+'no. = 24,  ix =  2,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 25   ix  =  2   iy  =  9
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9311E-03  0.1399
+   9.8430E+01   9.8480E+01   7.2352E-03  0.1476
+   9.8480E+01   9.8530E+01   6.7307E-03  0.1622
+   9.8530E+01   9.8580E+01   6.5426E-03  0.1779
+
+#   sum over    8.0000E-03   7.3599E-03  0.1320
+
+'no. = 25,  ix =  2,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 26   ix  =  2   iy  = 10
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.2481E-03  0.1293
+   9.8430E+01   9.8480E+01   9.2223E-03  0.1310
+   9.8480E+01   9.8530E+01   8.5572E-03  0.1383
+   9.8530E+01   9.8580E+01   9.1407E-03  0.1486
+
+#   sum over    8.0000E-03   8.7921E-03  0.1222
+
+'no. = 26,  ix =  2,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 27   ix  =  2   iy  = 11
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   1.1022E-02  0.1132
+   9.8430E+01   9.8480E+01   1.1703E-02  0.1175
+   9.8480E+01   9.8530E+01   1.1375E-02  0.1305
+   9.8530E+01   9.8580E+01   9.1023E-03  0.1467
+
+#   sum over    8.0000E-03   1.0801E-02  0.1104
+
+'no. = 27,  ix =  2,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 28   ix  =  2   iy  = 12
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5635E-03  0.1325
+   9.8430E+01   9.8480E+01   8.3059E-03  0.1343
+   9.8480E+01   9.8530E+01   8.7206E-03  0.1361
+   9.8530E+01   9.8580E+01   9.9517E-03  0.1474
+
+#   sum over    8.0000E-03   8.8854E-03  0.1220
+
+'no. = 28,  ix =  2,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 29   ix  =  2   iy  = 13
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.4949E-03  0.1367
+   9.8430E+01   9.8480E+01   7.8450E-03  0.1410
+   9.8480E+01   9.8530E+01   7.8190E-03  0.1432
+   9.8530E+01   9.8580E+01   7.4452E-03  0.1652
+
+#   sum over    8.0000E-03   7.4010E-03  0.1313
+
+'no. = 29,  ix =  2,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 30   ix  =  2   iy  = 14
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.6301E-03  0.1418
+   9.8430E+01   9.8480E+01   7.5461E-03  0.1437
+   9.8480E+01   9.8530E+01   7.0258E-03  0.1586
+   9.8530E+01   9.8580E+01   6.9615E-03  0.1767
+
+#   sum over    8.0000E-03   7.0409E-03  0.1375
+
+'no. = 30,  ix =  2,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 31   ix  =  2   iy  = 15
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5269E-03  0.1246
+   9.8430E+01   9.8480E+01   9.4560E-03  0.1281
+   9.8480E+01   9.8530E+01   1.0220E-02  0.1339
+   9.8530E+01   9.8580E+01   9.0171E-03  0.1543
+
+#   sum over    8.0000E-03   9.3049E-03  0.1197
+
+'no. = 31,  ix =  2,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 32   ix  =  2   iy  = 16
+#   x = (  -8.0000E-01  -  -6.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4345E-03  0.1353
+   9.8430E+01   9.8480E+01   8.5168E-03  0.1400
+   9.8480E+01   9.8530E+01   7.1538E-03  0.1604
+   9.8530E+01   9.8580E+01   7.0520E-03  0.1776
+
+#   sum over    8.0000E-03   7.5393E-03  0.1322
+
+'no. = 32,  ix =  2,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -8.0000E-01 [cm]
+  xmax  &=&  -6.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 33   ix  =  3   iy  =  1
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   3.3510E-03  0.2041
+   9.8430E+01   9.8480E+01   4.0408E-03  0.2464
+   9.8480E+01   9.8530E+01   3.7574E-03  0.2239
+   9.8530E+01   9.8580E+01   3.5327E-03  0.2310
+
+#   sum over    8.0000E-03   3.6705E-03  0.1899
+
+'no. = 33,  ix =  3,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 34   ix  =  3   iy  =  2
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.4408E-03  0.1250
+   9.8430E+01   9.8480E+01   9.2952E-03  0.1265
+   9.8480E+01   9.8530E+01   8.7685E-03  0.1356
+   9.8530E+01   9.8580E+01   1.0129E-02  0.1456
+
+#   sum over    8.0000E-03   9.4083E-03  0.1175
+
+'no. = 34,  ix =  3,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 35   ix  =  3   iy  =  3
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.4843E-03  0.1298
+   9.8430E+01   9.8480E+01   8.9799E-03  0.1364
+   9.8480E+01   9.8530E+01   7.5070E-03  0.1536
+   9.8530E+01   9.8580E+01   6.9320E-03  0.1750
+
+#   sum over    8.0000E-03   7.9758E-03  0.1265
+
+'no. = 35,  ix =  3,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 36   ix  =  3   iy  =  4
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.6887E-03  0.1294
+   9.8430E+01   9.8480E+01   9.9162E-03  0.1309
+   9.8480E+01   9.8530E+01   8.4892E-03  0.1517
+   9.8530E+01   9.8580E+01   6.5665E-03  0.1866
+
+#   sum over    8.0000E-03   8.6651E-03  0.1217
+
+'no. = 36,  ix =  3,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 37   ix  =  3   iy  =  5
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9358E-03  0.1210
+   9.8430E+01   9.8480E+01   9.9303E-03  0.1231
+   9.8480E+01   9.8530E+01   1.0397E-02  0.1284
+   9.8530E+01   9.8580E+01   9.8976E-03  0.1465
+
+#   sum over    8.0000E-03   9.7903E-03  0.1167
+
+'no. = 37,  ix =  3,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 38   ix  =  3   iy  =  6
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.6667E-03  0.1363
+   9.8430E+01   9.8480E+01   8.5639E-03  0.1401
+   9.8480E+01   9.8530E+01   7.7946E-03  0.1491
+   9.8530E+01   9.8580E+01   7.2417E-03  0.1760
+
+#   sum over    8.0000E-03   7.5667E-03  0.1338
+
+'no. = 38,  ix =  3,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 39   ix  =  3   iy  =  7
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.7827E-03  0.1316
+   9.8430E+01   9.8480E+01   8.9081E-03  0.1391
+   9.8480E+01   9.8530E+01   7.3044E-03  0.1580
+   9.8530E+01   9.8580E+01   6.8109E-03  0.1787
+
+#   sum over    8.0000E-03   7.9516E-03  0.1272
+
+'no. = 39,  ix =  3,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 40   ix  =  3   iy  =  8
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1687E-03  0.1292
+   9.8430E+01   9.8480E+01   8.5589E-03  0.1325
+   9.8480E+01   9.8530E+01   8.6436E-03  0.1413
+   9.8530E+01   9.8580E+01   8.3923E-03  0.1624
+
+#   sum over    8.0000E-03   8.4409E-03  0.1248
+
+'no. = 40,  ix =  3,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 41   ix  =  3   iy  =  9
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.8180E-03  0.1367
+   9.8430E+01   9.8480E+01   7.6372E-03  0.1361
+   9.8480E+01   9.8530E+01   8.2110E-03  0.1431
+   9.8530E+01   9.8580E+01   9.3052E-03  0.1581
+
+#   sum over    8.0000E-03   7.9929E-03  0.1318
+
+'no. = 41,  ix =  3,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 42   ix  =  3   iy  = 10
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.0527E-03  0.1353
+   9.8430E+01   9.8480E+01   8.9263E-03  0.1336
+   9.8480E+01   9.8530E+01   8.4422E-03  0.1490
+   9.8530E+01   9.8580E+01   6.3736E-03  0.1774
+
+#   sum over    8.0000E-03   7.9487E-03  0.1268
+
+'no. = 42,  ix =  3,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 43   ix  =  3   iy  = 11
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.2674E-03  0.1529
+   9.8430E+01   9.8480E+01   5.5880E-03  0.1637
+   9.8480E+01   9.8530E+01   5.9794E-03  0.1746
+   9.8530E+01   9.8580E+01   5.1794E-03  0.2005
+
+#   sum over    8.0000E-03   5.7535E-03  0.1495
+
+'no. = 43,  ix =  3,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 44   ix  =  3   iy  = 12
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.3256E-03  0.1332
+   9.8430E+01   9.8480E+01   9.0490E-03  0.1334
+   9.8480E+01   9.8530E+01   7.7624E-03  0.1458
+   9.8530E+01   9.8580E+01   8.0264E-03  0.1593
+
+#   sum over    8.0000E-03   8.2909E-03  0.1229
+
+'no. = 44,  ix =  3,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 45   ix  =  3   iy  = 13
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2875E-03  0.1388
+   9.8430E+01   9.8480E+01   7.2248E-03  0.1427
+   9.8480E+01   9.8530E+01   6.9943E-03  0.1493
+   9.8530E+01   9.8580E+01   7.8956E-03  0.1605
+
+#   sum over    8.0000E-03   7.3506E-03  0.1323
+
+'no. = 45,  ix =  3,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 46   ix  =  3   iy  = 14
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9293E-03  0.1272
+   9.8430E+01   9.8480E+01   9.3450E-03  0.1312
+   9.8480E+01   9.8530E+01   8.9393E-03  0.1452
+   9.8530E+01   9.8580E+01   7.2682E-03  0.1719
+
+#   sum over    8.0000E-03   8.6205E-03  0.1229
+
+'no. = 46,  ix =  3,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 47   ix  =  3   iy  = 15
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5208E-03  0.1260
+   9.8430E+01   9.8480E+01   9.3368E-03  0.1287
+   9.8480E+01   9.8530E+01   9.0745E-03  0.1373
+   9.8530E+01   9.8580E+01   9.5134E-03  0.1480
+
+#   sum over    8.0000E-03   9.1114E-03  0.1203
+
+'no. = 47,  ix =  3,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 48   ix  =  3   iy  = 16
+#   x = (  -6.0000E-01  -  -4.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.9426E-03  0.1388
+   9.8430E+01   9.8480E+01   7.4310E-03  0.1412
+   9.8480E+01   9.8530E+01   8.0953E-03  0.1506
+   9.8530E+01   9.8580E+01   7.1382E-03  0.1712
+
+#   sum over    8.0000E-03   7.4018E-03  0.1332
+
+'no. = 48,  ix =  3,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -6.0000E-01 [cm]
+  xmax  &=&  -4.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 49   ix  =  4   iy  =  1
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.1451E-03  0.1752
+   9.8430E+01   9.8480E+01   5.1436E-03  0.1756
+   9.8480E+01   9.8530E+01   5.3499E-03  0.1947
+   9.8530E+01   9.8580E+01   3.5320E-03  0.2240
+
+#   sum over    8.0000E-03   4.5427E-03  0.1676
+
+'no. = 49,  ix =  4,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 50   ix  =  4   iy  =  2
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.6737E-03  0.1252
+   9.8430E+01   9.8480E+01   9.3101E-03  0.1293
+   9.8480E+01   9.8530E+01   8.6528E-03  0.1376
+   9.8530E+01   9.8580E+01   9.7456E-03  0.1515
+
+#   sum over    8.0000E-03   9.0955E-03  0.1210
+
+'no. = 50,  ix =  4,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 51   ix  =  4   iy  =  3
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.2380E-03  0.1425
+   9.8430E+01   9.8480E+01   7.1219E-03  0.1429
+   9.8480E+01   9.8530E+01   7.8622E-03  0.1460
+   9.8530E+01   9.8580E+01   9.4025E-03  0.1489
+
+#   sum over    8.0000E-03   7.6561E-03  0.1326
+
+'no. = 51,  ix =  4,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 52   ix  =  4   iy  =  4
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.3657E-03  0.1250
+   9.8430E+01   9.8480E+01   1.0490E-02  0.1289
+   9.8480E+01   9.8530E+01   9.1584E-03  0.1356
+   9.8530E+01   9.8580E+01   9.1292E-03  0.1543
+
+#   sum over    8.0000E-03   9.5357E-03  0.1166
+
+'no. = 52,  ix =  4,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 53   ix  =  4   iy  =  5
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.5251E-03  0.1214
+   9.8430E+01   9.8480E+01   9.2151E-03  0.1237
+   9.8480E+01   9.8530E+01   9.2784E-03  0.1391
+   9.8530E+01   9.8580E+01   8.9744E-03  0.1523
+
+#   sum over    8.0000E-03   9.2482E-03  0.1172
+
+'no. = 53,  ix =  4,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 54   ix  =  4   iy  =  6
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.6165E-03  0.1742
+   9.8430E+01   9.8480E+01   4.6758E-03  0.1800
+   9.8480E+01   9.8530E+01   4.9797E-03  0.1838
+   9.8530E+01   9.8580E+01   5.5860E-03  0.1956
+
+#   sum over    8.0000E-03   4.9645E-03  0.1626
+
+'no. = 54,  ix =  4,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 55   ix  =  4   iy  =  7
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.3217E-03  0.1458
+   9.8430E+01   9.8480E+01   7.2619E-03  0.1486
+   9.8480E+01   9.8530E+01   6.8313E-03  0.1640
+   9.8530E+01   9.8580E+01   6.8188E-03  0.1864
+
+#   sum over    8.0000E-03   6.8084E-03  0.1414
+
+'no. = 55,  ix =  4,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 56   ix  =  4   iy  =  8
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.6088E-03  0.1438
+   9.8430E+01   9.8480E+01   7.4737E-03  0.1431
+   9.8480E+01   9.8530E+01   8.1141E-03  0.1529
+   9.8530E+01   9.8580E+01   6.6165E-03  0.1779
+
+#   sum over    8.0000E-03   7.2033E-03  0.1365
+
+'no. = 56,  ix =  4,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 57   ix  =  4   iy  =  9
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.8818E-03  0.1478
+   9.8430E+01   9.8480E+01   6.7213E-03  0.1484
+   9.8480E+01   9.8530E+01   7.2143E-03  0.1587
+   9.8530E+01   9.8580E+01   6.1560E-03  0.1886
+
+#   sum over    8.0000E-03   6.7434E-03  0.1395
+
+'no. = 57,  ix =  4,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 58   ix  =  4   iy  = 10
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.4483E-03  0.1285
+   9.8430E+01   9.8480E+01   9.4461E-03  0.1327
+   9.8480E+01   9.8530E+01   8.7453E-03  0.1406
+   9.8530E+01   9.8580E+01   8.8196E-03  0.1572
+
+#   sum over    8.0000E-03   8.8648E-03  0.1216
+
+'no. = 58,  ix =  4,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 59   ix  =  4   iy  = 11
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.1682E-03  0.1424
+   9.8430E+01   9.8480E+01   7.6756E-03  0.1494
+   9.8480E+01   9.8530E+01   6.0109E-03  0.1717
+   9.8530E+01   9.8580E+01   5.5037E-03  0.2008
+
+#   sum over    8.0000E-03   6.5896E-03  0.1402
+
+'no. = 59,  ix =  4,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 60   ix  =  4   iy  = 12
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.2567E-03  0.1328
+   9.8430E+01   9.8480E+01   8.9027E-03  0.1338
+   9.8480E+01   9.8530E+01   8.2813E-03  0.1464
+   9.8530E+01   9.8580E+01   7.4293E-03  0.1693
+
+#   sum over    8.0000E-03   8.2175E-03  0.1256
+
+'no. = 60,  ix =  4,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 61   ix  =  4   iy  = 13
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.3582E-03  0.1381
+   9.8430E+01   9.8480E+01   7.7475E-03  0.1392
+   9.8480E+01   9.8530E+01   7.9872E-03  0.1459
+   9.8530E+01   9.8580E+01   8.5270E-03  0.1592
+
+#   sum over    8.0000E-03   7.9050E-03  0.1304
+
+'no. = 61,  ix =  4,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 62   ix  =  4   iy  = 14
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1980E-03  0.1345
+   9.8430E+01   9.8480E+01   7.9962E-03  0.1388
+   9.8480E+01   9.8530E+01   8.1140E-03  0.1416
+   9.8530E+01   9.8580E+01   8.6189E-03  0.1503
+
+#   sum over    8.0000E-03   8.2318E-03  0.1247
+
+'no. = 62,  ix =  4,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 63   ix  =  4   iy  = 15
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.0208E-03  0.1387
+   9.8430E+01   9.8480E+01   7.4249E-03  0.1454
+   9.8480E+01   9.8530E+01   6.7217E-03  0.1648
+   9.8530E+01   9.8580E+01   6.0837E-03  0.1831
+
+#   sum over    8.0000E-03   7.0628E-03  0.1335
+
+'no. = 63,  ix =  4,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 64   ix  =  4   iy  = 16
+#   x = (  -4.0000E-01  -  -2.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.1292E-03  0.1397
+   9.8430E+01   9.8480E+01   7.4566E-03  0.1408
+   9.8480E+01   9.8530E+01   7.5839E-03  0.1545
+   9.8530E+01   9.8580E+01   7.8827E-03  0.1679
+
+#   sum over    8.0000E-03   7.5131E-03  0.1335
+
+'no. = 64,  ix =  4,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -4.0000E-01 [cm]
+  xmax  &=&  -2.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 65   ix  =  5   iy  =  1
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.6546E-03  0.1786
+   9.8430E+01   9.8480E+01   4.9424E-03  0.1783
+   9.8480E+01   9.8530E+01   5.6307E-03  0.1918
+   9.8530E+01   9.8580E+01   3.9730E-03  0.2224
+
+#   sum over    8.0000E-03   4.8002E-03  0.1658
+
+'no. = 65,  ix =  5,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 66   ix  =  5   iy  =  2
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.0362E-03  0.1472
+   9.8430E+01   9.8480E+01   6.6768E-03  0.1550
+   9.8480E+01   9.8530E+01   6.8360E-03  0.1607
+   9.8530E+01   9.8580E+01   6.5186E-03  0.1804
+
+#   sum over    8.0000E-03   6.7669E-03  0.1387
+
+'no. = 66,  ix =  5,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 67   ix  =  5   iy  =  3
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2153E-03  0.1374
+   9.8430E+01   9.8480E+01   7.4903E-03  0.1423
+   9.8480E+01   9.8530E+01   7.7673E-03  0.1455
+   9.8530E+01   9.8580E+01   9.2215E-03  0.1534
+
+#   sum over    8.0000E-03   7.9236E-03  0.1304
+
+'no. = 67,  ix =  5,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 68   ix  =  5   iy  =  4
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.9541E-03  0.1372
+   9.8430E+01   9.8480E+01   8.4491E-03  0.1393
+   9.8480E+01   9.8530E+01   7.5804E-03  0.1574
+   9.8530E+01   9.8580E+01   6.5113E-03  0.1750
+
+#   sum over    8.0000E-03   7.3737E-03  0.1333
+
+'no. = 68,  ix =  5,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 69   ix  =  5   iy  =  5
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2378E-03  0.1305
+   9.8430E+01   9.8480E+01   9.0285E-03  0.1321
+   9.8480E+01   9.8530E+01   8.4260E-03  0.1400
+   9.8530E+01   9.8580E+01   8.9160E-03  0.1519
+
+#   sum over    8.0000E-03   8.4021E-03  0.1251
+
+'no. = 69,  ix =  5,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 70   ix  =  5   iy  =  6
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.8680E-03  0.1340
+   9.8430E+01   9.8480E+01   8.2879E-03  0.1387
+   9.8480E+01   9.8530E+01   8.0073E-03  0.1472
+   9.8530E+01   9.8580E+01   8.0705E-03  0.1649
+
+#   sum over    8.0000E-03   8.0584E-03  0.1271
+
+'no. = 70,  ix =  5,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 71   ix  =  5   iy  =  7
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2174E-03  0.1400
+   9.8430E+01   9.8480E+01   7.6905E-03  0.1466
+   9.8480E+01   9.8530E+01   6.4762E-03  0.1613
+   9.8530E+01   9.8580E+01   6.0920E-03  0.1927
+
+#   sum over    8.0000E-03   6.8690E-03  0.1371
+
+'no. = 71,  ix =  5,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 72   ix  =  5   iy  =  8
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.9019E-03  0.1221
+   9.8430E+01   9.8480E+01   9.9767E-03  0.1269
+   9.8480E+01   9.8530E+01   9.4060E-03  0.1362
+   9.8530E+01   9.8580E+01   9.5348E-03  0.1505
+
+#   sum over    8.0000E-03   9.7048E-03  0.1163
+
+'no. = 72,  ix =  5,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 73   ix  =  5   iy  =  9
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.9244E-03  0.1365
+   9.8430E+01   9.8480E+01   8.1160E-03  0.1386
+   9.8480E+01   9.8530E+01   8.1585E-03  0.1479
+   9.8530E+01   9.8580E+01   7.8148E-03  0.1618
+
+#   sum over    8.0000E-03   8.0035E-03  0.1273
+
+'no. = 73,  ix =  5,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 74   ix  =  5   iy  = 10
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.7311E-03  0.1387
+   9.8430E+01   9.8480E+01   7.8376E-03  0.1436
+   9.8480E+01   9.8530E+01   7.8308E-03  0.1551
+   9.8530E+01   9.8580E+01   6.7167E-03  0.1783
+
+#   sum over    8.0000E-03   7.2790E-03  0.1345
+
+'no. = 74,  ix =  5,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 75   ix  =  5   iy  = 11
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1266E-03  0.1337
+   9.8430E+01   9.8480E+01   8.0788E-03  0.1361
+   9.8480E+01   9.8530E+01   7.7741E-03  0.1464
+   9.8530E+01   9.8580E+01   8.0855E-03  0.1636
+
+#   sum over    8.0000E-03   8.0163E-03  0.1274
+
+'no. = 75,  ix =  5,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 76   ix  =  5   iy  = 12
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1276E-03  0.1317
+   9.8430E+01   9.8480E+01   8.8901E-03  0.1340
+   9.8480E+01   9.8530E+01   9.1876E-03  0.1388
+   9.8530E+01   9.8580E+01   8.2901E-03  0.1636
+
+#   sum over    8.0000E-03   8.6238E-03  0.1238
+
+'no. = 76,  ix =  5,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 77   ix  =  5   iy  = 13
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.7174E-03  0.1225
+   9.8430E+01   9.8480E+01   9.4608E-03  0.1257
+   9.8480E+01   9.8530E+01   1.0081E-02  0.1316
+   9.8530E+01   9.8580E+01   1.0035E-02  0.1455
+
+#   sum over    8.0000E-03   9.3235E-03  0.1204
+
+'no. = 77,  ix =  5,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 78   ix  =  5   iy  = 14
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9045E-03  0.1271
+   9.8430E+01   9.8480E+01   9.3395E-03  0.1253
+   9.8480E+01   9.8530E+01   8.6013E-03  0.1432
+   9.8530E+01   9.8580E+01   7.9398E-03  0.1647
+
+#   sum over    8.0000E-03   8.6963E-03  0.1220
+
+'no. = 78,  ix =  5,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 79   ix  =  5   iy  = 15
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5145E-03  0.1307
+   9.8430E+01   9.8480E+01   8.7509E-03  0.1317
+   9.8480E+01   9.8530E+01   8.8410E-03  0.1447
+   9.8530E+01   9.8580E+01   8.1634E-03  0.1636
+
+#   sum over    8.0000E-03   8.5674E-03  0.1238
+
+'no. = 79,  ix =  5,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 80   ix  =  5   iy  = 16
+#   x = (  -2.0000E-01  -   0.0000E+00  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.4177E-03  0.1261
+   9.8430E+01   9.8480E+01   9.0630E-03  0.1297
+   9.8480E+01   9.8530E+01   9.1376E-03  0.1374
+   9.8530E+01   9.8580E+01   9.0071E-03  0.1516
+
+#   sum over    8.0000E-03   8.9063E-03  0.1221
+
+'no. = 80,  ix =  5,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&  -2.0000E-01 [cm]
+  xmax  &=&   0.0000E+00 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 81   ix  =  6   iy  =  1
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   5.3485E-03  0.1623
+   9.8430E+01   9.8480E+01   5.5514E-03  0.1637
+   9.8480E+01   9.8530E+01   5.0816E-03  0.1696
+   9.8530E+01   9.8580E+01   6.0700E-03  0.1836
+
+#   sum over    8.0000E-03   5.5129E-03  0.1516
+
+'no. = 81,  ix =  6,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 82   ix  =  6   iy  =  2
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4686E-03  0.1297
+   9.8430E+01   9.8480E+01   8.5573E-03  0.1307
+   9.8480E+01   9.8530E+01   9.3489E-03  0.1354
+   9.8530E+01   9.8580E+01   9.1156E-03  0.1499
+
+#   sum over    8.0000E-03   8.6226E-03  0.1248
+
+'no. = 82,  ix =  6,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 83   ix  =  6   iy  =  3
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.4025E-03  0.1368
+   9.8430E+01   9.8480E+01   8.1255E-03  0.1423
+   9.8480E+01   9.8530E+01   6.4008E-03  0.1640
+   9.8530E+01   9.8580E+01   7.1722E-03  0.1768
+
+#   sum over    8.0000E-03   7.5252E-03  0.1320
+
+'no. = 83,  ix =  6,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 84   ix  =  6   iy  =  4
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.7424E-03  0.1328
+   9.8430E+01   9.8480E+01   8.2724E-03  0.1417
+   9.8480E+01   9.8530E+01   8.0079E-03  0.1469
+   9.8530E+01   9.8580E+01   8.2125E-03  0.1656
+
+#   sum over    8.0000E-03   8.0588E-03  0.1285
+
+'no. = 84,  ix =  6,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 85   ix  =  6   iy  =  5
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.4789E-03  0.1277
+   9.8430E+01   9.8480E+01   9.2820E-03  0.1342
+   9.8480E+01   9.8530E+01   8.6395E-03  0.1472
+   9.8530E+01   9.8580E+01   6.5172E-03  0.1793
+
+#   sum over    8.0000E-03   8.4794E-03  0.1225
+
+'no. = 85,  ix =  6,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 86   ix  =  6   iy  =  6
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.7427E-03  0.1240
+   9.8430E+01   9.8480E+01   1.0026E-02  0.1254
+   9.8480E+01   9.8530E+01   8.3469E-03  0.1362
+   9.8530E+01   9.8580E+01   9.8474E-03  0.1456
+
+#   sum over    8.0000E-03   9.4908E-03  0.1148
+
+'no. = 86,  ix =  6,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 87   ix  =  6   iy  =  7
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.6425E-03  0.1300
+   9.8430E+01   9.8480E+01   8.5241E-03  0.1376
+   9.8480E+01   9.8530E+01   8.0370E-03  0.1430
+   9.8530E+01   9.8580E+01   8.2246E-03  0.1586
+
+#   sum over    8.0000E-03   8.3570E-03  0.1238
+
+'no. = 87,  ix =  6,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 88   ix  =  6   iy  =  8
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.0671E-03  0.1268
+   9.8430E+01   9.8480E+01   8.9319E-03  0.1284
+   9.8480E+01   9.8530E+01   8.5924E-03  0.1395
+   9.8530E+01   9.8580E+01   9.4169E-03  0.1497
+
+#   sum over    8.0000E-03   9.0021E-03  0.1206
+
+'no. = 88,  ix =  6,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 89   ix  =  6   iy  =  9
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.8721E-03  0.1256
+   9.8430E+01   9.8480E+01   1.0102E-02  0.1280
+   9.8480E+01   9.8530E+01   8.6650E-03  0.1419
+   9.8530E+01   9.8580E+01   7.3649E-03  0.1685
+
+#   sum over    8.0000E-03   8.7510E-03  0.1204
+
+'no. = 89,  ix =  6,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 90   ix  =  6   iy  = 10
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.6802E-03  0.1313
+   9.8430E+01   9.8480E+01   8.7632E-03  0.1354
+   9.8480E+01   9.8530E+01   8.0289E-03  0.1489
+   9.8530E+01   9.8580E+01   7.4218E-03  0.1645
+
+#   sum over    8.0000E-03   8.2235E-03  0.1233
+
+'no. = 90,  ix =  6,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 91   ix  =  6   iy  = 11
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.3417E-03  0.1256
+   9.8430E+01   9.8480E+01   9.3054E-03  0.1269
+   9.8480E+01   9.8530E+01   8.9767E-03  0.1401
+   9.8530E+01   9.8580E+01   9.1039E-03  0.1573
+
+#   sum over    8.0000E-03   9.1819E-03  0.1202
+
+'no. = 91,  ix =  6,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 92   ix  =  6   iy  = 12
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1125E-03  0.1282
+   9.8430E+01   9.8480E+01   8.9150E-03  0.1304
+   9.8480E+01   9.8530E+01   8.9877E-03  0.1396
+   9.8530E+01   9.8580E+01   8.7601E-03  0.1579
+
+#   sum over    8.0000E-03   8.6938E-03  0.1227
+
+'no. = 92,  ix =  6,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 93   ix  =  6   iy  = 13
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.3994E-03  0.1253
+   9.8430E+01   9.8480E+01   9.2396E-03  0.1266
+   9.8480E+01   9.8530E+01   9.2848E-03  0.1352
+   9.8530E+01   9.8580E+01   1.0476E-02  0.1458
+
+#   sum over    8.0000E-03   9.5999E-03  0.1181
+
+'no. = 93,  ix =  6,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 94   ix  =  6   iy  = 14
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.7884E-03  0.1268
+   9.8430E+01   9.8480E+01   9.0058E-03  0.1282
+   9.8480E+01   9.8530E+01   9.2692E-03  0.1355
+   9.8530E+01   9.8580E+01   9.4129E-03  0.1544
+
+#   sum over    8.0000E-03   9.1191E-03  0.1208
+
+'no. = 94,  ix =  6,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 95   ix  =  6   iy  = 15
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.9211E-03  0.1180
+   9.8430E+01   9.8480E+01   1.1269E-02  0.1210
+   9.8480E+01   9.8530E+01   1.0923E-02  0.1288
+   9.8530E+01   9.8580E+01   9.4524E-03  0.1504
+
+#   sum over    8.0000E-03   1.0392E-02  0.1123
+
+'no. = 95,  ix =  6,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 96   ix  =  6   iy  = 16
+#   x = (   0.0000E+00  -   2.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.6983E-03  0.1291
+   9.8430E+01   9.8480E+01   9.3656E-03  0.1307
+   9.8480E+01   9.8530E+01   9.4770E-03  0.1396
+   9.8530E+01   9.8580E+01   8.3855E-03  0.1662
+
+#   sum over    8.0000E-03   8.7316E-03  0.1258
+
+'no. = 96,  ix =  6,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   0.0000E+00 [cm]
+  xmax  &=&   2.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 97   ix  =  7   iy  =  1
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   3.9516E-03  0.1784
+   9.8430E+01   9.8480E+01   4.4876E-03  0.1793
+   9.8480E+01   9.8530E+01   4.4667E-03  0.1831
+   9.8530E+01   9.8580E+01   5.0331E-03  0.1973
+
+#   sum over    8.0000E-03   4.4847E-03  0.1671
+
+'no. = 97,  ix =  7,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 98   ix  =  7   iy  =  2
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.0929E-03  0.1274
+   9.8430E+01   9.8480E+01   9.7389E-03  0.1307
+   9.8480E+01   9.8530E+01   8.7756E-03  0.1402
+   9.8530E+01   9.8580E+01   8.7801E-03  0.1584
+
+#   sum over    8.0000E-03   8.8469E-03  0.1230
+
+'no. = 98,  ix =  7,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. = 99   ix  =  7   iy  =  3
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.3982E-03  0.1310
+   9.8430E+01   9.8480E+01   9.2695E-03  0.1341
+   9.8480E+01   9.8530E+01   7.2262E-03  0.1541
+   9.8530E+01   9.8580E+01   6.2046E-03  0.1853
+
+#   sum over    8.0000E-03   7.7746E-03  0.1276
+
+'no. = 99,  ix =  7,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =100   ix  =  7   iy  =  4
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.3477E-03  0.1441
+   9.8430E+01   9.8480E+01   7.3665E-03  0.1419
+   9.8480E+01   9.8530E+01   8.4956E-03  0.1477
+   9.8530E+01   9.8580E+01   7.8699E-03  0.1665
+
+#   sum over    8.0000E-03   7.7699E-03  0.1310
+
+'no. =100,  ix =  7,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =101   ix  =  7   iy  =  5
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.7594E-03  0.1261
+   9.8430E+01   9.8480E+01   9.8718E-03  0.1273
+   9.8480E+01   9.8530E+01   1.0309E-02  0.1383
+   9.8530E+01   9.8580E+01   6.9179E-03  0.1716
+
+#   sum over    8.0000E-03   8.9645E-03  0.1216
+
+'no. =101,  ix =  7,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =102   ix  =  7   iy  =  6
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.8793E-03  0.1305
+   9.8430E+01   9.8480E+01   8.3931E-03  0.1338
+   9.8480E+01   9.8530E+01   8.1457E-03  0.1465
+   9.8530E+01   9.8580E+01   7.9653E-03  0.1654
+
+#   sum over    8.0000E-03   8.3458E-03  0.1237
+
+'no. =102,  ix =  7,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =103   ix  =  7   iy  =  7
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.2651E-03  0.1340
+   9.8430E+01   9.8480E+01   8.6703E-03  0.1364
+   9.8480E+01   9.8530E+01   7.3089E-03  0.1564
+   9.8530E+01   9.8580E+01   7.3380E-03  0.1765
+
+#   sum over    8.0000E-03   7.8956E-03  0.1291
+
+'no. =103,  ix =  7,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =104   ix  =  7   iy  =  8
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.0887E-03  0.1303
+   9.8430E+01   9.8480E+01   8.6935E-03  0.1319
+   9.8480E+01   9.8530E+01   8.9509E-03  0.1403
+   9.8530E+01   9.8580E+01   1.0072E-02  0.1504
+
+#   sum over    8.0000E-03   8.9514E-03  0.1237
+
+'no. =104,  ix =  7,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =105   ix  =  7   iy  =  9
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.3396E-03  0.1372
+   9.8430E+01   9.8480E+01   8.0349E-03  0.1409
+   9.8480E+01   9.8530E+01   7.9403E-03  0.1478
+   9.8530E+01   9.8580E+01   7.6042E-03  0.1679
+
+#   sum over    8.0000E-03   7.7297E-03  0.1318
+
+'no. =105,  ix =  7,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =106   ix  =  7   iy  = 10
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.8493E-03  0.1411
+   9.8430E+01   9.8480E+01   7.6433E-03  0.1430
+   9.8480E+01   9.8530E+01   7.5852E-03  0.1574
+   9.8530E+01   9.8580E+01   7.7416E-03  0.1648
+
+#   sum over    8.0000E-03   7.4549E-03  0.1334
+
+'no. =106,  ix =  7,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =107   ix  =  7   iy  = 11
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   1.0181E-02  0.1250
+   9.8430E+01   9.8480E+01   9.2088E-03  0.1294
+   9.8480E+01   9.8530E+01   8.9697E-03  0.1393
+   9.8530E+01   9.8580E+01   9.4076E-03  0.1582
+
+#   sum over    8.0000E-03   9.4419E-03  0.1182
+
+'no. =107,  ix =  7,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =108   ix  =  7   iy  = 12
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.9156E-03  0.1403
+   9.8430E+01   9.8480E+01   7.0622E-03  0.1444
+   9.8480E+01   9.8530E+01   7.6799E-03  0.1524
+   9.8530E+01   9.8580E+01   8.4910E-03  0.1661
+
+#   sum over    8.0000E-03   7.5372E-03  0.1343
+
+'no. =108,  ix =  7,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =109   ix  =  7   iy  = 13
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.4873E-03  0.1479
+   9.8430E+01   9.8480E+01   6.9444E-03  0.1541
+   9.8480E+01   9.8530E+01   5.5893E-03  0.1720
+   9.8530E+01   9.8580E+01   5.7541E-03  0.1934
+
+#   sum over    8.0000E-03   6.1938E-03  0.1434
+
+'no. =109,  ix =  7,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =110   ix  =  7   iy  = 14
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4667E-03  0.1429
+   9.8430E+01   9.8480E+01   7.3354E-03  0.1478
+   9.8480E+01   9.8530E+01   6.7966E-03  0.1576
+   9.8530E+01   9.8580E+01   7.0262E-03  0.1712
+
+#   sum over    8.0000E-03   7.1562E-03  0.1328
+
+'no. =110,  ix =  7,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =111   ix  =  7   iy  = 15
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.0346E-03  0.1418
+   9.8430E+01   9.8480E+01   7.3984E-03  0.1442
+   9.8480E+01   9.8530E+01   7.6888E-03  0.1498
+   9.8530E+01   9.8580E+01   7.5151E-03  0.1712
+
+#   sum over    8.0000E-03   7.4092E-03  0.1345
+
+'no. =111,  ix =  7,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =112   ix  =  7   iy  = 16
+#   x = (   2.0000E-01  -   4.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.0391E-03  0.1345
+   9.8430E+01   9.8480E+01   8.2185E-03  0.1393
+   9.8480E+01   9.8530E+01   7.2912E-03  0.1558
+   9.8530E+01   9.8580E+01   7.3103E-03  0.1748
+
+#   sum over    8.0000E-03   7.7148E-03  0.1298
+
+'no. =112,  ix =  7,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   2.0000E-01 [cm]
+  xmax  &=&   4.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =113   ix  =  8   iy  =  1
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   2.5438E-03  0.2220
+   9.8430E+01   9.8480E+01   2.7929E-03  0.2281
+   9.8480E+01   9.8530E+01   2.6018E-03  0.2296
+   9.8530E+01   9.8580E+01   2.8017E-03  0.2585
+
+#   sum over    8.0000E-03   2.6850E-03  0.2104
+
+'no. =113,  ix =  8,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =114   ix  =  8   iy  =  2
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.2489E-03  0.1682
+   9.8430E+01   9.8480E+01   4.8163E-03  0.1701
+   9.8480E+01   9.8530E+01   5.7265E-03  0.1818
+   9.8530E+01   9.8580E+01   5.3933E-03  0.1953
+
+#   sum over    8.0000E-03   5.0463E-03  0.1641
+
+'no. =114,  ix =  8,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =115   ix  =  8   iy  =  3
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5051E-03  0.1283
+   9.8430E+01   9.8480E+01   8.7072E-03  0.1295
+   9.8480E+01   9.8530E+01   8.7915E-03  0.1377
+   9.8530E+01   9.8580E+01   1.0425E-02  0.1448
+
+#   sum over    8.0000E-03   9.1073E-03  0.1210
+
+'no. =115,  ix =  8,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =116   ix  =  8   iy  =  4
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.5965E-03  0.1231
+   9.8430E+01   9.8480E+01   1.0468E-02  0.1284
+   9.8480E+01   9.8530E+01   9.1630E-03  0.1404
+   9.8530E+01   9.8580E+01   8.1161E-03  0.1641
+
+#   sum over    8.0000E-03   9.3358E-03  0.1183
+
+'no. =116,  ix =  8,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =117   ix  =  8   iy  =  5
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   1.0319E-02  0.1141
+   9.8430E+01   9.8480E+01   1.1078E-02  0.1166
+   9.8480E+01   9.8530E+01   1.1129E-02  0.1262
+   9.8530E+01   9.8580E+01   1.0787E-02  0.1386
+
+#   sum over    8.0000E-03   1.0828E-02  0.1106
+
+'no. =117,  ix =  8,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =118   ix  =  8   iy  =  6
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   5.8349E-03  0.1513
+   9.8430E+01   9.8480E+01   7.0605E-03  0.1530
+   9.8480E+01   9.8530E+01   6.2381E-03  0.1704
+   9.8530E+01   9.8580E+01   5.8544E-03  0.1907
+
+#   sum over    8.0000E-03   6.2470E-03  0.1442
+
+'no. =118,  ix =  8,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =119   ix  =  8   iy  =  7
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.9495E-03  0.1392
+   9.8430E+01   9.8480E+01   7.9348E-03  0.1413
+   9.8480E+01   9.8530E+01   7.0290E-03  0.1570
+   9.8530E+01   9.8580E+01   6.4915E-03  0.1791
+
+#   sum over    8.0000E-03   7.1012E-03  0.1340
+
+'no. =119,  ix =  8,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =120   ix  =  8   iy  =  8
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.5114E-03  0.1394
+   9.8430E+01   9.8480E+01   7.7392E-03  0.1459
+   9.8480E+01   9.8530E+01   6.9090E-03  0.1603
+   9.8530E+01   9.8580E+01   6.1525E-03  0.1864
+
+#   sum over    8.0000E-03   7.0780E-03  0.1349
+
+'no. =120,  ix =  8,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =121   ix  =  8   iy  =  9
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.7926E-03  0.1389
+   9.8430E+01   9.8480E+01   7.6172E-03  0.1432
+   9.8480E+01   9.8530E+01   7.2698E-03  0.1541
+   9.8530E+01   9.8580E+01   7.2421E-03  0.1735
+
+#   sum over    8.0000E-03   7.4804E-03  0.1328
+
+'no. =121,  ix =  8,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =122   ix  =  8   iy  = 10
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.4451E-03  0.1474
+   9.8430E+01   9.8480E+01   6.9398E-03  0.1507
+   9.8480E+01   9.8530E+01   6.8296E-03  0.1601
+   9.8530E+01   9.8580E+01   6.0567E-03  0.1778
+
+#   sum over    8.0000E-03   6.5678E-03  0.1409
+
+'no. =122,  ix =  8,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =123   ix  =  8   iy  = 11
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.3310E-03  0.1528
+   9.8430E+01   9.8480E+01   6.1768E-03  0.1578
+   9.8480E+01   9.8530E+01   6.6084E-03  0.1666
+   9.8530E+01   9.8580E+01   6.9647E-03  0.1802
+
+#   sum over    8.0000E-03   6.5202E-03  0.1451
+
+'no. =123,  ix =  8,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =124   ix  =  8   iy  = 12
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4980E-03  0.1332
+   9.8430E+01   9.8480E+01   7.6421E-03  0.1390
+   9.8480E+01   9.8530E+01   7.8241E-03  0.1490
+   9.8530E+01   9.8580E+01   7.6283E-03  0.1671
+
+#   sum over    8.0000E-03   7.6481E-03  0.1299
+
+'no. =124,  ix =  8,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =125   ix  =  8   iy  = 13
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2363E-03  0.1463
+   9.8430E+01   9.8480E+01   7.4684E-03  0.1477
+   9.8480E+01   9.8530E+01   6.0686E-03  0.1599
+   9.8530E+01   9.8580E+01   7.0306E-03  0.1793
+
+#   sum over    8.0000E-03   6.9510E-03  0.1371
+
+'no. =125,  ix =  8,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =126   ix  =  8   iy  = 14
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.6128E-03  0.1313
+   9.8430E+01   9.8480E+01   8.4354E-03  0.1336
+   9.8480E+01   9.8530E+01   8.3162E-03  0.1430
+   9.8530E+01   9.8580E+01   9.5024E-03  0.1529
+
+#   sum over    8.0000E-03   8.7167E-03  0.1231
+
+'no. =126,  ix =  8,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =127   ix  =  8   iy  = 15
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.1747E-03  0.1335
+   9.8430E+01   9.8480E+01   8.3072E-03  0.1383
+   9.8480E+01   9.8530E+01   8.0149E-03  0.1485
+   9.8530E+01   9.8580E+01   7.1218E-03  0.1686
+
+#   sum over    8.0000E-03   7.9046E-03  0.1273
+
+'no. =127,  ix =  8,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =128   ix  =  8   iy  = 16
+#   x = (   4.0000E-01  -   6.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2107E-03  0.1370
+   9.8430E+01   9.8480E+01   8.0399E-03  0.1395
+   9.8480E+01   9.8530E+01   7.9362E-03  0.1500
+   9.8530E+01   9.8580E+01   7.5385E-03  0.1679
+
+#   sum over    8.0000E-03   7.6813E-03  0.1318
+
+'no. =128,  ix =  8,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   4.0000E-01 [cm]
+  xmax  &=&   6.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =129   ix  =  9   iy  =  1
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   3.0379E-03  0.1867
+   9.8430E+01   9.8480E+01   3.3216E-03  0.1789
+   9.8480E+01   9.8530E+01   3.8971E-03  0.1888
+   9.8530E+01   9.8580E+01   4.7530E-03  0.1960
+
+#   sum over    8.0000E-03   3.7524E-03  0.1762
+
+'no. =129,  ix =  9,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =130   ix  =  9   iy  =  2
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5108E-03  0.1364
+   9.8430E+01   9.8480E+01   7.9699E-03  0.1383
+   9.8480E+01   9.8530E+01   8.9430E-03  0.1482
+   9.8530E+01   9.8580E+01   6.7650E-03  0.1768
+
+#   sum over    8.0000E-03   8.0472E-03  0.1279
+
+'no. =130,  ix =  9,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =131   ix  =  9   iy  =  3
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.9055E-03  0.1388
+   9.8430E+01   9.8480E+01   7.7145E-03  0.1434
+   9.8480E+01   9.8530E+01   7.3739E-03  0.1535
+   9.8530E+01   9.8580E+01   6.9943E-03  0.1817
+
+#   sum over    8.0000E-03   7.2471E-03  0.1357
+
+'no. =131,  ix =  9,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =132   ix  =  9   iy  =  4
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.9211E-03  0.1371
+   9.8430E+01   9.8480E+01   7.5267E-03  0.1413
+   9.8480E+01   9.8530E+01   7.6728E-03  0.1498
+   9.8530E+01   9.8580E+01   8.4566E-03  0.1621
+
+#   sum over    8.0000E-03   8.1443E-03  0.1262
+
+'no. =132,  ix =  9,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =133   ix  =  9   iy  =  5
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.8690E-03  0.1237
+   9.8430E+01   9.8480E+01   9.5600E-03  0.1239
+   9.8480E+01   9.8530E+01   9.6590E-03  0.1352
+   9.8530E+01   9.8580E+01   9.1277E-03  0.1551
+
+#   sum over    8.0000E-03   9.3039E-03  0.1190
+
+'no. =133,  ix =  9,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =134   ix  =  9   iy  =  6
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.3038E-03  0.1272
+   9.8430E+01   9.8480E+01   8.3244E-03  0.1285
+   9.8480E+01   9.8530E+01   9.5750E-03  0.1317
+   9.8530E+01   9.8580E+01   1.0245E-02  0.1418
+
+#   sum over    8.0000E-03   9.1120E-03  0.1203
+
+'no. =134,  ix =  9,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =135   ix  =  9   iy  =  7
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   1.0289E-02  0.1186
+   9.8430E+01   9.8480E+01   1.0873E-02  0.1217
+   9.8480E+01   9.8530E+01   1.0453E-02  0.1295
+   9.8530E+01   9.8580E+01   9.6319E-03  0.1513
+
+#   sum over    8.0000E-03   1.0312E-02  0.1132
+
+'no. =135,  ix =  9,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =136   ix  =  9   iy  =  8
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.8984E-03  0.1393
+   9.8430E+01   9.8480E+01   8.4138E-03  0.1438
+   9.8480E+01   9.8530E+01   7.1019E-03  0.1530
+   9.8530E+01   9.8580E+01   6.6178E-03  0.1754
+
+#   sum over    8.0000E-03   7.2580E-03  0.1340
+
+'no. =136,  ix =  9,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =137   ix  =  9   iy  =  9
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.1077E-03  0.1340
+   9.8430E+01   9.8480E+01   8.1949E-03  0.1389
+   9.8480E+01   9.8530E+01   7.7180E-03  0.1478
+   9.8530E+01   9.8580E+01   8.0621E-03  0.1614
+
+#   sum over    8.0000E-03   7.7707E-03  0.1301
+
+'no. =137,  ix =  9,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =138   ix  =  9   iy  = 10
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.6560E-03  0.1434
+   9.8430E+01   9.8480E+01   6.3484E-03  0.1459
+   9.8480E+01   9.8530E+01   7.7257E-03  0.1508
+   9.8530E+01   9.8580E+01   7.3994E-03  0.1714
+
+#   sum over    8.0000E-03   7.0324E-03  0.1375
+
+'no. =138,  ix =  9,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =139   ix  =  9   iy  = 11
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.9121E-03  0.1389
+   9.8430E+01   9.8480E+01   7.9949E-03  0.1428
+   9.8480E+01   9.8530E+01   7.0763E-03  0.1530
+   9.8530E+01   9.8580E+01   6.5010E-03  0.1799
+
+#   sum over    8.0000E-03   7.3711E-03  0.1323
+
+'no. =139,  ix =  9,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =140   ix  =  9   iy  = 12
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2895E-03  0.1417
+   9.8430E+01   9.8480E+01   7.1146E-03  0.1466
+   9.8480E+01   9.8530E+01   7.4746E-03  0.1515
+   9.8530E+01   9.8580E+01   7.7750E-03  0.1665
+
+#   sum over    8.0000E-03   7.4134E-03  0.1330
+
+'no. =140,  ix =  9,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =141   ix  =  9   iy  = 13
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.5080E-03  0.1437
+   9.8430E+01   9.8480E+01   7.0234E-03  0.1479
+   9.8480E+01   9.8530E+01   6.7955E-03  0.1651
+   9.8530E+01   9.8580E+01   5.5874E-03  0.1892
+
+#   sum over    8.0000E-03   6.7286E-03  0.1358
+
+'no. =141,  ix =  9,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =142   ix  =  9   iy  = 14
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.0019E-03  0.1253
+   9.8430E+01   9.8480E+01   9.5405E-03  0.1313
+   9.8480E+01   9.8530E+01   9.3605E-03  0.1398
+   9.8530E+01   9.8580E+01   7.3658E-03  0.1654
+
+#   sum over    8.0000E-03   8.8172E-03  0.1215
+
+'no. =142,  ix =  9,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =143   ix  =  9   iy  = 15
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.6715E-03  0.1251
+   9.8430E+01   9.8480E+01   9.5191E-03  0.1289
+   9.8480E+01   9.8530E+01   8.9159E-03  0.1382
+   9.8530E+01   9.8580E+01   9.1141E-03  0.1551
+
+#   sum over    8.0000E-03   9.3052E-03  0.1187
+
+'no. =143,  ix =  9,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =144   ix  =  9   iy  = 16
+#   x = (   6.0000E-01  -   8.0000E-01  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.5751E-03  0.1264
+   9.8430E+01   9.8480E+01   9.5922E-03  0.1278
+   9.8480E+01   9.8530E+01   9.9213E-03  0.1303
+   9.8530E+01   9.8580E+01   9.9089E-03  0.1478
+
+#   sum over    8.0000E-03   9.4994E-03  0.1191
+
+'no. =144,  ix =  9,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   6.0000E-01 [cm]
+  xmax  &=&   8.0000E-01 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =145   ix  = 10   iy  =  1
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -1.6000E+00  -  -1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   4.3627E-03  0.1940
+   9.8430E+01   9.8480E+01   4.4344E-03  0.2347
+   9.8480E+01   9.8530E+01   3.9970E-03  0.2137
+   9.8530E+01   9.8580E+01   2.6339E-03  0.2421
+
+#   sum over    8.0000E-03   3.8570E-03  0.1807
+
+'no. =145,  ix = 10,  iy =  1'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -1.6000E+00 [cm]
+  ymax  &=&  -1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =146   ix  = 10   iy  =  2
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -1.4000E+00  -  -1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.8157E-03  0.1297
+   9.8430E+01   9.8480E+01   8.7587E-03  0.1357
+   9.8480E+01   9.8530E+01   7.9485E-03  0.1454
+   9.8530E+01   9.8580E+01   9.2183E-03  0.1545
+
+#   sum over    8.0000E-03   8.9353E-03  0.1206
+
+'no. =146,  ix = 10,  iy =  2'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -1.4000E+00 [cm]
+  ymax  &=&  -1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =147   ix  = 10   iy  =  3
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -1.2000E+00  -  -1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.5952E-03  0.1463
+   9.8430E+01   9.8480E+01   6.8981E-03  0.1496
+   9.8480E+01   9.8530E+01   6.2795E-03  0.1665
+   9.8530E+01   9.8580E+01   7.0374E-03  0.1796
+
+#   sum over    8.0000E-03   6.7026E-03  0.1403
+
+'no. =147,  ix = 10,  iy =  3'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -1.2000E+00 [cm]
+  ymax  &=&  -1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =148   ix  = 10   iy  =  4
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -1.0000E+00  -  -8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.8511E-03  0.1350
+   9.8430E+01   9.8480E+01   8.2012E-03  0.1345
+   9.8480E+01   9.8530E+01   8.3209E-03  0.1410
+   9.8530E+01   9.8580E+01   1.0034E-02  0.1501
+
+#   sum over    8.0000E-03   8.6018E-03  0.1257
+
+'no. =148,  ix = 10,  iy =  4'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -1.0000E+00 [cm]
+  ymax  &=&  -8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =149   ix  = 10   iy  =  5
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -8.0000E-01  -  -6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.3567E-03  0.1269
+   9.8430E+01   9.8480E+01   9.2333E-03  0.1305
+   9.8480E+01   9.8530E+01   9.3673E-03  0.1375
+   9.8530E+01   9.8580E+01   8.8765E-03  0.1563
+
+#   sum over    8.0000E-03   8.7085E-03  0.1245
+
+'no. =149,  ix = 10,  iy =  5'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -8.0000E-01 [cm]
+  ymax  &=&  -6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =150   ix  = 10   iy  =  6
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -6.0000E-01  -  -4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.0579E-03  0.1243
+   9.8430E+01   9.8480E+01   1.0490E-02  0.1233
+   9.8480E+01   9.8530E+01   1.0115E-02  0.1335
+   9.8530E+01   9.8580E+01   9.5821E-03  0.1523
+
+#   sum over    8.0000E-03   9.8112E-03  0.1157
+
+'no. =150,  ix = 10,  iy =  6'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -6.0000E-01 [cm]
+  ymax  &=&  -4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =151   ix  = 10   iy  =  7
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -4.0000E-01  -  -2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.4403E-03  0.1331
+   9.8430E+01   9.8480E+01   7.7448E-03  0.1398
+   9.8480E+01   9.8530E+01   7.5537E-03  0.1450
+   9.8530E+01   9.8580E+01   8.7050E-03  0.1578
+
+#   sum over    8.0000E-03   7.8609E-03  0.1300
+
+'no. =151,  ix = 10,  iy =  7'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -4.0000E-01 [cm]
+  ymax  &=&  -2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =152   ix  = 10   iy  =  8
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (  -2.0000E-01  -   0.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.2604E-03  0.1374
+   9.8430E+01   9.8480E+01   8.6054E-03  0.1391
+   9.8480E+01   9.8530E+01   8.4978E-03  0.1502
+   9.8530E+01   9.8580E+01   6.3531E-03  0.1806
+
+#   sum over    8.0000E-03   7.6792E-03  0.1294
+
+'no. =152,  ix = 10,  iy =  8'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&  -2.0000E-01 [cm]
+  ymax  &=&   0.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =153   ix  = 10   iy  =  9
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   0.0000E+00  -   2.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.1956E-03  0.1356
+   9.8430E+01   9.8480E+01   8.5452E-03  0.1369
+   9.8480E+01   9.8530E+01   8.4653E-03  0.1417
+   9.8530E+01   9.8580E+01   9.0739E-03  0.1542
+
+#   sum over    8.0000E-03   8.3200E-03  0.1266
+
+'no. =153,  ix = 10,  iy =  9'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   0.0000E+00 [cm]
+  ymax  &=&   2.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =154   ix  = 10   iy  = 10
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   2.0000E-01  -   4.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.2969E-03  0.1475
+   9.8430E+01   9.8480E+01   6.9687E-03  0.1463
+   9.8480E+01   9.8530E+01   7.3654E-03  0.1515
+   9.8530E+01   9.8580E+01   7.5185E-03  0.1729
+
+#   sum over    8.0000E-03   7.0374E-03  0.1385
+
+'no. =154,  ix = 10,  iy = 10'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   2.0000E-01 [cm]
+  ymax  &=&   4.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =155   ix  = 10   iy  = 11
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   4.0000E-01  -   6.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.8529E-03  0.1403
+   9.8430E+01   9.8480E+01   7.3081E-03  0.1483
+   9.8480E+01   9.8530E+01   6.9479E-03  0.1556
+   9.8530E+01   9.8580E+01   7.6580E-03  0.1704
+
+#   sum over    8.0000E-03   7.4417E-03  0.1312
+
+'no. =155,  ix = 10,  iy = 11'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   4.0000E-01 [cm]
+  ymax  &=&   6.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =156   ix  = 10   iy  = 12
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   6.0000E-01  -   8.0000E-01  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   5.8389E-03  0.1559
+   9.8430E+01   9.8480E+01   5.3980E-03  0.1605
+   9.8480E+01   9.8530E+01   6.0435E-03  0.1688
+   9.8530E+01   9.8580E+01   6.4117E-03  0.1846
+
+#   sum over    8.0000E-03   5.9230E-03  0.1492
+
+'no. =156,  ix = 10,  iy = 12'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   6.0000E-01 [cm]
+  ymax  &=&   8.0000E-01 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =157   ix  = 10   iy  = 13
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   8.0000E-01  -   1.0000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   9.8696E-03  0.1193
+   9.8430E+01   9.8480E+01   1.0702E-02  0.1197
+   9.8480E+01   9.8530E+01   1.0926E-02  0.1271
+   9.8530E+01   9.8580E+01   1.0600E-02  0.1446
+
+#   sum over    8.0000E-03   1.0525E-02  0.1130
+
+'no. =157,  ix = 10,  iy = 13'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   8.0000E-01 [cm]
+  ymax  &=&   1.0000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =158   ix  = 10   iy  = 14
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   1.0000E+00  -   1.2000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   7.1369E-03  0.1418
+   9.8430E+01   9.8480E+01   7.7510E-03  0.1462
+   9.8480E+01   9.8530E+01   6.7573E-03  0.1645
+   9.8530E+01   9.8580E+01   6.0108E-03  0.1822
+
+#   sum over    8.0000E-03   6.9140E-03  0.1361
+
+'no. =158,  ix = 10,  iy = 14'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   1.0000E+00 [cm]
+  ymax  &=&   1.2000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =159   ix  = 10   iy  = 15
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   1.2000E+00  -   1.4000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   6.3726E-03  0.1454
+   9.8430E+01   9.8480E+01   6.9944E-03  0.1463
+   9.8480E+01   9.8530E+01   7.8217E-03  0.1543
+   9.8530E+01   9.8580E+01   6.9256E-03  0.1712
+
+#   sum over    8.0000E-03   7.0286E-03  0.1372
+
+'no. =159,  ix = 10,  iy = 15'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   1.2000E+00 [cm]
+  ymax  &=&   1.4000E+00 [cm]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =160   ix  = 10   iy  = 16
+#   x = (   8.0000E-01  -   1.0000E+00  )
+#   y = (   1.4000E+00  -   1.6000E+00  )
+
+x: z[cm]
+y: Dose [Gy/source]      
+p: xlin ylog afac(0.8) form(0.9)
+h: n            x            y(proton  ),hh0l n 
+#  z-lower      z-upper        proton    r.err 
+   9.8380E+01   9.8430E+01   8.7106E-03  0.1265
+   9.8430E+01   9.8480E+01   9.9170E-03  0.1299
+   9.8480E+01   9.8530E+01   9.5629E-03  0.1374
+   9.8530E+01   9.8580E+01   9.3522E-03  0.1498
+
+#   sum over    8.0000E-03   9.3857E-03  0.1180
+
+'no. =160,  ix = 10,  iy = 16'
+msuc: {\huge Histograma}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.35}
+wt: s(0.7)
+\vspace{-3}
+  xmin  &=&   8.0000E-01 [cm]
+  xmax  &=&   1.0000E+00 [cm]
+  ymin  &=&   1.4000E+00 [cm]
+  ymax  &=&   1.6000E+00 [cm]
+e:
+ 
+# Information for Restart Calculation
+# This calculation was newly started
+# istdev =  2 # 1:Batch variance, 2:History variance
+# resc2  = 1.60217700001159249E-03 # Total source weight or Total source weight / maxcas
+# resc3  = 1.00000000000000000E+07 # Total history number or Total batch number
+# maxcas =       10000 # History / Batch, only used for istdev=1
+# bitrseed = 1000110000001000111111101100101001110101110010000011011101101000 # bit data of rseed
