@@ -27,7 +27,7 @@ $ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
 $ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
-set: c2[ 21.0 ]	$accelerator terminal tension
+set: c2[ 20.0 ]	$accelerator terminal tension
 $$infl:{c2.inp} $Reemplazar una variable linealmente
 
 set:%thisdata%[_21MeV_dchain]	$for tallies
@@ -179,8 +179,8 @@ $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38
 
-$Gel de ultrasonido de 0.1cm de altura total, 0.1 respecto pouch
-4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58  
+$Gel de ultrasonido de 0.05cm de altura total, 0.05 respecto pouch
+4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.33 60.58  
 
 $ POSICIONADOR 
 

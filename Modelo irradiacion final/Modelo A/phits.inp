@@ -6,7 +6,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 100000 $ (D=10) number of particles per one batch
 maxbch	= 10000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -18,7 +18,7 @@ ireschk	= 1 $Control parameter for tally consistency check. The inconsistency of
 nlost	= 10000 $number of tolerance of lost particles before stopping the run.
 $itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while the information on secondary particles is evaluated using the nuclear reaction models
-$igeomem = 200000
+$ igeomem = 4000000
 
 $  required options for DCHAIN (also e-mode=0)
 $ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
@@ -27,7 +27,7 @@ $ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
 $ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
 
 set: c1[ 0.5 ]	$beam radius
-set: c2[ 21.0 ]	$accelerator terminal tension
+set: c2[ 20.0 ]	$accelerator terminal tension
 $$infl:{c2.inp} $Reemplazar una variable linealmente
 
 set:%thisdata%[_21MeV_dchain]	$for tallies
@@ -102,6 +102,9 @@ set:%skin%[18  -1.1]
 mat[19]  C -0.8563  H -0.1437   $ plastico SRIM (C2H4)
 set:%plastic%[19 -0.93]
 
+mat[20]  C -0.6170  H -0.0850  O -0.2980   $ Scotch Magic Tape 810 aprox: acrilico + acetato de celulosa
+set:%scotch%[20 -1.20]
+
 [ Mat Name Color ]
 mat name   color
 1	Air    cyan
@@ -123,6 +126,7 @@ mat name   color
 17  acrilico white
 18  skin  brown
 19 plastic black
+20 scotch  red
 
 [ Surface ]
 $Room
@@ -179,11 +183,13 @@ $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38
 
-$Gel de ultrasonido de 0.1cm de altura total, 0.1 respecto pouch
-4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.28 60.58  
+$Gel de ultrasonido de 0.1cm de altura total, 0.05 respecto pouch
+4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.33 60.58  
+
+$ Cinta scotch  --> asumiendo grosor 0.005 cm respecto del pouch
+8000 90 rpp -1.4685 2.7185  -1.486 1.486  60.375 60.38   $ 60.375
 
 $ POSICIONADOR 
-
 infl:{Su_posicionador.inp}
 
 $ HAMSTER 
@@ -209,7 +215,7 @@ infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#510 #600 #700 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007]
+set:%exclusions%[#510 #600 #700 #800 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -222,10 +228,14 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202 #6006 #6005 #6004
+510 16 -1.0  -100  201  -202 #6006 #6005 #6004 #800 
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510 #700 #6006 #6005 #6004
+600 8 -1.0  -4000 #510 #700 #800 #6006 #6005 #6004 
+ 
+$ Cinta scotch
+800 20 -1.20  -8000 
+
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}
@@ -235,11 +245,11 @@ infl:{Ce_hamster.inp}
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510 
-     %outside_stuff% %exclusions% $Cover unused workzone with air
+$     %outside_stuff% %exclusions% $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 
-      %outside_stuff% %exclusions%
+$      %outside_stuff% %exclusions%
 2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) %exclusions% %outside_stuff% 
 
 infl:{volumes.inp}
