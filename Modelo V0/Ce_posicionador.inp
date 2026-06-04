@@ -11,3 +11,16 @@ $ Aire en el hueco hacia el trampolin
 
 $ Trampolin acrilico
 6003 %acrilico%  -3300 #510 #600 #700
+
+$ Pared izq #510 #600 #700 #2001 #6003
+6004 %acrilico%  -3400 
+
+$ Pared der #510 #600 #700 #2001
+6005 %acrilico%  -3500 
+
+$ Pared frontal #510 #600 #700 #2001
+6006 %acrilico%  -3600 #6005
+
+$-------------BLINDAJE-------------------------------
+$ Tapa: superficie superior
+6007 %plastic% -3700 
