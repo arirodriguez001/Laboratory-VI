@@ -174,7 +174,6 @@ $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
 100 90 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
 $100 ell 0.0 -19.0 83.40  1.6 0.0 0.0  -1.0
 
-
 $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38

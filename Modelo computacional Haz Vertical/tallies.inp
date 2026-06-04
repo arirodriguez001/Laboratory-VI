@@ -623,7 +623,7 @@ axis = z
 file = bragg_pouch_rcilindJesus.out
 epsout = 1
 
-[ T - Track ] $Medimos espectro de energía
+[ T - Track ] off $Medimos espectro de energía
     title = Espectro de energía
      mesh =  reg           $ Tally por región (celda)
       reg =  510 600 6003      $ Tu celda del pouch
