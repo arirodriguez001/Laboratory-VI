@@ -157,7 +157,7 @@
  material =  all            # (D=all) number of specific material
   2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
      axis =      yz            # axis of output
-     file = track_yz_M0.out  # file name of output for the above axis
+     file = track_yz_A.out  # file name of output for the above axis
      part =  proton   
 # kf/name :  2212     
     gshow =    1            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat 5:bmp style
@@ -9004,11 +9004,11 @@ clip:
   7.30211781E+00 -1.99927870E+00
   7.30001383E+00 -2.02644315E+00
 
-hb:   line clip z   cb(cyan)
+hb:   line clip z   cb(orange)
 clip:
   9.60904618E+01 -1.71850000E+00
-  9.81917649E+01 -1.71850000E+00
-  9.83540705E+01 -1.62114514E+00
+  9.83654034E+01 -1.71850000E+00
+  9.83800000E+01 -1.62114514E+00
   9.83800000E+01 -1.51560630E+00
   9.83800000E+01 -1.48604580E+00
   9.82230589E+01 -1.46850000E+00
@@ -11169,5 +11169,5 @@ e:
 # istdev =  2 # 1:Batch variance, 2:History variance
 # resc2  = 0.00000000000000000E+00 # Total source weight or Total source weight / maxcas
 # resc3  = 0.00000000000000000E+00 # Total history number or Total batch number
-# maxcas =      100000 # History / Batch, only used for istdev=1
+# maxcas =       25000 # History / Batch, only used for istdev=1
 # bitrseed = 0000000000000000000000000000000000000000000000000000000000000000 # bit data of rseed
