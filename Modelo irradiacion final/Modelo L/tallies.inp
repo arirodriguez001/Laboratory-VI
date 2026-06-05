@@ -1,4 +1,3 @@
-
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO L $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
@@ -7,23 +6,25 @@ $ Tallys para ver la geometria
 
 mesh = xyz
 x-type = 2
-nx = 25                    $ error espacial del 10%
+nx = 25               
 xmin = -4.
 xmax = 4.
+
 y-type = 2
-ny = 60                    $ error espacial del 10%
+ny = 60                  
 ymin = -6.
-ymax = 6.
+ymax = 5.
+
 z-type = 1
 nz = 1
-98.47  98.49               $ centro del pouch z= 98.480 +- 0.01 cm
+98.47 98.49              $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378
 part = proton
 e-type = 1
 ne = 1
 0.0 1000.0
 unit = 1
 axis = xy
-file = track_xy_M0.out
+file = track_xy_L.out
 gshow = 1
 epsout = 1
 
@@ -36,10 +37,10 @@ nx = 1
 y-type = 2
 ny = 150          
 ymin = -10.
-ymax = 20.
+ymax = 10.
 z-type = 2            
 nz = 500
-zmin = 5.     
+zmin = -10 
 zmax = 110.
 
 part = proton
@@ -48,14 +49,14 @@ ne = 1
 0.0 1000.0
 unit = 1
 axis = yz
-file = track_yz_M0.out
+file = track_yz_L.out
 gshow = 1
 epsout = 1
 
 
-$$$$$$$$$$$$  perfiles de flujo a x e y cte $$$$$$$$$$$$$$$
+$$$$$$$$$$$$  perfiles de flujo a x e y cte (para hacer la cruz) $$$$$$$$$$$$$$$
 
-[ T-Track ] 
+[ T-Track ] off
     title = Perfil horizontal de flujo, y constante
     mesh = xyz
 
@@ -79,12 +80,12 @@ $$$$$$$$$$$$  perfiles de flujo a x e y cte $$$$$$$$$$$$$$$
 ne = 1
 0.0 1000.0
     axis = x
-    file = perfil_flujo_x_ycte.out
+    file = perfil_flujo_x_ycteL.out
     unit = 1
     gshow = 1
     epsout = 1
 
-[ T-Track ] 
+[ T-Track ] off
     title = Perfil vertical de flujo, x constante
     mesh = xyz
 
@@ -108,7 +109,7 @@ ne = 1
 ne = 1
 0.0 1000.0
     axis = y
-    file = perfil_flujo_y_xcte.out
+    file = perfil_flujo_y_xcteL.out
     unit = 1
     gshow = 1
     epsout = 1
@@ -127,15 +128,15 @@ rmax = 0.5
 nr = 1
 
 z-type = 2 
-zmin = 98
-zmax = 99            
-nz = 100                     $ 1% de error espacial 
+zmin = 97
+zmax = 100           
+nz = 100                    
 
 part = proton
 output = dose
 unit = 0
 axis = z
-file = bragg_pouch_zcilindJesus_M0.out
+file = bragg_pouch_zL.out
 epsout = 1
 
 [ T - D e p o s i t ]  $ dosis radial en el pouch
@@ -157,11 +158,11 @@ part = proton
 output = dose
 unit = 0
 axis = r
-file = bragg_pouch_rcilindJesus.out
+file = bragg_pouch_rL.out
 epsout = 1
 
 
-[ T - Track ]  $ espectro de energia por region
+[ T - Track ] off  $ espectro de energia por region
 
 title = Espectro de energia
 mesh = reg
@@ -172,12 +173,25 @@ emin = 1.0e-9
 emax = 25.0
 unit = 1
 axis = eng
-file = energy_pouch_M0.out
+file = energy_pouch_L.out
+part = proton neutron alpha photon positron
+
+[ T - Track ]   $ para ver que particulas le llega al hamster
+
+title = Espectro de energia
+mesh = reg
+reg = 700
+e-type = 2
+ne = 100
+emin = 1.0e-9
+emax = 25.0
+unit = 1
+axis = eng
+file = energy_hamster_L.out
 part = proton neutron alpha photon positron
 
 
-
-[ T - T r a c k ]  $ espectro justo antes del pouch
+[ T - T r a c k ] off $ espectro justo antes del pouch
 
 title = Espectro de energia justo antes del pouch
 
@@ -200,12 +214,12 @@ emin = 0.01
 emax = 25.0
 part = proton neutron alpha photon positron
 axis = eng
-file = espectro_antes_pouch_M0.out
+file = espectro_antes_pouch_L.out
 unit = 1
 epsout = 1
 
 
-[ T - T r a c k ]  $ espectro justo en el medio del pouch
+[ T - T r a c k ] off $ espectro justo en el medio del pouch
 
 title = Espectro de energia justo en el medio del pouch
 
@@ -228,7 +242,7 @@ emin = 0.01
 emax = 25.0
 part = proton neutron alpha photon positron
 axis = eng
-file = espectro_medio_pouch_M0.out
+file = espectro_medio_pouch_L.out
 unit = 1
 epsout = 1
 
@@ -257,5 +271,5 @@ part = proton
 output = dose
 unit = 0
 axis = z
-file = histograma_dosis_M0.out
+file = histograma_dosis_L.out
 epsout = 1
