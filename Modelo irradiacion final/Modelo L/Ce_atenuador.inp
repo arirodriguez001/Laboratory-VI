@@ -20,4 +20,3 @@ set:%cell_atbits%[2106]
 set:%vol_atbits%[(2*PI*c23*c23*c20)]
 set:%cell_atholder%[2107]
 set:%vol_atholder%[(8.016+47.61*c24-25*c20-PI*2.25*(c24-c20))]
-

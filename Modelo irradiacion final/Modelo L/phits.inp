@@ -6,7 +6,7 @@ Vertical external proton beam - modular input
 
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 25000 $ (D=10) number of particles per one batch
 maxbch	= 5000 $ (D=10) number of batches
 istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
@@ -18,7 +18,7 @@ ireschk	= 1 $Control parameter for tally consistency check. The inconsistency of
 nlost	= 10000 $number of tolerance of lost particles before stopping the run.
 $itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while the information on secondary particles is evaluated using the nuclear reaction models
-$ igeomem = 4000000
+igeomem = 4000000
 
 $  required options for DCHAIN (also e-mode=0)
 $ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
@@ -175,19 +175,19 @@ $$set: c101[ c100 + c68 ]	$cell monolayer
 $ POUCH (hamster cheek pouch)
 $ Elipsoide base: 1 cm de ancho (R=0.5) y largo exacto (X=13.22 a 16.657)
 $ Lo hacemos un poco mas alto (R=0.5) para que los planos lo corten bien
-100 90 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
-$100 ell 0.0 -19.0 83.40  1.6 0.0 0.0  -1.0
+$100 90 ell 0.0 0.0 60.48  1.6 0.0 0.0  -1.0
+100 90 ell -0.5 0.0 60.48  1.25 0.0 0.0  -0.8
 
 
 $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38
 
-$Gel de ultrasonido de 0.1cm de altura total, 0.06 respecto pouch
-4000 90 rpp -1.4685 2.7185  -1.486 1.486  60.32 60.58  
+$Gel de ultrasonido de 0.1cm de altura total, 0.05 respecto pouch
+4000 90 rpp -1.4685 1.5095  -1.486 1.486  60.33 60.58  
 
 $ Cinta scotch  --> asumiendo grosor 0.005 cm respecto del pouch
-8000 90 rpp -1.4685 2.7185  -1.486 1.486  60.375 60.38   $ 60.375
+8000 90 rpp -1.4685 1.5095 -1.486 1.486  60.375 60.38   $ 60.375
 
 $ POSICIONADOR 
 infl:{Su_posicionador.inp}
@@ -208,14 +208,14 @@ TR50  0 0 101.0  0 0 0  0 0  0 0  0 0  3	$sample table height
 TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
 $TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
 $TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
-*TR90  0 0 c900   0 0 0   3 90  0 0  0 0   3
+*TR90  0 0.5 c900   0 0 0   3 90  0 0  0 0   3
 
 [ Cell ]
 infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#510 #600 #700 #800 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007]
+set:%exclusions%[#510 #600 #700 #800 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007 #6008]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -228,14 +228,13 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202 #6006 #6005 #6004 #800 
+510 16 -1.0  -100  201  -202 #6006 #6005 #6004 #800 $ #6009 #6010 
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510 #700 #800 #6006 #6005 #6004 
+600 8 -1.0  -4000 #510 #700 #800 #6006 #6005 #6004 $#6009 #6010 
  
 $ Cinta scotch
-800 20 -1.20  -8000 
-
+800 20 -1.20  -8000 $ #6009 #6010
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}
@@ -245,11 +244,11 @@ infl:{Ce_hamster.inp}
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510 
-$     %outside_stuff% %exclusions% $Cover unused workzone with air
+     %outside_stuff% %exclusions% $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 
-$      %outside_stuff% %exclusions%
+      %outside_stuff% %exclusions%
 2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) %exclusions% %outside_stuff% 
 
 infl:{volumes.inp}

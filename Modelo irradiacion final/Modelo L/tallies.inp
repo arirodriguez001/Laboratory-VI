@@ -1,3 +1,4 @@
+
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO L $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
@@ -9,15 +10,13 @@ x-type = 2
 nx = 25               
 xmin = -4.
 xmax = 4.
-
 y-type = 2
 ny = 60                  
 ymin = -6.
 ymax = 5.
-
 z-type = 1
 nz = 1
-98.47 98.49              $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378
+98.34 98.35              $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378
 part = proton
 e-type = 1
 ne = 1
@@ -50,6 +49,31 @@ ne = 1
 unit = 1
 axis = yz
 file = track_yz_L.out
+gshow = 1
+epsout = 1
+
+[ T - T r a c k ]  $ para ver la guillotina en xz
+
+mesh = xyz
+x-type = 2
+nx = 10
+xmin = -4.
+xmax = 4.
+y-type = 1
+ny = 1          
+-1.65 -1.70
+z-type = 2           
+nz = 10
+zmin = 95 
+zmax = 105.
+
+part = proton
+e-type = 1
+ne = 1
+0.0 1000.0
+unit = 1
+axis = xz
+file = track_xz_L.out
 gshow = 1
 epsout = 1
 
@@ -117,7 +141,7 @@ ne = 1
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
-[ T - D e p o s i t ]  $ dosis depositada en profundidad
+[ T - D e p o s i t ]off  $ dosis depositada en profundidad
 
 title = Bragg peak in pouch
 
@@ -139,7 +163,7 @@ axis = z
 file = bragg_pouch_zL.out
 epsout = 1
 
-[ T - D e p o s i t ]  $ dosis radial en el pouch
+[ T - D e p o s i t ] off $ dosis radial en el pouch
 
 title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
@@ -176,7 +200,7 @@ axis = eng
 file = energy_pouch_L.out
 part = proton neutron alpha photon positron
 
-[ T - Track ]   $ para ver que particulas le llega al hamster
+[ T - Track ]   off$ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -247,7 +271,7 @@ unit = 1
 epsout = 1
 
 
-[ T - D e p o s i t ]  $ histograma dosis-volumen del pouch
+[ T - D e p o s i t ]off  $ histograma dosis-volumen del pouch
 
 title = Histograma
 
