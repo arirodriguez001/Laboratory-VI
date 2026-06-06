@@ -1,7 +1,7 @@
 $ [ Cell ]
 $100 -1 #( %disp1_zone% ) TRCL=30	$Deep space
 
-2500 %air%  %workzone_walls%  %sample_zone% #700 #2501 #2502 #2503 #2504 #2506 #103 #2505 #510 #6000 #6001 #6002	#6003 $fill w/ air
+2500 %air%  %workzone_walls%  %sample_zone% #700 #2501 #2502 #2503 #2504 #2506 #103 #2505 #510 #6000 #6001 #6002 #6003 #6009 $fill w/ air
 $2500 %air%  %workzone%  %sample_zone% #2501 #2502 #2503 #2504 #2505 #2506	$fill w/ air
 
 2501 %Al% %Al_base%	$sAl base

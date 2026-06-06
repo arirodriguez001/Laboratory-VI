@@ -3,7 +3,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO L $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
 
-[ T - T r a c k ]   $ flujo de protones a la altura del pouch
+[ T - T r a c k ] off  $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
@@ -27,7 +27,7 @@ file = track_xy_L.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]  $ flujo de particulas en yz
+[ T - T r a c k ]off  $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -56,16 +56,16 @@ epsout = 1
 
 mesh = xyz
 x-type = 2
-nx = 10
-xmin = -4.
-xmax = 4.
+nx = 50
+xmin = -2.
+xmax = 2.
 y-type = 1
 ny = 1          
--1.65 -1.70
+0. 0.1                $ guillotina : -1.65 -1.70
 z-type = 2           
-nz = 10
-zmin = 95 
-zmax = 105.
+nz = 50
+zmin = 97.
+zmax = 100.
 
 part = proton
 e-type = 1

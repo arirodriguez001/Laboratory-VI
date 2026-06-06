@@ -3,7 +3,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO A $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
 
-[ T - T r a c k ]   $ flujo de protones a la altura del pouch
+[ T - T r a c k ]  $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
@@ -16,7 +16,7 @@ ymin = -6.
 ymax = 5.
 z-type = 1
 nz = 1
-98.47 98.49              $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378
+98.373  98.378             $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378 /98.485  98.49
 part = proton
 e-type = 1
 ne = 1
@@ -27,7 +27,7 @@ file = track_xy_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]  $ flujo de particulas en yz
+[ T - T r a c k ]off  $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -52,18 +52,18 @@ file = track_yz_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ] off $ para ver la guillotina en xz
+[ T - T r a c k ]  $ para ver la guillotina en xz
 
 mesh = xyz
 x-type = 2
-nx = 10
+nx = 50
 xmin = -4.
 xmax = 4.
 y-type = 1
 ny = 1          
--1.65 -1.70
+0. 0.1                   $-1.65 -1.70 guillotina
 z-type = 2           
-nz = 10
+nz = 50
 zmin = 95 
 zmax = 105.
 
@@ -141,7 +141,7 @@ ne = 1
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
-[ T - D e p o s i t ]  $ dosis depositada en profundidad
+[ T - D e p o s i t ]  off  $ dosis depositada en profundidad
 
 title = Bragg peak in pouch
 
@@ -163,7 +163,7 @@ axis = z
 file = bragg_pouch_zA.out
 epsout = 1
 
-[ T - D e p o s i t ]  $ dosis radial en el pouch
+[ T - D e p o s i t ]  off  $ dosis radial en el pouch
 
 title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
@@ -200,7 +200,7 @@ axis = eng
 file = energy_pouch_M0.out
 part = proton neutron alpha photon positron
 
-[ T - Track ]   $ para ver que particulas le llega al hamster
+[ T - Track ] off  $ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -271,7 +271,7 @@ unit = 1
 epsout = 1
 
 
-[ T - D e p o s i t ]  $ histograma dosis-volumen del pouch
+[ T - D e p o s i t ]  off  $ histograma dosis-volumen del pouch
 
 title = Histograma
 

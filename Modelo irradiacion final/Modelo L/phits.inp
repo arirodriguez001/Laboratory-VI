@@ -215,7 +215,7 @@ infl:{Ce_iman.inp}
 infl:{Ce_viga.inp}
 
 set:%outside_stuff%[#101 #102 #103 #104]
-set:%exclusions%[#510 #600 #700 #800 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007 #6008]
+set:%exclusions%[#510 #600 #700 #800 #103 #6000 #6001 #6002 #6003 #2001 #6006 #6005 #6004 #6007 #6008 #6009]
 
 infl:{Ce_atenuador.inp}
 infl:{Ce_dispersor1.inp}
@@ -228,13 +228,13 @@ $infl:{Ce_ridge_filter_4.inp}
 infl:{Ce_ridge_filter_9.inp}
 
 $ Pouch
-510 16 -1.0  -100  201  -202 #6006 #6005 #6004 #800 $ #6009 #6010 
+510 16 -1.0  -100  201  -202 #6006 #6005 #6004 #800 #6009  
 
 $ Gel ultrasonido
-600 8 -1.0  -4000 #510 #700 #800 #6006 #6005 #6004 $#6009 #6010 
+600 8 -1.0  -4000 #510 #700 #800 #6006 #6005 #6004 #6009 
  
 $ Cinta scotch
-800 20 -1.20  -8000 $ #6009 #6010
+800 20 -1.20  -8000 #6009
 
 $ POSICIONADOR 
 infl:{Ce_posicionador.inp}
@@ -244,14 +244,14 @@ infl:{Ce_hamster.inp}
 
 1 -1     1  $Deep space
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%sample_zone%):(%pin_zone%)))  #510 
-     %outside_stuff% %exclusions% $Cover unused workzone with air
+$     %outside_stuff% %exclusions% $Cover unused workzone with air
 
 $ Modifica la Celda 2 así:
 $2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) #510 #600 #700 #103 #6000 #6001 #6002 #6003 
-      %outside_stuff% %exclusions%
+$      %outside_stuff% %exclusions%
 2 %air% -1 #(%workzone_walls% ((%att_zone%):(%disp1_zone%):(%disp2_zone%):(%ocl_zone%):(%pin_zone%))) %exclusions% %outside_stuff% 
 
 infl:{volumes.inp}
 infl:{tallies.inp}
-
+ 
 [ E n d ]
