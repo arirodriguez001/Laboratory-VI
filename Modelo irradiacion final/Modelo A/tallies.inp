@@ -3,7 +3,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO A $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
 
-[ T - T r a c k ]  $ flujo de protones a la altura del pouch
+[ T - T r a c k ] off  $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
@@ -16,14 +16,14 @@ ymin = -6.
 ymax = 5.
 z-type = 1
 nz = 1
-99.1 99.15            $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378 /98.485  98.49
+98.47 98.49            $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378 /98.485  98.49
 part = proton
 e-type = 1
 ne = 1
 0.0 1000.0
 unit = 1
 axis = xy
-file = track_xy_A.out
+file = track_xy_A2.out
 gshow = 1
 epsout = 1
 
@@ -52,7 +52,7 @@ file = track_yz_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]  $ para ver la guillotina en xz
+[ T - T r a c k ] off $ para ver la guillotina en xz
 
 mesh = xyz
 x-type = 2
@@ -163,7 +163,7 @@ axis = z
 file = bragg_pouch_zA.out
 epsout = 1
 
-[ T - D e p o s i t ]  off  $ dosis radial en el pouch
+[ T - D e p o s i t ] off   $ dosis radial en el pouch
 
 title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
@@ -171,7 +171,7 @@ mesh = r-z
 r-type = 2
 rmin = 0.0
 rmax = 1.7     
-nr = 100
+nr = 60
 
 z-type = 2
 zmin = 98.38
@@ -200,7 +200,7 @@ axis = eng
 file = energy_pouch_M0.out
 part = proton neutron alpha photon positron
 
-[ T - Track ] off  $ para ver que particulas le llega al hamster
+[ T - Track ] off $ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -271,20 +271,21 @@ unit = 1
 epsout = 1
 
 
-[ T - D e p o s i t ]  off  $ histograma dosis-volumen del pouch
+[ T - D e p o s i t ] off  $ histograma dosis-volumen del pouch
 
 title = Histograma
 
 mesh = xyz
+
 x-type = 2
-xmin = -1.0
-xmax = 1.0
-nx = 10
+xmin = -0.8
+xmax = 0.8
+nx = 16
 
 y-type = 2
-ymin = -1.6
-ymax = 1.6
-ny = 16
+ymin = -1.65
+ymax = 1.65
+ny = 33
 
 z-type = 2
 zmin = 98.38
@@ -296,4 +297,22 @@ output = dose
 unit = 0
 axis = z
 file = histograma_dosis_A.out
+epsout = 1
+
+[ T - D e p o s i t ]
+
+title = Dosis depositada en el hamster de photones protones
+
+mesh = reg
+
+reg = 700
+e-type = 2
+ne = 100
+emin = 1.0e-9
+emax = 25.0
+unit = 0
+axis = eng
+file = dosis_hamster_A.out
+part = proton photon 
+output = dose
 epsout = 1
