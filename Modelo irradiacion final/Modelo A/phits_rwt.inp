@@ -1125,12 +1125,8 @@ title = Dosis depositada en el hamster de photones protones
 mesh = reg
 
 reg = 700
-e-type = 2
-ne = 100
-emin = 1.0e-9
-emax = 25.0
 unit = 0
-axis = eng
+axis = reg
 file = dosis_hamster_A.out
 part = proton photon
 output = dose
