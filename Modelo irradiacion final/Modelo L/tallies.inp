@@ -1,22 +1,22 @@
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO L $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-$ Tallys para ver la geometria
-
-[ T - T r a c k ] off  $ flujo de protones a la altura del pouch
+[ T - T r a c k ] $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
 nx = 25               
 xmin = -4.
 xmax = 4.
+
 y-type = 2
 ny = 60                  
 ymin = -6.
 ymax = 5.
+
 z-type = 1
 nz = 1
-98.34 98.35              $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378
+98.470 98.490            $ centro del pouch z= 98.480 +- 0.01 cm / para ver la cinta: 98.373  98.378 /98.485  98.49
 part = proton
 e-type = 1
 ne = 1
@@ -27,7 +27,7 @@ file = track_xy_L.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]off  $ flujo de particulas en yz
+[ T - T r a c k ]  $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -52,20 +52,21 @@ file = track_yz_L.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]  $ para ver la guillotina en xz
+
+[ T - T r a c k ] off $ para ver la guillotina en xz
 
 mesh = xyz
 x-type = 2
 nx = 50
-xmin = -2.
-xmax = 2.
+xmin = -4.
+xmax = 4.
 y-type = 1
 ny = 1          
-0. 0.1                $ guillotina : -1.65 -1.70
+0. 0.1                   $-1.65 -1.70 guillotina
 z-type = 2           
 nz = 50
-zmin = 97.
-zmax = 100.
+zmin = 95 
+zmax = 105.
 
 part = proton
 e-type = 1
@@ -76,7 +77,6 @@ axis = xz
 file = track_xz_L.out
 gshow = 1
 epsout = 1
-
 
 $$$$$$$$$$$$  perfiles de flujo a x e y cte (para hacer la cruz) $$$$$$$$$$$$$$$
 
@@ -141,7 +141,7 @@ ne = 1
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
-[ T - D e p o s i t ]off  $ dosis depositada en profundidad
+[ T - D e p o s i t ]  $ dosis depositada en profundidad
 
 title = Bragg peak in pouch
 
@@ -163,15 +163,15 @@ axis = z
 file = bragg_pouch_zL.out
 epsout = 1
 
-[ T - D e p o s i t ] off $ dosis radial en el pouch
+[ T - D e p o s i t ]  $ dosis radial en el pouch
 
 title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
 
 r-type = 2
 rmin = 0.0
-rmax = 1.7     $ lo cambie pero antes llegaba a 1
-nr = 100
+rmax = 1.7     
+nr = 60
 
 z-type = 2
 zmin = 98.38
@@ -200,7 +200,7 @@ axis = eng
 file = energy_pouch_L.out
 part = proton neutron alpha photon positron
 
-[ T - Track ]   off$ para ver que particulas le llega al hamster
+[ T - Track ]  $ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -271,21 +271,21 @@ unit = 1
 epsout = 1
 
 
-[ T - D e p o s i t ]off  $ histograma dosis-volumen del pouch
+[ T - D e p o s i t ]   $ histograma dosis-volumen del pouch
 
 title = Histograma
 
 mesh = xyz
-x-type = 2
-xmin = -1.0
-xmax = 1.0
-nx = 10
+x-type = 2               
+xmin = -0.8
+xmax = 0.8
+nx = 16
 
-y-type = 2
-ymin = -1.6
-ymax = 1.6
-ny = 16
-
+y-type = 2                 
+ymin = -1.65
+ymax = 1.65
+ny = 33 
+ 
 z-type = 2
 zmin = 98.38
 zmax = 98.58
