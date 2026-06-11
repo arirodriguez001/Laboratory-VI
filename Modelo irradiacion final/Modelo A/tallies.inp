@@ -27,7 +27,7 @@ file = track_xy_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]off  $ flujo de particulas en yz
+[ T - T r a c k ]  $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -52,7 +52,7 @@ file = track_yz_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]off  $ flujo de particulas en yz
+[ T - T r a c k ]   $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -74,6 +74,31 @@ ne = 1
 unit = 1
 axis = yz
 file = track_yz_gamma_A.out
+gshow = 1
+epsout = 1
+
+[ T - T r a c k ]  $ flujo de particulas en yz
+
+mesh = xyz
+x-type = 1
+nx = 1
+0. 0.1
+y-type = 2
+ny = 150          
+ymin = -10.
+ymax = 10.
+z-type = 2            
+nz = 500
+zmin = -10 
+zmax = 110.
+
+part = neutron
+e-type = 1
+ne = 1
+0.0 1000.0
+unit = 1
+axis = yz
+file = track_yz_neutron_A.out
 gshow = 1
 epsout = 1
 
@@ -124,7 +149,7 @@ file = bragg_pouch_rA.out
 epsout = 1
 
 
-[ T - Track ] off $ para ver que particulas le llega al hamster
+[ T - Track ]  $ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -168,7 +193,7 @@ axis = z
 file = histograma_dosis_A.out
 epsout = 1
 
-[ T - D e p o s i t ]
+[ T - D e p o s i t ] 
 
 title = Dosis depositada en el hamster de photones protones
 
@@ -180,4 +205,80 @@ axis = reg
 file = dosis_hamster_A.out
 part = proton photon 
 output = dose
+epsout = 1
+
+[ T - D e p o s i t ]
+
+title = Dosis depositada en el hamster de neutrones
+
+mesh = reg
+
+reg = 700 6007
+unit = 0
+axis = reg
+file = dosis_neutron_hamster_A.out
+part = neutron
+output = dose
+epsout = 1
+
+
+$$$$$$$$$$$ detectores $$$$$$$$$$$$$$$$$$$$$
+
+$ flujo de protones
+
+[ T - T r a c k ] off
+
+title = Flujo de protones detector origen
+
+mesh = r-z
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = z
+file = flujo_detector_origen.out
+epsout = 1
+
+[ T - T r a c k ]
+
+title = Flujo de protones detector
+
+mesh = r-z
+
+x0 = xdet
+y0 = ydet
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = z
+file = flujo_detector_I.out
 epsout = 1

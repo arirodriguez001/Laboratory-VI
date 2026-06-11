@@ -1,10 +1,11 @@
 [ T-Deposit ]
-    title = Dosis depositada en el hamster de photones protones
+    title = Dosis depositada en el hamster de neutrones
      mesh =  reg            # mesh type is region-wise
-      reg = 700
+      reg = 700 6007
    volume                   # combined, lattice or level structure 
    non     reg      vol     # reg definition
     1      700   1.0053E+02 # 700
+    2     6007   1.0000E+00 # 6007
      unit =    0            # unit is [Gy/source]
    letmat =    0            # (D=0) mat ID for LET, 0:real mat, <0: electron for H2O
   dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
@@ -12,9 +13,9 @@
    output =  dose           # total deposit energy
   deposit =    0            # (D=0) 0-> total deposit dist, 1-> each process
      axis =   reg           # axis of output
-     file = dosis_hamster_A.out  # file name of output for the above axis
-     part =  proton     photon   
-# kf/name :  2212       22       
+     file = dosis_neutron_hamster_A.out  # file name of output for the above axis
+     part =  neutron    Es       
+# kf/name :  2112       99000000 
    epsout =    1            # (D=0) generate eps file by ANGEL
    mother =  all            # (D=all) number of specific mother
 #    used :        main (  %)        temp (  %)       total (  %)
@@ -27,14 +28,15 @@
 x: Serial Num. of Region
 y: Dose [Gy/source]      
 p: xlin ylog afac(0.8) form(0.9)
-h:   x      n     n          y(proton  ),l3 n   y(photon  ),d4r n   
-#  num    reg     volume       proton    r.err      photon    r.err 
-    1     700   1.0053E+02   0.0000E+00  0.0000   1.6594E-09  0.5323
+h:   x      n     n          y(neutron ),l3 n   y(Es      ),d4r n   
+#  num    reg     volume       neutron   r.err      Es        r.err 
+    1     700   1.0053E+02   9.7614E-09  0.3112   0.0000E+00  0.0000
+    2    6007   1.0000E+00   4.8485E-07  0.2220   0.0000E+00  0.0000
 
-#   sum over    1.0053E+02   0.0000E+00  0.0000   1.6594E-09  0.5323
+#   sum over    1.0153E+02   1.4441E-08  0.2494   0.0000E+00  0.0000
 
 'no. =  1'
-msuc: {\huge Dosis depositada en el hamster de photones protones}
+msuc: {\huge Dosis depositada en el hamster de neutrones}
 msdr: {\it plotted by \ANGEL \version}
 msdl: {\it calculated by \PHITS  3.35}
  
