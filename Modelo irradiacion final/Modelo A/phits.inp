@@ -3,28 +3,27 @@ $$MPI = 32
 $RWT = 2
 [ Title ]
 Vertical external proton beam - modular input
-
 [ Parameters ]
 $file(1)	= /home/jesusfigari/stage/phits $ folder for NEURUS
-icntl	= 8 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
+icntl	= 0 $0: transport	5: source	8: 2D geometry	11: 3D geometry	14: volume	16: script mode	17: Anatally mode
 maxcas	= 25000 $ (D=10) number of particles per one batch
 maxbch	= 5000 $ (D=10) number of batches
-istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result.
+istdev	= 2 $Statistical uncertainties estimated from the standard error of: 1=each batch result. 2=each history result. 
 nspred	= 2 $2= Coulomb diﬀusion by the Lynch’s formula based on the Moliere theory
 nedisp	= 1 $1= Landau Vavilov energy straggling
 istdcut	= 1 $Stop when its statistical uncertainty becomes less than stdcut.
 delt0	= 4e-5 $Minimum ﬂight mesh [cm], should be set to 1/10 of the minimum thickness of thin films less than 1 cm when describing a scattering process.
 ireschk	= 1 $Control parameter for tally consistency check. The inconsistency of a tally may occur as the result of the loss of signiﬁcant digits in the PHITS input ﬁle
 nlost	= 10000 $number of tolerance of lost particles before stopping the run.
-$itall	= 1 $Output numerical and image files after every batch.
+itall	= 1 $Output numerical and image files after every batch.
 e-mode	= 0 $When e-mode≠0 and high-energy nuclear data libraries are used, PHITS determines the reaction point using the total cross section contained in the high-energy nuclear data libraries while the information on secondary particles is evaluated using the nuclear reaction models
 $igeomem = 200000
 
 $  required options for DCHAIN (also e-mode=0)
 $ igamma	= 3 $ (D=2) 0:No, 1:Old, 2:EBITEM,3:EBITEM+Isomer
 $ jmout	= 1 $ (D=0) Density echo, 0:input, 1:number densityc 
-$ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV)
-$ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV)
+$ dmax(1)	= 200.0 $ (D=emin(1)) data max. energy of proton (MeV) 
+$ dmax(2)	= 200.0 $ (D=emin(2)) data max. energy of neutron (MeV) 
 
 set: c1[ 0.5 ]	$beam radius
 set: c2[ 20.0 ]	$accelerator terminal tension
@@ -173,14 +172,14 @@ $$set: c100[ c7 + c61 - c66 - c67 + c65 ]	$cell monolayer start
 $$set: c101[ c100 + c68 ]	$cell monolayer
 
 $ POUCH (hamster cheek pouch)
-100 90 ell -0.3 0.0 60.48  1.45 0.0 0.0  -0.8
+100 90 ell -0.15 0.0 60.48  1.65 0.0 0.0  -0.8
 
 $ Planos de corte para definir el pouch (espesor 0.2 cm)
 202 90 pz 60.58
 201 90 pz 60.38
 
-$ Gel de ultrasonido de 0.1cm de altura total, 0.05 respecto pouch
-4000 90 rpp -1.4685 1.7315  -1.750 1.750  60.33 60.58  
+$ Gel de ultrasonido de 0.09cm de altura total, 0.04 respecto pouch
+4000 90 rpp -1.4685 1.7315  -1.750 1.750  60.32 60.58  
 
 $ Cinta scotch --> asumiendo grosor 0.005 cm respecto del pouch
 8000 90 rpp -1.4685 1.7315  -1.750 1.750  60.375 60.38
@@ -204,7 +203,7 @@ TR50  0 0 101.0  0 0 0  0 0  0 0  0 0  3	$sample table height
 TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
 $TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
 $TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
-*TR90  0 0.3 c900   0 0 0   3 90  0 0  0 0   3
+*TR90  0 0.15 c900   0 0 0   3 90  0 0  0 0   3
 
 [ Cell ]
 infl:{Ce_iman.inp}
