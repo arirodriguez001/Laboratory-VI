@@ -3,7 +3,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MODELO A $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ Tallys para ver la geometria
 
-[ T - T r a c k ] off  $ flujo de protones a la altura del pouch
+[ T - T r a c k ]   $ flujo de protones a la altura del pouch
 
 mesh = xyz
 x-type = 2
@@ -27,7 +27,7 @@ file = track_xy_A.out
 gshow = 1
 epsout = 1
 
-[ T - T r a c k ]  $ flujo de particulas en yz
+[ T - T r a c k ] $ flujo de particulas en yz
 
 mesh = xyz
 x-type = 1
@@ -104,7 +104,7 @@ epsout = 1
 
 
 
-[ T - D e p o s i t ]  off  $ dosis depositada en profundidad
+[ T - D e p o s i t ]  $ dosis depositada en profundidad
 
 title = Bragg peak in pouch
 
@@ -126,7 +126,7 @@ axis = z
 file = bragg_pouch_zA.out
 epsout = 1
 
-[ T - D e p o s i t ] off   $ dosis radial en el pouch
+[ T - D e p o s i t ]  $ dosis radial en el pouch
 
 title = Bragg peak in pouch, ahora con radio 1
 mesh = r-z
@@ -149,7 +149,7 @@ file = bragg_pouch_rA.out
 epsout = 1
 
 
-[ T - Track ]  $ para ver que particulas le llega al hamster
+[ T - Track ] $ para ver que particulas le llega al hamster
 
 title = Espectro de energia
 mesh = reg
@@ -165,7 +165,7 @@ part = proton neutron alpha photon positron
 
 
 
-[ T - D e p o s i t ] off  $ histograma dosis-volumen del pouch
+[ T - D e p o s i t ] $ histograma dosis-volumen del pouch
 
 title = Histograma
 
@@ -193,7 +193,7 @@ axis = z
 file = histograma_dosis_A.out
 epsout = 1
 
-[ T - D e p o s i t ] 
+[ T - D e p o s i t ]
 
 title = Dosis depositada en el hamster de photones protones
 
@@ -226,7 +226,7 @@ $$$$$$$$$$$ detectores $$$$$$$$$$$$$$$$$$$$$
 
 $ flujo de protones
 
-[ T - T r a c k ] off
+[ T - T r a c k ] 
 
 title = Flujo de protones detector origen
 
@@ -251,16 +251,17 @@ ne = 1
 unit = 1
 axis = z
 file = flujo_detector_origen.out
+gshow = 1
 epsout = 1
 
-[ T - T r a c k ]
+[ T - T r a c k ] 
 
 title = Flujo de protones detector
 
 mesh = r-z
 
-x0 = xdet
-y0 = ydet
+x0 = 5.405
+y0 = -6.787
 
 r-type = 2
 rmin = 0.0
@@ -281,4 +282,118 @@ ne = 1
 unit = 1
 axis = z
 file = flujo_detector_I.out
+gshow = 1
+epsout = 1
+
+[ T - T r a c k ]
+
+title = Flujo de protones detector D
+
+mesh = r-z
+
+x0 = -7.062
+y0 = -6.971
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+
+e-type = 1
+ne = 1
+0.0 1000.0
+
+unit = 1
+axis = z
+file = flujo_detector_D.out
+gshow = 1
+epsout = 1
+
+$ dosis
+
+[ T - D e p o s i t ]
+
+title = Dosis detector origen
+
+mesh = r-z
+
+x0 = 0.0
+y0 = 0.0
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = dosis_detector_origen.out
+epsout = 1
+
+
+[ T - D e p o s i t ]
+
+title = Dosis detector I
+
+mesh = r-z
+
+x0 = 5.405
+y0 = -6.787
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = dosis_detector_I.out
+epsout = 1
+
+
+[ T - D e p o s i t ]
+
+title = Dosis detector D
+
+mesh = r-z
+
+x0 = -7.062
+y0 = -6.971
+
+r-type = 2
+rmin = 0.0
+rmax = 0.05
+nr = 1
+
+z-type = 2
+zmin = 98.38
+zmax = 98.58
+nz = 1
+
+part = proton
+output = dose
+unit = 0
+axis = z
+file = dosis_detector_D.out
 epsout = 1

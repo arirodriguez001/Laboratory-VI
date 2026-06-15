@@ -179,7 +179,7 @@ $ Planos de corte para definir el pouch (espesor 0.2 cm)
 201 90 pz 60.38
 
 $ Gel de ultrasonido de 0.09cm de altura total, 0.04 respecto pouch
-4000 90 rpp -1.4685 1.7315  -1.750 1.750  60.32 60.58  
+4000 90 rpp -1.4685 1.7315  -1.750 1.750  60.33 60.58  
 
 $ Cinta scotch --> asumiendo grosor 0.005 cm respecto del pouch
 8000 90 rpp -1.4685 1.7315  -1.750 1.750  60.375 60.38
@@ -191,8 +191,6 @@ $ HAMSTER
 infl:{Su_hamster.inp}
 
 [ Transform ]
-set: c900[ 38 ]
-
 TR10  0 0 c3  0 0 0  0 0  0 0  0 0  3	$attenuator height
 TR20  0 0 c4  0 0 0  0 0  0 0  0 0  3	$disp 1 height
 TR21 0 -0.2251 0  0 0 0  0 0 0 0 0 0  2	$disp 1 y-correction
@@ -204,6 +202,7 @@ TR60  0 0 c8  0 0 0  0 0  0 0  0 0  3	$pin diodes height
 $TR61  0 0 c100  0 0 0  0 0  0 0  0 0  3	$monolayer cell height
 $TR62  0 0 c102  0 0 0  0 0  0 0  0 0  3	$liquid medium height
 *TR90  0 0.15 c900   0 0 0   3 90  0 0  0 0   3
+set: c900[ 38 ]
 
 [ Cell ]
 infl:{Ce_iman.inp}
@@ -252,7 +251,6 @@ $      %outside_stuff% %exclusions%
      #9002
      #9003
      #9004
-     #10000
      %outside_stuff%
 
 infl:{volumes.inp}
